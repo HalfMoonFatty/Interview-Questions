@@ -42,11 +42,7 @@ class Solution(object):
 
 class Solution(object):
     def lengthOfLongestSubstringKDistinct(self, s, k):
-        """
-            :type s: str
-            :type k: int
-            :rtype: int
-            """
+
         start = 0
         maxLen = 0
         count = 0
