@@ -9,6 +9,8 @@ so that the difference between A[i] and B[j] (|A[i] - B[j]|) is as small as poss
 
 '''
 Solution 1: 2 pointers
+
+O(nlogn) + O(mlogm) + O(n)
 '''
 import sys
 
@@ -36,6 +38,8 @@ class Solution:
         
 '''
 Solution 2: Binary Search
+
+O(nlogn) + O(mlogm) + O(nlongm)
 '''
 
 import sys,bisect
