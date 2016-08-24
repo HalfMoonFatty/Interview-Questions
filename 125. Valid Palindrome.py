@@ -15,10 +15,6 @@ Note:
 
 class Solution(object):
     def isPalindrome(self, s):
-        """
-            :type s: str
-            :rtype: bool
-            """
 
         s =''.join(ch for ch in s if ch.isalnum())
         if not (s.strip()) or len(s) ==1:
