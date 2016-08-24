@@ -112,7 +112,7 @@ class Solution(object):
                 
                 nstart = i+1
     
-    return stack.pop()
+        return stack.pop()
 
 
 '''
