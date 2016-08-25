@@ -40,24 +40,6 @@ Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another
 
 '''
 Solution 1:
-
-See this example:
-
-The string "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext" represents:
-
-dir
-    subdir1
-        file1.ext
-        subsubdir1
-    subdir2
-        subsubdir2
-            file2.ext
-
-Becasue, “tfile1.ext” and “tsubsubdir1” are in the same depth 而且 这两个 filename 和 dirname 是按顺序出现的。也就是说同一层的两个file是按顺序先后出现，然后才是再到下一层的或者回到上一层，开始一个新的path.所以发现后面的可以直接overwrite pathlen里面对应的index的lenth (它们之中如果有maxlen 也已经被 maxlen = max(maxlen, pathlen[depth]+len(name))给update过了)
-
-Reference:
-    https://discuss.leetcode.com/topic/55097/simple-python-solution/5
-    https://discuss.leetcode.com/topic/55104/very-concise-5-liner-in-python-52ms
 '''
 
 class Solution(object):
@@ -75,12 +57,7 @@ class Solution(object):
         return maxlen
 
 '''
-Solution 2: using int to store length not list
-
-have to update length every time meet a new dir depth. Use path as a stack.
-
-Reference:
-    https://discuss.leetcode.com/topic/55097/simple-python-solution/5
+Solution 2: stack
 '''
 class Solution(object):
     def lengthLongestPath(self, input):
