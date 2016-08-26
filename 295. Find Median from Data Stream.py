@@ -23,6 +23,12 @@ findMedian() -> 2
 
 '''
 
+'''
+Note:
+    small heap is a min heap
+    large heap is a max heap
+'''
+
 import heapq
 
 class MedianFinder:
