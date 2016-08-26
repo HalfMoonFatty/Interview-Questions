@@ -25,8 +25,8 @@ findMedian() -> 2
 
 '''
 Note:
-    small heap is a min heap
-    large heap is a max heap
+    small heap is a max heap - push -num
+    large heap is a min heap - regular heapq
 '''
 
 import heapq
