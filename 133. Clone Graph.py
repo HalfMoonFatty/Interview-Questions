@@ -34,7 +34,6 @@ Visually, the graph looks like the following:
 class Solution:
 
     def __init__(self):
-        self.dict = {}
         self.visited = {}
         
     def cloneGraph(self, node):
