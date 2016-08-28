@@ -1,3 +1,20 @@
+'''
+Problem:
+
+Implement a trie with insert, search, and startsWith methods.
+
+Note: 
+    You may assume that all inputs are consist of lowercase letters a-z.
+    
+Application:
+    1. Autocomplete
+    2. Spell checker
+    3. IP routing (Longest prefix matching)
+    4. T9 predictive text
+    5. Solving word games
+'''
+
+
 class TrieNode(object):
     def __init__(self):
         self.children = dict()
