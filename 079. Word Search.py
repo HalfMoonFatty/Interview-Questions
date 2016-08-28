@@ -20,7 +20,7 @@ For example, Given board =
 class Solution(object):
     def exist(self, board, word):
 
-        def dfsSearch(index, board, r, c, visited):
+        def dfsSearch(index, r, c, visited):
             if index == len(word):
                 return True
 
@@ -30,9 +30,10 @@ class Solution(object):
             visited[r][c] = True
             char = board[r][c]
             if word[index] == board[r][c]:
-                dir = ((0,1),(0,-1),(1,0),(-1,0))
-                for d in dir:
-                    if dfsSearch(index+1, board, r+d[0], c+d[1], visited):
+                dr = (0,1,0,-1)
+                dc = (1,0,-1,0)
+                for i in range(4):
+                    if dfsSearch(index+1, r+dr[i], c+dc[i], visited):
                         return True
             visited[r][c] = False
 
@@ -42,6 +43,6 @@ class Solution(object):
         visited = [[False for j in range(n)] for i in range(m)]
         for i in range(m):
             for j in range(n):
-                if dfsSearch(0, board, i, j, visited):
+                if dfsSearch(0, i, j, visited):
                     return True
         return False
