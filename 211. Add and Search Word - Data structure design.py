@@ -19,6 +19,13 @@ search("b..") -> true
 Note:
 You may assume that all words are consist of lowercase letters a-z.
 
+Application:
+    1. Autocomplete
+    2. Spell checker
+    3. IP routing (Longest prefix matching)
+    4. T9 predictive text
+    5. Solving word games
+
 '''
 
 class TrieNode():
