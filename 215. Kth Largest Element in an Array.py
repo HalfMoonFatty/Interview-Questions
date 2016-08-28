@@ -8,7 +8,7 @@ Problem:
 Note:
     You may assume k is always valid, 1 ≤ k ≤ array's length.
 '''
-
+# Solution 1: Quick Select Time: O(n)
 import random
 class Solution(object):
     def findKthLargest(self, nums, k):
@@ -26,3 +26,5 @@ class Solution(object):
         elif k > len(nums) - len(nums2):
             return self.findKthLargest(nums2, k - (len(nums) - len(nums2)))
         return pivot
+
+# Sort Time O(nlogn)
