@@ -26,15 +26,19 @@ class Solution(object):
 
             if r<0 or r>=len(board) or c<0 or c>=len(board[0]) or visited[r][c]:
                 return False
-
-            visited[r][c] = True
+    
             char = board[r][c]
-            if word[index] == board[r][c]:
-                dr = (0,1,0,-1)
-                dc = (1,0,-1,0)
-                for i in range(4):
-                    if dfsSearch(index+1, r+dr[i], c+dc[i], visited):
-                        return True
+            
+            # check current index
+            if word[index] != char:
+                return
+            
+            visited[r][c] = True
+            dr = (0,1,0,-1)
+            dc = (1,0,-1,0)
+            for i in range(4):
+                if dfsSearch(index+1, r+dr[i], c+dc[i], visited):
+                    return True
             visited[r][c] = False
 
 
@@ -46,3 +50,4 @@ class Solution(object):
                 if dfsSearch(0, i, j, visited):
                     return True
         return False
+        
