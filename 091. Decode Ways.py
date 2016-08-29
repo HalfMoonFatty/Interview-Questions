@@ -42,17 +42,17 @@ class Solution(object):
         dp[0] = 1
         dp[1] = 1 if s[0] != '0' else 0
         
-        for i in range(1,len(s)):
-            if s[i] != '0': dp[i+1] = dp[i]
-            if valid2dig(s[i-1], s[i]): dp[i+1] += dp[i-1]
-            if dp[i+1] == 0: return 0
+        for i in range(2,len(dp)):
+            if s[i-1] != '0': dp[i] = dp[i-1]
+            if valid2dig(s[i-2], s[i-1]): dp[i] += dp[i-2]
+            if dp[i] == 0: return 0
             
         return dp[-1]
             
 
 
 
-
+# Space O(1)
 
 class Solution(object):
     def numDecodings(self, s):
