@@ -18,6 +18,24 @@ return 2.
 Solution:
 
 '''
+
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        ind = [0]*26
+        for i in range(len(s)):
+            ind[ord(s[i])-ord('a')] += 1
+            
+        for i in range(len(s)):
+            if ind[ord(s[i])-ord('a')] == 1:
+                return i
+                
+        return -1
+
+
 class Solution(object):
     def firstUniqChar(self, s):
 
@@ -27,10 +45,10 @@ class Solution(object):
         for c in s:
             mp[c] = []
         
-        ans = 0
+        ind = 0
         for i in range(len(s)):
             mp[s[i]].append(i)
-            while ans < len(s) and len(mp[s[ans]]) > 1:
-                ans += 1
+            while ind < len(s) and len(mp[s[ind]]) > 1:
+                ind += 1
 
-        return -1 if ans == len(s) else ans
+        return -1 if ind == len(s) else ans
