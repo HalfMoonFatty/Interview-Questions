@@ -27,7 +27,7 @@ class Solution(object):
         for i in range(len(lists)):
             if lists[i]: # Note
                 heapq.heappush(heap,(lists[i].val,i))
-                lists[i] = lists[i].next
+                lists[i] = lists[i].next    # ! update list head
         
         while len(heap):
             elem = heapq.heappop(heap)
@@ -36,7 +36,7 @@ class Solution(object):
             itr = itr.next # Note
             if lists[ind]: # Note
                 heapq.heappush(heap,(lists[ind].val,ind))
-                lists[ind] = lists[ind].next
+                lists[ind] = lists[ind].next    # ! update list head
                 
         return dummyHead.next
         
