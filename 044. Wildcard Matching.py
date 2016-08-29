@@ -23,10 +23,12 @@ isMatch("aab", "c*a*b") → false
 '''
 Solution:
 
-    if p[j-1] == "*"
+	if p[j-1] != "*":
+		T[i][j] = T[i-1][j-1] and (s[i-1] == p[j-1] or p[j-1] == '?')
+		
+    if p[j-1] == "*":
         T[i][j] = T[i][j-1] or T[i-1][j]
-    else:
-        T[i][j] = T[i-1][j-1] and (s[i-1] == p[j-1] or p[j-1] == '?')
+        
         
 
 To save space usage from O(m*n) to O(n):
