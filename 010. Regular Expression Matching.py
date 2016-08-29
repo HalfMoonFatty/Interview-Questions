@@ -43,7 +43,7 @@ class Solution(object):
             dp[i][0] = False
         # edges 2. p[0.., j - 3, j - 2, j - 1] matches empty iff p[j - 1] is '*' and p[0..j - 3] matches empty
         for j in range(1,n+1):
-            dp[0][j] = j > 1 and p[j - 1] == '*' and dp[0][j-2]
+            dp[0][j] = j > 1 and p[j-1] == '*' and dp[0][j-2]
 
         for i in range(1,m+1):
             for j in range(1,n+1):
