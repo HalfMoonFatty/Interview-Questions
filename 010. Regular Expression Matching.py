@@ -22,6 +22,16 @@ isMatch("aab", "c*a*b") → true
 
 '''
 
+'''
+DP[i][j]: if s[0..i-1] matches p[0..j-1]
+
+    if p[j - 1] != '*'
+        DP[i][j] = DP[i - 1][j - 1] and (s[i - 1] == p[j - 1])
+        
+    if p[j - 1] == '*'
+        DP[i][j] = DP[i][j - 2] or (s[i - 1] == p[j - 2] and DP[i - 1][j])
+'''
+
 class Solution(object):
     def isMatch(self, s, p):
         m = len(s)
