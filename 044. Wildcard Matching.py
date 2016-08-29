@@ -65,3 +65,4 @@ classSolution(object):
                     cur[j] = prev[j-1] and (s[i-1]==p[j-1] or p[j-1]=='?')
             prev = cur
         return prev[n]
+
