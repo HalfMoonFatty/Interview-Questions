@@ -50,7 +50,7 @@ classSolution(object):
         prev[0] = True
 
         for j in range(1,n+1):
-            prev[j] = prev[j-1] and p[j-1]=='*'  # set up T[0][j]
+            prev[j] = p[j-1] == '*' and prev[j-1]		# set up T[0][j]
 
         for i in range(1,m+1):
             cur = [False]*(n+1)
