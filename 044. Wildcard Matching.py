@@ -29,7 +29,9 @@ Solution:
         T[i][j] = T[i-1][j-1] and (s[i-1] == p[j-1] or p[j-1] == '?')
         
 
-Save space:
+To save space usage from O(m*n) to O(n):
+     
+    We can see that, the transition equation for i dimension is ONLY using s[i-1]
 	
 	Set prev = T[i-1], cur = T[i]
 
