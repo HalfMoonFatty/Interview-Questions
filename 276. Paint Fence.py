@@ -11,7 +11,12 @@ Note:
      n and k are non-negative integers.
 '''
 
+#if dp[i] paint diff color with dp[i-1]: dp[i] = dp[i-1]*(k-1)
+#if dp[i] paint same color with dp[i-1]: 
+	# then dp[i-1] must not paint the same with dp[i-2] (i.e. dp[i-1] is different color with dp[i-2] => dp[i-2]*(k-1)) 
+    # dp[i] = dp[i-2]*(k-1)*1
 # dp[i] =(dp[i-2]+dp[i-1])*(k-1)
+
 class Solution(object):
     def numWays(self, n, k):
 
