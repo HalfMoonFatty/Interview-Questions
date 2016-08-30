@@ -113,40 +113,29 @@ Tricky: need to mark every postion as visited BEFORE we put them into the Queue.
 I tried to mark a postition when we poll it out from the queue, but this case we put a lot of wasted postions in the queue. 
 '''
 
-import Queue
+from collections import deque
 class Solution(object):
     def numIslands(self, grid):
 
         def canExplore(x, y, grid, visited):
-            if 0 <= x < len(grid) and 0 <= y < len(grid[0]) and grid[x][y] == "1" and visited[x][y] == False:
-                return True
-            else:
-                return False
-       
+            return 0 <= x < len(grid) and 0 <= y < len(grid[0]) and grid[x][y] == "1" and not visited[x][y]
+
+
         def explore(x, y, grid, visited):
-            if not canExplore(x, y, grid, visited):
-                return
-            else:
-                q = Queue.Queue() # Queue initialization
-                q.put([x,y])
+            if canExplore(x, y, grid, visited):
+                q = deque()
+                q.append([x,y])
                
-                while not q.empty():
-                    pos = q.get()
+                while len(q):
+                    pos = q.popleft()
                     x,y = pos[0],pos[1]
-                    # visited[x][y] = True   # keep
-                   
-                    if canExplore(x+1, y, grid, visited):
-                        q.put([x+1,y])
-                        visited[x+1][y] = True
-                    if canExplore(x-1, y, grid, visited):
-                        q.put([x-1,y])
-                        visited[x-1][y] = True
-                    if canExplore(x, y+1, grid, visited):
-                        q.put([x,y+1])
-                        visited[x][y+1] = True
-                    if canExplore(x, y-1, grid, visited):
-                        q.put([x,y-1])
-                        visited[x][y-1] = True
+                    #visited[x][y] = True   # TLE
+                    xdir = [0,1,0,-1]
+                    ydir = [1,0,-1,0]
+                    for i in range(4):
+                        if canExplore(x+xdir[i], y+ydir[i], grid, visited):
+                            q.append([x+xdir[i], y+ydir[i]])
+                            visited[x+xdir[i]][y+ydir[i]] = True
             return
    
    
@@ -154,19 +143,15 @@ class Solution(object):
             return 0
        
         numIsland = 0
-        row = len(grid)
-        col = len(grid[0])
+        row,col = len(grid),len(grid[0])
         visited = [[False for t in range(col)] for s in range(row)]
         for i in range(row):
             for j in range(col):
-                if grid[i][j] == "0" or visited[i][j]:
-                    continue
-                else:
+                if grid[i][j] != "0" and not visited[i][j]:
                     explore(i, j, grid, visited)
                     numIsland += 1
 
-    return numIsland
-
+        return numIsland
 
 
 
