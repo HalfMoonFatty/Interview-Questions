@@ -52,7 +52,6 @@ class Solution(object):
             if findRoot(pair[0]) != findRoot(pair[1]):
                 union(pair[0], pair[1])
                 count -= 1
-       
         return count
 
 
@@ -92,7 +91,6 @@ class Solution(object):
 
 
 # Solution 3: BFS + Queue + graph
-
 
 from collections import deque
 
