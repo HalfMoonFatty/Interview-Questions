@@ -87,20 +87,20 @@ class Solution(object):
        
         for pos in positions:     
             if result:
-                count = result[-1]+1                      # count up base on the last previous results and the current island                  
+                count = result[-1]+1                # count up base on the last previous results and the current island                  
             else:
                 count = 1
            
-            curSet = pos[0]*n+pos[1]              # position to unionSet index 
-            unionSet[curSet] = curSet             # mark the current "1" as a island  
+            curSet = pos[0]*n+pos[1]                # position to unionSet index 
+            unionSet[curSet] = curSet              
             for p in range(4):                
                 x = pos[0] + xDir[p]
                 y = pos[1] + yDir[p]
-                neighbourSet = x*n+y               # position to unionSet index 
+                neighbourSet = x*n+y                # position to unionSet index 
                 if 0<=x<m and 0<=y<n and unionSet[neighbourSet] != -1:    # != -1 means it is not water
                     if findRoot(curSet) != findRoot(neighbourSet):
-                        count -= 1
-                    union(curSet,neighbourSet)
+                         count -= 1
+                         union(curSet,neighbourSet)
             result.append(count)
        
         return result
