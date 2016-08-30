@@ -42,7 +42,6 @@ class Solution(object):
             return
        
        
-       
         if not grid or len(grid) == 0 or len(grid[0]) == 0:
             return 0
        
@@ -70,35 +69,12 @@ class Solution(object):
 
 
 
+# Solution 1: DFS explore function is the ONLY difference with BFS function
 
-'''
-Solution 1: DFS
-
-numsIslands function:
-    - Scan the entire grid O(n^2)
-        - if this position is visited or is water, then go to the next position
-        - else call "explore" function to explore positions around the current position
-        - after explore all surrounded regions, add one(one more island explored)
-
-explore function(DFS) This function is the ONLY difference with BFS function
-    - call "canExplore" for boundry check and screen out already visited positions
-    - then call explore on 4 directiions (4 neighbours) one by one
-   
-canExplore function:
-    - for boundry check and screening for visited positions
-    - during interview, if you cannot finish this function, the interviewer will understand.
-   
-
-Reference: Solution without extra space of visited -- Directly mark visited place as "x" or "0"
-https://leetcode.com/discuss/31011/simple-java-solution
-'''
 
 class Solution(object):
     def numIslands(self, grid):
-        """
-            :type grid: List[List[str]]
-            :rtype: int
-            """
+
         def explore(x, y, grid, visited):
             if x < 0 or x > len(grid)-1 or y < 0 or y > len(grid[0])-1 or grid[x][y] == "0" or visited[x][y] == True:
                 return
@@ -115,8 +91,7 @@ class Solution(object):
             return 0
    
         numIsland = 0
-        row = len(grid)
-        col = len(grid[0])
+        row,col = len(grid),len(grid[0])
         visited = [[False for t in range(col)] for s in range(row)]
         for i in range(row):
             for j in range(col):
@@ -134,15 +109,8 @@ class Solution(object):
 
 '''
 Solution 2: BFS
-
-explore function (BFS) This function is the ONLY difference with DFS function
-    - call "canExplore" for boundry check and screen out already visited positions
-    - Queue is your best friend when coming to BFS:
-        - get one postions
-        - then put all of its neighbour of this position "one-by-one"
-        - the tricky thing here is that we need to mark every postion as visited BEFORE we put them into the Queue. 
-        I tried to mark a postition when we poll it out from the queue, but this case we put a lot of wasted postions in the queue. 
-        Hmmm, very tricky.
+Tricky: need to mark every postion as visited BEFORE we put them into the Queue. 
+I tried to mark a postition when we poll it out from the queue, but this case we put a lot of wasted postions in the queue. 
 '''
 
 import Queue
