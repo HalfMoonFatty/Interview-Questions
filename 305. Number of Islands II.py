@@ -81,15 +81,12 @@ class Solution(object):
 
         unionSet = [-1 for i in range(m*n)]         # initially every position is a water (cannot union)
         result = []
-       
         xDir = [0,1,0,-1]
         yDir = [1,0,-1,0]
        
         for pos in positions:     
-            if result:
-                count = result[-1]+1                # count up base on the last previous results and the current island                  
-            else:
-                count = 1
+            if result: count = result[-1]+1         # count up base on the last previous results
+            else: count = 1
            
             curSet = pos[0]*n+pos[1]                # position to unionSet index 
             unionSet[curSet] = curSet              
@@ -99,8 +96,8 @@ class Solution(object):
                 neighbourSet = x*n+y                # position to unionSet index 
                 if 0<=x<m and 0<=y<n and unionSet[neighbourSet] != -1:    # != -1 means it is not water
                     if findRoot(curSet) != findRoot(neighbourSet):
-                         count -= 1
-                         union(curSet,neighbourSet)
+                        count -= 1
+                        union(curSet,neighbourSet)
             result.append(count)
        
         return result
