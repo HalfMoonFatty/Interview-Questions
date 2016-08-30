@@ -63,7 +63,7 @@ class Solution(object):
                         if 0<=x<h and 0<=y<w and grid[x][y] == "1":
                             if findRoot(curSet) != findRoot(neighbourSet): 
                                 count -= 1
-                            union(curSet,neighbourSet)
+                                union(curSet,neighbourSet)
         return count
 
 
