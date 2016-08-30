@@ -95,9 +95,7 @@ class Solution(object):
         visited = [[False for t in range(col)] for s in range(row)]
         for i in range(row):
             for j in range(col):
-                if grid[i][j] == "0" or visited[i][j]:
-                    continue
-                else:
+                if grid[i][j] != "0" and not visited[i][j]:
                     explore(i, j, grid, visited)
                     numIsland += 1
 
