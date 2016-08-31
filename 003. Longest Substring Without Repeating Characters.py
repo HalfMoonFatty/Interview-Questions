@@ -7,9 +7,32 @@ For "bbbbb" the longest substring is "b", with the length of 1.
 
 '''
 
-'''
-Solution 1
-'''
+
+# Solution 1
+
+class Solution:
+
+    def lengthOfLongestSubstring(self, s):
+
+        if not s or len(s) < 1:
+            return 0
+
+        j = 0
+        charset = sets.Set()
+        maxLen = -1
+
+        for i in range(len(s)):
+            while j < len(s) and not s[j] in charset:
+                charset.add(s[j])
+                j += 1
+            maxLen = max(maxLen,j-i)
+            charset.remove(s[i])
+        return maxLen
+        
+
+
+
+# Solution 2
 
 class Solution(object):
 
@@ -41,25 +64,4 @@ class Solution(object):
 
 
 
-'''
-Solution 2
-'''
 
-class Solution:
-
-    def lengthOfLongestSubstring(self, s):
-
-        if not s or len(s) < 1:
-            return 0
-
-        j = 0
-        mp = {}
-        maxLen = -1
-
-        for i in range(len(s)):
-            while j < len(s) and not mp.has_key(s[j]):
-                mp[s[j]] = 1
-                j += 1
-            maxLen = max(maxLen,j-i)
-            del mp[s[i]]
-        return maxLen
