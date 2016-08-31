@@ -34,6 +34,10 @@ class Solution(object):
                 graph[p[0]].append(p[1])
                 indegree[p[1]] += 1
             return graph, indegree
+
+
+        if not prerequisites:
+            return True
             
         graph, indegree = graph_indegree()
         q = deque()
@@ -80,6 +84,9 @@ class Solution(object):
                         return True
             onpath[course] = False
             
+            
+        if not prerequisites:
+            return True
             
         visited = [False] * numCourses
         onpath = [False] * numCourses
