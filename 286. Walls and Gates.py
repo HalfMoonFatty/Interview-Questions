@@ -48,11 +48,9 @@ class Solution(object):
                     xNew = x + xDir[i]
                     yNew = y + yDir[i]
                     # if cannot explore or already been updated, skip it:
-                    if not canExplore(xNew, yNew, rooms) or rooms[xNew][yNew] != sys.maxint:
-                        continue
-                   
-                    rooms[xNew][yNew] = rooms[x][y]+1
-                    q.append([xNew,yNew])
+                    if canExplore(xNew, yNew, rooms) and rooms[xNew][yNew] == sys.maxint:
+                        rooms[xNew][yNew] = rooms[x][y]+1
+                        q.append([xNew,yNew])
        
             return
        
