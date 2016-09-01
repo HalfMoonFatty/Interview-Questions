@@ -23,7 +23,10 @@ You may assume all tickets form at least one valid itinerary.
     Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","SFO"]. But it is larger in lexical order.
     
 '''
- 
+
+
+# Solution: Recursive - using Hierholzer's algorithm to find a Eulerian path.
+
 
 import Queue
 class Solution(object):
