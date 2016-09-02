@@ -36,24 +36,26 @@ class Solution(object):
 # Solution 2: O(n log n)
 
 import bisect
+import sys
 class Solution(object):
     def lengthOfLIS(self, nums):
 
         if not nums: return 0
         
-        seqLength = [0 for i in range(len(nums)+1)]
-        seqLength[1] = nums[0]
+        seqLengthTail = [sys.maxint for i in range(len(nums)+1)]
+        seqLengthTail[1] = nums[0]
         maxLen = 1
         
         for i in range(1,len(nums)):
-            if nums[i] < seqLength[1]:
-                seqLength[1] = nums[i]
-            elif nums[i] > seqLength[maxLen]:
-                seqLength[maxLen+1] = nums[i]
+            if nums[i] < seqLengthTail[1]:
+                seqLengthTail[1] = nums[i]
+            elif nums[i] > seqLengthTail[maxLen]:
+                seqLengthTail[maxLen+1] = nums[i]
                 maxLen += 1
             else:
-                ind = bisect.bisect_left(seqLength,nums[i],1,maxLen)
-                seqLength[ind] = nums[i]
+                ind = bisect.bisect_left(seqLengthTail,nums[i],1,maxLen)
+                seqLengthTail[ind] = nums[i]
                 
         return maxLen
+
 
