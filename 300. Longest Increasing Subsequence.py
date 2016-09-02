@@ -39,10 +39,13 @@ import bisect
 import sys
 class Solution(object):
     def lengthOfLIS(self, nums):
-
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         if not nums: return 0
         
-        seqLengthTail = [sys.maxint for i in range(len(nums)+1)]
+        seqLengthTail = [sys.maxint]*(len(nums)+1)
         seqLengthTail[1] = nums[0]
         maxLen = 1
         
@@ -53,9 +56,10 @@ class Solution(object):
                 seqLengthTail[maxLen+1] = nums[i]
                 maxLen += 1
             else:
-                ind = bisect.bisect_left(seqLengthTail,nums[i],1,maxLen)
+                ind = bisect.bisect_left(seqLengthTail,nums[i])
                 seqLengthTail[ind] = nums[i]
                 
         return maxLen
+                
 
 
