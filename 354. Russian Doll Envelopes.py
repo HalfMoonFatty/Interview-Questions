@@ -57,7 +57,7 @@ class Solution(object):
         if not envelopes: return 0
 
         n = len(envelopes)
-        height = [sys.maxint]*n
+        height = [sys.maxint] * n         # init with sys.maxint
         maxLen = 1
 
         envelopes.sort(cmp = cmpEnv)
