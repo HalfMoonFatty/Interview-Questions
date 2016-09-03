@@ -68,19 +68,17 @@ class Solution(object):
 import sys
 class Solution(object):
     def lengthOfLIS(self, nums):
+
         if not nums: return 0
         
-        seqLengthTail = [sys.maxint]*(len(nums)+1)
-        seqLengthTail[1] = nums[0]
+        n = len(nums)
+        seqLengthTail = [sys.maxint]*(n+1)
         maxLen = 1
         
-        for i in range(1,len(nums)):
-            # repalce tail
-            ind = bisect.bisect_left(seqLengthTail,nums[i],1)
+        for i in range(n):
+            ind = bisect.bisect_left(seqLengthTail,nums[i])
             seqLengthTail[ind] = nums[i]
-            # extend length
-            if nums[i] > seqLengthTail[maxLen]:
-                maxLen += 1
+            maxLen = max(maxLen, ind+1)
             
         return maxLen
                 
