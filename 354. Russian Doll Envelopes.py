@@ -53,8 +53,8 @@ class Solution(object):
             else:
                 return e2[1] - e1[1]    # Width 相等的话，Height 从高到低
 
-        if not envelopes:
-            return 0
+
+        if not envelopes: return 0
 
         n = len(envelopes)
         height = [sys.maxint]*(n+1)    # note (n+1) not n
@@ -62,7 +62,7 @@ class Solution(object):
 
         envelopes.sort(cmp = cmpEnv)
         
-        for i in range(len(envelopes)):
+        for i in range(n):
             k = bisect.bisect_left(height,envelopes[i][1])
             height[k] = envelopes[i][1]
             maxLen = max(maxLen,k+1)
