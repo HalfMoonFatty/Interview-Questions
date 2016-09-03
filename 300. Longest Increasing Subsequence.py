@@ -34,36 +34,8 @@ class Solution(object):
         
         
 # Solution 2: O(n log n)
-
-import bisect
-import sys
-class Solution(object):
-    def lengthOfLIS(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        if not nums: return 0
-        
-        seqLengthTail = [sys.maxint]*(len(nums)+1)
-        seqLengthTail[1] = nums[0]
-        maxLen = 1
-        
-        for i in range(1,len(nums)):
-            if nums[i] < seqLengthTail[1]:
-                seqLengthTail[1] = nums[i]
-            elif nums[i] > seqLengthTail[maxLen]:
-                seqLengthTail[maxLen+1] = nums[i]
-                maxLen += 1
-            else:
-                ind = bisect.bisect_left(seqLengthTail,nums[i])
-                seqLengthTail[ind] = nums[i]
-                
-        return maxLen
-                
-
-
-# concise code:
+# seqLengthTail records the last element at different lengths
+# seqLengthTail[i] is the last element for a sequence length of i+1
 
 import sys
 class Solution(object):
@@ -72,7 +44,7 @@ class Solution(object):
         if not nums: return 0
         
         n = len(nums)
-        seqLengthTail = [sys.maxint]*(n+1)
+        seqLengthTail = [sys.maxint]*n
         maxLen = 1
         
         for i in range(n):
