@@ -50,25 +50,15 @@ class Solution(object):
         mp = {}
         maxLen = -1
         for i in nums:
-
-            if mp.has_key(i):
-                continue
-
-            if mp.has_key(i-1):
-                low = mp[i-1]
-            else:
-                low = i
-
-
-            if mp.has_key(i+1):
-                high = mp[i+1]
-            else:
-                high = i
+            if mp.has_key(i): continue
+        
+            low = mp[i-1] if mp.has_key(i-1) else i
+            high = mp[i+1] if mp.has_key(i+1) else i 
 
             maxLen = max(maxLen, high-low+1)
 
             mp[i] = i
-            mp[low] = high
-            mp[high] = low
+            mp[low],mp[high] = high,low
 
         return maxLen
+
