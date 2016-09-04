@@ -43,10 +43,7 @@ Solution 2:
 
 class Solution(object):
     def longestConsecutive(self, nums):
-        """
-            :type nums: List[int]
-            :rtype: int
-            """
+
         if not nums or len(nums) == 0:
             return 0
 
@@ -54,29 +51,22 @@ class Solution(object):
         maxLen = -1
         for i in nums:
 
-            # skip duplicated items
             if mp.has_key(i):
                 continue
 
-            # find low and high
-            # if the i-1 neighbour has been visited,
-            # ask i-1 what is the lower boundary it can reach
             if mp.has_key(i-1):
                 low = mp[i-1]
             else:
                 low = i
 
-            # if the i+1 neighbour has been visited
-            # ask i+1 what is the upper boundary it can reach
+
             if mp.has_key(i+1):
                 high = mp[i+1]
             else:
                 high = i
 
-            # update maxLen base on the current low and high value
             maxLen = max(maxLen, high-low+1)
 
-            # update dict info of low and high entries
             mp[i] = i
             mp[low] = high
             mp[high] = low
