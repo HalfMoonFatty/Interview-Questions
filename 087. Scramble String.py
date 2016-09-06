@@ -35,8 +35,8 @@ Given a string s1, we may represent it as a binary tree by partitioning it to tw
           rg    tae
          / \    /  \
         r   g  ta  e
-       / \
-      t   a
+       	      / \
+             t   a
       We say that "rgtae" is a scrambled string of "great".
    
      
