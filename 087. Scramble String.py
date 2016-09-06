@@ -55,6 +55,7 @@ class Solution:
     
         if len(s1)!=len(s2): return False
         if s1==s2: return True
+        
         l1=list(s1); l2=list(s2)
         l1.sort();l2.sort()
         if l1!=l2: return False
