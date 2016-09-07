@@ -35,15 +35,15 @@ class Solution(object):
             """
         if not nums: return 0
             
-        nums = [n for n in nums if n > 0]
-        nums = [1] + nums + [1]
+        nums = [n for n in nums if n > 0]    # remove '0'
+        nums = [1] + nums + [1]  
         n = len(nums)
         dp = [[0 for _ in range(n)] for _ in range(n)]
 
         for k in range(2,n):
-            for left in range(0,n-k):
+            for left in range(0,n-k):        
                 right = left + k
-                for last in range(left+1,right):
+                for last in range(left+1,right):    # last in [left+1,right-1]
                     dp[left][right] = max(dp[left][right], nums[left]*nums[last]*nums[right]+dp[left][last]+dp[last][right])
 
     	return dp[0][n-1]
