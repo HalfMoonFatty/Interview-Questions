@@ -9,6 +9,7 @@ How many possible unique paths are there?
 
 
 # Solution 1: Math Combinatorial
+# choose m-1 columns and n-1 rows from (m+n-2)
 
 class Solution(object):
     def uniquePaths(self, m, n):
@@ -24,9 +25,7 @@ class Solution(object):
     def uniquePaths(self, m, n):
 
         def backTrack(r,c,m,n):
-            if r > m-1 or c > n-1:
-                return 0
-            if r == m-1 and c == n-1:
+            if r == m-1 or c == n-1:
                 return 1
             else:
                 return backTrack(r+1,c,m,n) + backTrack(r,c+1,m,n)
@@ -63,10 +62,9 @@ class Solution(object):
 class Solution(object):
     def uniquePaths(self, m, n):
 
-        if m == 0 or n == 0:
-            return 0
         if m == 1 or n == 1:
             return 1
+            
         T = [[1] * n] * m
         for i in range(1, m):
             for j in range(1, n):
