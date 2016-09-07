@@ -24,22 +24,20 @@ class Solution(object):
        
         return dp[-1]
         
+   
         
 # Solution 2 Backtracking
 class Solution(object):
     def wordBreak(self, s, wordDict):
        
         def dfs(start, s, wordDict):
-            if start >= len(s):
-                return True
+            if start == len(s): return True
                 
             for i in range(start+1,len(s)+1):
                 if s[start:i] in wordDict:
-                    ret = dfs(i,s,wordDict)
-                    if not ret:
-                        continue
-                    else:
+                    if dfs(i,s,wordDict):
                         return True
+                
             return False
        
         return dfs(0,s,wordDict)
