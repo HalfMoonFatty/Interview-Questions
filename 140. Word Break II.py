@@ -22,7 +22,7 @@ class Solution(object):
         """
         def dfs(s, wordDict, cache):
             if cache.has_key(s): return cache[s]
-            if len(s) <=0: return []
+            if not s: return []
             
             result = []
             for length in range(1,len(s)+1):
