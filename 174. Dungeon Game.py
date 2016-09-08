@@ -45,7 +45,7 @@ class Solution(object):
                     hneed = min(health[i+1][j], health[i][j+1])
                     # Gain health
                     if dungeon[i][j] > 0:
-                        health[i][j] = max(1,hneed-dungeon[i][j])
+                        health[i][j] = max(1,hneed-dungeon[i][j])    # note max(1,hneed-dungeon[i][j])
                     # Lose health
                     elif dungeon[i][j] < 0:
                         health[i][j] =  hneed+(-dungeon[i][j])
