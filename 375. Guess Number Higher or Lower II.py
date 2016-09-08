@@ -38,7 +38,7 @@ class Solution(object):
         dp = [[0]*(n+1) for _ in range(n+1)]
         
         for length in range(1,n):
-            for start in range(1,n-length+1):
+            for start in range(1,n-length+1):  # as number starts from [1 to n]
                 dp[start][start+length] = sys.maxint
                 # break  [start, start+length] into [start,k-1] and [k + 1,start+(length-1)]
                 for k in range(start,start+length+1):
