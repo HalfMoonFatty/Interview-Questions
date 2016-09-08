@@ -27,12 +27,14 @@ class Solution(object):
         maxLen = 0
         for i in range(len(nums)):
             sum += nums[i]
+            if not mp.has_key(sum):
+                mp[sum] = i
+                
             if sum == k:
                 maxLen = i + 1
             elif mp.has_key(sum - k):
                 maxLen = max(maxLen, i-(mp[sum - k]))  # note: NOT i-(mp[sum - k])+1
-            if not mp.has_key(sum):
-                mp[sum] = i
+
         return maxLen
 
 
