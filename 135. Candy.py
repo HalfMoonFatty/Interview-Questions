@@ -7,6 +7,7 @@ You are giving candies to these children subjected to the following requirements
 	Children with a higher rating get more candies than their neighbors.
 What is the minimum candies you must give?
 '''
+
 # Solution:
 # both loop in range: [1,len(ratings)-1]
 class Solution(object):
