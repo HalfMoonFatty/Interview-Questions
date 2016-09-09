@@ -20,3 +20,10 @@ intialize:
 	
 answer:
 	f[0][n] > sum(a)/2
+
+note: 
+	f[x+2][y]:   后手拿x+1,先手拿x
+	f[x+1][y-1]: 后手拿y,先手拿x
+	f[x][y-2]:   后手拿y-1,先手拿y
+	f[x+1][y-1]: 后手拿x,先手拿y
+	f[x][y] = max(min(f[x+2][y], f[x+1][y-1])+a[x]) , (min(f[x][y-2], f[x+1][y-1])+a[y])
