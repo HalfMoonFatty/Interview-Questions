@@ -24,3 +24,37 @@ class Solution(object):
             if ratings[i-1] > ratings[i]:
                 candy[i-1] = max(candy[i-1],candy[i]+1)
         return sum(candy)
+        
+        
+class Solution(object):
+    def candy(self, ratings):
+
+        totalCandy = 1    # Total candies
+        threshold = 1     # Threshold for decreasing seq
+        incLen = 1        # Continuous ratings ascending sequence length
+        decLen = 0        # Continuous ratings descending sequence length
+
+        for i in range(1,len(ratings)):
+            # descending sequence
+            if ratings[i-1] > ratings[i]:
+                decLen += 1
+                if decLen == threshold:
+                    decLen += 1
+                totalCandy += decLen
+                incLen = 1      # reset
+
+            # ascending sequence
+            elif ratings[i-1] < ratings[i]:
+                incLen += 1
+                totalCandy += incLen
+                threshold = incLen  
+                decLen = 0      # reset
+                
+            # flat sequence
+            else:
+                incLen = 1
+                totalCandy += incLen
+                threshold = incLen  
+                decLen = 0 
+                
+        return totalCandy
