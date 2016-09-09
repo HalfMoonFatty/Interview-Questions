@@ -30,17 +30,26 @@ Lots of problems involving optimal solution can be solved by dynamic programming
 Typically, a greedy algorithm needs selection of best moves for a subproblem. So what is our best move?
 '''
 
+# note: target value is a value that has bot been reached yet. so the loop won't stop even if target == n
+
 class Solution(object):
     def minPatches(self, nums, n):
-
-        sum = 1
+        """
+        :type nums: List[int]
+        :type n: int
+        :rtype: int
+        """
+        target = 1
         added = 0
         i = 0
-        while sum <= n:
-            if i < len(nums) and sum>=nums[i]:
-                sum += nums[i]
+        
+        while target <= n:    # note: <=
+            if i < len(nums) and target >= nums[i]:
+                target += nums[i]
                 i += 1
             else:
-                sum += sum
                 added += 1
+                target += target
+            
         return added
+            
