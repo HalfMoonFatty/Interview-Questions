@@ -9,7 +9,7 @@ You begin the journey with an empty tank at one of the gas stations.
 Return the starting gas station's index if you can travel around the circuit once, otherwise return -1.
 
 Note:
-	The solution is guaranteed to be unique.
+    The solution is guaranteed to be unique.
 '''
 
 '''
