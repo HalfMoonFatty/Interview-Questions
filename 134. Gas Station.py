@@ -18,6 +18,8 @@ Solution:
 - If the total number of gas is bigger than the total number of cost. There must be a solution.
 '''
 
+# Solution 
+
 class Solution(object):
     def canCompleteCircuit(self, gas, cost):
         """
@@ -39,3 +41,38 @@ class Solution(object):
             return -1
         else:
             return start
+
+
+
+# TLE
+
+class Solution(object):
+    def canCompleteCircuit(self, gas, cost):
+        """
+            :type gas: List[int]
+            :type cost: List[int]
+            :rtype: int
+            """
+        
+        # check every gas station as start
+        for start in range(len(gas)):
+            remGas = 0
+            count = 0
+
+            for i in range(start, len(gas)):
+                remGas += gas[i] - cost[i]
+                if remGas < 0:
+                    break
+                count += 1
+
+            for j in range(0, start):
+                remGas += gas[j] - cost[j]
+                if remGas < 0:
+                    break
+                count += 1
+                
+            if count == len(gas):
+                return start
+        return -1
+
+            
