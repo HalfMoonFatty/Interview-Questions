@@ -8,8 +8,10 @@ You are giving candies to these children subjected to the following requirements
 What is the minimum candies you must give?
 '''
 
-# Solution:
+
+# Solution 1: Time O(n); Space O(n)
 # both loop in range: [1,len(ratings)-1]
+
 class Solution(object):
     def candy(self, ratings):
         """
@@ -25,7 +27,10 @@ class Solution(object):
                 candy[i-1] = max(candy[i-1],candy[i]+1)
         return sum(candy)
         
-        
+
+
+# Solution 2: Time O(n); Space O(1)   
+
 class Solution(object):
     def candy(self, ratings):
 
