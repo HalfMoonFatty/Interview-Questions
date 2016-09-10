@@ -1,8 +1,8 @@
 '''
 Problem:
 
-	Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? 
-	Find all unique triplets in the array which gives the sum of zero.
+	  Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? 
+	  Find all unique triplets in the array which gives the sum of zero.
 
 Note:
     * Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)
@@ -19,35 +19,33 @@ Note:
 Solution 
 '''
 
-class Solution(object):
-    def threeSum(self, nums):
+class Solution:
 
-        if len(nums) < 3:
-            return []
-
-        # sort the list first
-        nums.sort()
-        allRes = []
-        for i in range(len(nums)-2):
-            # ignore repeated element to avoid duplicate triplet *1
-            if i > 0 and nums[i] == nums[i-1]:
+    def threeSum(self, numbers):
+        if len(numbers)<3: return []
+        
+        result = []
+        numbers.sort()
+        for i in range(len(numbers)-2):
+        	# ignore repeated element to avoid duplicate triplet *1
+            if i > 0 and numbers[i] == numbers[i-1]: 
                 continue
-
-            target = 0 - nums[i]
-            left,right = i+1,len(nums)-1
-
-            while left < right:
-                if nums[left] + nums[right] == target:
-                    allRes.append((nums[i], nums[left], nums[right]))
-                    left += 1  # note
-                    right -= 1 # note
+            
+            j,k = i+1,len(numbers)-1
+            while j < k:
+                if numbers[i] + numbers[j] + numbers[k] == 0:
+                    result.append([numbers[i],numbers[j],numbers[k]])
+                    j += 1
+                    k -= 1
                     # ignore repeated element to avoid duplicate triplet *2
-                    while left < right and nums[left] == nums[left-1]:
-                        left += 1
-                    while left < right and nums[right] == nums[right+1]:
-                        right -= 1
-                elif nums[left] + nums[right] < target:
-                    left += 1
+                    while j < k and numbers[j] == numbers[j-1]:
+                        j += 1
+                    while j < k and numbers[k] == numbers[k+1]:
+                        k -= 1
+                elif numbers[i] + numbers[j] + numbers[k] < 0:
+                    j += 1
                 else:
-                    right -= 1
-            return allRes
+                    k -= 1
+                    
+        return result
+                    
