@@ -34,14 +34,13 @@ class Solution(object):
                 continue
 
             target = 0 - nums[i]
-            left = i+1
-            right = len(nums)-1
+            left,right = i+1,len(nums)-1
 
             while left < right:
                 if nums[left] + nums[right] == target:
                     allRes.append((nums[i], nums[left], nums[right]))
-                    left += 1
-                    right -= 1
+                    left += 1  # note
+                    right -= 1 # note
                     # ignore repeated element to avoid duplicate triplet *2
                     while left < right and nums[left] == nums[left-1]:
                         left += 1
