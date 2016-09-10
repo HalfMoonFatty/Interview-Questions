@@ -9,31 +9,27 @@ Problem:
     The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 '''
 
-import sys
-class Solution(object):
-    def threeSumClosest(self, nums, target):
+class Solution:
 
-        if len(nums)<3:
-            return []
+    def threeSumClosest(self, numbers, target):
 
-        nums.sort()
-        res = 0
+        if len(numbers) < 3: return []
+        
         mindiff = sys.maxint
-
-        for i in range(0,len(nums)-2):
-            curtar = target - nums[i]
-            left = i + 1
-            right = len(nums) - 1
-
-            while left < right:
-                diff = curtar - nums[left] - nums[right]
-                if abs(diff) < mindiff:
-                    mindiff = abs(diff)    # update the mindiff, always >= 0
-                    res = nums[i] + nums[left] + nums[right]   
-
-                if nums[left] + nums[right] < curtar:
-                    left += 1
+        ret = None
+        numbers.sort()
+        
+        for i in range(len(numbers)-2):
+            j, k = i+1, len(numbers)-1
+            while j < k:
+                sums = (numbers[i]+numbers[j]+numbers[k])
+                if abs(target - sums) < mindiff:
+                    mindiff = abs(target - sums)    # update the mindiff, always >= 0
+                    ret = sums
+                if sums < target:
+                    j += 1
                 else:
-                    right -= 1
+                    k -= 1
+                    
+        return ret
 
-        return res
