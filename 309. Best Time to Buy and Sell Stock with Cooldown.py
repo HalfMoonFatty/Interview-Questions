@@ -31,5 +31,5 @@ class Solution(object):
         for i in range(1,len(prices)):
             sell[i] = max(sell[i-1], prices[i]+hold[i-1])
             hold[i] = max(hold[i-1], sell[i-2]-prices[i])
-      return sell[-1]
+        return sell[-1]
       
