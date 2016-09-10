@@ -21,8 +21,8 @@ class Solution:
         charset = sets.Set()
         maxLen = -1
 
-        for i in range(len(s)):
-            while j < len(s) and not s[j] in charset:
+        for i in range(len(s)):  # 慢
+            while j < len(s) and not s[j] in charset:  # 快 note: j < len(s)
                 charset.add(s[j])
                 j += 1
             maxLen = max(maxLen,j-i)
