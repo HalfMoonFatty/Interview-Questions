@@ -1,8 +1,8 @@
 '''
 Problem:
 
-	  Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? 
-	  Find all unique triplets in the array which gives the sum of zero.
+    Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? 
+	Find all unique triplets in the array which gives the sum of zero.
 
 Note:
     * Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)
@@ -22,11 +22,14 @@ Solution
 class Solution:
 
     def threeSum(self, numbers):
+        
         if len(numbers)<3: return []
         
         result = []
         numbers.sort()
+        
         for i in range(len(numbers)-2):
+            
         	# ignore repeated element to avoid duplicate triplet *1
             if i > 0 and numbers[i] == numbers[i-1]: 
                 continue
