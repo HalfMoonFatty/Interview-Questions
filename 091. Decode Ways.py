@@ -23,31 +23,27 @@ v>26：  dp[i] = dp[i-1]
 '''
 
 
+class Solution:
 
-class Solution(object):
     def numDecodings(self, s):
 
-        # helper function
-        def valid2dig(char1, char2):
-            val = int(char1)*10 + int(char2)
-            if 9 < val <= 26:
-                return 1
-            else:
-                return 0
-
-        if len(s) == 0 or s[0] == '0': return 0
-        if len(s) == 1: return 1 if s[0] != '0' else 0
-
-        dp = [0] * (len(s)+1)
-        dp[0] = 1
-        dp[1] = 1 if s[0] != '0' else 0
+        def isValid(s):
+            return 1 if 9 < int(s) < 27 else 0
         
+        # corner case
+        if len(s) == 0 or s[0] == '0': return 0 
+        if len(s) == 1: return 1 if s[0] != '0' else 0
+        
+        dp = [0]*(len(s)+1)
+        dp[0] = 1
+        dp[1] = 1 if s[0] != '0' else 0 # note: s[0] != '0'
+ 
         for i in range(2,len(dp)):
             if s[i-1] != '0': dp[i] = dp[i-1]
-            if valid2dig(s[i-2], s[i-1]): dp[i] += dp[i-2]
-            if dp[i] == 0: return 0
-            
+            if isValid(s[i-2:i]): dp[i] += dp[i-2]
+            if dp[i] == 0: return 0 # note: early return
         return dp[-1]
+            
             
 
 
