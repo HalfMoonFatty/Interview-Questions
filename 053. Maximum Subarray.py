@@ -38,24 +38,25 @@ You could make a good argument that the maximum sum is either:
 We went with option B (max sum = 0), but there’s no “correct” answer. This is a great thing to discuss with your interviewer to show how careful you are.
 '''
 
-import sys
-class Solution(object):
-    def maxSubArray(self, nums):
+class Solution:
+    # @param {int[]} A an integer array
+    # @return {int[]}  A list of integers includes the index of the 
+    #                  first number and the index of the last number
+    def continuousSubarraySum(self, A):
 
-        maxsum,cursum = 0,0
-        maxNeg = -sys.maxint-1
-        allNeg = True
-
-        for i in range(len(nums)):
-            if nums[i] > 0:
-                allNeg = False
+        maxSum, curSum = -sys.maxint-1, 0
+        start = 0
+        ret = [0,0]
+        for i in range(len(A)):
+            if curSum >= 0:
+                curSum += A[i]
             else:
-                maxNeg = max(maxNeg,nums[i])
+                curSum = A[i]
+                start = i
                 
-            cursum += nums[i]
-            maxsum = max(maxsum,cursum)
-            
-            if cursum < 0:
-                cursum = 0
+            # both cases can update maxSum, allneg case
+            if curSum > maxSum:
+                maxSum = curSum
+                ret = [start,i]
 
-        return maxNeg if allNeg else maxsum
+        return ret
