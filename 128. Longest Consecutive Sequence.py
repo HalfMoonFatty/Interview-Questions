@@ -16,21 +16,18 @@ Solution 1:
 	Space: O(1)
 '''
 
-class Solution(object):
-    def longestConsecutive(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        nums = set(nums)    # note
+class Solution:
+
+    def longestConsecutive(self, num):
+
+        nums = set(num) 
         lcs = 0
-        
         for start in nums:
             if start-1 not in nums:
-                end = start+1
-                while end in nums:
+                end = start
+                while end+1 in nums:
                     end += 1
-                lcs = max(lcs, end-start)
+                lcs = max(lcs, end-start+1)
         return lcs
         
 
