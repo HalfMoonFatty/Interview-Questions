@@ -14,47 +14,37 @@ Note:
 '''
 
 
+from collections import Counter
 class Solution:
 
     def minWindow(self, source, target):
-
-        if (source =="" or target ==""):
-            return ""
-
-        # note tarmap and winmap have same set of keys
-        tarmap= {}
-        for c in target:
-            tarmap[c] = tarmap.get(c, 0) + 1
-
+        
+        tarmap = Counter(target)
         winmap = dict.fromkeys(target, 0)
-
         count = 0
-        minLen = len(target)+1
-        i, j = 0,0
+        i = j = 0
         ans = ''
-
-        while j < len(source):
-
+        
+        while j < len(source):    # 快
             if winmap.has_key(source[j]):
                 if winmap[source[j]] < tarmap[source[j]]:
                     count += 1
                 winmap[source[j]] += 1
-
-
+                
             if count == len(target):
-                while i < j:
+                while i < j:      # 慢
                     if winmap.has_key(source[i]):
-                        if winmap[source[i]] == tarmap[source[i]]:
+                        if winmap[source[i]]-1 < tarmap[source[i]]:
                             break
                         winmap[source[i]] -= 1
                     i += 1
-
+            
                 if ans == '' or j-i < len(ans):
                     ans = source[i:j+1]
-
+                    
                 winmap[source[i]] -= 1
                 count -= 1
                 i += 1
             j += 1
-
         return ans
+                    
