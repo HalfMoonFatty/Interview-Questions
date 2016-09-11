@@ -19,6 +19,9 @@ class Solution:
 
     def minWindow(self, source, target):
         
+      if (source =="" or target ==""):
+        return ""
+        
         tarmap = Counter(target)
         winmap = dict.fromkeys(target, 0)
         count = 0
