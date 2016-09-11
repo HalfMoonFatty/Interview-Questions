@@ -39,9 +39,7 @@ We went with option B (max sum = 0), but there’s no “correct” answer. This
 '''
 
 class Solution:
-    # @param {int[]} A an integer array
-    # @return {int[]}  A list of integers includes the index of the 
-    #                  first number and the index of the last number
+
     def continuousSubarraySum(self, A):
 
         maxSum, curSum = -sys.maxint-1, 0
