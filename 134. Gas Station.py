@@ -37,7 +37,7 @@ class Solution(object):
             if tank < 0: 
                 start = i+1
                 tank = 0
-        if totalGas < totalCost:
+        if totalGas < totalCost:    # note
             return -1
         else:
             return start
