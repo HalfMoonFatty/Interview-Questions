@@ -19,16 +19,13 @@ class Solution:
 
     def minWindow(self, source, target):
         
-      if (source =="" or target ==""):
-        return ""
-        
         tarmap = Counter(target)
         winmap = dict.fromkeys(target, 0)
         count = 0
-        i = j = 0
+        i = 0
         ans = ''
         
-        while j < len(source):    # 快
+        for j in range(len(source)):    # 快
             if winmap.has_key(source[j]):
                 if winmap[source[j]] < tarmap[source[j]]:
                     count += 1
@@ -48,6 +45,5 @@ class Solution:
                 winmap[source[i]] -= 1
                 count -= 1
                 i += 1
-            j += 1
         return ans
                     
