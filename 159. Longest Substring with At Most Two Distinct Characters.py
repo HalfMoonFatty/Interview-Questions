@@ -23,14 +23,14 @@ class Solution(object):
         count = 0
         mp = [0]*256
 
-        for i in range(len(s)):
+        for i in range(len(s)):    # 快
 
             mp[ord(s[i])-ord('a')] += 1
             if mp[ord(s[i])-ord('a')] == 1: # meet a new char
                 count += 1
 
-            while count > 2:  # can be generalized to be k chars
-                mp[ord(s[start])-ord('a')] -= 1
+            while count > 2: 
+                mp[ord(s[start])-ord('a')] -= 1   # start 慢
                 if mp[ord(s[start])-ord('a')] == 0:
                     count -= 1
                 start += 1
