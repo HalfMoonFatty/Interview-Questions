@@ -20,24 +20,24 @@ class Solution:
     def minimumSize(self, nums, s):
         if not nums: return -1
 
-        minSize = sys.maxint  # just initialize to len(nums) + 1 is enough
+        minSize = sys.maxint  
         sum = 0
-        i = j = 0
-        while j < len(nums):
+        i = 0
+        for j in range(len(nums)):
             sum += nums[j]
-            if sum >= s: # found a valid one, update the minSize
+            if sum >= s:
                 while i <= j: # try to shrink the current minSize
                     if sum -nums[i]< s:
                         break
                     sum -= nums[i]
-                    i += 1  # while we can maintain sum >= s, continue shrink size
+                    i += 1  
                 minSize = min(minSize, j-i+1)    # update minSize
-            j += 1
 
         return minSize if minSize <= len(nums) else -1
         
         
-        
+
+
 '''
 Solution 2:
 '''
