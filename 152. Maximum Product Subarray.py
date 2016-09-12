@@ -16,7 +16,7 @@ class Solution(object):
         if not nums: return 0
         if len(nums) == 1: return nums[0]
         
-        ret = maxprod = minprod = nums[0]
+        ret = maxprod = minprod = nums[0]    # init
         
         for i in range(1,len(nums)):
             tmpmax = maxprod
