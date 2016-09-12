@@ -29,11 +29,11 @@ class Solution(object):
         m,n = len(dungeon),len(dungeon[0])
         health = [[0] *(n+1) for _ in range(m+1)]
 
-        # base case of node hneed[m-1][n-1]
+        # init corner
         if dungeon[m-1][n-1] > 0: health[m-1][n-1] = 1
         else: health[m-1][n-1] = (-dungeon[m-1][n-1])+1
 
-        # initialize border
+        # init border
         for i in range(m+1): health[i][n] = sys.maxint
         for j in range(n+1): health[m][j] = sys.maxint
 
@@ -42,6 +42,7 @@ class Solution(object):
             for j in range(n-1,-1,-1):
                 # skip health[m-1][n-1]
                 if not (i == m-1 and j == n-1):
+                    # base
                     hneed = min(health[i+1][j], health[i][j+1])
                     # Gain health
                     if dungeon[i][j] > 0:
