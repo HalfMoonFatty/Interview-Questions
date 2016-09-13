@@ -1,8 +1,8 @@
 '''
 Problem:
 
-	Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
-	Note that it is the kth smallest element in the sorted order, not the kth distinct element.
+    Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
+    Note that it is the kth smallest element in the sorted order, not the kth distinct element.
 
 Example:
 
@@ -37,7 +37,6 @@ class Solution(object):
         for n in range(k-1):
             t = heapq.heappop(minheap)
             r,c = t[1],t[2]
-            # refill minheap
             if r == len(matrix)-1: continue  # last row, this col has been finished
             heapq.heappush(minheap, (matrix[r+1][c],r+1,c))
 
