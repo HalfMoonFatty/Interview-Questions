@@ -35,9 +35,6 @@ class Solution(object):
             if not root:
                 return
             
-            # if root.val == target: length += 1
-            # else: length = 1
-            
             length = length + 1 if root.val == target else 1
             maxLen[0] = max(maxLen[0],length)
             
