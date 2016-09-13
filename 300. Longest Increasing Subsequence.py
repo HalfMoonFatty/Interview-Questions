@@ -44,7 +44,7 @@ class Solution(object):
         if not nums: return 0
         
         n = len(nums)
-        seqLengthTail = [sys.maxint] * (n+1)      # init with maxint
+        seqLengthTail = [sys.maxint] * (n+1)      # init with maxint length from 1 to n
         maxLen = 1
         
         for i in range(1,n+1):
