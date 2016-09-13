@@ -44,12 +44,12 @@ class Solution(object):
         if not nums: return 0
         
         n = len(nums)
-        seqLengthTail = [sys.maxint] * n      # init with maxint
+        seqLengthTail = [sys.maxint] * (n+1)      # init with maxint
         maxLen = 1
         
-        for i in range(n):
-            ind = bisect.bisect_left(seqLengthTail,nums[i])
-            seqLengthTail[ind] = nums[i]
+        for i in range(1,n+1):
+            ind = bisect.bisect_left(seqLengthTail,nums[i-1])
+            seqLengthTail[ind] = nums[i-1]
             maxLen = max(maxLen, ind+1)
             
         return maxLen
