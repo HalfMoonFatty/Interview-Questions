@@ -62,6 +62,7 @@ class Solution(object):
                 del graph[leaf]
             return newLeaves
 
+
         # corner case
         if n == 1: return [0]
 
