@@ -26,3 +26,19 @@ class Solution(object):
         for i in range(num+1):
             dp[i] = dp[i/2] + i%2
         return dp
+
+
+
+# normal solution
+class Solution(object):
+    def countBits(self, num):
+        res = [0]
+
+        for n in range(1,num+1):
+            count = 0
+            while n > 0:
+                count += n & 1
+                n = n >> 1
+            res.append(count)
+
+        return res
