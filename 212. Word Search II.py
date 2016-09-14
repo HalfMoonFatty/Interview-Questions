@@ -36,7 +36,6 @@ class Solution(object):
             if r>len(board)-1 or c>len(board[0])-1 or r<0 or c<0 or visited[r][c]:
                 return
 
-
             # check trie
             cur = board[r][c]
             if not trie.children.has_key(cur):
@@ -50,7 +49,6 @@ class Solution(object):
             dfsSearch(trie.children[cur], r, c-1, string+cur, results)
             dfsSearch(trie.children[cur], r, c+1, string+cur, results)
             visited[r][c] = False
-            
             return
 
 
