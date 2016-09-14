@@ -35,13 +35,13 @@ class Solution(object):
             """
             
         result = ""
+        waitq = deque()
+        
         remaining = []
         counter = Counter(str)
-
         for key,value in counter.items():
             heapq.heappush(remaining, [-1*value,key])
-
-        waitq = deque()
+        
 
         while len(remaining) > 0:
             maxfre = heapq.heappop(remaining)
