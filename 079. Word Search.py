@@ -27,10 +27,8 @@ class Solution(object):
             if r<0 or r>=len(board) or c<0 or c>=len(board[0]) or visited[r][c]:
                 return False
     
-            char = board[r][c]
-            
             # check current index
-            if word[index] != char:
+            if word[index] != board[r][c]:
                 return False
             
             visited[r][c] = True
