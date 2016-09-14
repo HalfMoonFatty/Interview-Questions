@@ -36,9 +36,9 @@ class Solution(object):
             if r>len(board)-1 or c>len(board[0])-1 or r<0 or c<0 or visited[r][c]:
                 return
 
-            cur = board[r][c]
-            
+
             # check trie
+            cur = board[r][c]
             if not trie.children.has_key(cur):
                 return
             if trie.children[cur].isWord:
