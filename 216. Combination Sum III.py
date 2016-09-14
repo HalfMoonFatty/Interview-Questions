@@ -35,8 +35,8 @@ class Solution(object):
                 res.pop()
             return
 
-        res = []
+
         result = []
         nums = [i for i in range(1,10)]
-        helper(nums,0,k,n,res,result)
+        helper(nums,0,k,n,[],result)
         return result
