@@ -32,7 +32,7 @@ class Solution(object):
                 for i in range(start,len(s)):
                     if isValid(s,start,i):
                         res.append(s[start:i+1])
-                        getPart(s,i+1,res[:],results)
+                        getPart(s,i+1,res,results)
                         res.pop()
             return results
 
