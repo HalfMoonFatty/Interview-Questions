@@ -30,7 +30,7 @@ class Solution(object):
                 return
             elif target < 0:
                 return
-
+            
             for i in range(index, len(candidates)):
                 if i == index or candidates[i] != candidates[i-1]:   # remove duplicate
                     res.append(candidates[i])
