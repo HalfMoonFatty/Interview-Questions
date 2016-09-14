@@ -34,14 +34,14 @@ class Solution(object):
                 return
             elif target < 0:
                 return
-            else:
-                for i in range(index, len(candidates)):
-                    if i == index or candidates[i] != candidates[i-1]:   # remove duplicate
-                        res.append(candidates[i])
-                        helper(candidates, i+1, target-candidates[i], res, result)
-                        res.pop()
 
+            for i in range(index, len(candidates)):
+                if i == index or candidates[i] != candidates[i-1]:   # remove duplicate
+                    res.append(candidates[i])
+                    helper(candidates, i+1, target-candidates[i], res, result)
+                    res.pop()
             return
+
 
         result = []
         helper(sorted(candidates), 0, target, [], result)
