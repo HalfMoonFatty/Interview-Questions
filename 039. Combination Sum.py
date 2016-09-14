@@ -28,6 +28,7 @@ class Solution:
                 return
             elif target < 0:
                 return
+            
             for i in range(index, len(candidates)):
                 res.append(candidates[i])
                 helper(candidates, i, target-candidates[i], res, results)   # note: i not i+1
