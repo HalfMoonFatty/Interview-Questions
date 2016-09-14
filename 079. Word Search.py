@@ -31,7 +31,7 @@ class Solution(object):
             
             # check current index
             if word[index] != char:
-                return
+                return False
             
             visited[r][c] = True
             dr = (0,1,0,-1)
