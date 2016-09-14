@@ -11,10 +11,7 @@ Problem:
 
 class Solution(object):
     def permute(self, nums):
-        """
-            :type nums: List[int]
-            :rtype: List[List[int]]
-            """
+
         def permuteHelper(nums, index, result):
             if index == len(nums):
                 result.append(nums)
@@ -23,6 +20,7 @@ class Solution(object):
                 permuteHelper(nums[:], index+1, result)
                 nums[index], nums[i] = nums[i], nums[index]
             return result
+
 
         result = []
         permuteHelper(nums, 0, result)
