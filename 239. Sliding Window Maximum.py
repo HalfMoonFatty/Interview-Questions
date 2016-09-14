@@ -44,7 +44,7 @@ class Solution:
         for i in range(len(nums)):
             # insert into window
             while len(q)>0 and nums[i] > nums[q[-1]]:
-                q.pop()
+                q.pop()    # not popleft
             q.append(i)
             
             if i < k - 1:                        
