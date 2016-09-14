@@ -26,7 +26,7 @@ class Solution:
             if target == 0:
                 results.append(res[:])
                 return
-            elif target < 0 or index > len(candidates)-1:
+            elif target < 0:
                 return
             for i in range(index, len(candidates)):
                 res.append(candidates[i])
