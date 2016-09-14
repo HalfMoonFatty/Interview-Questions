@@ -23,11 +23,7 @@ A solution set is:
 
 class Solution(object):
     def combinationSum2(self, candidates, target):
-        """
-            :type candidates: List[int]
-            :type target: int
-            :rtype: List[List[int]]
-            """
+
         def helper(candidates, index, target, res, result):
             if target == 0:
                 result.append(res[:])
@@ -44,7 +40,8 @@ class Solution(object):
 
 
         result = []
-        helper(sorted(candidates), 0, target, [], result)
+        candidates.sort()  
+        helper(candidates, 0, target, [], result)
         return result
 
 
