@@ -15,12 +15,12 @@ class Solution(object):
         def dfs(res,result):
             if res <= n:
                 result.append(res)
-            if res*10 <= n: # optimization
+            if res*10 <= n:    # optimization
                 for i in range(10):
                     dfs(res*10+i, result)
 
 
         result = []
-        for i in range(1,10):
+        for i in range(1,10):    # first bit cannot be 0
             dfs(i,result)
         return result
