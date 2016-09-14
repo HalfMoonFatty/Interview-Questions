@@ -33,8 +33,8 @@ class Solution:
                 res.append(candidates[i])
                 helper(candidates, i, target-candidates[i], res, results)   # note: i not i+1
                 res.pop()          
-
             return
+
 
         results = []
         candidates = list(set(candidates))  # note
