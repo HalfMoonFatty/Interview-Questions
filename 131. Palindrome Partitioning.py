@@ -26,7 +26,7 @@ class Solution(object):
             return True
 
         def getPart(s,start,res,results):
-            if start > (len(s)-1):
+            if start == len(s)::
                 results.append(res[:])
             else:
                 for i in range(start,len(s)):
