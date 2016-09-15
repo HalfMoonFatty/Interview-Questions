@@ -22,7 +22,7 @@ class Solution(object):
             if not prevNum:
                 for length in range(1,len(word)-start+1): # replace 0, 1, 2, 3...all
                     genAbbr(start+length, word, res+str(length), result, True)
-        return
+            return
 
 
         result = []
