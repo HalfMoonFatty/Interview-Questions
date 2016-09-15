@@ -10,7 +10,6 @@ Hint: Try to use recursion and notice that it should recurse with n - 2 instead 
 '''
 
 
-
 # Solution 1:
 
 class Solution(object):
@@ -43,6 +42,7 @@ class Solution(object):
         return getStrob(n)
         
         
+
 
 # Solution 2:
 
