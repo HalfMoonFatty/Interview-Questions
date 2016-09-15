@@ -24,27 +24,26 @@ class Solution(object):
             elif left == 1: return ['0','1','8']
 
             res = getStrob(left-2, n, low, high, count)
-            newres = []
-            for i in range(len(res)):
-                s = res[i]
+            for item in res:
                 # out most layer -- finished a number and increase count
                 if left == n:
                     for x in mp.keys():
                         if x == '0': continue
-                        elif int(low) <= int(x+s+mp[x]) <= int(high):
+                        elif int(low) <= int(x+item+mp[x]) <= int(high):
                             count[0] += 1  # here update count
                 else:
+                    newres = []
                     for k in mp.keys():
-                        newres.append(k+s+mp[k])  # '0'+s+'0' '1'+s+'1' '6'+s+'9'  '8'+s+'8'  '9'+s+'6'
+                        newres.append(k+item+mp[k])
             return newres
 
-        # prepare hash table
+
         mp = {}
-        mp.setdefault('0','0')
-        mp.setdefault('1','1')
-        mp.setdefault('6','9')
-        mp.setdefault('8','8')
-        mp.setdefault('9','6')
+        mp['0'] = '0'
+        mp['1'] = '1'
+        mp['8'] = '8'
+        mp['6'] = '9'
+        mp['9'] = '6'
         count = [0]
 
         # corner case:
