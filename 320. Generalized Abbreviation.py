@@ -20,8 +20,8 @@ class Solution(object):
 
             genAbbr(start+1, word, res+str(word[start]), result, False)
             if not prevNum:
-                for i in range(1,len(word)-start+1): # replace 0, 1, 2, 3...all
-                    genAbbr(start+i, word, res+str(i), result, True)
+                for length in range(1,len(word)-start+1): # replace 0, 1, 2, 3...all
+                    genAbbr(start+length, word, res+str(length), result, True)
         return
 
 
