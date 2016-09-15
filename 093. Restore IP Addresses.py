@@ -28,7 +28,7 @@ class Solution(object):
                 return
             elif count < 3: # note
                 for i in range(1,4):
-                    if isValid(s[start:start+i]):
+                    if isValid(s[start:start+i]):    # check here
                         getIpAddr(count+1, s, start+i, res+s[start:start+i]+".", result)
                 return
 
