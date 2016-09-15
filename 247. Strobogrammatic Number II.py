@@ -28,7 +28,7 @@ class Solution(object):
                         if x == '0': continue  # avoid leading '0'
                         newresult.append(x+str(item)+mp[x])
                 else:
-                    for k in mp.keys():
+                    for x in mp.keys():
                         newresult.append(x+str(item)+mp[x])
             return newresult
 
