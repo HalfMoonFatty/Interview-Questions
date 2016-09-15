@@ -24,15 +24,14 @@ class Solution(object):
             elif left == 1: return ['0','1','8']
 
             res = getStrob(left-2, n, low, high, count)
+            newres = []
             for item in res:
-                # out most layer -- finished a number and increase count
                 if left == n:
                     for x in mp.keys():
                         if x == '0': continue
                         elif int(low) <= int(x+item+mp[x]) <= int(high):
                             count[0] += 1  # here update count
                 else:
-                    newres = []
                     for k in mp.keys():
                         newres.append(k+item+mp[k])
             return newres
