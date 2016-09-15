@@ -13,73 +13,43 @@ Hint:
     To generate all distinct permutations of a (half of) string, use a similar approach from: Permutations II or Next Permutation.
 '''
 
-'''
-Solution:
-Step 1. build up the map of char count also keep track of the number of odd chars
-Step 2. early return of impossible combinations
-Step 3. cut half of the even count charList and store in the list
-        (too feed in getPermPalin recursive call)
-        store the only single char in singleChar
-        * Note: after decreasing the number of odd char cound,
-                the odd char is now normal even char,
-                and need to go through even char processing as follow
-Step 4. recursive call: detail see "Permutations II"
-'''
 
+
+from collections import Counter
 class Solution(object):
     def generatePalindromes(self, s):
-        """
-            :type s: str
-            :rtype: List[str]
-            """
-        # details see "Permutations II"
+
+        # similar to  "Permutations II"
         def getPermPalin(chars, index, path, result, singleChar):
             if index == len(chars):
                 # handle single char case:
-                if singleChar == "":
-                    res = chars[:] + chars[::-1]
-                else:
-                    res = chars[:] + [singleChar] + chars[::-1]
-                r = ''.join(res)
-                result.append(r)
+                if singleChar == "": res = chars[:] + chars[::-1]
+                else: res = chars[:] + [singleChar] + chars[::-1]
+                result.append(''.join(res))
                 return
-            else:
-                for i in range(index, len(chars)):
-                    if chars[i] not in path:
-                        path.add(chars[index])
-                        # need swap so, must feed in list not string
-                        chars[index], chars[i] = chars[i], chars[index]
-                        getPermPalin(chars, index+1, set(), result,singleChar)
-                        chars[i], chars[index] = chars[index], chars[i]
+ 
+            for i in range(index, len(chars)):
+                if chars[i] not in path:
+                    path.add(chars[index])
+                    chars[index], chars[i] = chars[i], chars[index]
+                    getPermPalin(chars, index+1, set(), result,singleChar)
+                    chars[i], chars[index] = chars[index], chars[i]
             return
 
+
+
         # build up the char set count also keep track of the number of odd chars
-        mp = {}
-        oddChar = 0
-        for c in s:
-            mp[c] = mp.get(c,0) +1
-            if mp[c]%2 != 0: oddChar += 1
-            else: oddChar -= 1
-
-        # early return
-        if (oddChar > 1) or (len(s)%2 == 0 and oddChar != 0) or (len(s)%2 != 0 and oddChar != 1):
-            return []
-
-        # step 3. cut half of the even count charList
-        # and store in the list (too feed in getPermPalin recursive call)
-        # store the only single char in singleChar
+        singleChar = ''
         charList = []
-        singleChar = ""
-        for c in mp:
-            if mp[c] %2 != 0:
-                singleChar = c
-                mp[c] -= 1
-            # Note: after decreasing the number of odd char cound, the odd char is now normal even char, and need to go through even char processing as follow
-            # add half count of each character to list
-            for i in range(mp[c]/2):
-                charList.append(c)
+        count = Counter(s)
+        for key,value in count.items():
+            if value%2 != 0:
+                if not singleChar: singleChar = key
+                else: return False
+            else:
+                charList.append(key)
 
-        # step 4. recursive call: detail see "Permutations II"
+        # generate permutation palindrome
         result = []
         getPermPalin(charList, 0, set(), result, singleChar)
         return result
