@@ -22,13 +22,8 @@ Solution 1: With pointer to the parent node
 
 If each node has a link to its parent, we could trace p and q’s paths up until they intersect
 
-Solution 2：By Storing root to n1 and root to n2 paths
-    1) Find path from root to n1 and store it in a vector or array.
-    2) Find path from root to n2 and store it in another vector or array.
-    3) Traverse both paths till the values in arrays are same. Return the common element just before the mismatch.
-    Time complexity: O(n); Space complexity: O(n)
 
-Solution 3:
+Solution 2:
 When p and q are on the same side: e.g. if p and q are both on the left of the node, branch left to look for the common ancestor.
 When p and q are no longer on the same side, you must have found the first common ancestor.
 
