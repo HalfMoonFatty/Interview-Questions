@@ -15,7 +15,6 @@ For example:
 '''
 
 
-
 class Solution(object):
     def rightSideView(self, root):
         """
