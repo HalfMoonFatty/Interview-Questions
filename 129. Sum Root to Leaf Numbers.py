@@ -27,7 +27,7 @@ class Solution(object):
             """
         def leafNum(root,sum,total):
 
-            if root is None:
+            if not root:
                 return 0
 
             if not root.left and not root.right:
