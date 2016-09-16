@@ -44,14 +44,6 @@ Solution:
     od = collections.OrderedDict(sorted(d.items()))
     print od
     >> OrderedDict([(1, 89), (2, 3), (3, 0), (4, 5)])
-
-
-    And I used:
-    for k in sorted(mp):
-         ret.append(mp[k])
-
-    - mp: key is columnID; value is node.val
-    - tuples in the queue: (node, columnID); need to store the node in the queue because we need reference to the left and right child and also the value of the node
 '''
 
 from collections import deque
@@ -61,6 +53,7 @@ class Solution(object):
             :type root: TreeNode
             :rtype: List[List[int]]
             """
+            
         mp = {}
         q = deque()
         q.append((root, 0))
@@ -68,13 +61,13 @@ class Solution(object):
             elem = q.popleft()
             if elem[0]:
                 node = elem[0]
-                key = elem[1]
-                if mp.has_key(key):
-                    mp[key].append(node.val)
+                column = elem[1]
+                if mp.has_key(column):
+                    mp[column].append(node.val)
                 else:
-                    mp[key] = [node.val]
-                q.append((node.left, key-1))
-                q.append((node.right, key+1))
+                    mp[column] = [node.val]
+                q.append((node.left, column-1))
+                q.append((node.right, column+1))
 
 
         ret = []
