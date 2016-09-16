@@ -52,4 +52,5 @@ class Solution(object):
             else:
                 n = -sys.maxint-1  # not BST return -inf, meaning I am not BST, my parrent also cannot be BST
             return max(N1,N2,n),n,min(min1,root.val),max(max2,root.val)
+            
         return dfs(root)[0]
