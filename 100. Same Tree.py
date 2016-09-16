@@ -8,11 +8,7 @@ Two binary trees are considered equal if they are structurally identical and the
 
 class Solution(object):
     def isSameTree(self, p, q):
-        """
-            :type p: TreeNode
-            :type q: TreeNode
-            :rtype: bool
-            """
+
         if not p and not q:
             return True
         elif p and q and p.val == q.val:
