@@ -32,6 +32,10 @@ Note:
 '''
 
 
+# orig string: ['a', 'ab', 'abc']
+# encode:  1,a2,ab3,abc
+# decode:  ['a', 'ab', 'abc']
+
 class Codec:
 
     def encode(self, strs):
