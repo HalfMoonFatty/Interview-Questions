@@ -13,7 +13,7 @@ class Solution(object):
             """
 
         start = head
-        # Base case:
+        # note: 2 base cases
         if not start: return None
         if not start.next: return TreeNode(start.val)    
 
