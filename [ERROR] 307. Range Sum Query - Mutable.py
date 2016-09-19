@@ -7,8 +7,8 @@ class NumArray(object):
         self.nums = nums
         self.size = len(nums)
         h = int(math.ceil(math.log(self.size, 2))) if self.size else 0
-        self.STsize = pow(2,h+1) - 1
-        self.segTree = []
+        STsize = 2**(h+1) - 1
+        self.segTree = [0] * STsize
         if self.size: self.initSegTree(0, self.size-1,0)
         
 
@@ -18,7 +18,7 @@ class NumArray(object):
         :type val: int
         :rtype: int
         """
-        if i < 0 or i > self.size: return
+        if i < 0 or i >= self.size: return
         self.nums[i] = val
         delta = val - self.nums[i]
         self.updateSegTree(0, self.size-1, i, delta, 0)
@@ -59,7 +59,7 @@ class NumArray(object):
     
     def sumRangeSegTree(self, ststart, stend, qstart, qend, pos):
         # case 1: total overlap
-        if ststart <= qstat and stend >= qend:
+        if ststart <= qstart and stend >= qend:
             return self.segTree[pos]
         # case 2: no overlap
         if stend < qstart or sstart > qend:
