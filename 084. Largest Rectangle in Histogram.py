@@ -18,7 +18,7 @@ class Solution(object):
         
         if not heights: return 0
 
-        maxArea = -sys.maxint -1
+        maxArea = 0
         index = []         
         heights.append(0)   # Note: sentinel node
 
