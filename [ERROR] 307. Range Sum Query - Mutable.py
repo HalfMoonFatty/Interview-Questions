@@ -39,31 +39,7 @@ class NumArray(object):
         self.segTree = [0] * segTreeSize
         if self.size: self.initSegTree(0, self.size-1,0)
         
-
-    def update(self, i, val):
-        """
-        :type i: int
-        :type val: int
-        :rtype: int
-        """
-        if i < 0 or i >= self.size: return
-        delta = val - self.nums[i]
-        self.nums[i] = val
-        self.updateSegTree(0, self.size-1, i, delta, 0)
         
-        
-    def sumRange(self, i, j):
-        """
-        sum of elements nums[i..j], inclusive.
-        :type i: int
-        :type j: int
-        :rtype: int
-        """
-        if i < 0 or j < 0 or i >= self.size or j >= self.size: return 0
-        return self.sumRangeSegTree(0, self.size-1, i, j , 0)
-        
-    
-    
     
     def initSegTree(self, start, end, pos):
         if start == end: 
@@ -96,3 +72,27 @@ class NumArray(object):
         # case 3: partial overlap
         mid = (start+end)/2
         return self.sumRangeSegTree(start, mid, qstart, qend, pos*2+1) + self.sumRangeSegTree(mid+1, end, qstart, qend, pos*2+2)
+
+
+
+    def update(self, i, val):
+        """
+        :type i: int
+        :type val: int
+        :rtype: int
+        """
+        if i < 0 or i >= self.size: return
+        delta = val - self.nums[i]
+        self.nums[i] = val
+        self.updateSegTree(0, self.size-1, i, delta, 0)
+        
+        
+    def sumRange(self, i, j):
+        """
+        sum of elements nums[i..j], inclusive.
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+        if i < 0 or j < 0 or i >= self.size or j >= self.size: return 0
+        return self.sumRangeSegTree(0, self.size-1, i, j , 0)
