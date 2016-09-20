@@ -15,6 +15,8 @@ For example,
 import sys
 class Solution(object):
     def largestRectangleArea(self, heights):
+        
+        if not heights: return 0
 
         maxArea = -sys.maxint -1
         index = []         
@@ -22,8 +24,7 @@ class Solution(object):
 
         for i in range(len(heights)):
             while len(index)>0 and heights[index[-1]] >= heights[i]:   # Note: >=
-                h = heights[index[-1]]
-                index.pop()        # Note: pop out
+                h = heights[index.pop()]
                 if len(index) > 0:
                     startInd = index[-1]
                 else:
@@ -33,4 +34,5 @@ class Solution(object):
             index.append(i)
 
         return maxArea
+     
 
