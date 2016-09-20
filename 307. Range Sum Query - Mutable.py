@@ -20,7 +20,66 @@ You may assume the number of calls to update and sumRange function is distribute
 
 # Solution 1: Binary Indexed Tree
 
+class NumArray(object):
+    def __init__(self, nums):
+        """
+        initialize your data structure here.
+        :type nums: List[int]
+        """
+        self.nums = nums
+        self.size = len(nums)
+        self.sums = [0] * (len(nums)+1)
+        # init sums
+        for i in range(len(nums)):
+            self.add(i+1, nums[i])   # 0 is dummy root, so start from i+1
+ 
+ 
+    def lowbit(self, x):
+        return x & -x
+    
+    
+    def add(self, index, val):
+        while index < self.size+1:   
+            self.sums[index] += val
+            index += self.lowbit(index)    # go to next
 
+
+    def getSum(self, index):
+        ret = 0
+        while index > 0:
+            ret += self.sums[index]
+            index -= self.lowbit(index)    # go to parent
+        return ret
+
+ 
+ 
+
+    def update(self, i, val):
+        """
+        :type i: int
+        :type val: int
+        :rtype: int
+        """
+        if i < 0 or i >= self.size: return
+        delta = val - self.nums[i]
+        self.add(i+1, delta)
+        self.nums[i] = val
+        
+        
+        
+    def sumRange(self, i, j):
+        """
+        sum of elements nums[i..j], inclusive.
+        :type i: int
+        :type j: int
+        :rtype: int
+        """
+        if i < 0 or j < 0 or i >= self.size or j >= self.size: return 0
+        return self.getSum(j+1) - self.getSum(i)
+        
+    
+    
+    
 
 
 
