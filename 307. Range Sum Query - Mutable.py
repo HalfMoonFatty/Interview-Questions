@@ -33,22 +33,20 @@ class NumArray(object):
         for i in range(len(nums)):
             self.add(i+1, nums[i])   # 0 is dummy root, so start from i+1
  
- 
-    def lowbit(self, x):
-        return x & -x
     
     
     def add(self, index, val):
         while index < self.size+1:   
             self.sums[index] += val
-            index += self.lowbit(index)    # go to next
+            index += index & -index    # go to next
+
 
 
     def getSum(self, index):
         ret = 0
         while index > 0:
             ret += self.sums[index]
-            index -= self.lowbit(index)    # go to parent
+            index -= index & -index    # go to parent
         return ret
 
  
