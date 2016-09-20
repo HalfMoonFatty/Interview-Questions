@@ -52,17 +52,17 @@ class NumArray(object):
             self.segTree[pos] += delta
         else:
             mid = (ststart+stend)/2
-            self.updateSegTree(ststart, mid, index, delta, pos)
-            self.updateSegTree(mid+1, stend, index, delta, pos)
+            self.updateSegTree(ststart, mid, index, delta, pos*2+1)
+            self.updateSegTree(mid+1, stend, index, delta, pos*2+2)
         return
     
     
     def sumRangeSegTree(self, ststart, stend, qstart, qend, pos):
         # case 1: total overlap
-        if ststart <= qstart and stend >= qend:
+        if qstart <= ststart and qend >= stend:
             return self.segTree[pos]
         # case 2: no overlap
-        if stend < qstart or sstart > qend:
+        if stend < qstart or ststart > qend:
             return 0 
         # case 3: partial overlap
         mid = (ststart+stend)/2
