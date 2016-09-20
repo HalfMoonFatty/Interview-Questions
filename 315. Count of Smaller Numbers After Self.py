@@ -55,6 +55,9 @@ class FenwickTree(object):
         return res
         
         
+        
+        
+        
 # Solution 2: BST
 
 class Solution(object):
@@ -107,6 +110,9 @@ class BinarySearchTree(object):
                 root.cnt += 1
                 break
         return cnt
+
+
+
 
 
 
