@@ -37,16 +37,16 @@ class Solution(object):
                     tmp[i] += matrix[i][right]
 
                 # find the max subarray no more than K
-                accuSet = [0]
+                accuSum = [0]
                 curSum,curMax = 0, -sys.maxint -1
                 for v in tmp:
                     curSum += v
-                    ind = bisect.bisect_left(accuSet,curSum-k)
-                    if ind < len(accuSet):
-                        curMax = max(curMax,curSum-accuSet[ind])
+                    ind = bisect.bisect_left(accuSum,curSum-k)
+                    if ind < len(accuSum):
+                        curMax = max(curMax,curSum-accuSum[ind])
                     # early return
                     #if curMax == k: return k
-                    bisect.insort(accuSet,curSum)
+                    bisect.insort(accuSum,curSum)
 
                 res = max(res, curMax)
 
