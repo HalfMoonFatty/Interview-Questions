@@ -74,8 +74,9 @@ class NestedIterator(object):
                 elem = nestedList[i]
                 if elem.isInteger():
                     return True
-                self.stack[-1][1] += 1
-                self.stack.append([elem.getList(), 0])
+                else:    # elem is a nested list
+                    self.stack[-1][1] += 1
+                    self.stack.append([elem.getList(), 0])
         return False
         
 
