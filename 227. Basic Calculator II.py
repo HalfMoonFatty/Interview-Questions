@@ -24,27 +24,27 @@ class Solution(object):
         if not s: return 0
             
         stack = []
-        prevSign = "+"
-        prevNum = 0
+        sign = "+"
+        number = ''
 
         # first loop calculate all "*" and "/" operations
         for i in range(len(s)):
 
             if s[i].isdigit():
-                prevNum = prevNum*10+int(s[i])
-                
+                number += s[i]
+
             if (s[i] in ["+","-","*","/"]) or (i == len(s)-1):
-                if prevSign == "+":
-                    stack.append(prevNum)
-                elif prevSign == "-":
-                    stack.append(-prevNum)
-                elif prevSign == "*":
-                    stack.append(stack.pop()*prevNum)
-                else: # prevSign == '/'
-                    stack.append(int(float(stack.pop())/float(prevNum)))
+                if sign == "+":
+                    stack.append(int(number))
+                elif sign == "-":
+                    stack.append(-int(number))
+                elif sign == "*":
+                    stack.append(stack.pop()*int(number))
+                else: # sign == '/'
+                    stack.append(int(float(stack.pop())/float(number)))
                     
-                prevSign = s[i]
-                prevNum = 0
+                sign = s[i]
+                number = ''
 
 
         # second loop calculate the "+" and "-" operations ("-" operation is negative number)
