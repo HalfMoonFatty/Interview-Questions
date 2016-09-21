@@ -21,8 +21,7 @@ Note:
 class Solution(object):
     def calculate(self, s):
 
-        if not s or len(s) == 0:
-            return 0
+        if not s: return 0
             
         stack = []
         prevSign = "+"
@@ -49,7 +48,4 @@ class Solution(object):
 
 
         # second loop calculate the "+" and "-" operations ("-" operation is negative number)
-        ret = 0
-        for n in stack:
-            ret += n
-        return ret
+        return sum(stack)
