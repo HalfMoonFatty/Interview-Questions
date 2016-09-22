@@ -7,12 +7,9 @@ Return a deep copy of the list.
 
 '''
 
-# Definition for singly-linked list with a random pointer.
-# class RandomListNode(object):
-#     def __init__(self, x):
-#         self.label = x
-#         self.next = None
-#         self.random = None
+
+
+# Solution 1: Time O(n); Space O(n)
 
 class Solution(object):
     def copyRandomList(self, head):
@@ -55,3 +52,45 @@ class Solution(object):
         
         return mp[head]
             
+
+
+
+# Solution 2: Time O(n); Space O(1)
+
+class Solution(object):
+    def copyRandomList(self, head):
+        """
+            :type head: RandomListNode
+            :rtype: RandomListNode
+            """
+        if not head:
+            return None
+
+        # first iteration: copy the original linked list
+        itr = head
+        while itr:
+            copy = RandomListNode(itr.label)
+            copy.next = itr.next
+            itr.next = copy
+            itr = itr.next.next
+
+        # second iteration: copy the random pointer in the original linked list
+        itr = head
+        while itr:
+            if itr.random:
+                copy = itr.next
+                copy.random = itr.random.next
+            itr = itr.next.next;
+
+        # third iteration: restore the original list and extract the new list
+        itr = head
+        cpitr, newHead = head.next, head.next
+        while cpitr:
+            itr.next = cpitr.next
+            itr = itr.next
+            if not itr:
+                break
+            cpitr.next = itr.next
+            cpitr = cpitr.next
+
+        return newHead
