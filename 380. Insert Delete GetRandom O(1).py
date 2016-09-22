@@ -90,15 +90,15 @@ class RandomizedSet(object):
             return False
         else:
             # update arr:
-            ind = self.index_map[val]
-            lastVal = self.arr[-1]
+            ind, lastVal = self.index_map[val], self.arr[-1]
             self.arr[ind] = lastVal
-            self.arr.pop()
+            
 
             # update index_mp
             self.index_map[lastVal] = ind
             del self.index_map[val]
 
+            self.arr.pop()
             return True
 
 
