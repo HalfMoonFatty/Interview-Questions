@@ -92,7 +92,6 @@ class RandomizedSet(object):
             # update arr:
             ind, lastVal = self.index_map[val], self.arr[-1]
             self.arr[ind] = lastVal
-            
 
             # update index_mp
             self.index_map[lastVal] = ind
