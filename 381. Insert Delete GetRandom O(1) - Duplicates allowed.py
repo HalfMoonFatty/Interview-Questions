@@ -35,7 +35,6 @@ collection.getRandom();
 
 
 
-
 import random
 class RandomizedCollection(object):
 
