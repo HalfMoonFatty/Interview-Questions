@@ -11,6 +11,10 @@ Note:
 
 
 
+# rowInd = 3* (i/3) + j/3  
+# colInd = 3* (i%3) + j%3
+
+
 class Solution(object):
     def isValidSudoku(self, board):
 
@@ -27,7 +31,7 @@ class Solution(object):
                     return False
                 col.add(board[j][i])
 
-                rowInd = 3* (i/3) + j/3
+                rowInd = 3* (i/3) + j/3  
                 colInd = 3* (i%3) + j%3
 
                 if board[rowInd][colInd] != '.' and board[rowInd][colInd] in block:
