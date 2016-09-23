@@ -19,6 +19,7 @@ class Solution(object):
                     return False
             return True
 
+
         def countNQueens(row):
             if row == n:
                 return 1        # finished one entire game, return 1
@@ -28,6 +29,7 @@ class Solution(object):
                 if isValid(row):
                     count += countNQueens(row+1)  # add up all possbile solutions in the subtree
             return count
+
 
         colForRow = [None for i in range(0,n)]
         return countNQueens(0)
