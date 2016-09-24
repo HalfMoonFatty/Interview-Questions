@@ -104,9 +104,12 @@ class Twitter(object):
         self.Timestamp = 0
         self.userMap = {}
 
+
     def createUser(self, userId):
         newUser = self.User(userId)
         self.userMap[userId] = newUser
+
+
 
     def postTweet(self, userId, tweetId):
         """
@@ -122,6 +125,7 @@ class Twitter(object):
 
 
 
+    # using min heap size = 10 to get 10 most recent (max) time tweet
     def getNewsFeed(self, userId):
         """
             Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
@@ -149,8 +153,6 @@ class Twitter(object):
 
 
 
-
-
     def follow(self, followerId, followeeId):
         """
             Follower follows a followee. If the operation is invalid, it should be a no-op.
@@ -166,6 +168,7 @@ class Twitter(object):
         follower.follow(followeeId)
 
 
+
     def unfollow(self, followerId, followeeId):
         """
             Follower unfollows a followee. If the operation is invalid, it should be a no-op.
@@ -176,6 +179,4 @@ class Twitter(object):
         if not self.userMap.has_key(followerId) or followerId == followeeId: # user cannot unfollow himself
             return
         self.userMap[followerId].unfollow(followeeId)
-
-
 
