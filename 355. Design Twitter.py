@@ -72,13 +72,12 @@ Twitter:
 '''
 
 class Twitter(object):
-
     class User(object):
 
         def __init__(self, userId):
             self.userid = userId
             self.tweets = []
-            self.followee = set([userId])    # init the user to follow himself
+            self.followee = set([userId])  #init the user to follow himself
 
         def follow(self,followeeId):
             self.followee.add(followeeId)
@@ -91,7 +90,6 @@ class Twitter(object):
             self.tweets.append(tweet)
 
 
-
     class Tweet(object):
 
         def __init__(self, tweetId, Timestamp):
@@ -99,45 +97,67 @@ class Twitter(object):
             self.time = Timestamp
 
 
-
     def __init__(self):
+        """
+            Initialize your data structure here.
+            """
         self.Timestamp = 0
         self.userMap = {}
-
 
     def createUser(self, userId):
         newUser = self.User(userId)
         self.userMap[userId] = newUser
 
-
     def postTweet(self, userId, tweetId):
+        """
+            Compose a new tweet.
+            :type userId: int
+            :type tweetId: int
+            :rtype: void
+            """
         if not self.userMap.has_key(userId):
             self.createUser(userId)
         self.userMap[userId].post(tweetId, self.Timestamp)
-        self.Timestamp -= 1
+        self.Timestamp += 1
 
 
 
     def getNewsFeed(self, userId):
-        h = []
+        """
+            Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+            :type userId: int
+            :rtype: List[int]
+            """
+        heap = []
         if not self.userMap.has_key(userId):
-            return h
+            return heap
+            
         followeeIds = self.userMap[userId].followee
         for fId in followeeIds:
             for t in self.userMap[fId].tweets:
-                time, tweetId = t.time, t.tweetId
-                heapq.heappush(h, [time, tweetId, fId] )
-
-        news = []
-        for i in range(10):
-            if h:
-                news.append(heapq.heappop(h)[1])
-                i += 1
-        return news
+                if len(heap) < 10:
+                    heapq.heappush(heap, [t.time, t.tweetId] )
+                else:
+                    if t.time > heap[0][0]:
+                        heapq.heappop(heap)
+                        heapq.heappush(heap, [t.time, t.tweetId] )
         
+        news = []         
+        while len(heap)>0:
+            news.append(heapq.heappop(heap)[1])
+        return news[::-1]
+
+
+
 
 
     def follow(self, followerId, followeeId):
+        """
+            Follower follows a followee. If the operation is invalid, it should be a no-op.
+            :type followerId: int
+            :type followeeId: int
+            :rtype: void
+            """
         if not self.userMap.has_key(followerId):
             self.createUser(followerId)
         if not self.userMap.has_key(followeeId):
@@ -146,9 +166,16 @@ class Twitter(object):
         follower.follow(followeeId)
 
 
-
     def unfollow(self, followerId, followeeId):
+        """
+            Follower unfollows a followee. If the operation is invalid, it should be a no-op.
+            :type followerId: int
+            :type followeeId: int
+            :rtype: void
+            """
         if not self.userMap.has_key(followerId) or followerId == followeeId: # user cannot unfollow himself
             return
         self.userMap[followerId].unfollow(followeeId)
+
+
 
