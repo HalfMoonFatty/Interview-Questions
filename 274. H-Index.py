@@ -33,9 +33,9 @@ class Solution(object):
             else:
                 cnt[c] += 1
 
-        sum = 0
+        npaper = 0
         for i in range(len(cnt)-1,-1,-1):
-            if sum + cnt[i] >= i:
+            if npaper + cnt[i] >= i:
                 return i
-            sum += cnt[i]
+            npaper += cnt[i]
         return 0
