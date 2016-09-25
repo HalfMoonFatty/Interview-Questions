@@ -26,16 +26,16 @@ class Solution(object):
             :type citations: List[int]
             :rtype: int
             """
-        cnt = [0]*(len(citations)+1)
-        for c in citations:
-            if c > len(citations):
-                cnt[len(citations)] += 1
+        papercnt = [0]*(len(citations)+1)
+        for cite in citations:
+            if cite > len(citations):
+                papercnt[len(citations)] += 1
             else:
-                cnt[c] += 1
+                papercnt[cite] += 1
 
         npaper = 0
-        for i in range(len(cnt)-1,-1,-1):
-            if npaper + cnt[i] >= i:
+        for i in range(len(papercnt)-1,-1,-1):
+            if npaper + papercnt[i] >= i:
                 return i
-            npaper += cnt[i]
+            npaper += papercnt[i]
         return 0
