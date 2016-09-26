@@ -32,3 +32,27 @@ class Solution(object):
         while len(nums) > 1:
             nums = nums[1::2][::-1]
         return nums[0]
+    
+    
+    
+
+# Solution 2
+class Solution(object):
+    def lastRemaining(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+
+        left = True
+        remaining = n
+        head = step = 1
+        
+        while remaining > 1:
+            if left or remaining % 2 ==1:
+                head += step
+            step *= 2
+            remaining /= 2
+            left = not left
+        return head
+
