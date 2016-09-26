@@ -31,9 +31,7 @@ class Solution(object):
         """
         q = collections.deque(s)
         for char in t:
-            if len(q) == 0:
-                return True
-            if char == q[0]:
+            if len(q) and char == q[0]:
                 q.popleft()
         return len(q) == 0
             
