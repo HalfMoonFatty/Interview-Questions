@@ -36,7 +36,8 @@ class Solution(object):
     
     
 
-# Solution 2
+# Solution 2:  to update and record head in each turn. when the total number becomes 1, head is the only number left.
+
 class Solution(object):
     def lastRemaining(self, n):
         """
@@ -56,3 +57,32 @@ class Solution(object):
             left = not left
         return head
 
+
+    
+
+'''
+Solution 3 Recursion:
+
+eliminate all the odd numbers
+[1, 2, 3, 4, 5, 6] -> [2, 4, 6]
+It is equivalent to consider the number left in [1, 2, 3] * 2
+
+eliminate all the even numbers
+[1, 2, 3, 4, 5, 6] -> [1, 3, 5]
+It is equivalent to consider the number left in [1, 2, 3] * 2 - 1
+'''
+
+class Solution(object):
+    def lastRemaining(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        def elemNumber(n, left2right):
+            if n == 1: return 1
+            if left2right or n % 2 ==1:  # eliminate all the odd numbers
+                return elemNumber(n/2, not left2right)*2
+            else:    # eliminate all the even numbers
+                return elemNumber(n/2, not left2right)*2-1
+        
+        return elemNumber(n, True)
