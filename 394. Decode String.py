@@ -18,6 +18,40 @@ s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 '''
 
 
+
+# Solution 1
+
+class Solution(object):
+    
+    def decodeString(self, s):
+
+        n = 0
+        digit = 0
+        stack = []
+        for i in range(len(s)):
+            if s[i].isdigit():
+                digit = digit*10 + int(s[i])
+            elif s[i] == "[":
+                stack.append(digit)
+                stack.append(s[i])
+                digit = 0
+            elif s[i] == "]":
+                pattern = ""
+                while stack[-1] != "[":
+                    pattern = stack.pop() + pattern    # note
+                stack.pop()    # pop out "["
+                n = int(stack.pop())
+                stack.append(str(pattern*n))
+            else:
+                stack.append(s[i])
+
+        return "".join(stack)
+
+    
+    
+    
+# Solution 2:    
+
 class Solution(object):
     def decodeString(self, s):
 
@@ -44,31 +78,4 @@ class Solution(object):
         
         
         
-        
- class Solution(object):
-    def decodeString(self, s):
 
-        n = 0
-        start = end = -1
-        digit = 0
-        stack = []
-        for i in range(len(s)):
-            if s[i].isdigit():
-                digit = digit*10 + int(s[i])
-            elif s[i] == "[":
-                stack.append(digit)
-                stack.append(s[i])
-                digit = 0
-            elif s[i] == "]":
-                pattern = ""
-                while stack[-1] != "[":
-                    pattern += stack.pop()
-                stack.pop()    # pop out "["
-                n = int(stack.pop())
-                tmp = pattern[::-1]*n
-                for c in tmp:
-                    stack.append(c)
-            else:
-                stack.append(s[i])
-
-        return "".join(stack)
