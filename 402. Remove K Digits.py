@@ -39,13 +39,15 @@ class Solution(object):
         
         size = len(num) - k
         stack = [sys.maxint]*size
-        j = 0
+        j = 0    # stack index iterator
+        
         for i in range(len(num)):
             while len(num)-i > size-j and j > 0 and stack[j-1] > num[i]:
                 j -= 1
             if j < size:
                 stack[j] = num[i]
                 j += 1
+                
         res = ''.join(stack).lstrip("0")
         return res if len(res) > 0 else "0"
             
