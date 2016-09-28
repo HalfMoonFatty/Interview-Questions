@@ -32,7 +32,7 @@ class Solution(object):
         if num == 0: return "0"
         
         result = ''
-        while num and len(result) < 8:
-            result = hexmap[(num & 15)] + result
+        while num and len(result) < 8:    # TLE for negative number
+            result = hexmap[(num & 0x0F)] + result
             num = num >> 4
         return result
