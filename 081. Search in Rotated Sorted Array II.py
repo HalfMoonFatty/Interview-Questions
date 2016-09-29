@@ -9,10 +9,7 @@ Problem:
 '''
 
 
-
 # Solution: If duplicates are allowed, the only way to search is linear scan, so run-time is O(n)
-
-   
 
  class Solution(object):
    
