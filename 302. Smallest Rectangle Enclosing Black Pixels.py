@@ -1,9 +1,11 @@
 '''
 Problem:
 
-An image is represented by a binary matrix with 0 as a white pixel and 1 as a black pixel. The black pixels are connected, i.e., there is only one black region. Pixels are connected horizontally and vertically. Given the location (x, y) of one of the black pixels, return the area of the smallest (axis-aligned) rectangle that encloses all black pixels.
+An image is represented by a binary matrix with 0 as a white pixel and 1 as a black pixel. The black pixels are connected, i.e., there is only one black region. 
+Pixels are connected horizontally and vertically. Given the location (x, y) of one of the black pixels, return the area of the smallest (axis-aligned) rectangle that encloses all black pixels.
 
-     For example, given the following image:
+
+For example, given the following image:
 
 [
 "0010",
@@ -63,8 +65,7 @@ class Solution(object):
 
 
 
-        # up is exactly where start, but down is then end index + 1
-        # so when search left to right, we just search rows within the range [up,down)
+        # up is exactly where start, but down is then end index + 1, so the row range is [up,down)
         up = SearchRow(image,0,x,True)
         down = SearchRow(image, x+1,len(image),False)
 
