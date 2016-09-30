@@ -30,15 +30,15 @@ Solution 1: Don't treat it as a 2D matrix, just treat it as a sorted list
 class Solution(object):
     def searchMatrix(self, matrix, target):
 
-        n, m = len(matrix), len(matrix[0])
+        m, n = len(matrix), len(matrix[0])
         start = 0
         end = m*n-1
        
         while start <= end:
             mid = (start + end)/2
-            if target == matrix[mid/m][mid%m]:
+            if target == matrix[mid/n][mid%n]:
                 return True
-            elif target > matrix[mid/m][mid%m]:
+            elif target > matrix[mid/n][mid%n]:
                 start = mid + 1
             else:
                 end = mid - 1
