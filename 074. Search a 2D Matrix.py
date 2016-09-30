@@ -66,26 +66,3 @@ class Solution(object):
                 j -= 1
         return False
 
-
-
-
-
-# Solution 2 - 2: Recursive Implementation
-
-class Solution(object):
-    
-    def searchMatrix(self, matrix, target):
-       
-        def helper(matrix,r,c,target):
-            if r < 0 or c < 0 or r > len(matrix)-1 or c > len(matrix[0])-1:
-                return False
-            if target == matrix[r][c]:
-                return True
-            elif target > matrix[r][c]:
-                return helper(matrix,r+1,c,target)
-            else:
-                return helper(matrix,r,c-1,target)
-   
-        r = 0
-        c = len(matrix[0])-1
-        return helper(matrix,r,c,target)
