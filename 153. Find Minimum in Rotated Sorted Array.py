@@ -20,12 +20,12 @@ class Solution(object):
 
         L,R = 0,len(nums)-1
         
-        while L < R and nums[L] >= nums[R]:
+        while L < R and nums[L] >= nums[R]:   # note >=
             M = L+(R-L)/2
             if nums[M] > nums[R]:
-                L = M + 1
-            else:
-                R = M
+                L = M + 1    # M+1
+            else: 
+                R = M        # M
                 
         return nums[L]    # when L == R, we have found the minimum element
                   
