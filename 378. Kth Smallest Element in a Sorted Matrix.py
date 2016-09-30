@@ -20,6 +20,10 @@ Note:
      
 '''
 
+
+
+# Solution 1: Heap
+
 import heapq
 class Solution(object):
     def kthSmallest(self, matrix, k):
@@ -41,3 +45,35 @@ class Solution(object):
             heapq.heappush(minheap, (matrix[r+1][c],r+1,c))
 
         return heapq.heappop(minheap)[0]
+
+    
+    
+    
+# Solution 2: Binary Search (similar to 287.Find the Duplicate Number)
+
+class Solution(object):
+    def kthSmallest(self, matrix, k):
+        """
+            :type matrix: List[List[int]]
+            :type k: int
+            :rtype: int
+            """
+        minVal,maxVal = -sys.maxint-1,sys.maxint
+        midVal = 0
+        n = len(matrix)
+
+        while minVal < maxVal:
+            midVal = minVal + (maxVal-minVal)/2
+            count = 0
+            for i in range(n):
+                pos = bisect.bisect_right(matrix[i], midVal)
+                count += pos
+
+            if count < k:
+                minVal = midVal+1
+
+            else:
+                maxVal = midVal
+
+        return minVal
+        
