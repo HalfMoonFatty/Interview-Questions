@@ -9,35 +9,39 @@ Problem:
 '''
 Solution:
 
+Note: 
+    Need to make a copy of intervals for the iteration, cannot use index as we remove intervals in the loop
+
 Space: O(n) result array
 Time: O(n)
 '''
 
-class Interval:
-    def __init__(self, s=0, e=0):
-        self.start = s
-        self.end = e
+
+
+# Definition for an interval.
+# class Interval(object):
+#     def __init__(self, s=0, e=0):
+#         self.start = s
+#         self.end = e
 
 
 from operator import itemgetter,attrgetter
-class Solution:
-    # @param intervals, a list of Interval
-    # @return a list of Interval
+class Solution(object):
 
-    def merge(self, intervals):
         if len(intervals) < 2:
             return intervals
 
-        sinterval = sorted(intervals, key=attrgetter('start'))
+        intervals.sort(key=attrgetter('start'))
 
-        cur_item = sinterval[0]
-        for item in sinterval[1:]:
+        cur_item = intervals[0]
+        for item in intervals[1:]:    # note: cannot use index
             if item.start <= cur_item.end:
                 if item.end <= cur_item.end:
-                    sinterval.remove(item)
+                    intervals.remove(item)
                 else:
                     cur_item.end = item.end
-                    sinterval.remove(item)
+                    intervals.remove(item)
             else:
                 cur_item = item
-    return sinterval
+        return intervals
+    
