@@ -22,11 +22,12 @@ Solution:
 
 class Solution(object):
 
+        
     def largestNumber(self, nums):
         def __cmp__(x,y):
-            return  int(y+x) - int(x+y)
+            return int(x+y) - int(y+x)
 
         num = [str(x) for x in nums]
-        num.sort(cmp=__cmp__)
+        num.sort(cmp=__cmp__, reverse=True)   # reverse: from large to small 
         return ''.join(num).lstrip('0') or '0'
         
