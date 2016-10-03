@@ -7,7 +7,7 @@ Problem:
 
 
 '''
-Solution 1:
+Solution:
 
     Step 1. Iterate throught the list to find the rule breaker - curr.next
     Step 2. Find the insertion position using prev itr
