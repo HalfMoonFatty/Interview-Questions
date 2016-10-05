@@ -4,11 +4,10 @@ Problem:
     Given a singly linked list, determine if it is a palindrome.
 
 Follow up:
+
     Could you do it in O(n) time and O(1) space?
-
+    
 '''
-
-
 
 
 '''
@@ -55,7 +54,6 @@ Space: O(1)
 2. reverse half of the list (reverse the latter half - more comprehensible).
 3. easily check for palindromic-ness as if it's a double-link list.
 4. restore the reversed half
-
 '''
 
 class Solution(object):
@@ -108,9 +106,6 @@ class Solution(object):
         reverseLL(slow.next)
 
         return result
-
-
-
 
 
 
