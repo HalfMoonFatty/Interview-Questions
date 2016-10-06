@@ -18,8 +18,8 @@ class LRUCache(object):
 
     def __init__(self, capacity):
         self.capacity = capacity
-        self.cache = collections.deque([])
-        self.cacheMap = {}
+        self.cache = collections.deque([])    # store keys
+        self.cacheMap = {}                    # store key-value pairs
 
 
     def get(self, key):
