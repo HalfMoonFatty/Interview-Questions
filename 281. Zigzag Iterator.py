@@ -25,8 +25,8 @@ It should return [1,4,8,2,5,9,3,6,7].
 '''
 Solution: * turn around: when reached the last list, reset the curInd to 0
 
-Time: 
-Space:
+Time: O(kn)
+Space:O(kn)
 
 '''
 
@@ -77,3 +77,27 @@ class ZigzagIterator(object):
 # i, v = ZigzagIterator(v1, v2), []
 # while i.hasNext(): v.append(i.next())
 
+
+
+# Solution 2: Queue implementation
+
+
+class ZigzagIterator(object):
+
+    def __init__(self, v1, v2):
+        self.q = []
+        if len(v1) != 0: self.q.append(v1)
+        if len(v2) != 0: self.q.append(v2)
+     
+
+    def next(self):
+        if self.hasNext():
+            v = self.q.pop(0)
+            val = v.pop(0)
+            if len(v) != 0:
+                self.q.append(v)
+            return val
+    
+    
+    def hasNext(self):
+        return len(self.q) != 0
