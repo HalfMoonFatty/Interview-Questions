@@ -31,8 +31,8 @@ class Solution(object):
         ft = FenwickTree(len(iNums))
         ans = [0] * len(nums)
         for i in range(len(iNums)-1, -1, -1):
-            ans[i] = ft.sum(iNums[i]-1)
-            ft.add(iNums[i], 1)
+            ans[i] = ft.sum(iNums[i]-1)    # not including itself
+            ft.add(iNums[i], 1)            # add "1" at index iNums[i]
         return ans
 
 
