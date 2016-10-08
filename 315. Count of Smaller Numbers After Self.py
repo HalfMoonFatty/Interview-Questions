@@ -137,3 +137,5 @@ class Solution(object):
         smaller = [0] * len(nums)
         sort(list(enumerate(nums)))
         return smaller
+
+    
