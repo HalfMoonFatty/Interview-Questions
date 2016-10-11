@@ -19,15 +19,11 @@ Space: O(n)
 
 '''
 
+
 class Solution(object):
     def partition(self, head, x):
-        """
-            :type head: ListNode
-            :type x: int
-            :rtype: ListNode
-            """
-        if not head:
-            return None
+
+        if not head: return None
 
         ltcur = ltlist = ListNode(0)    # dummy node for val < x
         gtcur = gtlist = ListNode(0)    # dummy node for val >= x
