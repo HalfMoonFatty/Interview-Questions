@@ -9,6 +9,7 @@ Converting the input string to integer is NOT allowed.
 You should NOT use internal library such as BigInteger.
 '''
 
+
 class Solution(object):
     def multiply(self, num1, num2):
         """
