@@ -15,7 +15,7 @@ Follow up:
 
 
 '''
-Solution:
+Solution 1:
 
 Time: O(n^2)
 Space: O(m + n)
@@ -49,7 +49,7 @@ class Solution(object):
     
     
 '''
-Solution 2:
+Solution 2: Optimization
 
 Time: O(n^2)
 Space: O(1)
