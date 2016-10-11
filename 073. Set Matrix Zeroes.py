@@ -11,6 +11,9 @@ Follow up:
 
 '''
 
+
+
+
 '''
 Solution:
 
@@ -41,3 +44,36 @@ class Solution(object):
                     matrix[i][j] = 0
 
         return
+
+    
+    
+    
+'''
+Solution 2:
+
+Time: O(n^2)
+Space: O(1)
+'''
+    
+    
+class Solution(object):
+    def setZeroes(self, matrix):
+
+        m,n = len(matrix), len(matrix[0])
+        col0 = 1
+        
+        # top-down
+        for i in range(m):
+            if matrix[i][0] == 0: col0 = 0   
+            for j in range(1,n):        # j count up from 1
+                if matrix[i][j] == 0:
+                    matrix[i][0] = matrix[0][j] = 0
+        
+        # bottom-up
+        for i in range(m-1,-1,-1):
+            for j in range(n-1,0,-1):   # j count down to 1
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+            if col0 == 0: matrix[i][0] = 0  
+        return        
+    
