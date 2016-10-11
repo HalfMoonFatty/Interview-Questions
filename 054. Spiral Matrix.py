@@ -16,7 +16,9 @@ You should return [1,2,3,6,9,8,7,4,5].
 '''
 Solution:
 
-Time:
+Time: O(n^2)
+Space: O(n^2)
+
 '''
 
 class Solution(object):
