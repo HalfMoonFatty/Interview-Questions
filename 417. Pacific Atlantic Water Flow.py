@@ -64,7 +64,7 @@ class Solution(object):
         atlq = deque()
         pacq = deque()
         
-        # init atlq and pacq
+        # init atlq and pacq with 4 borders
         for i in range(m):
             atlq.append([i,0])
             pacq.append([i,n-1])
@@ -77,10 +77,11 @@ class Solution(object):
             atlvisited[0][j] = True
             pacvisited[m-1][j] = True
         
+        # bfs traverse
         bfs(atlq, atlvisited)
         bfs(pacq, pacvisited)
         
-        # add the intersection to the result
+        # add the intersections to the result
         result = []
         for i in range(m):
             for j in range(n):
