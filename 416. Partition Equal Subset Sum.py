@@ -41,10 +41,29 @@ class Solution(object):
         sums = sum(nums)
         return False if sums%2 else canPart(0, nums, sums/2)
         
-        
+ 
+
 '''
 Solution 2: DP
 
-Time:
-Space:
+Time: O(M*N) (N is half of array sum）
+Space:O(N)
+
 '''
+
+import sys
+class Solution(object):
+    def canPartition(self, nums):
+        
+        sums = sum(nums)
+        if sums%2: return False  
+        
+        sums /= 2
+        dp = [-sys.maxint+1] * (sums+1)
+        dp[0] = 0
+        for n in nums:
+            for s in range(sums,n-1,-1):
+                dp[s] = max(dp[s-n]+1, dp[s])
+        return dp[-1] > 0
+        
+        
