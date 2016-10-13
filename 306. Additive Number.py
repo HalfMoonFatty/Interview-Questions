@@ -29,7 +29,7 @@ Follow up:
 Solution: Time: O(N^2); Space O(N)-recursion
 
 main function - travel through all combinations of length of num1 and num2
-Note that the length of first two numbers can't be longer than half of the initial string, so the two loops in the first function will end when i>num.size()/2 and j>(num.size()-i)/2, this will actually save a lot of time.
+Note that the length of first two numbers can't be longer than half of the initial string.
    
 helper function - recursive check substrings 
 add the 2 numbers and see if the sum:
