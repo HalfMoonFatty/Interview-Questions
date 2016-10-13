@@ -60,7 +60,7 @@ class Solution(object):
                             colCache[j] += 1
 
 
-            if grid[i][j] == "0":
-                maxHit = max(maxHit,rowCache+colCache[j])
+                if grid[i][j] == "0":
+                    maxHit = max(maxHit,rowCache+colCache[j])
 
        return maxHit
