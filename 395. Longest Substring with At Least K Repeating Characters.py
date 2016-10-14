@@ -18,21 +18,10 @@ The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated
 
 class Solution(object):
     def longestSubstring(self, s, k):
-        """
-        :type s: str
-        :type k: int
-        :rtype: int
-        """
 
-        if len(s) < k:
-            return 0
-            
+        if len(s) < k: return 0
+
         strset = set(s)
-        
-        # if the least frequent char is larger than k, then the whole string is OK
-        char = min(set(s), key=s.count)
-        if s.count(char) >= k:
-            return len(s)
             
         # split by a least frequent character and make the most out of the splits     
         for char in strset:
@@ -42,7 +31,9 @@ class Solution(object):
                 for t in intervals:
                     longeststr = max(longeststr,self.longestSubstring(t, k))
                 return longeststr
-
+        
+        # if every char is larger than k, then the whole string is OK
+        return len(s)
         
 
         
