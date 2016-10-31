@@ -58,7 +58,7 @@ class Solution(object):
         for i in range(1,len(A)-1):
             if A[i] != A[i - 1]:
                 result += length * (length - 1) / 2
-                length = 1
+                length = 1    # remember to reset length
             else:
                 length += 1
         
