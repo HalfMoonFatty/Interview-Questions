@@ -42,6 +42,7 @@ Time: O(N)
 Space: O(1) in place
 '''
   
+  
 class Solution(object):
     def numberOfArithmeticSlices(self, A):
         """
