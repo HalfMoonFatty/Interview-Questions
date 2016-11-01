@@ -32,9 +32,9 @@ class Solution(object):
         for i in range(len(s)):
 
             mp[ord(s[i])-ord('a')] += 1
-            maxCharCount = max(maxCharCount,mp[ord(s[i])-ord('a')])
+            maxCharCount = max(maxCharCount,mp[ord(s[i])-ord('a')])    # update maxCharCount
 
-            while i-start-maxCharCount+1 > k:  # can be generalized to be k chars
+            while i-start-maxCharCount+1 > k:  
                 mp[ord(s[start])-ord('a')] -= 1
                 start += 1
             maxLen = max(maxLen, i-start+1)
