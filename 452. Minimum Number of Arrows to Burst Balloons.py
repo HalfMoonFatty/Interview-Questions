@@ -19,6 +19,17 @@ One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] 
 '''
 Solution:
 
+
+按照气球的起点排序
+
+变量emin记录当前可以一箭命中的气球终点坐标的最小值，初始化为+∞
+
+遍历排序后的气球起始点坐标s, e
+
+若emin < s，说明当前气球无法用一支箭射中，则令最终结果ans + 1，令emin = current end
+
+否则更新emin = min(emin, e)
+
 Time: O(nlogn) (sorting)
 Space: O(1)
 '''
@@ -31,7 +42,7 @@ class Solution(object):
         """
         if not points: return 0
         
-        numArrow = 1
+        numArrow = 1    # note init as 1
         endmin = sys.maxint
         
         for s, e in sorted(points):
