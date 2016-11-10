@@ -24,7 +24,7 @@ class Solution(object):
         """
         res = 0
         for x1, y1 in points:
-            distmap = collections.defaultdict(int)
+            distmap = collections.defaultdict(int)   # note: cannot use {}, otherwise key error 
             for x2, y2 in points:
                 distmap[(x1 - x2) ** 2 + (y1 - y2) ** 2] += 1
             
