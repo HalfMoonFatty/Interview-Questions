@@ -40,6 +40,48 @@ return: 3
 '''
 
 
+# Solution 1:
+# Time:
+# Space: 
+
+class Solution(object):
+    def minMutation(self, start, end, bank):
+        """
+        :type start: str
+        :type end: str
+        :type bank: List[str]
+        :rtype: int
+        """
+        bankSet = set(bank)
+        visited = set()
+        
+        
+        q = collections.deque()
+        q.append((start,0))    # gene,level
+        visited.add(start)
+
+        
+        while len(q):
+            curr,level = q.popleft()
+            if curr == end:
+                return level
+            for j in range(len(curr)):
+                for char in ['A','C','G','T']:
+                    newStr = curr[:j] + char + curr[j+1:]
+                    if newStr in bankSet and newStr not in visited: 
+                        visited.add(newStr)
+                        q.append((newStr,level+1))
+                            
+        return -1
+                    
+            
+            
+            
+
+
+# Solution 2
+
+
 class Solution(object):
     def minMutation(self, start, end, bank):
         """
