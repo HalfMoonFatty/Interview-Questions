@@ -13,6 +13,13 @@ Note: The sequence of integers will be represented as a string.
 '''
 
 
+'''
+Solution:
+
+Time:O(n)
+Space:O(n)
+'''
+
 
 class Solution(object):
     def countAndSay(self, n):
