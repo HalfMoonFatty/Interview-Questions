@@ -18,3 +18,14 @@ class Solution(object):
         for i in range(32):
             count += (n>>i & 1)
         return count
+
+    
+    
+class Solution:
+
+    def hammingWeight(self, n):
+        ans = 0
+        while n:
+            ans += n & 1
+            n >>= 1
+        return ans
