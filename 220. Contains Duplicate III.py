@@ -1,23 +1,17 @@
 '''
 Problem:
+
 Given an array of integers, find out whether there are two distinct indices i and j in the array such that
 1. the difference between nums[i] and nums[j] is at most t
 2. and the difference between i and j is at most k.
 
-Similar Problems:
-(E) 217 Contains Duplicate
-(E) 219 Contains Duplicate II
-(M) 220 Contains Duplicate III
-
-Company:
-     Palantir
-     Airbnb
 '''
 
 '''
 Solution:
 
-
+Time: O(n)
+Space: O(k)
 '''
 
 class Solution(object):
