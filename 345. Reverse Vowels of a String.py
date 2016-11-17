@@ -27,9 +27,9 @@ class Solution(object):
         l = list(s)
         start, end = 0, len(s) - 1
         while start < end:
-            while not isVowel(l[start]) and start < end:
+            while not isVowel(l[start]) and start < end:    # note: start < end
                 start += 1
-            while not isVowel(l[end]) and end > start:
+            while not isVowel(l[end]) and end > start:    # note: end > start
                 end -= 1
 
             l[start],l[end] = l[end],l[start]
