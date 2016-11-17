@@ -73,7 +73,7 @@ class Solution(object):
             elif nums1[i] > nums2[j]:
                 j += 1
             else:
-                # Before add n to ans check whether ans is empty to avoid index out of boundary
+                # 去重
                 if len(ans) == 0 or ans[-1] != nums1[i]:
                     ans.append(nums1[i])
                 i += 1
