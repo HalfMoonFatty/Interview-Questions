@@ -22,7 +22,7 @@ Return 6.
 Solution: Binary Search
 
 Time: O(logn)
-Space: O(n) (stack for recursion)
+Space: O(1) 
 '''
 
 # The guess API is already defined for you.
@@ -33,16 +33,18 @@ Space: O(n) (stack for recursion)
 class Solution(object):
     def guessNumber(self, n):
         """
-            :type n: int
-            :rtype: int
-            """
-        def guessHelper(start, end):
-            mid = start + (end-start)/2
-            if guess(mid) == 0:
-                return mid
-            if guess(mid) == -1:
-                return guessHelper(start,mid)
-            elif guess(mid) == 1:
-                return guessHelper(mid,end)
-
-        return guessHelper(1,n+1)   # Note the boundary [1,n) of recursion call. So should pass in (1,n+1) to include [1,n]
+        :type n: int
+        :rtype: int
+        """
+        low, hi = 0, n+1
+        while low < hi:
+            mid = low + (hi-low) / 2
+            g = guess(mid)
+            if g == 0:
+                return mid 
+            elif g == -1:
+                hi = mid-1
+            else:
+                low = mid+1
+        return low
+            
