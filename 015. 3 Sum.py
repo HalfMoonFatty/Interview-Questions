@@ -28,7 +28,7 @@ class Solution:
         result = []
         numbers.sort()
         
-        for i in range(len(numbers)-2):
+        for i in range(len(numbers)-2):    # note
             
             # ignore repeated element to avoid duplicate triplet *1
             if i > 0 and numbers[i] == numbers[i-1]: 
