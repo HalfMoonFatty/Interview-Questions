@@ -30,7 +30,7 @@ class Solution:
         
         for i in range(len(numbers)-2):
             
-        	# ignore repeated element to avoid duplicate triplet *1
+            # ignore repeated element to avoid duplicate triplet *1
             if i > 0 and numbers[i] == numbers[i-1]: 
                 continue
             
