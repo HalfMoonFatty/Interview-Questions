@@ -49,6 +49,7 @@ Solution:
 
 '''
 
+
 class Solution(object):
     def intToRoman(self, num):
         """
@@ -62,7 +63,6 @@ class Solution(object):
             if num >= val[i]:
                 count = num/val[i]
                 num%=val[i]
-                for j in range(count):      # note here "j"
-                    res += roman[i]         # here "i"
+                res += roman[i] * count        
 
         return res
