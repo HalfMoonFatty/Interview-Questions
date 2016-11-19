@@ -30,16 +30,38 @@ Solution:
     Space: O(n) space
 '''
 
-class Solution:
-    def romanToInt(self, s):
 
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
         roman_dic = {'I':1,'V':5,'X':10,'L':50, 'C':100,'D':500,'M':1000}
-        strl = list(s)
-        a = [roman_dic.get(v) for v in strl]
-        res = list(a)
+        a = [roman_dic.get(v) for v in s]
+        res = a[:]
         for i,v in enumerate(a):
             if i < len(a)-1 and a[i]<a[i+1]:
                 res[i]=-v
             else:
                 res[i]=v
         return sum(res)
+    
+    
+    
+# Optimization
+# Time: O(n)
+# Space: O(1)
+class Solution(object):
+    def romanToInt(self, s):
+
+        roman_dic = {'I':1,'V':5,'X':10,'L':50, 'C':100,'D':500,'M':1000}
+        prev = 0
+        total = 0
+
+        for c in s:
+            curr = roman_dic[c]
+            total += (curr - 2 * prev) if prev < curr else curr
+            prev = curr
+        return total
+
