@@ -24,8 +24,7 @@ class Solution(object):
         dummy.next = head
 
         # both fast and slow from dummy head
-        fast = dummy
-        slow = dummy
+        fast, slow = dummy, dummy
 
         # move the fast pointer n steps ahead
         for i in range(n):
