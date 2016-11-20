@@ -22,11 +22,10 @@ class Solution(object):
 
         if not head or not head.next:
             return head
-       
-        cur = head
-        next = cur.next
+
         prev = ListNode(-1)  # dummy node
         prev.next = head
+        cur, next = head, cur.next
         newhead = cur.next
        
         while cur and next:
