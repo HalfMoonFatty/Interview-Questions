@@ -34,6 +34,29 @@ class Solution(object):
         maxLen = 0
 
         for i in range(1,len(s)):
+            if s[i] == ")":
+                if s[i - 1] == "(":   # case: "()"
+                    dp[i] = 2 + (dp[i - 2] if i - 2 >= 0 else 0)
+                elif i - 1 - dp[i - 1] >= 0  and s[i - 1 - dp[i - 1]] == '(': # case: "(())" or "()))" any "...))":
+                    dp[i] = 2 + dp[i - 1] + (dp[i - 2 - dp[i - 1]] if i - dp[i - 1] - 2 >= 0 else 0)
+            maxLen = max(maxLen, dp[i])
+
+        return maxLen
+
+    
+    
+    
+'''
+Optimization:
+     case 3 above has already includede case 2. So the code can be further shorten to below.
+'''
+
+class Solution(object):
+    def longestValidParentheses(self, s):
+        dp = [0]*len(s)
+        maxLen = 0
+
+        for i in range(1,len(s)):
             if s[i] == ")" and i - 1 - dp[i - 1] >= 0  and s[i - 1 - dp[i - 1]] == '(': 
                 dp[i] = 2 + dp[i - 1] + (dp[i - 2 - dp[i - 1]] if i - dp[i - 1] - 2 >= 0 else 0)
             maxLen = max(maxLen, dp[i])
