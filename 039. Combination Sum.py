@@ -37,7 +37,6 @@ class Solution:
 
 
         results = []
-        candidates = list(set(candidates))  # note
-        candidates.sort()   
+        candidates = sorted(list(set(candidates)))  # note
         helper(candidates, 0, target, [], results)
         return results
