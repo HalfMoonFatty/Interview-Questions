@@ -74,12 +74,12 @@ class Solution(object):
                     else:
                         while word_map[curstr] > word_count[curstr]:
                             word_map[s[left:left+wordlen]] -= 1
-                            if word_map[s[left:left+wordlen]] < word_count[s[left:left+wordlen]]: finished -= 1
+                            if word_map[s[left:left+wordlen]] < word_count[s[left:left+wordlen]]: 
+                                finished -= 1
                             left += wordlen
  
                     if finished == n:
                         result.append(left)
-                
                         word_map[s[left:left+wordlen]] -= 1
                         finished -= 1
                         left += wordlen
@@ -88,8 +88,6 @@ class Solution(object):
                     word_map.clear()
                     finished = 0
                     left = j+wordlen
-
-
 
         return result 
                 
