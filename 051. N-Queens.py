@@ -41,7 +41,7 @@ class Solution:
 
         def placeQueen (row, res, result):
             if row == n:   # convert list of list to list of string
-                result.append([''.join(line) for line in res])
+                result.append([''.join(r) for r in res])
                 return
             else:
                 for col in range(0,n):
@@ -53,7 +53,7 @@ class Solution:
                 return
 
 
-        res = [['.'for _ in range (0,n)] for i in range (0,n)]
+        res = [['.'for _ in range (n)] for i in range (n)]
         colForRow = [None for i in range(0,n)]
         result = []
         placeQueen(0,res,result)
