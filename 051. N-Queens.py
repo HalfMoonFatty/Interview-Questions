@@ -36,7 +36,7 @@ class Solution(object):
         """
 
         def canPlace(row):
-            for r in range(0, row):
+            for r in range(0, row):    # check previous rows
                 diff = abs(colForRow[r]-colForRow[row])
                 if (diff == 0) or (diff == row-r):
                     return False
