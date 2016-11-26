@@ -28,9 +28,13 @@ For example, There exist two distinct solutions to the 4-queens puzzle:
 # On same Column : ColumnForRow[i] == ColumnForRow[j]
 # On same Diagonal: (ColumnForRow[i] - ColumnForRow[j]) == (i- j) or (ColumnForRow[j] - ColumnForRow[i]) == (i - j)
 
-class Solution:
-    # @return a list of lists of string
+class Solution(object):
     def solveNQueens(self, n):
+        """
+        :type n: int
+        :rtype: List[List[str]]
+        """
+
         def canPlace(row):
             for r in range(0, row):
                 diff = abs(colForRow[r]-colForRow[row])
@@ -53,8 +57,8 @@ class Solution:
                 return
 
 
-        res = [['.'for _ in range (n)] for i in range (n)]
-        colForRow = [None for i in range(0,n)]
+        res = [['.']*n for _ in range (n)]
+        colForRow = [None for _ in range(n)]
         result = []
         placeQueen(0,res,result)
         return result
