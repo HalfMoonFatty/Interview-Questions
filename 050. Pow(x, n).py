@@ -18,7 +18,5 @@ class Solution(object):
             return 1/self.myPow(x,-n)
         
         r = self.myPow(x,n/2)
-        if n%2:
-            return x*r*r
-        else:
-            return r*r
+        return x*r*r if n%2 else r*r
+
