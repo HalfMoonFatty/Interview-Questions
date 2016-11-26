@@ -11,7 +11,6 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-
         def isValid(row):
             for r in range(0, row):
                 diff = abs(colForRow[r]-colForRow[row])
@@ -20,16 +19,18 @@ class Solution(object):
             return True
 
 
-        def countNQueens(row):
+        def countNQueens(row,count):
             if row == n:
-                return 1        # finished one entire game, return 1
-            count = 0
+                count[0] += 1
+                return        
             for col in range(0,n):
                 colForRow[row] = col
                 if isValid(row):
-                    count += countNQueens(row+1)  # add up all possbile solutions in the subtree
-            return count
+                    countNQueens(row+1, count)  
+            return 
 
 
         colForRow = [None for i in range(0,n)]
-        return countNQueens(0)
+        count = [0]
+        countNQueens(0,count)
+        return count[0]
