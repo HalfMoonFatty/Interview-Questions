@@ -48,7 +48,7 @@ class Solution(object):
                 result.append([''.join(r) for r in res])
                 return
             else:
-                for col in range(0,n):
+                for col in range(n):
                     colForRow[row] = col
                     if canPlace(row):   
                         res[row][col]='Q'
