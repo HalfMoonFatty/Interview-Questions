@@ -23,7 +23,7 @@ class Solution(object):
             :rtype: bool
             """
         maxCoverage = 0
-        for i in range(0, len(nums)):
+        for i in range(len(nums)):
             if i > maxCoverage:
                 break
             maxCoverage = max(maxCoverage, i+nums[i])
