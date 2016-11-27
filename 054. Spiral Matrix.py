@@ -46,13 +46,13 @@ class Solution(object):
             colEnd -= 1
 
             # Scan the bottom row:
-            if rowBegin <= rowEnd:
+            if rowBegin <= rowEnd:    # check !!!
                 for j in range(colEnd, colBegin-1, -1):
                     res.append(matrix[rowEnd][j])
             rowEnd -= 1
 
             # Scan the left col:
-            if colBegin <= colEnd:
+            if colBegin <= colEnd:    # check !!!
                 for i in range(rowEnd, rowBegin-1, -1):
                     res.append(matrix[i][colBegin])
             colBegin += 1
