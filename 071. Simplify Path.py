@@ -21,12 +21,11 @@ class Solution(object):
         for w in word:
             if w == "." or w == '':
                 continue
-            if w == "..":
+            elif w == "..":
                 if stack:
-                    stack.pop()    #pop out the dirname
-                continue
+                    stack.pop()    # pop out the dirname
             else:
                 stack.append(w)
 
         result = "/".join(stack)
-        return "/"+result
+        return "/"+result    # note
