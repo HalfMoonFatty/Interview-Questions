@@ -26,12 +26,12 @@ class Solution(object):
         m,n = len(obstacleGrid),len(obstacleGrid[0])
 
         dp = [[0]*(n+1) for _ in range (m+1)]
-        dp[1][1] = 1 if obstacleGrid[0][0] != 1 else 0
+        dp[1][1] = 1 if obstacleGrid[0][0] != 1 else 0    # note
         
         for i in range(1,m+1):
             for j in range(1,n+1):
                 if obstacleGrid[i-1][j-1] == 1:    
                     dp[i][j] = 0          
-                elif not (i == 1 and j == 1):    # Note: do not overwrite start point
+                elif not (i == 1 and j == 1):    # note: do not overwrite start point
                     dp[i][j] = dp[i-1][j] + dp[i][j-1] 
         return dp[-1][-1]
