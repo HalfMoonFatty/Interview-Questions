@@ -32,6 +32,6 @@ class Solution(object):
             for j in range(1,n+1):
                 if obstacleGrid[i-1][j-1] == 1:    
                     dp[i][j] = 0          
-                elif not (i== 1 and j == 1):    # Note: do not overwrite start point
+                elif not (i == 1 and j == 1):    # Note: do not overwrite start point
                     dp[i][j] = dp[i-1][j] + dp[i][j-1] 
         return dp[-1][-1]
