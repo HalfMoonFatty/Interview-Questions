@@ -64,7 +64,8 @@ class Solution(object):
         
         # top-down
         for i in range(m):
-            if matrix[i][0] == 0: col0 = 0   
+            if matrix[i][0] == 0: 
+                col0 = 0   
             for j in range(1,n):        # j count up from 1
                 if matrix[i][j] == 0:
                     matrix[i][0] = matrix[0][j] = 0
@@ -74,6 +75,7 @@ class Solution(object):
             for j in range(n-1,0,-1):   # j count down to 1
                 if matrix[i][0] == 0 or matrix[0][j] == 0:
                     matrix[i][j] = 0
-            if col0 == 0: matrix[i][0] = 0  
+            if col0 == 0: 
+                matrix[i][0] = 0  
         return        
     
