@@ -29,10 +29,11 @@ class Solution(object):
             val1 = 0 if index1 < 0 else int(a[index1])
             val2 = 0 if index2 < 0 else int(b[index2])
             val = val1 + val2 + carry
+            
             carry = val/2
             val %= 2  # note
-
             res =str(val)+res
+            
             index1 -= 1
             index2 -= 1
  
