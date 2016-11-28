@@ -37,10 +37,10 @@ class Solution:
    
         val += l1.val if l1 else 0
         val += l2.val if l2 else 0
-        sum = val + carry
-       
-        val = sum%10
-        carry = sum/10
+        val += carry
+        
+        carry = val/10
+        val %= 10
         node = ListNode(val)
        
         arg1 = None if not l1 else l1.next
