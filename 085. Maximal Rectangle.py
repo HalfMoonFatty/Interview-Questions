@@ -32,7 +32,7 @@ class Solution(object):
                     else: height[j] = 0  # reset height back to 0
 
                 # calculate maxArea
-                while len(index)>0 and height[index[-1]] > height[j]:
+                while len(index)>0 and height[index[-1]] >= height[j]:
                     h = height[index.pop()]    
                     if len(index) > 0: startInd = index[-1] 
                     else: startInd = -1
