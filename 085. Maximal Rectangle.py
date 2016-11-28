@@ -21,12 +21,12 @@ class Solution(object):
         if not matrix: return 0
         m,n = len(matrix),len(matrix[0])
 
-        height = [0]*(n+1)
+        height = [0]*(n+1)     # height[n+1] is sentinel node
         maxArea = 0
 
         for i in range(m):
             index = []
-            for j in range(n+1):  # NOTE n+1
+            for j in range(n+1):  # Note n+1
                 if j < n:
                     if matrix[i][j] == '1': height[j] += 1
                     else: height[j] = 0  # reset height back to 0
