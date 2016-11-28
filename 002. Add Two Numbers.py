@@ -31,13 +31,13 @@ class Solution:
    
    
     def add2Num(self,l1,l2,carry):
-        val = 0
+
         if not l1 and not l2:
             return None if carry == 0 else ListNode(carry)
    
-        val += l1.val if l1 else 0
-        val += l2.val if l2 else 0
-        val += carry
+        val1 = l1.val if l1 else 0
+        val2 = l2.val if l2 else 0
+        val = val1 + val2 + carry
         
         carry = val/10
         val %= 10
