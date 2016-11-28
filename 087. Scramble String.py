@@ -53,12 +53,9 @@ Space: O(n)
 class Solution:
     def isScramble(self, s1, s2):
     
+	if s1==s2: return True
         if len(s1)!=len(s2): return False
-        if s1==s2: return True
-        
-        l1=list(s1); l2=list(s2)
-        l1.sort();l2.sort()
-        if l1!=l2: return False
+        if sorted(list(s1)) != sorted(list(s2)): return False
         
         length=len(s1)
         for i in range(1,length):
