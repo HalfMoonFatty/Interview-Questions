@@ -34,18 +34,13 @@ class Solution(object):
 
             # reach leaf node
             elif not root.left and not root.right:
-                sum -= root.val
-                if sum == 0: # valid path, add to the results
+                if sum - root.val== 0: # valid path, add to the results
                     path.append(root.val)
                     result.append(path[:])
-                else:
-                    return # not valid path
-
             else:
-                sum -= root.val
                 path.append(root.val)
-                findPath(root.left,sum,path[:],result)
-                findPath(root.right,sum,path[:],result)
+                findPath(root.left,sum-root.val,path[:],result)
+                findPath(root.right,sum-root.val,path[:],result)
 
 
         result = []
