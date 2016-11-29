@@ -49,34 +49,40 @@ class Solution(object):
 
 # Solution 2: Iterative
 
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution(object):
-
-    def __init__(self):
-        self.result = []
-
     def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
 
         if not root:
-            return self.result
+            return []
 
-        self.result.append([root])
+        result = [[root]]
         last_level = 0
 
-        while self.result[-1]:
+        while result[-1]:
             next_level = []
-            for j in range(len(self.result[last_level])):
-                node = self.result[last_level][j]
+            for j in range(len(result[last_level])):
+                node = result[last_level][j]
                 if node.left:
                     next_level.append(node.left)
                 if node.right:
                     next_level.append(node.right)
                 # replace current node with only its value
-                self.result[last_level][j] = node.val
-
+                result[last_level][j] = node.val
 
             if not next_level:
                 break
-            self.result.append(next_level)
+            result.append(next_level)
             last_level += 1
 
-        return self.result
+        return result
