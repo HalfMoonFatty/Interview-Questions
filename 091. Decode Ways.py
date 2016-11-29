@@ -41,7 +41,7 @@ class Solution:
         for i in range(2,len(dp)):
             if s[i-1] != '0': dp[i] = dp[i-1]
             if isValid(s[i-2:i]): dp[i] += dp[i-2]
-            if dp[i] == 0: return 0 # note: early return
+            
         return dp[-1]
             
             
