@@ -24,9 +24,9 @@ class Solution(object):
         height = [0]*(n+1)     # height[n+1] is sentinel node
         maxArea = 0
 
-        for i in range(m):
+        for i in range(m):    # i iterate through number of rows
             index = []
-            for j in range(n+1):  # Note n+1
+            for j in range(n+1):  # Note n+1 as j iterate through height
                 if j < n:
                     if matrix[i][j] == '1': height[j] += 1
                     else: height[j] = 0  # reset height back to 0
