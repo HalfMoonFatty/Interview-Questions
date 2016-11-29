@@ -30,7 +30,7 @@ class Solution(object):
                 return None
 
             # search root in inorder array, if not found return -1
-            rootIndex = inorder.index(preorder[e2],s1, e1+1)
+            rootIndex = inorder.index(postorder[e2],s1, e1+1)
             if rootIndex == -1: return None
 
             # calculate the index range of inorder array
