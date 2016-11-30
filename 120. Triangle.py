@@ -29,16 +29,18 @@ Space: O(n)
 
 class Solution(object):
     def minimumTotal(self, triangle):
+        """
+        :type triangle: List[List[int]]
+        :rtype: int
+        """
 
         if len(triangle) < 2:
             return triangle[0][0]
 
-        lastrow = [0 for i in range(len(triangle[-1]))]
-        for i in range(len(triangle[-1])):
-            lastrow[i] = triangle[-1][i]
+        lastrow = triangle[-1][:]
 
         # from the 2nd last row:
         for i in range(len(triangle)-2, -1, -1):
             for j in range(len(triangle[i])):
                 lastrow[j] = triangle[i][j] + min(lastrow[j],lastrow[j+1])
-        return lastrow[0]        
+        return lastrow[0]    
