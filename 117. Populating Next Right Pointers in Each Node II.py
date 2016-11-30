@@ -30,25 +30,36 @@ After calling your function, the tree should look like:
 
 # Solution: Use dummy head
 
-class Solution(object):
+# Definition for binary tree with next pointer.
+# class TreeLinkNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+#         self.next = None
 
+class Solution:
+    # @param root, a tree link node
+    # @return nothing
     def connect(self, root):
-
+        
         if not root: return None
+        
         root.next = None
-
-        while root:
-            dummy = TreeLinkNode(0)
+        
+        itr = root
+        while itr:   # if current level is not empty
+            dummy = TreeLinkNode(-1)
             nextL = dummy
-            # connect nodes for the next level
-            while root:
-                if root.left:
-                    nextL.next = root.left
+            # connect next level
+            while itr:
+                if itr.left: 
+                    nextL.next = itr.left
                     nextL = nextL.next
-                if root.right:
-                    nextL.next = root.right
+                if itr.right:
+                    nextL.next = itr.right
                     nextL = nextL.next
-                root = root.next
+                itr = itr.next
             # move to next level
-            root = dummy.next
-        return
+            itr = dummy.next
+        return 
