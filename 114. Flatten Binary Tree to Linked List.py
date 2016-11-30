@@ -46,7 +46,7 @@ class Solution(object):
                 root.right = root.left
                 root.left = None
 
-            # right tail first, needed to be reconnected
+            # right tail first, needed to be reconnected e.g. node 4
             if rightTail:
                 return rightTail
             else:
