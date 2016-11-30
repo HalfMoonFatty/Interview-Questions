@@ -34,7 +34,7 @@ class Solution(object):
         res = [[] for _ in range(numRows)]
         res[0] = [1]
 
-        for i in range(1,numRows):
+        for i in range(1,numRows):    # note: from 1
             res[i].append(1)
             for j in range(len(res[i-1])-1):
                 newelem = res[i-1][j]+res[i-1][j+1]
