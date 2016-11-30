@@ -19,8 +19,8 @@ dp[i][j] represents the number of solutions of aligning substring T[0..i] with S
 i == 0: dp[0][j] = 1, since aligning T = "" with any substring of S would have only 1 solution which is to delete all chars in S.
 
 i > 0: dp[i][j] can be derived by two cases:
-     case 1). if T[i] != S[j]: dp[i][j] = dp[i][j-1].
-     case 2). if T[i] == S[j]: dp[i][j] = dp[i][j-1] + d[i-1][j-1]
+     case 1). if T[i] != S[j]: dp[i][j] = dp[i][j-1] then the solution would be to ignore the character S[j] and align substring T[0..i] with S[0..(j-1)]. Therefore, dp[i][j] = dp[i][j-1].
+     case 2). if T[i] == S[j]: dp[i][j] = dp[i][j-1] + d[i-1][j-1] , then first we could adopt the solution in case 1), but also we could match the characters T[i] and S[j] and align the rest of them (i.e. T[0..(i-1)] and S[0..(j-1)]. As a result, dp[i][j] = dp[i][j-1] + dp[i-1][j-1]
 '''
 
 class Solution(object):
