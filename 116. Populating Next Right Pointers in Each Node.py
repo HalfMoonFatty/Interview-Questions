@@ -57,10 +57,10 @@ class Solution(object):
         curr.next = None
 
         while curr and curr.left:
-            itr = curr
+            itr = curr    # itrate through current level
             while itr:
                 itr.left.next = itr.right
                 if itr.next: itr.right.next = itr.next.left
                 itr = itr.next
-            curr = curr.left
+            curr = curr.left    # go to next level
         return
