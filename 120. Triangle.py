@@ -27,6 +27,31 @@ Space: O(n)
 '''
 
 
+
+class Solution(object):
+    def minimumTotal(self, triangle):
+        """
+        :type triangle: List[List[int]]
+        :rtype: int
+        """
+
+        if len(triangle) < 2:
+            return triangle[0][0]
+
+        lastrow = triangle[-1][:]
+
+        # from the 2nd last row:
+        for i in range(len(triangle)-2, -1, -1):
+            currow = [0] * len(triangle[i])
+            for j in range(len(triangle[i])):
+                currow[j] = triangle[i][j] + min(lastrow[j],lastrow[j+1])
+            lastrow = currow
+        return lastrow[0]
+
+	
+	
+# can be optimized to not using current row
+
 class Solution(object):
     def minimumTotal(self, triangle):
         """
