@@ -49,7 +49,7 @@ class Solution(object):
                     slope_mp[k] = slope_mp.get(k,0) + 1
                     nSlp = max(nSlp,slope_mp[k])
 
-            # nMax = max(nSlp,nInf) + nDup + itself
+            # nMax = max(nSlp) + nSame + itself
             nMax = nSlp + nSame + 1
             maxPts = max(maxPts,nMax)
 
