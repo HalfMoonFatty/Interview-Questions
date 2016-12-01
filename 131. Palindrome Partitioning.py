@@ -14,6 +14,8 @@ Return
 ]
 '''
 
+
+
 class Solution(object):
     def partition(self, s):
 
@@ -26,15 +28,19 @@ class Solution(object):
             return True
 
         def getPart(s,start,res,results):
-            if start == len(s)::
+            if start == len(s):
                 results.append(res[:])
+                return
             else:
                 for i in range(start,len(s)):
                     if isValid(s,start,i):
                         res.append(s[start:i+1])
                         getPart(s,i+1,res,results)
                         res.pop()
-            return results
 
+                        
         results = []
-        return getPart(s,0,[],[])
+        getPart(s,0,[],results)
+        return results
+    
+    
