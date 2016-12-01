@@ -12,6 +12,9 @@ set(key, value) - Set or insert the value if the key is not already present. Whe
 '''
 Solution 1: dict + deque
 
+cache:    只存key. 用来排序, 唯一用途是等到满的时候把Least Frequent Use key 踢出去.
+cacheMap: 存真正的key-value pair. set/get 都是往map里存.
+
 '''
 
 class LRUCache(object):
