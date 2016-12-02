@@ -29,7 +29,7 @@ class Solution(object):
         start = len(s)-1
         
         while start >= 0:
-            # get rid of continuous spaces
+            # skip continuous spaces
             if s[start] == ' ':
                 start -= 1
                 continue
