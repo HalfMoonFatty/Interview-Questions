@@ -31,23 +31,23 @@ Note:
 class Solution(object):
     def findWords(self, board, words):
 
-        def dfsSearch(trie, r, c, string, results):
+        def dfsSearch(node, r, c, string, results):
             # boundary or visited
             if r>len(board)-1 or c>len(board[0])-1 or r<0 or c<0 or visited[r][c]:
                 return
 
             # check trie
             cur = board[r][c]
-            if not trie.children.has_key(cur):
+            if not node.children.has_key(cur):
                 return
-            if trie.children[cur].isWord:
+            if node.children[cur].isWord:
                 results.add(string+cur)
                 
             visited[r][c] = True
-            dfsSearch(trie.children[cur], r-1, c, string+cur, results)
-            dfsSearch(trie.children[cur], r+1, c, string+cur, results)
-            dfsSearch(trie.children[cur], r, c-1, string+cur, results)
-            dfsSearch(trie.children[cur], r, c+1, string+cur, results)
+            dfsSearch(node.children[cur], r-1, c, string+cur, results)
+            dfsSearch(node.children[cur], r+1, c, string+cur, results)
+            dfsSearch(node.children[cur], r, c-1, string+cur, results)
+            dfsSearch(node.children[cur], r, c+1, string+cur, results)
             visited[r][c] = False
             return
 
