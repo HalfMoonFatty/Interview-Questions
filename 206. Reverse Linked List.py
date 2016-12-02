@@ -32,8 +32,10 @@ class Solution(object):
 class Solution:
 
     def reverseList(self, head):
+        # base case
         if not head or not head.next:
             return head
+        
         p = head
         r = None
         while p:
