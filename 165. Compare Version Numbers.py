@@ -19,6 +19,7 @@ Time: O(M+N)
 Space: O(M+N)
 '''
 
+
 class Solution(object):
     def compareVersion(self, version1, version2):
         """
@@ -29,8 +30,7 @@ class Solution(object):
         l1 = version1.split('.')
         l2 = version2.split('.')
 
-        i = 0
-        j = 0
+        i = j = 0
 
         while i < len(l1) and j < len(l2):
             if int(l1[i]) == int(l2[j]):
