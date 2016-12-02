@@ -28,7 +28,7 @@ class Solution(object):
     def canFinish(self, numCourses, prerequisites):
 
         def graph_indegree():
-            graph = {i:[] for i in range(numCourses)}
+            graph = collections.defaultdict(list)
             indegree = [0]*numCourses
             for p in prerequisites:
                 graph[p[1]].append(p[0])
