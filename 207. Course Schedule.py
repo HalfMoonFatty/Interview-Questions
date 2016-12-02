@@ -41,7 +41,7 @@ class Solution(object):
             
         graph, indegree = graph_indegree()
         q = deque()
-        count = 0
+        count = 0    # note
         
         for i in range(len(indegree)):
             if indegree[i] == 0:
