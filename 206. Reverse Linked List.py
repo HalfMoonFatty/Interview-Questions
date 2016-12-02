@@ -15,21 +15,14 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        # base case:
+        # base case
         if not head or not head.next:
             return head
-
-        # divide the list
-        first = head
-        rest = first.next
-
-        # reverse the rest of the linked list and remember the newhead
-        newHead = self.reverseList(rest)
-
-        # reverse the current node
-        first.next.next = first
-        first.next = None
-
+        
+        newHead = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None    # note
+        
         return newHead
         
         
