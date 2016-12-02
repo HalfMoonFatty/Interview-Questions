@@ -31,8 +31,8 @@ class Solution(object):
             graph = {i:[] for i in range(numCourses)}
             indegree = [0]*numCourses
             for p in prerequisites:
-                graph[p[0]].append(p[1])
-                indegree[p[1]] += 1
+                graph[p[1]].append(p[0])
+                indegree[p[0]] += 1
             return graph, indegree
 
 
