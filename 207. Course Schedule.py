@@ -56,12 +56,13 @@ class Solution(object):
                     if indegree[nei] == 0:
                         q.append(nei)
                         count += 1
-                del graph[cur]
+                del graph[cur]    # note
         
         return count == numCourses
         
         
         
+		
  # Solution 2: DFS detect cycle
  
  class Solution(object):
