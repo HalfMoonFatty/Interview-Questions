@@ -64,11 +64,11 @@ class Solution(object):
         def merge(list1, list2):
             newhead = list1
 
-            tail = list1
+            itr = list1
             list1 = list1.next
             while list2:
-                tail.next = list2
-                tail = tail.next
+                itr.next = list2
+                itr = itr.next
                 list2 = list2.next
                 # if list 1 is not empty switch list1 with list2
                 if list1:
