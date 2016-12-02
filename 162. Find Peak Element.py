@@ -46,8 +46,7 @@ class Solution(object):
                 end = mid-1
             else:
                 start = mid+1
-        return
-
+        return None
 
 
 
