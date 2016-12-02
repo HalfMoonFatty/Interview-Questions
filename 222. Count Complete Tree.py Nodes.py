@@ -30,8 +30,6 @@ class Solution(object):
 
         # normal cases: have left and right child
         lh = height(root.left)
-        if lh == 0:
-            return 0
         rh = height(root.right)
         if rh == lh:
             return 1 + int(math.pow(2,lh))-1 + self.countNodes(root.right)
