@@ -15,16 +15,17 @@ Space Complexity O(1)
 
 class Solution:
     def containsNearbyDuplicate(self, nums, k):
-        k = min(len(nums),k)
+        k = min(len(nums),k)    # note
         for i in range(len(nums)-k+1):
             j = i+1
-            while j<=i+k and j < len(nums):
+            while j<=i+k and j < len(nums):    # note
                 if nums[j] == nums[i]:
                     return True
                 j += 1
         return False
         
 
+        
 
 '''
 Solution 2: 
