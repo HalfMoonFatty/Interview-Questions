@@ -34,17 +34,14 @@ class Solution(object):
     def alienOrder(self, words):
 
         def make_graph(words):
-            graph = {}
-            indegree = {}
+            graph = collections.defaultdict(list)
+            indegree = collections.defaultdict(int)
             for i in range(len(words)-1):
                 for j in range(min(len(words[i]),len(words[i+1]))):
                     if words[i][j] != words[i+1][j]:
                         start,end = words[i][j],words[i+1][j]
-
-                        graph[start] = graph.get(start,[])
                         graph[start].append(end)
-
-                        indegree[end] = indegree.get(end,0) + 1
+                        indegree[end] += 1
                         break
                
             return graph,indegree
