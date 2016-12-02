@@ -36,8 +36,8 @@ class Solution(object):
         def make_graph(words):
             graph = collections.defaultdict(list)
             indegree = collections.defaultdict(int)
-            for i in range(len(words)-1):
-                for j in range(min(len(words[i]),len(words[i+1]))):
+            for i in range(len(words)-1):    # note
+                for j in range(min(len(words[i]),len(words[i+1]))):    # note
                     if words[i][j] != words[i+1][j]:
                         start,end = words[i][j],words[i+1][j]
                         graph[start].append(end)
@@ -49,8 +49,8 @@ class Solution(object):
        
         # topological sort
         graph,indegree = make_graph(words)
-        chars = set(''.join(words))
-        free = deque(chars - set(indegree.keys()))
+        chars = set(''.join(words))    # note
+        free = deque(chars - set(indegree.keys()))    # note
         ans = ''
        
         while len(free):
