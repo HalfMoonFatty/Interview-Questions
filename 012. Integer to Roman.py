@@ -62,7 +62,7 @@ class Solution(object):
         for i in range(13):
             if num >= val[i]:
                 count = num/val[i]
-                num%=val[i]
+                num %= val[i]
                 res += roman[i] * count        
 
         return res
