@@ -28,19 +28,16 @@ class Solution(object):
             """
 
         def findPath(root, sum, path, result):
-           # base case
             if not root:
                 return
 
-            # reach leaf node
             elif not root.left and not root.right:
                 if sum - root.val== 0: # valid path, add to the results
                     path.append(root.val)
                     result.append(path[:])
             else:
-                path.append(root.val)
-                findPath(root.left,sum-root.val,path[:],result)
-                findPath(root.right,sum-root.val,path[:],result)
+                findPath(root.left,sum-root.val,path+[root.val],result)
+                findPath(root.right,sum-root.val,path+[root.val],result)
 
 
         result = []
