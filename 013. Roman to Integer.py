@@ -38,13 +38,13 @@ class Solution(object):
         :rtype: int
         """
         roman_dic = {'I':1,'V':5,'X':10,'L':50, 'C':100,'D':500,'M':1000}
-        a = [roman_dic.get(v) for v in s]
-        res = a[:]
-        for i,v in enumerate(a):
-            if i < len(a)-1 and a[i]<a[i+1]:
-                res[i]=-v
+        vals = [roman_dic.get(v) for v in s]
+        res = vals[:]
+        for i in range(len(vals)):
+            if i < len(vals)-1 and vals[i] < vals[i+1]:
+                res[i] = -vals[i]
             else:
-                res[i]=v
+                res[i] = vals[i]
         return sum(res)
     
     
