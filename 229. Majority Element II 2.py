@@ -8,7 +8,7 @@ class Solution(object):
             :rtype: List[int]
             """
         def KmajorityElem(nums, k):
-            if not nums or len(nums)<k:
+            if not nums or len(nums) < k:
                 return list(set(nums))
     
             candidatelist = []
