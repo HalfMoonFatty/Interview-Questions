@@ -26,12 +26,10 @@ until the new element is at the front (i.e., size-1 times move the front element
 
 class Stack(object):
     def __init__(self):
-
         self.queue = collections.deque()
 
 
     def push(self, x):
-
         self.queue.append(x)
         for i in range(len(self.queue)-1):
             self.queue.append(self.queue.popleft())
@@ -39,15 +37,12 @@ class Stack(object):
 
 
     def pop(self):        
-
         return self.queue.popleft()
 
 
     def top(self):
-
         return self.queue[0]
 
 
     def empty(self):
-
         return len(self.queue) == 0
