@@ -31,13 +31,13 @@ class Solution(object):
             if not root or count[0] > k :
                 return 
 
-            val = inOrder(root.left, k, count, result)
+            inOrder(root.left, k, count, result)
 
             count[0] += 1
             if count[0] == k:
                 result[0] = root.val
 
-            val = inOrder(root.right, k, count, result)
+            inOrder(root.right, k, count, result)
 
 
         result = [0]
