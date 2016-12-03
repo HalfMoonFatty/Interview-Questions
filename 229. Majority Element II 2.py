@@ -17,7 +17,7 @@ class Solution(object):
                 if n in candidatelist:
                     candidates[n] += 1
                 else:
-                    if len(candidatelist)<k: # candidates is not full
+                    if len(candidatelist) < k: # candidates is not full
                         candidatelist.append(n)
                         candidates[n] = 1
                     else:
