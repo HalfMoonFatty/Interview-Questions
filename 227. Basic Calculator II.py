@@ -33,7 +33,7 @@ class Solution(object):
             if s[i].isdigit():
                 number += s[i]
 
-            if (s[i] in ["+","-","*","/"]) or (i == len(s)-1):
+            if (s[i] in ["+","-","*","/"]) or (i == len(s)-1):    # 看见operator说明刚刚的number已经结束了
                 if sign == "+":
                     stack.append(int(number))
                 elif sign == "-":
@@ -41,7 +41,7 @@ class Solution(object):
                 elif sign == "*":
                     stack.append(stack.pop()*int(number))
                 else: # sign == '/'
-                    stack.append(int(float(stack.pop())/float(number)))
+                    stack.append(int(float(stack.pop())/float(number)))   # note float
                     
                 sign = s[i]
                 number = ''
