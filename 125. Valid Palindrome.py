@@ -20,8 +20,7 @@ class Solution(object):
         if not (s.strip()) or len(s) ==1:
             return True
 
-        start = 0
-        end = len(s)-1
+        start,end = 0, len(s)-1
         while start<=end:
             if s[start].upper() == s[end].upper():
                 start += 1
