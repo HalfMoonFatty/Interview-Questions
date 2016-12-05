@@ -56,7 +56,7 @@ class Solution(object):
                     if indegree[nei] == 0:
                         q.append(nei)
                         count += 1
-                del graph[cur]    # note
+                # del graph[cur]    # note
         
         return count == numCourses
         
