@@ -15,11 +15,11 @@ class Solution(object):
         candidate = nums[0]
         count = 0
         for elem in nums:
-            if count == 0:
-                candidate = elem
+            if candidate == elem:
                 count += 1
             else:
-                if candidate == elem:
+                if count == 0:
+                    candidate = elem
                     count += 1
                 else:
                     count -= 1
