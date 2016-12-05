@@ -17,7 +17,7 @@ In Java, create an interface called Operator and map each operator string to an 
 
 '''
 
-from sets import Set
+
 class Solution(object):
     def evalRPN(self, tokens):
         """
@@ -31,7 +31,7 @@ class Solution(object):
             else: return int(num1/num2)
 
 
-        operators = Set(["+","-","*","/"])
+        operators = set(["+","-","*","/"])
         stack = []
         for token in tokens:
             if token in operators:
