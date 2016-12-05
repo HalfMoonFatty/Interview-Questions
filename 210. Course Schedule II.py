@@ -71,7 +71,7 @@ class Solution(object):
                         q.append(nei)
                         count += 1
                         order.append(nei)
-                del graph[cur]
+                # del graph[cur]
                 
         return order if count == numCourses else []
         
