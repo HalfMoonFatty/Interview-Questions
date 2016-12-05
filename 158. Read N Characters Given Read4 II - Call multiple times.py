@@ -26,6 +26,7 @@ Solution:
 '''
 
 
+
 # The read4 API is already defined for you.
 # @param buf, a list of characters
 # @return an integer
@@ -35,7 +36,8 @@ class Solution(object):
     def __init__(self):
         self.buff = [None]*4
         self.buffPtr = 0
-        self.offset = 0
+        self.ndata = 0
+        self.globalPtr = 0
 
 
     def read(self, buf, n):
@@ -44,25 +46,26 @@ class Solution(object):
             :type n: Maximum number of characters to read (int)
             :rtype: The number of characters read (int)
             """
-        globalPtr = 0
-        while globalPtr < n:
+        
+        while self.globalPtr < n:
          
             # no more data in the internal buffer, need to read in new data
-            if self.offset == 0:
-                self.buffPtr = read4(self.buff)
+            if self.buffPtr == 0:
+                self.ndata = read4(self.buff)
 
             # have nothing to read-in
-            if self.buffPtr == 0:
+            if self.ndata == 0:
                 break
 
             # 搬砖ing, 一次搬4块
-            while globalPtr < n and self.offset < self.buffPtr:    # note loop condition
-                buf[globalPtr] = self.buff[self.offset]
-                self.offset += 1
-                globalPtr += 1
+            while self.globalPtr < n and self.buffPtr < self.ndata:    # note loop condition
+                buf[self.globalPtr] = self.buff[self.buffPtr]
+                self.buffPtr += 1
+                self.globalPtr += 1
 
-            # drained up the internal buffer, reset the offset to 0
-            if self.offset >= self.buffPtr:
-                self.offset = 0
+            # drained up the internal buffer, reset the buffPtr to 0
+            if self.buffPtr >= self.ndata:
+                self.buffPtr = 0
 
-        return globalPtr
+        return self.globalPtr
+
