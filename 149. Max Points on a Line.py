@@ -26,8 +26,7 @@ class Solution(object):
             if node1.x == node2.x:    # slope is infinite
                 return None
             else:
-                slope = float((node2.y - node1.y)) / float((node2.x - node1.x))
-                return slope
+                return float((node2.y - node1.y)) / float((node2.x - node1.x))
         
         
         
