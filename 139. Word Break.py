@@ -24,8 +24,9 @@ class Solution(object):
        
         return dp[-1]
         
+		
+    
    
-        
 # Solution 2 Backtracking
 class Solution(object):
     def wordBreak(self, s, wordDict):
