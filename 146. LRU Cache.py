@@ -9,6 +9,7 @@ set(key, value) - Set or insert the value if the key is not already present. Whe
 此题没有什么高深算法，但是需要记住步骤和思路：背。
 '''
 
+
 '''
 Solution 1: dict + deque
 
@@ -16,6 +17,8 @@ cache:    只存key. 用来排序, 唯一用途是等到满的时候把Least Fre
 cacheMap: 存真正的key-value pair. set/get 都是往map里存.
 
 '''
+
+
 
 class LRUCache(object):
 
@@ -36,16 +39,20 @@ class LRUCache(object):
 
 
     def set(self, key, value):
-        # remove key
+        # if key exist
         if self.cacheMap.has_key(key):
             self.cache.remove(key)
-        # remove an item (oldest) if cache is full
-        elif len(self.cacheMap) == self.capacity:
-            last = self.cache.popleft()
-            del self.cacheMap[last]
+            self.cache.append(key)
+            self.cacheMap[key] = value
             
-        self.cache.append(key)
-        self.cacheMap[key] = value
+        # key does not exist
+        else:
+            if len(self.cache) == self.capacity:
+                last = self.cache.popleft()
+                del self.cacheMap[last]
+            self.cache.append(key)
+            self.cacheMap[key] = value
+
 
 
 
