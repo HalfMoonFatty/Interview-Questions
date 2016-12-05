@@ -35,11 +35,11 @@ class Solution(object):
         minCuts = [0]*(n+1)
         for i in range(n+1): minCuts[i] = i-1
 
-        for j in range(1,n):
-            for i in range(j,-1,-1):
-                if s[i] == s[j] and (j-i<2 or isPal[i+1][j-1]):
-                    isPal[i][j] = True
-                    minCuts[j+1] = min(minCuts[j+1], 1 + minCuts[i])
+        for i in range(1,n+1):
+            for j in range(i-1,-1,-1):
+                if s[j] == s[i-1] and (i-1-j<2 or isPal[j+1][i-2]):
+                    isPal[j][i-1] = True
+                    minCuts[i] = min(minCuts[i], 1 + minCuts[j])
 
         return minCuts[-1]
 
