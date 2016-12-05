@@ -30,8 +30,8 @@ class BSTIterator:
             node = node.left
 
     def hasNext(self):
-        return self.stack
-
+        return len(self.stack) > 0
+    
     def next(self):
         top = self.stack.pop()
         self.pushLeft(top.right)
