@@ -40,10 +40,27 @@ class Solution(object):
 
         return output
 
+
+
+
 '''
 Solution 2:
 	Time O(n)
 	Space O(1)
+	
+	
+	Example:
+	nums = [1,2,3,4]
+	----------------------------------------------------------
+	iteration     #0          #1          #2          #3
+	fromLeft       1           2           6          24
+	fromRight      4          12          24          24
+	output    [1,1,1,1]   [1,1,4,1]  [1,12,8,1]   [24,12,8,6]
+	----------------------------------------------------------
+	output = [24,12,8,6]
+	fromLeft and fromRight will mutiplies from 2 directions and leave their multiplied results there 
+	and then they will cross-over each other and PICK-UP the "left values” and multiply the value (mums[i]) with that “left-over” value
+
 '''
 
 class Solution(object):
