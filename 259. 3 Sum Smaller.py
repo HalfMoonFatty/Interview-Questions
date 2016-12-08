@@ -1,10 +1,10 @@
 '''
 Problem:
 
-	Given an array of n integers nums and a target, find the number of index triplets i, j, k 
-	with 0 <= i < j < k < n that satisfy the condition nums[i]+ nums[j] + nums[k] < target.
+    Given an array of n integers nums and a target, find the number of index triplets i, j, k 
+    with 0 <= i < j < k < n that satisfy the condition nums[i]+ nums[j] + nums[k] < target.
 
-	For example,
+    For example,
     given nums = [-2, 0, 1, 3], and target = 2.
     Return 2. Because there are two triplets which sums are less than 2:
     [-2, 0, 1]
@@ -18,7 +18,7 @@ Follow up:
 Solution:
 
     这题有一个题目没有说清楚的地方是, 重复的解答都要计算在内, 比如说:
-	[0, 1, 1, 1], target = 3, 这样算3个解答 [index[0] , index[1], index[2]]   [index[0], index[1], index[3]] [index[0], index[2], index[3]]
+    [0, 1, 1, 1], target = 3, 这样算3个解答 [index[0] , index[1], index[2]]   [index[0], index[1], index[3]] [index[0], index[2], index[3]]
 
 '''
 
