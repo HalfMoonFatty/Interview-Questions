@@ -5,6 +5,10 @@ Given an array of numbers, verify whether it is the correct preorder traversal s
 You may assume each number in the sequence is unique.
 
 Follow up: Could you do it using only constant space complexity?
+
+Example:
+5/
+214
 '''
 
 # lower_bound is the root of left sbutree
