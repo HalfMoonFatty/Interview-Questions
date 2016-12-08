@@ -7,8 +7,14 @@ You may assume each number in the sequence is unique.
 Follow up: Could you do it using only constant space complexity?
 
 Example:
-5/
-214
+      5
+     / \
+    2   6
+   / \   \
+  1   4   7
+  
+Preorder: 5->2->1->4->6->7
+Inorder: 1->2->4->5->6->7 (ascending order)
 '''
 
 # lower_bound is the root of left sbutree
