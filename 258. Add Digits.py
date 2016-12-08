@@ -15,21 +15,19 @@ Solution 1: Normal iterative solution:
 
 '''
 
-import math
 class Solution(object):
     def addDigits(self, num):
 
-        sum = 0
         while True:
+            sums = 0
             while num > 0:
-                sum += num%10
+                sums += num%10
                 num /= 10
-            if sum < 10:
+            if sums < 10:
                 break
-            num = sum
-            sum = 0
-
-        return sum
+            num = sums
+            
+        return sums
 
 
 
