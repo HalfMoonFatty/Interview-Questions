@@ -19,8 +19,13 @@ Space: O(n)
 '''
 
 
-import Queue
+
 from operator import itemgetter,attrgetter
+import heapq
+class Interval(object):
+    def __init__(self,start, end):
+        self.start = start
+        self.end = end
 
 class Solution(object):
 
@@ -30,25 +35,24 @@ class Solution(object):
         if len(intervals) < 2: return 1
 
         intervals.sort(key = attrgetter('start'))
-        pq = Queue.PriorityQueue()
-        pq.put((intervals[0].end, intervals[0]))
-        
+        #intervals.sort(key=lambda interval: interval.start)
+        heap = []
+        heapq.heappush(heap, (intervals[0].end, intervals[0]))
+
         for i in range(1,len(intervals)):
-            tup = pq.get()
-            # tup[0] is the key(end time), tup[1] is the room interval
-            room = tup[1]
+            room = heapq.heappop(heap)[1]
 
             # no need for a new room, merge the interval
             if intervals[i].start >= room.end:
                 room.end = intervals[i].end
             # need a new room
             else:
-                pq.put((intervals[i].end, intervals[i]))
+                heapq.heappush(heap, (intervals[i].end, intervals[i]))
                 
             # don't forget to put the meeting room back
-            pq.put((room.end,room))
+            heapq.heappush(heap, (room.end,room))
 
-        return pq.qsize()
+        return len(heap)
 
 
 
