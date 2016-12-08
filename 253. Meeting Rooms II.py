@@ -56,7 +56,7 @@ class Solution(object):
 '''
 Solution 2: using curRoom to keep track of the "up and downs" of current room numbers
 
-Time: O(nlogn)
+Time: O(n)
 Space: O(n)
 '''
 
