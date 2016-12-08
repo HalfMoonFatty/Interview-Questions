@@ -55,7 +55,6 @@ class Vector2D(object):
             # case1: find the first non-empty row
             if len(self.vec2d[self.row]) == 0:
                 self.row += 1
-                continue
             # case2: finished this row, switch to next row
             elif self.col == len(self.vec2d[self.row]):
                 self.row += 1
