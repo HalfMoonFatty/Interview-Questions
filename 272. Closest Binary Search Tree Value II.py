@@ -30,7 +30,7 @@ class Solution(object):
             :type k: int
             :rtype: List[int]
             """
-            
+        # keep track of the path from the root to the current node using a stack
         def initSuccessor(root, target, suc):
             while root:
                 if root.val > target:
@@ -41,6 +41,7 @@ class Solution(object):
             return
 
 
+		# keep track of the path from the root to the current node using a stack
         def initPredecessor(root, target, pred):
             while root:
                 # note: add node whose value equals to target to the pred stack
