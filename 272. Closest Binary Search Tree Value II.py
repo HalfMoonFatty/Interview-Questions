@@ -41,7 +41,7 @@ class Solution(object):
             return
 
 
-		# keep track of the path from the root to the current node using a stack
+        # keep track of the path from the root to the current node using a stack
         def initPredecessor(root, target, pred):
             while root:
                 # note: add node whose value equals to target to the pred stack
