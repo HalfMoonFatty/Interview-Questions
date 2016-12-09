@@ -28,17 +28,16 @@ class Solution(object):
 
         # initialize min1 and min2 for the first house
         min1, min2 = -1, -1
-        for i in range(len(costs[0])):
-            if min1 < 0 or costs[0][i] < costs[0][min1]:
-                min2, min1 = min1, i
-            elif min2 < 0 or costs[0][i] < costs[0][min2]:
-                min2 = i
+        for j in range(len(costs[0])):
+            if min1 < 0 or costs[0][j] < costs[0][min1]:
+                min2, min1 = min1, j
+            elif min2 < 0 or costs[0][j] < costs[0][min2]:
+                min2 = j
 
         for i in range(1,len(costs)):
             lastmin1, lastmin2 = min1, min2
             min1, min2 = -1, -1
             for j in range(len(costs[0])):
-
                 if j == lastmin1:
                     costs[i][j] += costs[i-1][lastmin2]
                 else:
