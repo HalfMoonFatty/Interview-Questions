@@ -36,7 +36,7 @@ class Solution(object):
             :type board: List[List[int]]
             :rtype: void Do not return anything, modify board in-place instead.
             """
-        def calLiveNeigh(i,j):
+        def countLiveNeigh(i,j):
             count = 0
             for x in range(i-1, i+2):
                 for y in range(j-1, j+2):
@@ -46,8 +46,7 @@ class Solution(object):
    
         for i in range(len(board)):
             for j in range(len(board[0])):
-                count = calLiveNeigh(i,j)
-                print count, board[i][j]
+                count = countLiveNeigh(i,j)
                 if count == 3 or (count == 2 and board[i][j] == 1):    
                     board[i][j] |= 2    # set the 2nd bit to 1(live) and keep the original state on 1st bit
    
