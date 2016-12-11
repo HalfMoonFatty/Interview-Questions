@@ -11,8 +11,22 @@ There is only one duplicate number in the array, but it could be repeated more t
 '''
 
 
+'''
+Solution: 时间复杂度O(n * log n) 二分查找（Binary Search）+ 鸽笼原理（Pigeonhole Principle）
 
-# Time: O nlog(n)
+二分枚举答案范围，使用鸽笼原理进行检验
+
+根据鸽笼原理，给定n + 1个范围[1, n]的整数，其中一定存在数字出现至少两次。
+
+假设枚举的数字为 n / 2：
+
+遍历数组，若数组中不大于n / 2的数字个数超过n / 2，则可以确定[1, n /2]范围内一定有解，
+
+否则可以确定解落在(n / 2, n]范围内。
+
+Time: O nlog(n)
+'''
+
 
 class Solution(object):
 
