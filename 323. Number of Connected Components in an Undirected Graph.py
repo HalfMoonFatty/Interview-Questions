@@ -108,7 +108,7 @@ class Solution(object):
             q = deque()
             q.append(root)
             while len(q)>0:
-                cur = q.popledt()
+                cur = q.popleft()
                 if graph.has_key(cur):
                     for nei in graph[cur]:
                         if graph.has_key(nei):
