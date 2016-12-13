@@ -86,11 +86,11 @@ class Solution(object):
         itr = 0
         Left,Right = 0,len(nums) - 1
         while itr <= Right:
-            if nums[map_index(itr)] > median:
+            if nums[map_index(itr)] > median:     # map_index(Left)是奇数 放大的
                 nums[map_index(Left)], nums[map_index(itr)] = nums[map_index(itr)], nums[map_index(Left)]
                 Left += 1
                 itr += 1
-            elif nums[map_index(itr)] < median:
+            elif nums[map_index(itr)] < median:   # map_index(Right)是偶数 放小的
                 nums[map_index(Right)], nums[map_index(itr)] = nums[map_index(itr)], nums[map_index(Right)]
                 Right -= 1
             else:
