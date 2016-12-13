@@ -25,6 +25,7 @@ Example 3:
 
 '''
 Solution:
+
 The question asked for the "minimum number of patches required". In other words, it asked for an optimal solution. 
 Lots of problems involving optimal solution can be solved by dynamic programming and/or greedy algorithm. 
 Typically, a greedy algorithm needs selection of best moves for a subproblem. So what is our best move?
