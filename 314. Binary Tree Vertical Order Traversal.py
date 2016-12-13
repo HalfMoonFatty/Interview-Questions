@@ -54,7 +54,7 @@ class Solution(object):
             :rtype: List[List[int]]
             """
             
-        mp = {}
+        mp = collections.defaultdict(list)
         q = deque()
         q.append((root, 0))
         while len(q) > 0:
@@ -62,10 +62,7 @@ class Solution(object):
             if elem[0]:
                 node = elem[0]
                 column = elem[1]
-                if mp.has_key(column):
-                    mp[column].append(node.val)
-                else:
-                    mp[column] = [node.val]
+                mp[column].append(node.val)
                 q.append((node.left, column-1))
                 q.append((node.right, column+1))
 
