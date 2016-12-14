@@ -47,10 +47,11 @@ class Solution(object):
             N1,n1,min1,max1 = dfs(root.left)
             N2,n2,min2,max2 = dfs(root.right)
             
-            if max1 < root.val< min2:
+            if max1 < root.val < min2:
                 n = n1+1+n2
             else:
                 n = -sys.maxint-1  # not BST return -inf, meaning I am not BST, my parrent also cannot be BST
             return max(N1,N2,n),n,min(min1,root.val),max(max2,root.val)
             
         return dfs(root)[0]
+      
