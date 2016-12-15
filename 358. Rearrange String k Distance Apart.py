@@ -32,7 +32,7 @@ Solution:
               ┏━━━━━━━━┓       ┏━━━━━━┓
      Str -->  ┃ Counter ▎  -->  ┃ heapq ▎ --> result
               ┗━━━━━━━━┛       ┗━━━━━━┛
-                                  ↓   ↑   
+                                  ↓   ↑  heapq.heappush(remaining, [front[0], front[1]])
         waitq.append([[0]+1,[1]]) ↓   ↑  if front[0] < 0
                                 ┏━━━━━━┓
                                 ┃ waitq ▎
