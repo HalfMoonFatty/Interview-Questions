@@ -28,16 +28,19 @@ Example 3:
 
 '''
 Solution:   
-                ┏━━━━━━┓
-        Str --> ┃ heapq ▎ --> result
-                ┗━━━━━━┛
-                  ↓   ↑
-                  ↓   ↑
-                ┏━━━━━━┓
-                ┃ waitq ▎
-                ┗━━━━━━┛
+
+              ┏━━━━━━━━┓       ┏━━━━━━┓
+     Str -->  ┃ Counter ▎  -->  ┃ heapq ▎ --> result
+              ┗━━━━━━━━┛       ┗━━━━━━┛
+                                  ↓   ↑
+                                  ↓   ↑
+                                ┏━━━━━━┓
+                                ┃ waitq ▎
+                                ┗━━━━━━┛
                 
 '''
+
+
 from collections import Counter, deque
 import heapq
 class Solution(object):
