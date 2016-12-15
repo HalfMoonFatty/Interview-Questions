@@ -27,13 +27,13 @@ Example 3:
 
 
 '''
-Solution:   
-
+Solution:
+                                 max heap
               ┏━━━━━━━━┓       ┏━━━━━━┓
      Str -->  ┃ Counter ▎  -->  ┃ heapq ▎ --> result
               ┗━━━━━━━━┛       ┗━━━━━━┛
-                                  ↓   ↑
-                                  ↓   ↑
+                                  ↓   ↑   
+        waitq.append([[0]+1,[1]]) ↓   ↑  if front[0] < 0
                                 ┏━━━━━━┓
                                 ┃ waitq ▎
                                 ┗━━━━━━┛
