@@ -54,7 +54,7 @@ class NestedIterator(object):
         """
             :rtype: int
             """
-        if not self.hasNext():    # call hasNext to 
+        if not self.hasNext():    # call hasNext first 
             return -1
             
         nestedList, i = self.stack[-1]
