@@ -39,7 +39,26 @@ class Solution(object):
 '''
 Solution 2: optimized DP - O(nlogn)
 排序：Width 从小到大； Width 相等的话，Height 从高到低
-After sorting env becomes: [[2, 3], [5, 4], [6, 7], [6, 4]]
+
+Example: [[2, 3], [5, 4], [6, 4], [6, 7], [6, 8], [7, 9]]
+After sorting env becomes: [[2, 3], [5, 4], [6, 8], [6, 7], [6, 4], [7, 9]]
+
+When examining [6,8]: [[2, 3], [5, 4], [6, 8]]
+When examining [6,7]: [[2, 3], [5, 4], [6, 7]]
+When examining [6,4]: cannot be inserted
+When examining [7,9]: [[2, 3], [5, 4], [6, 7], [7, 9]]
+
+
+
+But if sort env with increasing width and heights:
+
+After sorting env becomes: [[2, 3], [5, 4], [6, 4], [6, 7], [6, 8], [7, 9]]
+
+When examining [6,4]: [[2, 3], [5, 4]]
+When examining [6,7]: [[2, 3], [5, 4], [6, 7]]
+When examining [6,8]: [[2, 3], [5, 4], [6, 7], [6, 8]] as "7 < 8"
+When examining [7,9]: [[2, 3], [5, 4], [6, 7], [6, 8], [7, 9]]  => not optimal
+
 '''
 
 import sys
