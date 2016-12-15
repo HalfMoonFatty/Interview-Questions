@@ -100,8 +100,8 @@ class Solution(object):
     def rob(self, root):
 
         def dfs(root):
-            if not root:
-                return [0,0]
+            if not root: return [0,0]
+            
             leftVals = dfs(root.left)
             rightVals = dfs(root.right)
 
