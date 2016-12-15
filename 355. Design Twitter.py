@@ -90,17 +90,16 @@ class Twitter(object):
             self.tweets.append(tweet)
 
 
+            
     class Tweet(object):
 
         def __init__(self, tweetId, Timestamp):
             self.tweetId = tweetId
             self.time = Timestamp
 
+            
 
     def __init__(self):
-        """
-            Initialize your data structure here.
-            """
         self.Timestamp = 0
         self.userMap = {}
 
@@ -110,25 +109,19 @@ class Twitter(object):
         self.userMap[userId] = newUser
 
 
-
     def postTweet(self, userId, tweetId):
-        """
-            Compose a new tweet.
-            :type userId: int
-            :type tweetId: int
-            :rtype: void
-            """
         if not self.userMap.has_key(userId):
             self.createUser(userId)
         self.userMap[userId].post(tweetId, self.Timestamp)
         self.Timestamp += 1
 
 
-
     # using min heap size = 10 to get 10 most recent (max) time tweet
     def getNewsFeed(self, userId):
         """
-            Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+            Retrieve the 10 most recent tweet ids in the user's news feed. 
+            Each item in the news feed must be posted by users who the user followed or by the user herself. 
+            Tweets must be ordered from most recent to least recent.
             :type userId: int
             :rtype: List[int]
             """
@@ -156,9 +149,6 @@ class Twitter(object):
     def follow(self, followerId, followeeId):
         """
             Follower follows a followee. If the operation is invalid, it should be a no-op.
-            :type followerId: int
-            :type followeeId: int
-            :rtype: void
             """
         if not self.userMap.has_key(followerId):
             self.createUser(followerId)
@@ -172,9 +162,6 @@ class Twitter(object):
     def unfollow(self, followerId, followeeId):
         """
             Follower unfollows a followee. If the operation is invalid, it should be a no-op.
-            :type followerId: int
-            :type followeeId: int
-            :rtype: void
             """
         if not self.userMap.has_key(followerId) or followerId == followeeId: # user cannot unfollow himself
             return
