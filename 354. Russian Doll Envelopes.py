@@ -82,7 +82,7 @@ class Solution(object):
         envelopes.sort(cmp = cmpEnv)
         
         for i in range(n):
-            k = bisect.bisect_left(height,envelopes[i][1])
+            k = bisect.bisect_left(height,envelopes[i][1])    # 找到最大的比 envelopes[i][1] 小的 height
             height[k] = envelopes[i][1]
             maxLen = max(maxLen,k+1)
 
