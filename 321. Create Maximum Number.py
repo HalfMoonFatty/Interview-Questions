@@ -34,9 +34,10 @@ Company:
 
 
 '''  
-Sub-Problem 1: Given one array of length n , create the maximum number of length k.
+Sub-Problem 1: Given one array of length n, create the maximum number of length k.
    
-This problem is very similar to "316. Remove Duplicate Letters”; The solution to this problem is Greedy with the help of stack. The recipe is as following
+This problem is very similar to "316. Remove Duplicate Letters”; The solution to this problem is Greedy with the help of stack. 
+The recipe is as following:
    
     Initialize a empty stack as result
     Loop through the array nums
@@ -84,9 +85,7 @@ Sub-Problem 2: Given two array of length m and n , create maximum number of leng
     If all digits are equal then choose any one is ok.
     The procedure is like the merge in a merge sort. However due to the “look next until not equal”, the time complexity is O(nm).
    
-    As @lixx2100 (https://leetcode.com/discuss/user/lixx2100) mentioned that it is possible to have a linear time merge algorithm based on suffix array.
-    See here (http://web.stanford.edu/class/cs97si/suffix-array.pdf)
-    and here (https://web.stanford.edu/~liszt90/acm/notebook.html).
+    It is possible to have a linear time merge algorithm based on suffix array.
     But there isn’t a short implementation for suffix array construction in linear time.
 '''
        
@@ -113,8 +112,9 @@ Sub-Problem 2: Given two array of length m and n , create maximum number of leng
 
 '''
 Solution:
+
     Now let’s go back to the real problem.
-    First, we divide the k digits required into two parts, i and k-i. Need to consider the relation between k,n and m (The division detail is as follow).
+    First, we divide the k digits required into two parts, i and k-i. Need to consider the relation between k,n and m.
     We then find the maximum number of length i in one array and the maximum number of length k-i in the other array using the algorithm in sub-problem 1.
     Then we combine the two results in to one array using the algorithm in sub-problem 2.
     After that we compare the result with the result we have and keep the larger one as final answer.
@@ -124,7 +124,7 @@ Solution:
          i in range(0,min(n,k))
 
     nums1 = |0|1|2|3|               nums2 = |0|1|2|3|4|5|
-    n = 4                                    m = 6
+    n = 4                           m = 6
     k = 3
 
     if m is large enough to fulfill "k" numbers , then n could be as small as 0
@@ -135,7 +135,7 @@ Solution:
          i in range(6,min(n,k))
 
     nums1 = |0|1|2|3|4|5|6|7|8|9|        nums2 = |0|1|
-    n = 10                                               m = 2
+    n = 10                               m = 2
     k = 8
 
    elif m can at most provide 2 numbers, then n must at least provide 6(k-m) numbers
