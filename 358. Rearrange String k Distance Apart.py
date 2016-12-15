@@ -63,15 +63,13 @@ class Solution(object):
         while len(remaining) > 0:
             maxfre = heapq.heappop(remaining)
             result += maxfre[1]
-            # note that char with 0 count still needs to be placed in waitQueue as a place holder
-            waitq.append([maxfre[0]+1,maxfre[1]])
-
+            waitq.append([maxfre[0]+1,maxfre[1]])    # note: char with 0 count still needs to be placed in waitQueue as a place holder
+            
             if len(waitq) < k:
                 continue
 
             # release from waitQueue if char is already k apart
             front = waitq.popleft()
-
             if front[0] < 0:
                 heapq.heappush(remaining, [front[0], front[1]])
 
