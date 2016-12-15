@@ -28,6 +28,8 @@ Example 2:
 
 '''
 
+
+
 '''
 Step I -- Recursion
 '''
@@ -49,6 +51,8 @@ public int rob(TreeNode root) {
 
     return Math.max(val + root.val, rob(root.left) + rob(root.right));
 }
+
+
 
 '''
 Step II -- use a hash map to record the results for visited subtrees (overlapping of the subproblems)
@@ -79,6 +83,8 @@ private int robSub(TreeNode root, Map<TreeNode, Integer> map) {
 
 return val;
 }
+
+
 
 '''
 Step III -- Think one step back
