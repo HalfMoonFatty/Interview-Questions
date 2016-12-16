@@ -62,9 +62,9 @@ class RandomizedSet(object):
         """
             Initialize your data structure here.
             """
-        self.index_map = {}
         self.arr = []
-
+        self.index_map = {}
+        
 
     def insert(self, val):
         """
