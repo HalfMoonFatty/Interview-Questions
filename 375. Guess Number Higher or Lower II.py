@@ -41,7 +41,7 @@ class Solution(object):
         for length in range(1,n):
             for start in range(1,n-length+1):  # as number starts from [1 to n]
                 dp[start][start+length] = sys.maxint
-                # break  [start, start+length] into [start,k-1] and [k + 1,start+(length-1)]
+                # break  [start, start+length] into [start,k-1] and k and [k+1,start+length]
                 for k in range(start,start+length+1):
                     if k == n:      # no k + 1 in the table
                         guessCost = k + dp[start][k-1]
