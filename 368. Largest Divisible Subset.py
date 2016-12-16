@@ -22,7 +22,11 @@ then try nums[j] == 3, 9%3 == 0, now dp[i] = dp[j]+1
 Note:
 1. Use prev to trace elements that forms the optimal result; Use maxIndex to remember the back-tracing starting point.
 
-2. Only when nums[i]%nums[j] == 0 and "dp[j]+1>dp[i]", update prev[i]. normally, we do the following to update dp[i]:   
+2. Only when nums[i]%nums[j] == 0 and "dp[j]+1>dp[i]", update prev[i]. normally, we do the following to update dp[i]:  
+   
+       if nums[i]%nums[j] == 0:
+            dp[i] = max(dp[i],dp[j]+1)
+
    but here, we also need to update prev[i] to tracing the list of subset elements, so only when dp[j]+1>dp[i], we can update dp[i]. 
 '''
 
