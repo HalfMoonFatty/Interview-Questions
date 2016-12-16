@@ -88,17 +88,17 @@ class RandomizedSet(object):
             """
         if not self.index_map.has_key(val):
             return False
-        else:
-            # update arr:
-            ind, lastVal = self.index_map[val], self.arr[-1]
-            self.arr[ind] = lastVal
 
-            # update index_mp
-            self.index_map[lastVal] = ind
-            del self.index_map[val]
+        # update arr:
+        ind, lastVal = self.index_map[val], self.arr[-1]
+        self.arr[ind] = lastVal
 
-            self.arr.pop()
-            return True
+        # update index_mp
+        self.index_map[lastVal] = ind
+        del self.index_map[val]
+
+        self.arr.pop()
+        return True
 
 
     def getRandom(self):
