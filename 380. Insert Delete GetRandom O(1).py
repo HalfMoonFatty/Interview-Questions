@@ -75,8 +75,8 @@ class RandomizedSet(object):
         if self.index_map.has_key(val):
             return False
         else:
-            self.index_map[val] = len(self.arr)
             self.arr.append(val)
+            self.index_map[val] = len(self.arr)-1
             return True
 
 
