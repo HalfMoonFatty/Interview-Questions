@@ -17,6 +17,25 @@ canConstruct("aa", "aab") -> true
 '''
 
 
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        counter = collections.Counter(magazine)
+        
+        for letter in ransomNote:
+            counter[letter] -= 1
+            if counter[letter] < 0:
+                return False
+        return True
+
+
+
+
+
 import string
 class Solution(object):
     def canConstruct(self, ransomNote, magazine):
