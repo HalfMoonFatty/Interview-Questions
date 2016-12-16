@@ -19,6 +19,29 @@ Result: [1,2,4,8]
 
 '''
 Solution: 本题的key point 就是在如何记住 optimal solution 都包括哪些elements.
+
+
+i go from the beginning to the end of array, try to extend by larger elements;
+j go from back (i) to the beginning, if nums[i] is a mutiple of nums[j] then we can extend by larger elements
+think about [1,2,3,6,9,...] when nums[i] == 9, 
+then try nums[j] = 9,6,3,2,1... when nums[j] == 6, 9%6 != 0; 
+then try nums[j] == 3, 9%3 == 0, now dp[i] = dp[j]+1
+   
+
+Note:
+
+1. Use prev to remember the trace of list of elements that forms the optimal result; 
+   Use maxIndex to remember the back-tracing starting point.
+
+
+2. Only when nums[i]%nums[j] == 0 and "dp[j]+1>dp[i]", update prev[i].
+    normally, we do the following to update dp[i]:
+    
+    if nums[i]%nums[j] == 0:
+        dp[i] = max(dp[i],dp[j]+1)
+   
+    but here, we also need to update prev[i] to tracing the list of subset elements, 
+    so only when dp[j]+1>dp[i], we can update dp[i]. So we need to use:
 '''
 
 class Solution(object):
