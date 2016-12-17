@@ -21,7 +21,7 @@ Return false.
 Follow up:
 If there are lots of incoming S, say S1, S2, ... , Sk where k >= 1B, and you want to check one by one to see if T has its subsequence. 
 In this scenario, how would you change your code?
-https://discuss.leetcode.com/topic/60134/java-code-for-the-problem-two-pointer-and-the-follow-up-binary-search
+
 '''
 
 
@@ -38,3 +38,58 @@ class Solution(object):
                 q.popleft()
         return len(q) == 0
             
+
+        
+'''
+Use 2 pointers:
+'''
+class Solution(object):
+    def isSubsequence(self, s, t):
+
+        if not s: return True
+        if not t: return False
+        
+        i = 0
+        for char in s:
+            i = t.find(char, i)
+            if i < 0: return False
+            i += 1
+        return True
+    
+    
+'''
+Follow-up:
+https://discuss.leetcode.com/topic/60134/java-code-for-the-problem-two-pointer-and-the-follow-up-binary-search
+'''
+
+class Solution(object):
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        def getNextIndex(index_list, index):
+            if not index_list : return -1
+            
+            left, right = 0, len(index_list)-1
+            while left < right:
+                mid = left + (right-left)/2
+                if index_list[mid] <= index: left = mid+1
+                else: right = mid
+                
+            return index_list[left] if index_list[left] > index else -1
+            
+            
+        
+        index_map = collections.defaultdict(list)
+        for i in range(len(t)):
+            index_map[t[i]].append(i)
+        
+        index = -1
+        for char in s:
+            nextIndex = getNextIndex(index_map[char], index)
+            if nextIndex < 0: return False
+            index = nextIndex
+        return True
+        
