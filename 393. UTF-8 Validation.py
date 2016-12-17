@@ -17,20 +17,21 @@ This is how the UTF-8 encoding would work:
 Given an array of integers representing the data, return whether it is a valid utf-8 encoding.
 
 Note:
-The input is an array of integers. Only the least significant 8 bits of each integer is used to store the data. This means each integer represents only 1 byte of data.
+	The input is an array of integers. Only the least significant 8 bits of each integer is used to store the data. 
+	This means each integer represents only 1 byte of data.
 
 Example 1:
-data = [197, 130, 1], which represents the octet sequence: 11000101 10000010 00000001.
-Return true.
-It is a valid utf-8 encoding for a 2-bytes character followed by a 1-byte character.
+	data = [197, 130, 1], which represents the octet sequence: 11000101 10000010 00000001.
+	Return true.
+	It is a valid utf-8 encoding for a 2-bytes character followed by a 1-byte character.
 
 
 Example 2:
-data = [235, 140, 4], which represented the octet sequence: 11101011 10001100 00000100.
-Return false.
-The first 3 bits are all one's and the 4th bit is 0 means it is a 3-bytes character.
-The next byte is a continuation byte which starts with 10 and that's correct.
-But the second continuation byte does not start with 10, so it is invalid.
+	data = [235, 140, 4], which represented the octet sequence: 11101011 10001100 00000100.
+	Return false.
+	The first 3 bits are all one's and the 4th bit is 0 means it is a 3-bytes character.
+	The next byte is a continuation byte which starts with 10 and that's correct.
+	But the second continuation byte does not start with 10, so it is invalid.
 '''
 
 
@@ -49,6 +50,6 @@ class Solution(object):
                 elif n >> 7: return False         # 1 byte
                 continue
             else:
-                if n>>6 != 0b10: return False
+                if n >> 6 != 0b10: return False
                 count -= 1
         return count == 0
