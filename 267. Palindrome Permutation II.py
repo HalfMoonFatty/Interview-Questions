@@ -45,7 +45,7 @@ class Solution(object):
         for key,value in count.items():
             if value%2 != 0:
                 if not singleChar: singleChar = key
-                else: return False
+                else: return []
             else:
                 charList.append(key)
 
