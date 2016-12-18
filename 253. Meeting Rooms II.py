@@ -10,7 +10,6 @@ return 2.
 '''
 
 
-
 '''
 Solution 1: Using priority queue to keep track of current required number of meeting rooms
 
@@ -19,14 +18,8 @@ Space: O(n)
 '''
 
 
-
 from operator import itemgetter,attrgetter
 import heapq
-class Interval(object):
-    def __init__(self,start, end):
-        self.start = start
-        self.end = end
-
 class Solution(object):
 
     def minMeetingRooms(self, intervals):
@@ -49,7 +42,6 @@ class Solution(object):
             else:
                 heapq.heappush(heap, (intervals[i].end, intervals[i]))
                 
-            # don't forget to put the meeting room back
             heapq.heappush(heap, (room.end,room))
 
         return len(heap)
