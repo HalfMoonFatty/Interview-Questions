@@ -104,5 +104,6 @@ class Solution(object):
             else:
                 union(x, y, unionSet)
    
-        # if any two vertices(nodes) are connected, then the number of edges should be at least n-1
+        # if any two vertices(nodes) are connected, 
+        # then the number of edges should be at least n-1
         return len(edges) == n-1
