@@ -42,7 +42,7 @@ class Vector2D(object):
 
 
     def next(self):
-        if hasNext:
+        if hasNext:    # note
           ret = self.vec2d[self.row][self.col]
           self.col += 1
           return ret
@@ -64,10 +64,7 @@ class Vector2D(object):
                 break
                 
         # last row, no more elements
-        if self.row == len(self.vec2d):
-            return False
-        else:
-            return True
+        return False if self.row == len(self.vec2d) else True
 
 
 
