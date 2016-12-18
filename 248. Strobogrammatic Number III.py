@@ -36,13 +36,9 @@ class Solution(object):
                         newres.append(k+item+mp[k])
             return newres
 
+        
 
-        mp = {}
-        mp['0'] = '0'
-        mp['1'] = '1'
-        mp['8'] = '8'
-        mp['6'] = '9'
-        mp['9'] = '6'
+        mp = {'0':'0', '1':'1', '8':'8', '6':'9', '9':'6'}
         count = [0]
 
         # corner case:
