@@ -36,25 +36,3 @@ class Solution:
         return minSize if minSize <= len(nums) else -1
         
         
-
-
-'''
-Solution 2:
-'''
-class Solution:
-
-    def minimumSize(self, nums, s):
-
-        i, j = 0, 0
-        sum = 0
-        minLen = len(nums)+1
-
-        for i in range(len(nums)):
-            while j < len(nums) and sum < s:
-                sum += nums[j]
-                j += 1
-            if sum >= s:
-                minLen = min(minLen,j-i) # not j-i+1
-            sum -= nums[i]
-
-        return minLen if minLen <= len(nums) else -1
