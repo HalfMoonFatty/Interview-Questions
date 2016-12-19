@@ -67,9 +67,7 @@ class FenwickTree(object):
         return res
         
         
-        
-
-        
+                
         
 # Solution 2: BST
 
@@ -84,7 +82,6 @@ class Solution(object):
         for i in range(len(nums) - 1, -1, -1):
             ans[i] = bst.insert(nums[i])
         return ans
-
 
 
 class TreeNode(object):
@@ -127,8 +124,6 @@ class BinarySearchTree(object):
 
 
 
-
-
 # Solution 3: MergeSort Based
 class Solution(object):
     def countSmaller(self, nums):
@@ -150,5 +145,3 @@ class Solution(object):
         smaller = [0] * len(nums)
         sort(list(enumerate(nums)))
         return smaller
-
-    
