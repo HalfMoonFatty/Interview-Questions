@@ -1,4 +1,12 @@
-http://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
+'''
+Problem:
+
+    Given an integer array of size n, find all elements that appear more than ⌊ n/k ⌋ times. 
+    The algorithm should run in linear time and in O(1) space.
+'''
+
+
+# http://www.geeksforgeeks.org/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
 
 
 class Solution(object):
