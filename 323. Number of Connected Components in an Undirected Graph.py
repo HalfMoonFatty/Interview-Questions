@@ -25,7 +25,6 @@ Note:
 
 
 
-
 # Solution 1: Union Find
 
 class Solution(object):
@@ -56,12 +55,6 @@ class Solution(object):
                 union(pair[0], pair[1])
                 count -= 1
         return count
-	
-	
-
-	
-	
-	
 	
 	
 	
@@ -100,6 +93,7 @@ class Solution(object):
 
 
 
+
 # Solution 3: BFS + Queue + graph
 
 from collections import deque
@@ -134,5 +128,4 @@ class Solution(object):
                 bfs_traverse(i, graph)
                 count += 1
         return count
-
 
