@@ -23,6 +23,8 @@ Note:
 
 '''
 
+
+
 # Solution 1: Union Find
 
 class Solution(object):
@@ -53,9 +55,10 @@ class Solution(object):
                 union(pair[0], pair[1])
                 count -= 1
         return count
-
-
-
+	
+	
+	
+	
 # Solution 2: DFS + Global visited
 
 class Solution(object):
