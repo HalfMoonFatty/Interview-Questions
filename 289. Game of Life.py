@@ -62,7 +62,7 @@ class Solution(object):
         # replace the old state with the new state
         for i in range(len(board)):
             for j in range(len(board[0])):
-                # replace the old state with the new state by shifting all values one bit to the right
+                # replace old state with new state by shifting one bit to the right
                 board[i][j] >>= 1       
 
         return
