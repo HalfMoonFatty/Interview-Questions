@@ -10,16 +10,24 @@ For example:
 
 '''
 
+
+
 '''
 Solution : KMP + trick
 
 The problem is same as "find the longest palindrome substring starts from 0". 
 
-The trick is to build a temp string like this: s + "#" + reverse(s). We add "#" here to force the match in reverse(s) starts from its first index. 
-What we do in KMP here is trying to find a match between prefix in s and a postfix in reverse(s). The match part will be palindrome substring (the value in last cell will be our solution). 
+The trick is to build a temp string like this: s + "#" + reverse(s). 
+We add "#" here to force the match in reverse(s) starts from its first index. 
+What we do in KMP here is trying to find a match between prefix in s and a postfix in reverse(s). 
+The match part will be palindrome substring (the value in last cell will be our solution). 
 In this problem, we don't need to use KMP to match strings but instead we use the lookup table in KMP to find the palindrome.
 
+Time: O(n)
+Space: O(n)
+
 '''
+
 
 class Solution(object):
     def shortestPalindrome(self, s):
@@ -48,10 +56,18 @@ class Solution(object):
         
         
         
+        
+        
+        
+        
+        
+        
+        
 '''
 Solution 2: TLE in python
 
-The idea is to find the longest palindromic substring of s that begins with s[0]. Then take the remaining susbtring, reverse it and append it to the beginning of s.
+The idea is to find the longest palindromic substring of s that begins with s[0]. 
+Then take the remaining susbtring, reverse it and append it to the beginning of s.
 
 The most difficult part is to implement the Manacher's algorithm to find the longest palindromic substring starting with s[0].
 
@@ -59,7 +75,9 @@ index    0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16
 string   #  a  #  a  #  c  #  e  #  c  #  a  #  a  #  a  #
 dp[]     0, 1, 2, 1, 0, 1, 0, 7, 0, 1, 0, 1, 2, 3, 2, 1, 0
 
-Here we have 'e' is the first whose index == dp[i], we know that in the ORIGINAL string "aacecaaa", the length of longest palindrom starts with s[0] is (center/2)*2 = (7/2)*2 = 6; We need to reverse the string after index=5 and append it to the start of the original string: s[len(s)-1:center-1:-1] + s
+Here we have 'e' is the first whose index == dp[i], we know that in the ORIGINAL string "aacecaaa", 
+the length of longest palindrom starts with s[0] is (center/2)*2 = (7/2)*2 = 6; 
+We need to reverse the string after index=5 and append it to the start of the original string: s[len(s)-1:center-1:-1] + s
 
 '''
 
