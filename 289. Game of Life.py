@@ -45,24 +45,27 @@ class Solution(object):
             count = 0
             for x in range(i-1, i+2):
                 for y in range(j-1, j+2):
-                    if 0 <= x < len(board) and 0 <= y < len(board[0]) and not(x == i and y == j):
+                    if 0<=x<len(board) and 0<=y<len(board[0]) and not(x == i and y == j):
                         count += board[x][y]&1    # mask all other bits except the last bit
             return count
    
 
+        # Update state by counting neighbor cells
         for i in range(len(board)):
             for j in range(len(board[0])):
                 count = countLiveNeigh(i,j)
-                if count == 3 or (count == 2 and board[i][j] == 1):    
-                    board[i][j] |= 2    # set the 2nd bit to 1(live) and keep the original state on 1st bit
+                if count == 3 or (count == 2 and board[i][j] == 1):   
+                    # set the 2nd bit to 1(live) and keep the original state on 1st bit
+                    board[i][j] |= 2    
    
 
+        # replace the old state with the new state
         for i in range(len(board)):
             for j in range(len(board[0])):
-                board[i][j] >>= 1       # replace the old state with the new state by shifting all values one bit to the right
+                # replace the old state with the new state by shifting all values one bit to the right
+                board[i][j] >>= 1       
 
         return
-
 
 
 
@@ -79,7 +82,6 @@ Solution:
     - Then count the living neighbors of all cells by going through the living cells and increasing the counter of their neighbors.
     - Afterwards collect the new set of living cells by picking those with the right amount of neighbors.
 '''
-
 
 
 import collections
