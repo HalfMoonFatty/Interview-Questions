@@ -12,7 +12,8 @@ Follow up:
 What if you are given k 1d vectors? How well can your code be extended to such cases?
 
 
-The "Zigzag" order is not clearly defined and is ambiguous for k > 2 cases. If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic". For example, given the following input:
+The "Zigzag" order is not clearly defined and is ambiguous for k > 2 cases. 
+If "Zigzag" does not look right to you, replace "Zigzag" with "Cyclic". For example, given the following input:
 
 [1,2,3]
 [4,5,6,7]
@@ -34,14 +35,11 @@ class ZigzagIterator(object):
 
     def __init__(self, v1, v2):
 
-        # allVec is a list of list
         # each list in vec is a list(index, lastIndex, vector)
-        # curInd is the index of the current list in allVec
         self.curInd = 0
         self.allVec = []
         if v1: self.allVec.append([0, len(v1)-1, v1])
         if v2: self.allVec.append([0, len(v2)-1, v2])
-
 
 
     def next(self):
@@ -66,21 +64,13 @@ class ZigzagIterator(object):
         return ret
 
 
-
     def hasNext(self):
         return len(self.allVec) != 0
 
 
 
 
-# Your ZigzagIterator object will be instantiated and called as such:
-# i, v = ZigzagIterator(v1, v2), []
-# while i.hasNext(): v.append(i.next())
-
-
-
 # Solution 2: Queue implementation
-
 
 class ZigzagIterator(object):
 
@@ -89,7 +79,6 @@ class ZigzagIterator(object):
         if len(v1) != 0: self.q.append(v1)
         if len(v2) != 0: self.q.append(v2)
      
-
     def next(self):
         if self.hasNext():
             v = self.q.pop(0)
@@ -97,7 +86,6 @@ class ZigzagIterator(object):
             if len(v) != 0:
                 self.q.append(v)
             return val
-    
-    
+      
     def hasNext(self):
         return len(self.q) != 0
