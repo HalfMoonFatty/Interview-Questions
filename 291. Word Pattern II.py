@@ -13,6 +13,8 @@ Notes:
      You may assume both pattern and str contains only lowercase letters.
 '''
 
+# Time: O(...)
+# Space: O(n)
 
 
 class Solution(object):
