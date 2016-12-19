@@ -37,9 +37,9 @@ class Solution(object):
         def helper(num):
             if num == 0:
                 return ""
-            elif num<20:
+            elif num < 20:
                 return lessThan20[num] + " "
-            elif num<100:
+            elif num < 100:
                 return tens[num/10] + " " + helper(num%10)
             else:
                 return lessThan20[num/100] + " Hundred " + helper(num%100)
