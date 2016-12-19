@@ -2,7 +2,8 @@
 Problem:
 
 
-You are given an integer array nums and you have to return a new counts array. The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
+You are given an integer array nums and you have to return a new counts array. 
+The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
 
 Example:
 
@@ -21,9 +22,13 @@ Return the array [2, 1, 1, 0].
 # Solution 1: BIT
 # e.g.  nums = [5, 2, 6, 1]
 # num ranking: [3, 2, 4, 1]
-# The idea is to iterate the array from n-1 to 0. When we are at i'th index, we check how many numbers ranking less than arr[i] are present in BIT and add it to the result. 
-# After that we add current element to to the BIT[] by udating count of current element from 0 to 1, and therefore updates ancestors of current element in BIT
+# The idea is to iterate the array from n-1 to 0. When we are at i'th index, 
+# we check how many numbers ranking less than arr[i] are present in BIT and add it to the result. 
+# After that we add current element to to the BIT[] by udating count of current element from 0 to 1, 
+# and therefore updates ancestors of current element in BIT
 # http://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
+
+
 
 class Solution(object):
     def countSmaller(self, nums):
@@ -63,6 +68,7 @@ class FenwickTree(object):
         
         
         
+
         
         
 # Solution 2: BST
