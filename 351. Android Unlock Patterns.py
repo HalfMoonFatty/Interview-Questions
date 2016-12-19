@@ -31,8 +31,10 @@ Example: Given m = 1, n = 1, return 9.
 
 '''
 
+
+
 '''
-Solution 1: Backtracking
+Solution: Backtracking
 
 To check if the current digit is valid.
 - 上下左右 + "日" => curr + prev 是奇数
@@ -47,6 +49,7 @@ Hence we only need to calculate one among each group and multiply by 4.
 You can find the optimized solution here (https://leetcode.com/discuss/104500/java­solution­with­clear­explanations­and­optimization­81ms).
 
 '''
+
 
 
 class Solution(object):
