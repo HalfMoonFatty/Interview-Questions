@@ -21,6 +21,7 @@ Follow up:
     How would you address these problems?
 '''
 
+
 '''
 Solution:
     Since the board has ints but only the 1-bit is used, use the 2nd bit to store the new state. We cannot replace the old state directly by the new state.
@@ -48,12 +49,14 @@ class Solution(object):
                         count += board[x][y]&1    # mask all other bits except the last bit
             return count
    
+
         for i in range(len(board)):
             for j in range(len(board[0])):
                 count = countLiveNeigh(i,j)
                 if count == 3 or (count == 2 and board[i][j] == 1):    
                     board[i][j] |= 2    # set the 2nd bit to 1(live) and keep the original state on 1st bit
    
+
         for i in range(len(board)):
             for j in range(len(board[0])):
                 board[i][j] >>= 1       # replace the old state with the new state by shifting all values one bit to the right
@@ -63,10 +66,11 @@ class Solution(object):
 
 
 
-
 '''
 Follow up:
-In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?
+In this question, we represent the board using a 2D array. 
+In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. 
+How would you address these problems?
 '''
 
 '''
