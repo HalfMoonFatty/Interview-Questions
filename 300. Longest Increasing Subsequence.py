@@ -5,7 +5,8 @@ Given an unsorted array of integers, find the length of longest increasing subse
 
 For example,
 Given [10, 9, 2, 5, 3, 7, 101, 18],
-The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.
+The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. 
+Note that there may be more than one LIS combination, it is only necessary for you to return the length.
 
 Your algorithm should run in O(n2) complexity.
 
@@ -44,12 +45,12 @@ class Solution(object):
         if not nums: return 0
         
         n = len(nums)
-        seqLengthTail = [sys.maxint] * (n+1)      # init with maxint length from 1 to n
+        seqLength = [sys.maxint] * (n+1)      # init with maxint length from 1 to n
         maxLen = 1
         
         for i in range(1,n+1):
-            ind = bisect.bisect_left(seqLengthTail,nums[i-1])
-            seqLengthTail[ind] = nums[i-1]
+            ind = bisect.bisect_left(seqLength,nums[i-1])
+            seqLength[ind] = nums[i-1]
             maxLen = max(maxLen, ind+1)
             
         return maxLen
