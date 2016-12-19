@@ -1,7 +1,8 @@
 '''
 Problem:
    
-Given a string that contains only digits 0-9 and a target value, return all possibilities to add binary operators (not unary) +, -, or * between the digits so they evaluate to the target value.
+Given a string that contains only digits 0-9 and a target value, 
+return all possibilities to add binary operators (not unary) +, -, or * between the digits so they evaluate to the target value.
    
      Examples:
      "123", 6 -> ["1+2+3", "1*2*3"]
@@ -57,6 +58,3 @@ class Solution(object):
             if str(s_val) != s: continue
             dfs(res, num, target, s, i, s_val, s_val, "#")
         return res
-
-
-
