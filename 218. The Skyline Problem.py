@@ -32,6 +32,17 @@ the three lines of height 5 should be merged into one in the final output as suc
 
 
 
+
+
+
+
+
+
+
+# Time: O()
+# Space: O()
+
+
 class Solution(object):
     def getSkyline(self, buildings):
         """
