@@ -14,6 +14,9 @@ Return "acdb"
 '''
 
 
+# Time: O(n)
+# Space: O(n)
+
 
 class Solution(object):
     def removeDuplicateLetters(self, s):
@@ -39,5 +42,3 @@ class Solution(object):
             
         return ''.join(stack)
         
-
-
