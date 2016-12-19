@@ -9,6 +9,9 @@ For "bbbbb" the longest substring is "b", with the length of 1.
 
 
 # Solution 1
+# Time: O(n)
+# Space:O(n)
+
 
 class Solution:
 
@@ -29,39 +32,5 @@ class Solution:
             charset.remove(s[i])
         return maxLen
         
-
-
-
-# Solution 2
-
-class Solution(object):
-
-    def lengthOfLongestSubstring(self, s):
-
-        mp = {}
-        maxLen = 0
-        Len = 0
-        for i in range(len(s)):
-            # case 1: meet a new char
-            # remember its position and increase the length
-            if s[i] not in mp.keys():
-                mp.setdefault(s[i],i)
-                Len += 1
-            # case 2: meet a repeated char, but it's already out of the current substring so it's a "new" char again
-            # update its new position and increase the length
-            elif mp[s[i]] < i-Len:
-                mp[s[i]] = i
-                Len += 1
-            # case 3: find repeated char
-            # calculate the Length and update its new position
-            else:
-                Len = i-mp[s[i]]
-                mp[s[i]] = i
-
-            maxLen = max(maxLen, Len)
-
-        return maxLen
-
-
 
 
