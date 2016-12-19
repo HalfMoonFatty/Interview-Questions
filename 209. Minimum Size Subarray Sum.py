@@ -12,9 +12,14 @@ Follow up:
     If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).
 '''
 
+
 '''
-Solution 1:
+Solution: 快慢指针
+
+Time: O(n)
+Space: O(1)
 '''
+
 class Solution:
 
     def minimumSize(self, nums, s):
