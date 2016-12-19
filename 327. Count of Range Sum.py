@@ -45,14 +45,14 @@ class Solution(object):
             vals.add(p)     # as the BIT need to store prefix
             vals.add(p+lower)
             vals.add(p+upper)
-        d = {v: i for i, v in enumerate(sorted(list(vals)))}
-        T = BinaryIndexTree(len(d))
+        index = {v: i for i, v in enumerate(sorted(list(vals)))}
+        T = BinaryIndexTree(len(index))
         
         count = 0
         for elem in prefix[::-1]:
             lb, ub = elem + lower, elem + upper
-            count += T.sum(d[ub]+1) - T.sum(d[lb])
-            T.add(d[elem]+1, 1) 
+            count += T.sum(index[ub]+1) - T.sum(index[lb])
+            T.add(index[elem]+1, 1) 
         return count
         
                 
