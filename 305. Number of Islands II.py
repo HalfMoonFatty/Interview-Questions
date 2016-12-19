@@ -43,6 +43,9 @@ Challenge：
 
 '''
 
+
+
+
 '''
 Solution: Union Find
 
@@ -79,7 +82,7 @@ class Solution(object):
             return
        
 
-        unionSet = [-1 for i in range(m*n)]         # initially every position is a water (cannot union)
+        unionSet = [-1 for i in range(m*n)]         # init every pos as water (cannot union)
         result = []
         xDir = [0,1,0,-1]
         yDir = [1,0,-1,0]
@@ -94,7 +97,7 @@ class Solution(object):
                 x = pos[0] + xDir[p]
                 y = pos[1] + yDir[p]
                 neighbourSet = x*n+y                # position to unionSet index 
-                if 0<=x<m and 0<=y<n and unionSet[neighbourSet] != -1:    # != -1 means it is not water
+                if 0<=x<m and 0<=y<n and unionSet[neighbourSet] != -1:    # not water
                     if findRoot(curSet) != findRoot(neighbourSet):
                         count -= 1
                         union(curSet,neighbourSet)
