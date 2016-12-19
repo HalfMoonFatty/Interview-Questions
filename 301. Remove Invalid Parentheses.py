@@ -15,6 +15,9 @@ Examples:
 '''
 
 
+# Time: O()
+# Space: O()
+
 
 class Solution(object):
     def removeInvalidParentheses(self, s):
