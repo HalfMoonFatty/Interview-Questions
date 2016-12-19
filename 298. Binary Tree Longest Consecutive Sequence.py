@@ -25,6 +25,11 @@ Longest consecutive sequence path is 2-3,not3-2-1, so return 2.
 
 '''
 
+
+# Time: O(n)
+# Space: O(n)
+
+
 class Solution(object):
     def longestConsecutive(self, root):
         """
