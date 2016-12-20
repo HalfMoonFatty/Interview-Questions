@@ -1,7 +1,6 @@
-Unlocked: [19]
+Unlocked: [18]
 -------------
 460	LFU Cache
-462	Minimum Moves to Equal Array Elements II
 464	Can I Win
 466	Count The Repetitions
 467	Unique Substrings in Wraparound String
@@ -9,6 +8,7 @@ Unlocked: [19]
 472	Concatenated Words
 473	Matchsticks to Square
 474	Ones and Zeroes
+
 456	132 Pattern  
 449	Serialize and Deserialize BST  
 446	Arithmetic Slices II - Subsequence  
