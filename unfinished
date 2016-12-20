@@ -1,4 +1,4 @@
-Unlocked: [21]
+Unlocked: [19]
 -------------
 460	LFU Cache
 462	Minimum Moves to Equal Array Elements II
@@ -9,7 +9,6 @@ Unlocked: [21]
 472	Concatenated Words
 473	Matchsticks to Square
 474	Ones and Zeroes
-477	Total Hamming Distance
 456	132 Pattern  
 449	Serialize and Deserialize BST  
 446	Arithmetic Slices II - Subsequence  
