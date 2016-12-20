@@ -1,4 +1,4 @@
-Unlocked: [18]
+Unlocked: [17]
 -------------
 460	LFU Cache
 464	Can I Win
@@ -7,7 +7,6 @@ Unlocked: [18]
 468	Validate IP Address
 472	Concatenated Words
 473	Matchsticks to Square
-474	Ones and Zeroes
 
 456	132 Pattern  
 449	Serialize and Deserialize BST  
@@ -34,3 +33,7 @@ Locked: [10]
 418	Sentence Screen Fitting
 * 411	Minimum Unique Word Abbreviation
 * 408	Valid Word Abbreviation
+
+
+Knapsack Problem
+Merge - Sort / Quick Sort 
