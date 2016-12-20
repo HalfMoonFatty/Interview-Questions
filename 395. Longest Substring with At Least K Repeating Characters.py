@@ -17,6 +17,10 @@ The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated
 '''
 
 
+# Time: O( )
+# Space: O( )
+
+
 class Solution(object):
     def longestSubstring(self, s, k):
 
