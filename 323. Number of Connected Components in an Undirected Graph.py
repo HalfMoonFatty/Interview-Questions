@@ -66,6 +66,8 @@ class Solution(object):
 	
 	
 	
+	
+	
 # Solution 2: DFS + Global visited
 
 class Solution(object):
@@ -97,7 +99,6 @@ class Solution(object):
                 dfs_traverse(i, graph, visited)
                 count += 1
         return count
-
 
 
 
