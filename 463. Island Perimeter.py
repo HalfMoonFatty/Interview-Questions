@@ -13,6 +13,9 @@ Explanation: The perimeter is the 16 yellow stripes in the image below:
 
 '''
 
+# Time: O(n*m)
+# Space: O(1)
+
 class Solution(object):
     def islandPerimeter(self, grid):
         """
