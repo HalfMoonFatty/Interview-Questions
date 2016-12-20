@@ -35,6 +35,18 @@ class Solution(object):
 '''
 Solution 2: 参考《编程之美》 小飞的电梯调度算法
 
+先以 “最小值” 为标准计算最多需要的 move (初始化move = sum(nums) - last * size).
+
+再依数值（key）从小到大的顺序遍历counter， 分别计算以当前的值（k）为标准：
+比 k 小的 low 个数需要再走+ lo*(k-last)； 
+比 k 大的 high 个数需要少走 - high*(k-last)
+因此最后 mov += (lo - hi) * (k - last)
+
+然后更新last = k, 
+相应的更新 high (hi -= cnt[k], 比last大的减少cnt[k]个); 
+以及 low (low += cnt[k], 比low小的增加cnt[k]个)
+
+
 Time: O(nlogn)
 Space: O(n)
 '''
