@@ -1,18 +1,36 @@
-Unlocked: [9]
+Unlocked: [23]
 -------------
+460	LFU Cache
+461	Hamming Distance 
+462	Minimum Moves to Equal Array Elements II
+463	Island Perimeter
+464	Can I Win
+466	Count The Repetitions
+467	Unique Substrings in Wraparound String
+468	Validate IP Address
+472	Concatenated Words
+473	Matchsticks to Square
+474	Ones and Zeroes
+475	Heaters
+477	Total Hamming Distance
 456	132 Pattern  
+449 Serialize and Deserialize BST  
 446	Arithmetic Slices II - Subsequence  
 440	K-th Smallest in Lexicographical Order  
 432	All O`one Data Structure  
 420	Strong Password Checker  
 391	Perfect Rectangle  	
 126	Word Ladder II  
+087 Scramble String  
 18	4Sum  
 
 
 
-Locked: [7]
+Locked: [10]
 -----------
+471	Encode String with Shortest Length
+469	Convex Polygon
+* 465	Optimal Account Balancing
 444	Sequence Reconstruction  
 439	Ternary Expression Parser  
 425	Word Squares  
