@@ -136,4 +136,3 @@ class Solution(object):
                 bfs_traverse(i, graph)
                 count += 1
         return count
-
