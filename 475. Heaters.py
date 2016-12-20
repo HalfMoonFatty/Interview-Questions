@@ -36,6 +36,9 @@ Solution: 排序（Sort） + 二分查找（Binary Search）
     则当前房屋所需的最小加热器半径radius = min(house - left, right - house)
     
     利用radius更新最终答案ans
+    
+Time: O(nlogn)
+Space: O(1)
 '''
 
 import sys
