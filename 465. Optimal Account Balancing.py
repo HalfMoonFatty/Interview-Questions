@@ -52,7 +52,6 @@ class Solution(object):
 
         def solve(rich, poor):
             rlen, plen = len(rich), len(poor)
-            # base case
             if min(rlen, plen) <= 1:
                 return max(rlen, plen)
                 
