@@ -43,9 +43,8 @@ For this question, the key part is: what is the state of the game? - The chosen/
 
 Use a boolean array(used) to denote which numbers have been chosen.
 Since in the problem statement, it says maxChoosableInteger will not be larger than 20.
-Then we can use an Integer(state) to represent this boolean[] array
+Then we can use an Integer(state) to represent this boolean[] array.
 Say the boolean[] is {false, false, true, true, false}, then we can transfer it to an Integer with binary representation as 00110. 
-
 
 The rest part of the solution is just simulating the game process using the top-down dp.
 '''
