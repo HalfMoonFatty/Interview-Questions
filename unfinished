@@ -1,12 +1,10 @@
-Unlocked: [17]
+Unlocked: [15]
 -------------
 460	LFU Cache
-464	Can I Win
 466	Count The Repetitions
 467	Unique Substrings in Wraparound String
 468	Validate IP Address
 472	Concatenated Words
-473	Matchsticks to Square
 
 456	132 Pattern  
 449	Serialize and Deserialize BST  
