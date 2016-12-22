@@ -1,7 +1,6 @@
-Unlocked: [15]
+Unlocked: [14]
 -------------
 460	LFU Cache
-466	Count The Repetitions
 467	Unique Substrings in Wraparound String
 468	Validate IP Address
 472	Concatenated Words
@@ -21,16 +20,16 @@ Unlocked: [15]
 
 Locked: [10]
 -----------
-* 471	Encode String with Shortest Length
-* 469	Convex Polygon
-* 465	Optimal Account Balancing
-* 444	Sequence Reconstruction  
-* 439	Ternary Expression Parser  
-* 425	Word Squares  
-* 422	Valid Word Square  
+471	Encode String with Shortest Length
+469	Convex Polygon
+465	Optimal Account Balancing
+444	Sequence Reconstruction  
+439	Ternary Expression Parser  
+425	Word Squares  
+422	Valid Word Square  
 418	Sentence Screen Fitting
-* 411	Minimum Unique Word Abbreviation
-* 408	Valid Word Abbreviation
+411	Minimum Unique Word Abbreviation
+408	Valid Word Abbreviation
 
 
 Knapsack Problem
