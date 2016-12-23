@@ -50,6 +50,32 @@ apple
 '''
 
 
+'''
+Solution:
+
+由于rows和cols的规模可以达到20000，因此朴素的解法会超时（Time Limit Exceeded）
+
+观察测试用例3可以发现，当句子在屏幕上重复展现时，会呈现周期性的规律
+
+上例中apple单词的相对位置从第二行开始循环，因此只需要找到单词相对位置的“循环节”，即可将问题简化。
+
+利用字典dp记录循环节的起始位置，具体记录方式为：cache[(col_index, word_index)] = row_index, ans
+
+以数对(col_index, word_index)为键，其中 word_index 为单词在句子中出现时的下标，col_index 为单词出现在屏幕上的列数
+
+以数对(row_index, ans)为值，其中 row_index 为单词出现在屏幕上的行数，ans为此时已经出现过的完整句子数
+
+code 分为上下两部分：
+
+第一部分用来确定 row_index 和 ans 或者把当前的 row_index 和 ans 写到 Cache 里
+第二部分用来 col_index, row_index and word_index
+    先计算 col_index (col_index += scount * slen + wlens[word_index])
+    然后根据 col_index 的值 分两种情况讨论：
+    * if col_index <= cols:
+    * if col_index >= cols: 
+        when current word exceed the screen boundry, need to move to the next new line 
+        and without increment to the next word(word_index)        
+'''
 
 
 class Solution(object):
@@ -75,7 +101,7 @@ class Solution(object):
             else:
                 cache[(col_index, word_index)] = row_index, ans
 
-
+            # if one line can fit in multiple words
             scount = (cols - col_index) / slen
             ans += scount
             col_index += scount * slen + wlens[word_index]
@@ -86,6 +112,8 @@ class Solution(object):
                 if word_index == wcount:
                     word_index = 0
                     ans += 1
+            # when current word exceed the screen boundry, need to move to the next new line 
+            # without increment to the next word(word_index) 
             if col_index >= cols:
                 col_index = 0
                 row_index += 1
