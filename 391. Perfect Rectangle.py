@@ -149,8 +149,10 @@ class Solution(object):
         
         
         
- '''
- Solution:
+'''
+ Solution 2: SweepLine Solution O(nlogn)
+ 
+ https://discuss.leetcode.com/topic/55944/o-n-log-n-sweep-line-solution
  
  '''
  
