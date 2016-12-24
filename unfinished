@@ -1,11 +1,10 @@
-Unlocked: [14]
+Unlocked: [13]
 -------------
 460	LFU Cache
 467	Unique Substrings in Wraparound String
 468	Validate IP Address
-472	Concatenated Words
 
-456	132 Pattern  
+472	Concatenated Words
 449	Serialize and Deserialize BST  
 446	Arithmetic Slices II - Subsequence  
 440	K-th Smallest in Lexicographical Order  
