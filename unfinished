@@ -3,7 +3,6 @@ Unlocked: [13]
 460	LFU Cache
 467	Unique Substrings in Wraparound String
 468	Validate IP Address
-
 472	Concatenated Words
 449	Serialize and Deserialize BST  
 446	Arithmetic Slices II - Subsequence  
@@ -16,8 +15,7 @@ Unlocked: [13]
 18	4Sum  
 
 
-
-Locked: [8]
+Locked: [7]
 -----------
 471	Encode String with Shortest Length
 469	Convex Polygon
@@ -26,7 +24,6 @@ Locked: [8]
 425	Word Squares  
 422	Valid Word Square  
 411	Minimum Unique Word Abbreviation
-408	Valid Word Abbreviation
 
 
 Knapsack Problem
