@@ -62,7 +62,9 @@ class Solution(object):
             for n in nums:
                 if not n: return False
                 if len(n) > 4: return False
-                if any(char not in string.hexdigits for char in n): return False
+                for char in n: 
+                    if char not in string.hexdigits:
+                        return False
             return True
 
         
