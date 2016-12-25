@@ -1,9 +1,8 @@
-Unlocked: [12]
+Unlocked: [11]
 -------------
-460	LFU Cache
-467	Unique Substrings in Wraparound String
 472	Concatenated Words
-449	Serialize and Deserialize BST  
+467	Unique Substrings in Wraparound String
+460	LFU Cache
 446	Arithmetic Slices II - Subsequence  
 440	K-th Smallest in Lexicographical Order  
 432	All O`one Data Structure  
