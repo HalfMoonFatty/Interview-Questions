@@ -42,13 +42,13 @@ Solution: Preorder Traversal
     
 Example:
 
-	      4
-	   /     \
-	  2	      6
+	4
+     /     \
+    2	    6
    / \     / \
   1   3   5   7
                \
-        		    8 
+        	8 
             
 Pre-order Traversal: '4,2,1,3,6,5,7,8'
 
