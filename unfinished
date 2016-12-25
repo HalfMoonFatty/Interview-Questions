@@ -13,12 +13,11 @@ Unlocked: [11]
 18	4Sum  
 
 
-Locked: [4]
+Locked: [3]
 -----------
 471	Encode String with Shortest Length
 469	Convex Polygon
 444	Sequence Reconstruction  
-439	Ternary Expression Parser  
 
 
 Knapsack Problem
