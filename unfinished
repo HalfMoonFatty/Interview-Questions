@@ -13,14 +13,13 @@ Unlocked: [11]
 18	4Sum  
 
 
-Locked: [6]
+Locked: [5]
 -----------
 471	Encode String with Shortest Length
 469	Convex Polygon
 444	Sequence Reconstruction  
 439	Ternary Expression Parser  
 425	Word Squares  
-422	Valid Word Square  
 
 
 Knapsack Problem
