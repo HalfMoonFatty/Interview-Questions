@@ -14,7 +14,7 @@ Unlocked: [12]
 18	4Sum  
 
 
-Locked: [7]
+Locked: [6]
 -----------
 471	Encode String with Shortest Length
 469	Convex Polygon
@@ -22,7 +22,6 @@ Locked: [7]
 439	Ternary Expression Parser  
 425	Word Squares  
 422	Valid Word Square  
-411	Minimum Unique Word Abbreviation
 
 
 Knapsack Problem
