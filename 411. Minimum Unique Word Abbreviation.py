@@ -21,8 +21,6 @@ Examples:
 '''
 Solution: DFS + 剪枝
 
-复用题目Valid Word Abbreviation的单词缩写检测方法validWordAbbreviation
-
 首先将dictionary中长度与target不同的单词去掉。
 
 DFS从空字符串''出发，逐一增加target中的字母；并尝试越过一些字母，插入数字。
@@ -34,11 +32,6 @@ DFS从空字符串''出发，逐一增加target中的字母；并尝试越过一
 
 class Solution(object):
     def minAbbreviation(self, target, dictionary):
-        """
-        :type target: str
-        :type dictionary: List[str]
-        :rtype: str
-        """
 
         def validWordAbbreviation(word, abbr):
             size = len(word)
