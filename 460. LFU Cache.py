@@ -26,6 +26,61 @@ cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 '''
 
+'''
+Solution: Doubly Linked List + Hash Table
+
+首先定义双向链表节点：KeyNode（Key节点）与FreqNode（频度节点)
+    KeyNode中保存key（键），value（值），freq（频度），prev（前驱），next（后继）
+    FreqNode中保存freq（频度）、prev（前驱）、next（后继）、first（指向最新的KeyNode），last（指向最老的KeyNode）
+    
+    
+在数据结构LFUCache中维护如下属性：
+    capacity：缓存的容量
+    keyDict：从key到KeyNode的映射
+    freqDict：从freq到FreqNode的映射
+    head：指向最小的FreqNode
+
+
+整体数据结构设计如下图所示：
+
+head --- FreqNode1 ---- FreqNode2 ---- ... ---- FreqNodeN
+              |               |                       |               
+            first           first                   first             
+              |               |                       |               
+           KeyNodeA        KeyNodeE                KeyNodeG           
+              |               |                       |               
+           KeyNodeB        KeyNodeF                KeyNodeH           
+              |               |                       |               
+           KeyNodeC         last                   KeyNodeI           
+              |                                       |      
+           KeyNodeD                                 last
+              |
+            last
+
+
+LFUCache操作实现如下：
+
+get(key)：
+    若keyDict中包含key，则increaseFreq，返回对应的value
+    否则，返回-1
+
+
+set(key, value)：
+    如果capacity为0，忽略当前操作，结束
+    如果keyDict中包含key，则替换其value，increaseFreq，结束
+    否则，如果当前keyDict的长度 == capcity，移除head.last（频度最低且最老的KeyNode）
+    新增KeyNode(key, value)，加入keyDict，并更新freqDict
+
+
+increaseFreq：
+    从keyDict中找到对应的KeyNode，然后通过KeyNode的freq值，从freqDict找到对应的FreqNode
+    如果FreqNode的next节点不等于freq + 1，则在其右侧插入一个值为freq + 1的新FreqNode节点
+    将KeyNode的freq值+1后，从当前KeyNode链表转移到新的FreqNode对应的KeyNode链表
+    如果KeyNode移动之后，原来的FreqNode对应的KeyNode链表为空，则删除原来的FreqNode
+    在操作完毕后如果涉及到head的变更，则更新head
+
+'''
+
 
 class KeyNode(object):
     def __init__(self, key, value, freq = 1):
@@ -121,6 +176,16 @@ class LFUCache(object):
         del self.freqDict[freqNode.freq]
 
 
+    # Link keyNode to freqNode
+    def linkKey(self, keyNode, freqNode):
+        firstKeyNode = freqNode.first
+        keyNode.prev = None
+        keyNode.next = firstKeyNode
+        if firstKeyNode: firstKeyNode.prev = keyNode
+        freqNode.first = keyNode
+        if freqNode.last is None: freqNode.last = keyNode        
+   
+
     # Unlink keyNode from freqNode
     def unlinkKey(self, keyNode, freqNode):
         next, prev = keyNode.next, keyNode.prev
@@ -129,13 +194,3 @@ class LFUCache(object):
         if freqNode.first == keyNode: freqNode.first = next
         if freqNode.last == keyNode: freqNode.last = prev
         if freqNode.first is None: self.delFreqNode(freqNode)
-
-
-    # Link keyNode to freqNode
-    def linkKey(self, keyNode, freqNode):
-        firstKeyNode = freqNode.first
-        keyNode.prev = None
-        keyNode.next = firstKeyNode
-        if firstKeyNode: firstKeyNode.prev = keyNode
-        freqNode.first = keyNode
-        if freqNode.last is None: freqNode.last = keyNode
