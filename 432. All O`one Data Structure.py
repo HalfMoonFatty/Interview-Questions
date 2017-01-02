@@ -169,24 +169,18 @@ class AllOne(object):
         node.prev = newNode
         return newNode
 
-
+      
+    # Unlink keyNode from valueNode
     def unlinkKey(self, keyNode, valueNode):
-        """
-        Unlink keyNode from valueNode
-        :rtype: void
-        """
         next, prev = keyNode.next, keyNode.prev
         if prev: prev.next = next
         if next: next.prev = prev
         if valueNode.first == keyNode: valueNode.first = next
         if valueNode.first is None: self.delValueNode(valueNode)
 
-
+          
+    # Link keyNode to valueNode
     def linkKey(self, keyNode, valueNode):
-        """
-        Link keyNode to valueNode
-        :rtype: void
-        """
         firstKeyNode = valueNode.first
         keyNode.prev = None
         keyNode.next = firstKeyNode
@@ -194,11 +188,8 @@ class AllOne(object):
         valueNode.first = keyNode
     
     
+    # Delete valueNode.
     def delValueNode(self, valueNode):
-        """
-        Delete valueNode.
-        :rtype: void
-        """
         prev, next = valueNode.prev, valueNode.next
         if prev: prev.next = next
         if next: next.prev = prev
@@ -206,6 +197,9 @@ class AllOne(object):
         if self.tail == valueNode: self.tail = prev
         del self.valueDict[valueNode.value]
 
+        
+        
+        
 # Your AllOne object will be instantiated and called as such:
 # obj = AllOne()
 # obj.inc(key)
