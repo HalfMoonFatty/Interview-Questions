@@ -91,14 +91,13 @@ class Solution(object):
             """
        
        
-        def twoSum(nums, start, end, target, res, allRes):
-            i = start
-            j = end
+        def twoSum(nums, start, end, target, res, result):
+            i, j = start, end
             while i < j:
                 if nums[i] + nums[j] == target:
                     res.append(nums[i])
                     res.append(nums[j])
-                    allRes.append(res[:])
+                    result.append(res[:])
                     res.pop()
                     res.pop()
                     i += 1
@@ -114,34 +113,33 @@ class Solution(object):
             return
        
        
-        def ksum(nums, start, end, target, k, res, allRes):
+        def ksum(nums, start, end, target, k, res, result):
             if k <= 0:
                 return
             elif k == 1:
                 for i in range(start, end+1):
                     if nums[i] == target:
                         res.append(nums[i])
-                        allRes.append(res[:])
+                        result.append(res[:])
                         res.pop()
                         return
             elif k == 2:
-                twoSum(nums, start, end, target, res, allRes)
+                twoSum(nums, start, end, target, res, result)
                 return
             else:
                 for i in range(start, end+1):
-                    if start<i<end and nums[i] == nums[i-1]:
+                    if start < i < end and nums[i] == nums[i-1]:
                         continue
                     res.append(nums[i])
-                    ksum(nums, i+1, end, target-nums[i], k-1, res[:], allRes)
+                    ksum(nums, i+1, end, target-nums[i], k-1, res[:], result)
                     res.pop()
                 return
        
        
-        allRes = []
-        res = []
+        result = []
         nums.sort()
-        ksum(nums, 0, len(nums)-1, target, 4, res, allRes)
-        return allRes
+        ksum(nums, 0, len(nums)-1, target, 4, [], result)
+        return result
 
 
 
