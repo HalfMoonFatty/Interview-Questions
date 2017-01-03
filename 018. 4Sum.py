@@ -1,7 +1,8 @@
 '''
 Problem:
 
-Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.
+Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? 
+Find all unique quadruplets in the array which gives the sum of target.
    
 Note:
     Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤ b ≤ c ≤ d)
@@ -12,7 +13,6 @@ For example, given array S = {1 0 -1 0 -2 2}, and target = 0.
     (-1,  0, 0, 1)
     (-2, -1, 1, 2)
     (-2,  0, 0, 2)
-
 '''
 
 
@@ -28,9 +28,7 @@ From the 3Sum, we know that 3Sum can actually be decomposed to 2Sum, in the same
 
 How about K sum? Given an array, find all K-number-combinations, such that n_1+n_2+…+n_k = T. This is exactly what recursion is for.
 
-     Here is the code in which a generic solution to kSum problem.
-
-     The time complexity can be computed as follows.
+The time complexity can be computed as follows
      Assumed T(k, N) is the time when the array size is N, and in the k sum problem.
      Then T(k, N) = N * T(k-1, N-1), and T(0, N) = 1.
      Thus, the overall time complexity of k sum solution is O(k, N) = N * (N-1) * … * (N-k+1) = O(N^k);
@@ -71,7 +69,7 @@ class Solution(object):
 '''
 Solution 3: Optimization of general K-sum recursion by using 2 Sum function
 
-Since twoSum’s time complexity is almost O(N), we can further optimize this code by using the solution to twoSum, to handle the case in which length == 2. As follows.
+Since twoSum’s time complexity is almost O(N), we can further optimize this code by using the solution to twoSum, to handle the case in which length == 2.
 
 Now the time complexity of the generic kSum solution should be O(N^(k-1)) since we can combine the T(2, N) and T(1, N)’s time complexity to O(N).
 
@@ -79,8 +77,6 @@ Now, this solution seems to have the best theoretical time complexity, because n
 
 Reference(喜刷刷): http://bangbingsyb.blogspot.com/2014/11/leetcode-4sum.html
 '''
-
-
 
 class Solution(object):
     def fourSum(self, nums, target):
@@ -194,8 +190,6 @@ class Solution(object):
                     mp[a + b].append([a,b])
 
     return result
-
-
 
 
 
