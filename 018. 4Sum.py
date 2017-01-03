@@ -92,9 +92,9 @@ class Solution(object):
                     res.pop()
                     i += 1
                     j -= 1
-                    while start<i<end and nums[i] == nums[i-1]:
+                    while start < i < end and nums[i] == nums[i-1]:
                         i += 1
-                    while start<j<end and nums[j] == nums[j+1]:
+                    while start < j < end and nums[j] == nums[j+1]:
                         j -= 1
                 elif nums[i] + nums[j] < target:
                     i += 1
