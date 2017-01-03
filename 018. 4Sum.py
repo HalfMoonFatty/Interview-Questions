@@ -80,12 +80,6 @@ Reference(喜刷刷): http://bangbingsyb.blogspot.com/2014/11/leetcode-4sum.html
 
 class Solution(object):
     def fourSum(self, nums, target):
-        """
-            :type nums: List[int]
-            :type target: int
-            :rtype: List[List[int]]
-            """
-       
        
         def twoSum(nums, start, end, target, res, result):
             i, j = start, end
