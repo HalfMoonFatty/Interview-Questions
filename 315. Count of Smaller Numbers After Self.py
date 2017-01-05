@@ -66,10 +66,51 @@ class FenwickTree(object):
         return res
         
         
-           
+
+'''
+Solution 2: MergeSort Based
+
+smaller[left[i][0]] += j meaning there are j elements smaller than the current left[i]
+
+For example, nums = [5, 2, 6, 1]
+
+left is: [(0, 5)]; right is [(1, 2)]
+i is: 0; j is: 1; smaller array is: [*1, 0, 0, 0]; i.e. j is 1, smaller[indexof(5)] += 1
+
+left is: [(2, 6)]; right is [(3, 1)]
+i is: 0; j is: 1; smaller array is: [1, 0, *1, 0]; i.e. j is 1, smaller[indexof(6)] += 1
+
+left is: [(1, 2), (0, 5)]; right is [(3, 1), (2, 6)]
+i is: 0; j is: 1; smaller array is: [1, *1, 1, 0]
+i is: 1; j is: 1; smaller array is: [*2, 1, 1, 0]
+'''
+
+
+class Solution(object):
+    def countSmaller(self, nums):
+        def sort(enum):
+            half = len(enum) / 2
+            if half:
+                left, right = sort(enum[:half]), sort(enum[half:])
+                m, n = len(left), len(right)
+                i = j = 0
+                while i < m or j < n:
+                    if j == n or i < m and left[i][1] <= right[j][1]:
+                        enum[i+j] = left[i]
+                        smaller[left[i][0]] += j
+                        i += 1
+                    else:
+                        enum[i+j] = right[j]
+                        j += 1
+            return enum
+        smaller = [0] * len(nums)
+        sort(list(enumerate(nums)))
+        return smaller           
             
-        
-# Solution 2: BST
+       
+
+    
+# Solution 1: BST
 
 class Solution(object):
     def countSmaller(self, nums):
@@ -120,27 +161,3 @@ class BinarySearchTree(object):
                 root.cnt += 1
                 break
         return cnt
-
-
-
-# Solution 3: MergeSort Based
-class Solution(object):
-    def countSmaller(self, nums):
-        def sort(enum):
-            half = len(enum) / 2
-            if half:
-                left, right = sort(enum[:half]), sort(enum[half:])
-                m, n = len(left), len(right)
-                i = j = 0
-                while i < m or j < n:
-                    if j == n or i < m and left[i][1] <= right[j][1]:
-                        enum[i+j] = left[i]
-                        smaller[left[i][0]] += j
-                        i += 1
-                    else:
-                        enum[i+j] = right[j]
-                        j += 1
-            return enum
-        smaller = [0] * len(nums)
-        sort(list(enumerate(nums)))
-        return smaller
