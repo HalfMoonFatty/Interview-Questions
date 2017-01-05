@@ -58,10 +58,8 @@ class Solution(object):
         q = deque()
         q.append((root, 0))
         while len(q) > 0:
-            elem = q.popleft()
-            if elem[0]:
-                node = elem[0]
-                column = elem[1]
+            node, column = q.popleft()
+            if node:
                 mp[column].append(node.val)
                 q.append((node.left, column-1))
                 q.append((node.right, column+1))
