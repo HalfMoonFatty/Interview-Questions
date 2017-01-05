@@ -110,7 +110,7 @@ class Solution(object):
        
 
     
-# Solution 1: BST
+# Solution 3: BST
 
 class Solution(object):
     def countSmaller(self, nums):
