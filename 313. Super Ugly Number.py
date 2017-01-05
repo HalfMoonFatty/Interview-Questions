@@ -19,7 +19,7 @@ class Solution(object):
     def nthSuperUglyNumber(self, n, primes):
 
         res = [1]*n
-        ind = [0]*len(primes)       # to store the index of prime numbers
+        ind = [0]*len(primes)       # to store the base-index(in result) of prime numbers
 
         for i in range(1,n):
             res[i] = sys.maxint     # note here
