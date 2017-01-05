@@ -25,7 +25,7 @@ class Solution(object):
         :rtype: str
         """
         counter = collections.Counter(s)
-        charSet = set()
+        charSet = set()   # charset represents chars in the stack
         stack = []
         
         for c in s:
