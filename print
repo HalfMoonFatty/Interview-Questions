@@ -56,6 +56,7 @@ class ValidWordAbbr(object):
 
 
 
+
 '''
 Problem: Generalized Abbreviation
 
@@ -88,7 +89,8 @@ class Solution(object):
         genAbbr(0, word, '', result)
         return result
        
-       
+   
+   
         
 
 '''
@@ -140,9 +142,6 @@ class Solution(object):
 '''
 Problem: Minimum Unique Word Abbreviation
 
-A string such as "word" contains the following abbreviations:
-
-["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4"]
 Given a target string and a set of strings in a dictionary, find an abbreviation of this target string with the smallest 
 possible length such that it does not conflict with abbreviations of the strings in the dictionary.
 
@@ -161,11 +160,8 @@ Examples:
 Solution: DFS + 剪枝
 
 首先将dictionary中长度与target不同的单词去掉。
-
 DFS从空字符串''出发，逐一增加target中的字母；并尝试越过一些字母，插入数字。
-
 遍历dictionary中的单词，检测冲突，若不存在冲突，则递归，并更新最优解。
-
 剪枝策略：利用变量length记录当前时刻的最优的单词缩写长度，若DFS分支的长度大于length，则可剪枝。
 '''
 
