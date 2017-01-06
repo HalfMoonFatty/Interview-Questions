@@ -54,8 +54,7 @@ class Solution(object):
             q = deque()
             q.append([i,j])
             while len(q):
-                pos = q.popleft()
-                x,y = pos[0],pos[1]
+                x,y = q.popleft()
                 total_dist[x][y] += cur_dist[x][y]  # accumulate total_dist[x][y]
 
                 for d in range(4):
