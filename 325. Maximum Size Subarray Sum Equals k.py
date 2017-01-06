@@ -23,17 +23,17 @@ class Solution(object):
             :rtype: int
             """
         mp = {}
-        sum = 0
+        sums = 0
         maxLen = 0
         for i in range(len(nums)):
-            sum += nums[i]
-            if not mp.has_key(sum):
-                mp[sum] = i
+            sums += nums[i]
+            if not mp.has_key(sums):
+                mp[sums] = i   # mp stores index
                 
-            if sum == k:
+            if sums == k:
                 maxLen = i + 1
-            elif mp.has_key(sum - k):
-                maxLen = max(maxLen, i-(mp[sum - k]))  # note: NOT i-(mp[sum - k])+1
+            elif mp.has_key(sums - k):
+                maxLen = max(maxLen, i-(mp[sums - k]))  # note: NOT i-(mp[sum - k])+1
 
         return maxLen
 
