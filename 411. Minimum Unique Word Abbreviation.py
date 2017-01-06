@@ -33,22 +33,22 @@ DFS从空字符串''出发，逐一增加target中的字母；并尝试越过一
 class Solution(object):
     def minAbbreviation(self, target, dictionary):
 
-        def validWordAbbreviation(word, abbr):
+        def validWordAbbreviation(self, word, abbr):
             size = len(word)
-            cnt = loc = 0
-            for w in abbr:
-                if w.isdigit():
-                    if w == '0' and cnt == 0:
+            cnt = index = 0
+            for char in abbr:
+                if char.isdigit():
+                    if char == '0' and cnt == 0:
                         return False
-                    cnt = cnt * 10 + int(w)
+                    cnt = cnt * 10 + int(char)
                 else:
-                    loc += cnt
+                    index += cnt
                     cnt = 0
-                    if loc >= size or word[loc] != w:
+                    if index >= size or word[index] != w:
                         return False
-                    loc += 1
-            return loc + cnt == size
-
+                    index += 1
+            return index + cnt == size 
+        
 
         def dfs(target, index, length, abbr, result):
             if length >= self.minLength: return
