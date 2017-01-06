@@ -13,18 +13,18 @@ class Solution(object):
             :type word: str
             :rtype: List[str]
             """
-        def genAbbr(start, word, res, result, prevNum):
+        def genAbbr(start, word, res, result):
             if start == len(word):
                 result.append(''.join(res[:]))
                 return
 
-            genAbbr(start+1, word, res+str(word[start]), result, False)
-            if not prevNum:
+            genAbbr(start+1, word, res+str(word[start]), result)
+            if start == 0 or not res[-1].isdigit():
                 for length in range(1,len(word)-start+1): # replace 0, 1, 2, 3...all
-                    genAbbr(start+length, word, res+str(length), result, True)
+                    genAbbr(start+length, word, res+str(length), result)
             return
 
 
         result = []
-        genAbbr(0, word, '', result, False)
+        genAbbr(0, word, '', result)
         return result
