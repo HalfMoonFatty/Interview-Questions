@@ -62,7 +62,7 @@ class Solution(object):
         i = 0
         
         while target <= n:    # note: <=
-            if i < len(nums) and target >= nums[i]:
+            if i < len(nums) and target >= nums[i]:    # the current number can be covered by sums(target)
                 target += nums[i]
                 i += 1
             else:
