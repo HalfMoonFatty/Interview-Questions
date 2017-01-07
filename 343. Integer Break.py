@@ -26,8 +26,19 @@ class Solution(object):
                 dp[i] = max(dp[i], max(j,dp[j])*max(i-j, dp[i-j]))
         return dp[-1]
         
-        
-# Math solution
+'''        
+Math solution
+
+1. The factor can only be 2 or 3:
+    If an optimal product contains a factor f >= 4, then you can replace it with factors 2 and f-2 without losing optimality, 
+    as 2*(f-2) = 2f-4 >= f. So you never need a factor greater than or equal to 4, meaning you only need factors 1, 2 and 3 
+    (and 1 is of course wasteful and you'd only use it for n=2 and n=3, where it's needed).
+
+2. The max product of any n>4 must contain a factor of 3:
+    - Out of 1, 2, 3, we know when n>4, if n is an odd number, 3 must be there as a factor (2 and 4 can't add up to an odd number);
+    - Now say n is an even number (n>4) and only has factor of 2 and 4, we can always split a 6 to 3X3, which is better than 2X2X2.
+    Therefore, the max product of any n (n>4) must contain a factor of 3. The recurrence relation holds.
+'''
 
 class Solution(object):
     def integerBreak(self, n):
