@@ -18,8 +18,7 @@ import heapq
 class Solution(object):
     def topKFrequent(self, nums, k):
 
-        count = collections.Counter(nums)
-        
+        count = collections.Counter(nums) 
         heap = []
         result = []
         
@@ -30,8 +29,7 @@ class Solution(object):
                 if count[key] > heap[0][0]:
                     heapq.heappop(heap)
                     heapq.heappush(heap,(count[key],key))
-                    
-                
+                                    
         while len(heap)>0:
             result.append(heapq.heappop(heap)[1])
         return result[::-1]
