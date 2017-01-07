@@ -63,7 +63,7 @@ class Solution(object):
         counter = Counter(nums2)
         res = []
         for n in nums1:
-            if counter.has_key(n) and counter[n]-1 >= 0:
+            if counter.has_key(n) and counter[n] >= 1:
                 counter[n] -= 1
                 res.append(n)
         return res
