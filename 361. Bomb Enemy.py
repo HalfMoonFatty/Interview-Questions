@@ -44,6 +44,7 @@ class Solution(object):
 
         for i in range(m):
             for j in range(n):
+                # need to recalculate rowCache
                 if j == 0 or grid[i][j-1] == "W":
                     rowCache = 0
                     for k in range(j,n):    # note
@@ -52,7 +53,7 @@ class Solution(object):
                         if grid[i][k] == "E":
                             rowCache += 1
 
-
+                # need to recalculate colCache
                 if i == 0 or grid[i-1][j] == "W":
                     colCache[j] = 0
                     for k in range(i,m):   # note
@@ -61,7 +62,7 @@ class Solution(object):
                         if grid[k][j] == "E":
                             colCache[j] += 1
 
-
+                # get the result base on rowCache and colCache
                 if grid[i][j] == "0":
                     maxHit = max(maxHit,rowCache+colCache[j])
 
