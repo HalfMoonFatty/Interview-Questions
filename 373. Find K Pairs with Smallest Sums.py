@@ -48,7 +48,7 @@ class Solution(object):
             i += 1
 
         j = 0
-        while j < k and len(heap)>0:
+        while j < k and len(heap) > 0:  # Note: only the first k elem of nums1 and nums2 matters
             elem = heapq.heappop(heap)
             res.append([elem[1],elem[2]])
             nextInd = elem[3] + 1
