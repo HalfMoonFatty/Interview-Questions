@@ -3,9 +3,7 @@ Problem:
 
 Given a binary tree, collect a tree's nodes as if you were doing this: Collect and remove all leaves, repeat until the tree is empty.
 
-Example:
-
-    Given binary tree
+Example: Given binary tree
 
 
         1
@@ -13,8 +11,6 @@ Example:
       2   3
      / \
     4  5
-
-
 
     Returns [4, 5, 3], [2], [1].
 
@@ -34,19 +30,15 @@ Example:
 
     []
 
-    Returns [4, 5, 3], [2], [1].
-    
+    Returns [4, 5, 3], [2], [1].  
 '''
 
 '''
 Solution: bottom-up
 
 The key is to find the height of each node.The height of leaf is 0. h(node) = 1 + max(h(node.left), h(node.right)).
-
 The height of a node is also the its index in the result list (res). For example, leaves, whose heights are 0, are stored in res[0]. 
-
 Once we find the height of a node, we can put it directly into the result.
-
 本题和 Level Order Traversal的题很像，Level Order Traversal 是 Top-Down. 这个题是 bottom-up. 利用求height的题，piggback一个result 来填。
 
 '''
