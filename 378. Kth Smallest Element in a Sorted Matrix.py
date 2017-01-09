@@ -38,7 +38,7 @@ class Solution(object):
         for j in range(len(matrix[0])):
             heapq.heappush(minheap, (matrix[0][j],0,j))
 
-        for n in range(k-1):
+        for n in range(k-1):    # pop k-1 times
             t = heapq.heappop(minheap)
             r,c = t[1],t[2]
             if r == len(matrix)-1: continue  # last row, this col has been finished
