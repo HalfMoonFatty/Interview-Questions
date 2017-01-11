@@ -33,12 +33,13 @@ class Solution(object):
         def dfs(visited, start, end, val, ans):
             if start == end:
                 ans[0] = val
-            else:
-                for n in graph[start]:
-                    if n not in visited:
-                        visited.add(start)
-                        dfs(visited, n, end, val*edges[start][n], ans)
-                        visited.remove(start)
+                return
+
+            for n in graph[start]:
+                if n not in visited:
+                    visited.add(start)
+                    dfs(visited, n, end, val*edges[start][n], ans)
+                    visited.remove(start)
         
         
         # make graph: node(a,b,c...); edge = a/b
