@@ -69,6 +69,7 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        # binary search to find the first index that is larger than current index
         def getNextIndex(index_list, index):
             if not index_list : return -1
             
