@@ -21,7 +21,7 @@ queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ].
 The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
 '''
 
-from sets import Set
+
 class Solution(object):
     def calcEquation(self, equations, values, queries):
         """
@@ -55,8 +55,6 @@ class Solution(object):
         for (X,Y) in queries:
             if X not in graph or Y not in graph:
                 result.append(-1.0)
-            elif X == Y:
-                result.append(1.0)
             else:
                 ans = [-1.0]    # default ans value is -1.0
                 dfs(set(), X, Y, 1.0, ans)
