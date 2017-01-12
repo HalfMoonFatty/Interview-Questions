@@ -49,21 +49,41 @@ Solution 2: DP
 Time: O(M*N) (N is half of array sum）
 Space:O(N)
 
+base sum 0 is: True, With number 1, Current sum: 1 False-->True
+[True, False, False, False, False, False, False, False, False, False, False, False]
+
+base sum 1 is: True, With number 5, Current sum: 6 False-->True
+[True, True, False, False, False, False, False, False, False, False, False, False]
+
+base sum 0 is: True, With number 5, Current sum: 5 False-->True
+[True, True, False, False, False, False, True, False, False, False, False, False]
+
+base sum 0 is: True, With number 11, Current sum: 11 False-->True
+[True, True, False, False, False, True, True, False, False, False, False, False]
+
+base sum 5 is: True, With number 5, Current sum: 10 False-->True
+[True, True, False, False, False, True, True, False, False, False, False, True]
+
+
 '''
 
-import sys
 class Solution(object):
     def canPartition(self, nums):
-        
-        sums = sum(nums)
-        if sums%2: return False  
-        
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        length = len(nums)
+        sums =  sum(nums);
+        if sums % 2 == 1:
+            return False
         sums /= 2
-        dp = [-sys.maxint+1] * (sums+1)
-        dp[0] = 0
+        dp = [False for x in range(sums+1)]
+        dp[0] = True
         for n in nums:
-            for s in range(sums,n-1,-1):
-                dp[s] = max(dp[s-n]+1, dp[s])
-        return dp[-1] > 0
+            for s in range(sums, n-1, -1):
+                dp[s] |= dp[s-n]
+                
+        return dp[sums]
         
         
