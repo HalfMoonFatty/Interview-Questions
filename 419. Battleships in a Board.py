@@ -1,7 +1,6 @@
 '''
 Problem:
 
-
 Given an 2D board, count how many different battleships are in it. The battleships are represented with 'X's, empty slots are represented with '.'s. 
 
 You may assume the following rules:
