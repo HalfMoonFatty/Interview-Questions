@@ -22,6 +22,16 @@ Solution 1: Binary Search
 
 Time: O(nlogn)
 Space: O(1)
+
+The answer is between maximum value of input array numbers and sum of those numbers. Use binary search to approach the correct answer. 
+3.1 Cut the array from left.
+3.2 Try our best to make sure that the sum of numbers between each two cuts (inclusive) is large enough but still less than mid.
+3.3 We'll end up with two results: either we can divide the array into more than m subarrays or we cannot.
+- If we can't, it means that the mid value we pick is too small because we've already tried our best to make sure each part holds as many non-negative numbers 
+  as we can but we still have numbers left. So, it is impossible to cut the array into m parts and make sure each parts is no larger than mid. We should increase m. 
+- If we can, it is either we successfully divide the array into m parts and the sum of each part is less than mid, or we used up all numbers before we reach m. 
+  Both of them mean that we should lower mid because we need to find the minimum one.
+
 https://discuss.leetcode.com/topic/61324/clear-explanation-8ms-binary-search-java/6
 
 '''
