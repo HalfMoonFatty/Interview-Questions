@@ -81,7 +81,7 @@ class Solution(object):
         sums /= 2
         dp = [False for x in range(sums+1)]
         dp[0] = True
-        for n in nums:
+        for n in nums:    # note n should be in the outer loop as each number can only use once
             for s in range(sums, n-1, -1):
                 dp[s] |= dp[s-n]
                 
