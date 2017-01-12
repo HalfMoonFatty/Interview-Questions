@@ -49,6 +49,8 @@ Solution 2: DP
 Time: O(M*N) (N is half of array sum）
 Space:O(N)
 
+Example: nums = [1, 5, 11, 5] ==> true
+
 base sum 0 is: True, With number 1, Current sum: 1 False-->True
 [True, False, False, False, False, False, False, False, False, False, False, False]
 
@@ -63,7 +65,6 @@ base sum 0 is: True, With number 11, Current sum: 11 False-->True
 
 base sum 5 is: True, With number 5, Current sum: 10 False-->True
 [True, True, False, False, False, True, True, False, False, False, False, True]
-
 
 '''
 
