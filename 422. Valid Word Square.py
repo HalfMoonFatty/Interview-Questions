@@ -64,8 +64,8 @@ Therefore, it is NOT a valid word square.
             X A B C 
             X B D E F G
             X C E I
-  x = 4 --> X	  F
-            X	  G
+  x = 4 --> X   F
+            X   G
             X
 '''
 
