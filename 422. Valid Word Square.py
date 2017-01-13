@@ -59,6 +59,16 @@ The third row reads "read" while the third column reads "lead".
 Therefore, it is NOT a valid word square.
 '''
 
+'''
+            X X X X X X X	
+            X	A B C 
+            X	B D E F G
+            X	C E I
+  x = 4 --> X	  F
+            X	  G
+            X
+'''
+
 class Solution(object):
     def validWordSquare(self, words):
         """
