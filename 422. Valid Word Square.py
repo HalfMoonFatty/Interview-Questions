@@ -59,6 +59,8 @@ The third row reads "read" while the third column reads "lead".
 Therefore, it is NOT a valid word square.
 '''
 
+
+
 '''
 Solution:
 
