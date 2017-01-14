@@ -60,13 +60,18 @@ Therefore, it is NOT a valid word square.
 '''
 
 '''
-            X X X X X X X	
-            X A B C 
-            X B D E F G
-            X C E I
-  x = 4 --> X   F
-            X   G
-            X
+Solution:
+
+ith row should be same as ith column. 
+In order to make sure the ith column is FULL, we count the number of rows with length >= x + 1; 
+Thus the number of rows (length >= x+1) constraints the number of column of the current row.
+
+            X X X X X X 
+            X A B 
+            X B D E F 
+  x = 3 --> X   E I
+            X   F
+            X   
 '''
 
 class Solution(object):
