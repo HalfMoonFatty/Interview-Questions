@@ -38,13 +38,11 @@ class Solution(object):
 
 
 
-
 '''
 Problem:
     Write a program to solve a Sudoku puzzle by filling the empty cells. Empty cells are indicated by the character '.'.
     You may assume that there will be only one unique solution.
 '''
-
 
 class Solution(object):
 
@@ -60,7 +58,6 @@ class Solution(object):
                 if board[i][col] != '.' and int(board[i][col]) == int(c) and i != row:
                     return False
 
-            # check this sub-block
             rbase = row/3*3
             cbase = col/3*3
             for i in range(rbase,rbase+3):
@@ -75,13 +72,11 @@ class Solution(object):
             if row == 9:
                 return True
 
-            # next row
-            if col == 8:
+            if col == 8:    # next row
                 nextRow = row+1
                 nextCol = 0
                 
-            # next column
-            else:
+            else:    # next column
                 nextRow = row
                 nextCol = col+1
 
@@ -96,7 +91,6 @@ class Solution(object):
                             return True
                         board[row][col] = '.'
                 return False
-
 
 
         if len(board) < 9 or len(board[0]) < 9:
