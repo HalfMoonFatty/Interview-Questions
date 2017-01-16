@@ -54,7 +54,7 @@ class Solution(object):
                         continue
                     else:
                         res.append(nums[i])
-                        ksum(nums, i+1, end, target-nums[i], k-1, res[:], result)
+                        ksum(nums, i+1, end, target-nums[i], k-1, res, result)
                         res.pop()
        
        
@@ -112,7 +112,7 @@ class Solution(object):
                         res.append(nums[i])
                         result.append(res[:])
                         res.pop()
-                        return
+                return
             elif k == 2:
                 twoSum(nums, start, end, target, res, result)
                 return
@@ -121,7 +121,7 @@ class Solution(object):
                     if start < i < end and nums[i] == nums[i-1]:
                         continue
                     res.append(nums[i])
-                    ksum(nums, i+1, end, target-nums[i], k-1, res[:], result)
+                    ksum(nums, i+1, end, target-nums[i], k-1, res, result)
                     res.pop()
                 return
        
@@ -135,7 +135,6 @@ class Solution(object):
 
 '''
 Solution 4:
-
 
 - This solution has a O(N^2 logN) time complexity, because it utilizes twoSum whose time complexity is O(N logN), 
   and map.containsKey requires O(logN) time.
