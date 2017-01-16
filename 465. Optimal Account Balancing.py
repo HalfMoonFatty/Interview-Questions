@@ -12,7 +12,6 @@ Note:
     A transaction will be given as a tuple (x, y, z). Note that x ≠ y and z > 0.
     Person's IDs may not be linear, e.g. we could have the persons 0, 1, 2 or we could also have the persons 0, 2, 6.
 
-
 Example 1:
 Input: [[0,1,10], [2,0,5]]
 Output: 2
@@ -21,7 +20,6 @@ Explanation:
 Person #0 gave person #1 $10.
 Person #2 gave person #0 $5.
 Two transactions are needed. One way to settle the debt is person #1 pays person #0 and #2 $5 each.
-
 
 Example 2:
 Input: [[0,1,10], [1,0,1], [1,2,5], [2,0,5]]
@@ -45,10 +43,6 @@ Solution: 记忆化搜索
 
 class Solution(object):
     def minTransfers(self, transactions):
-        """
-        :type transactions: List[List[int]]
-        :rtype: int
-        """
 
         def solve(rich, poor):
             rlen, plen = len(rich), len(poor)
