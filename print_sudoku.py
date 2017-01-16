@@ -11,13 +11,13 @@ Note:
 
 
 class Solution(object):
-
     def isValidSudoku(self, board):
-
+        
         for i in range(9):
             row = set()
             col = set()
             block = set()
+            
             for j in range(9):
                 if board[i][j] != '.' and board[i][j] in row:
                     return False
@@ -65,7 +65,6 @@ class Solution(object):
                     if board[i][j] != '.' and int(board[i][j]) == int(c) and (i, j) != (row, col):
                         return False
             return True
-
 
 
         def canSolve(row, col, board):
