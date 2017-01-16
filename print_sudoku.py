@@ -62,7 +62,7 @@ class Solution(object):
             cbase = col/3*3
             for i in range(rbase,rbase+3):
                 for j in range(cbase,cbase+3):
-                    if board[i][j] != '.' and int(board[i][j]) == int(c) and (i, j) != (row, col):
+                    if board[i][j] != '.' and int(board[i][j]) == int(c) and (i, j)!=(row, col):
                         return False
             return True
 
@@ -70,7 +70,7 @@ class Solution(object):
         def canSolve(row, col, board):
             if row == 9:
                 return True
-
+            
             if col == 8:    # next row
                 nextRow = row+1
                 nextCol = 0
