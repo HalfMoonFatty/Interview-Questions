@@ -57,6 +57,7 @@ Thus the number of rows (length >= x+1) constraints the number of column of the 
             X   
 '''
 
+
 class Solution(object):
     def validWordSquare(self, words):
         """
@@ -96,8 +97,7 @@ Note:
     Word length is at least 1 and at most 5.
     Each word contains only lowercase English alphabet a-z.
 
-Example 1:
-Input: ["area","lead","wall","lady","ball"]
+Example 1: Input: ["area","lead","wall","lady","ball"]
 Output:
 [
   [ "wall",
@@ -111,12 +111,9 @@ Output:
     "lady"
   ]
 ]
-Explanation:
-The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
 
 
-Example 2:
-Input: ["abat","baba","atan","atal"]
+Example 2: Input: ["abat","baba","atan","atal"]
 Output:
 [
   [ "baba",
@@ -130,18 +127,18 @@ Output:
     "atal"
   ]
 ]
-Explanation:
-The output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).
 '''
 
 '''
 Solution: 深度优先搜索（DFS）+ 剪枝（Pruning）
-首先构建一个单词前缀prefix->单词word的字典mdict
-深度优先搜索search(word, line)，其中word是当前单词，line是行数
-利用变量matrix记录当前已经生成的单词
-前缀prefix = matrix[0..line][line]，如果prefix对应单词不存在，则可以剪枝
-否则枚举mdict[prefix]，并递归搜索
+
+    首先构建一个单词前缀prefix->单词word的字典mdict
+    深度优先搜索search(word, line)，其中word是当前单词，line是行数
+    利用变量matrix记录当前已经生成的单词
+    前缀prefix = matrix[0..line][line]，如果prefix对应单词不存在，则可以剪枝
+    否则枚举mdict[prefix]，并递归搜索
 '''
+
 
 class Solution(object):
     def wordSquares(self, words):
