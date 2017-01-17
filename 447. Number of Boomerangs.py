@@ -14,7 +14,13 @@ Explanation: The two boomerangs are [[1,0],[0,0],[2,0]] and [[1,0],[2,0],[0,0]]
 
 '''
 
+'''
+枚举点i(x1, y1)，计算点i到各点j(x2, y2)的距离，并分类计数
 
+利用排列组合知识，从每一类距离中挑选2个点的排列数 A(n, 2) = n * (n - 1)
+
+将上述结果累加即为最终答案
+'''
 
 class Solution(object):
     def numberOfBoomerangs(self, points):
