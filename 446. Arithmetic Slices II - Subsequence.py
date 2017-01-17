@@ -41,8 +41,9 @@ All arithmetic subsequence slices are:
 '''
 Solution: DP
 
-状态转移方程：dp[x][delta] += dp[y][delta] + 1（y∈[0, x - 1]）
 dp[x][delta]表示以第x个元素结尾，且公差为delta的等差子序列切片个数。
+
+状态转移方程：dp[x][delta] += dp[y][delta] + 1（y∈[0, x - 1]）
 '''
 
 class Solution(object):
