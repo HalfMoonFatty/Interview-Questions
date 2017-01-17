@@ -59,7 +59,7 @@ class Solution(object):
             root.left = self.deleteNode(root.left, key)
         elif key > root.val: 
             root.right = self.deleteNode(root.right, key)
-        else:
+        else:    # key == root.val
             if not root.left: 
                 return root.right
             elif not root.right: 
