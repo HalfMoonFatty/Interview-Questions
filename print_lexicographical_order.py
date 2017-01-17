@@ -7,7 +7,6 @@ Problem:
 
 class Solution(object):
     def lexicalOrder(self, n):
-
         def dfs(res,result):
             if res <= n:
                 result.append(res)
@@ -15,14 +14,13 @@ class Solution(object):
                 for i in range(10):
                     dfs(res*10+i, result)
 
-
         result = []
         for i in range(1,10):    # first bit cannot be 0
             dfs(i,result)
         return result
    
-   
-   
+
+
 '''
 Problem:
 
