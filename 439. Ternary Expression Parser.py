@@ -46,7 +46,7 @@ Solution:
 
 取栈顶的5个元素，判断是否为一个可以解析的表达式。若是，则解析后压栈
 
-否则从右向左将expression中的字符压入栈stack
+否则 “从右向左” 将expression中的字符压入栈stack
 '''
 
 class Solution(object):
