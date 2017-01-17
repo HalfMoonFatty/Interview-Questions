@@ -38,6 +38,13 @@ All arithmetic subsequence slices are:
 [2,6,10]
 '''
 
+'''
+Solution: DP
+
+状态转移方程：dp[x][delta] += dp[y][delta] + 1（y∈[0, x - 1]）
+dp[x][delta]表示以第x个元素结尾，且公差为delta的等差子序列切片个数。
+'''
+
 class Solution(object):
     def numberOfArithmeticSlices(self, A):
         """
