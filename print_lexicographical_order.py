@@ -65,7 +65,6 @@ calSteps function - to calculate by level.
     ... increase the step *10 every time, until n1 > n
 '''
 
-
 class Solution(object):
     def findKthNumber(self, n, k):
 
@@ -76,8 +75,7 @@ class Solution(object):
                 n1 *= 10
                 n2 *= 10
             return step
-        
-        
+                
         curr = 1
         k -= 1
         while k > 0:
@@ -89,4 +87,4 @@ class Solution(object):
                 curr *= 10
                 k -= 1
         return curr
-            
+ 
