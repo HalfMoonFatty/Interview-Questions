@@ -30,7 +30,7 @@ class Solution(object):
         :rtype: bool
         """
         size = len(str)
-        for x in range(1, size / 2 + 1):
+        for x in range(1, size / 2 + 1):    # iterate through all possible substrings
             if size % x:
                 continue
             if str[:x] * (size / x) == str:
