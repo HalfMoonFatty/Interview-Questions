@@ -29,7 +29,7 @@ Solution:
 
 遍历排序后的气球起始点坐标s, e
 
-若emin < s，说明当前气球无法用一支箭射中，则令最终结果ans + 1，令emin = current end
+若 s > emin，说明当前气球无法用一支箭射中，则令最终结果 numArrow + 1，令emin = current end
 
 否则更新emin = min(emin, e)
 
