@@ -15,9 +15,18 @@ Note: The given array is guaranteed to contain no element "0".
 Can you do it in O(n) time complexity and O(1) space complexity?
 '''
 
+'''
+Solution:
+
+以每一个点作为起点，检测有没有loop 以及 loop上的每一环是不是都是 "forward" or "backward"; 
+
+检测完毕后，如果count == size: 直接返回有loop; 
+
+如果没有loop (或者 loop 不为 "forward" or "backward“), 把这条path上的所有点标记为invalid.
 
 # Time: O(n)
 # Spcae: O(1)
+'''
 
 class Solution(object):
     def circularArrayLoop(self, nums):
