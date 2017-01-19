@@ -56,8 +56,7 @@ class Solution(object):
             left = bisect.bisect_right(heaters, house)
             if left > 0: radius = min(radius, house-heaters[left-1])
             right = bisect.bisect_left(heaters, house)
-            if right < len(heaters):
-                radius = min(radius, heaters[right] - house)
+            if right < len(heaters): radius = min(radius, heaters[right] - house)
             ans = max(ans, radius)
         return ans
         
