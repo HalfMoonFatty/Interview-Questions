@@ -31,7 +31,9 @@ Solution: 排序（Sort） + 二分查找（Binary Search）
 
 遍历房屋houses，记当前房屋坐标为house：
 
-    利用二分查找，分别找到不大于house的最大加热器坐标left，以及不小于house的最小加热器坐标right
+    利用二分查找，分别找到不大于house的最大加热器坐标left (heaters[left]<=house)，
+    
+    以及不小于house的最小加热器坐标right (house <= heaters[right])
     
     则当前房屋所需的最小加热器半径radius = min(house - left, right - house)
     
