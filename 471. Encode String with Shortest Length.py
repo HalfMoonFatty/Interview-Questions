@@ -42,14 +42,9 @@ Explanation: "abbbabbbc" occurs twice, but "abbbabbbc" can also be encoded to "2
 '''
 
 class Solution(object):
-    def __init__(self):
-        self.dp = dict()
 
     def encode(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+
         def isEncoded(s):
             if not s: return False
             index = s.find('[')
