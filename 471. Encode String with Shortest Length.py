@@ -72,7 +72,7 @@ class Solution(object):
                 for j in range(i, i + l):
                     string = res[i][j] + res[j+1][i+l]
                     minLength = dp[i][j] + dp[j+1][i+l]
-                    string1 = res[i][j][res[i][j].find('[') + 1 : -2]  if isEncoded(res[i][j]) else res[i][j]
+                    string1 = res[i][j][res[i][j].find('[') + 1 : -2] if isEncoded(res[i][j]) else res[i][j]
                     count1 = int(res[i][j][:res[i][j].find('[')]) if isEncoded(res[i][j]) else 1
                     string2 = res[j + 1][i + l][res[j + 1][i + l].find('[') + 1 : -2] if isEncoded(res[j+1][i+l]) else res[j+1][i+l]
                     count2 = int(res[j + 1][i + l][:res[j + 1][i + l].find('[')]) if isEncoded(res[j+1][i+l]) else 1
