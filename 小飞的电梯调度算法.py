@@ -11,11 +11,8 @@ Follow - up: 往上爬一层要耗费K个单位的能量，往下走耗费1个�
 * 只需要计算N1+N2-N3变成N1+N2-N3*K即可。其余的都是一样的。
 '''
 
-'''
-Solution 1: 暴力枚举
 
-Time: O(N^2)
-'''
+# Solution 1: 暴力枚举 Time: O(N^2)
 
 def findTargetFloor(personOnFloor, numFloors):
     min_floors = sys.maxint
@@ -63,7 +60,6 @@ def findTargetFloor(personOnFloor, numFloors):
     return target_floor
     
     
-
 '''
 Solution 3:  中位数
 
