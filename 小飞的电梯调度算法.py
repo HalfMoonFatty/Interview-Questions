@@ -76,3 +76,16 @@ def findTargetFloor(personOnFloor, numFloors):
     median = numFloors/2
     return median
   
+'''
+def findTargetFloor(personOnFloor, numFloors):
+    left, right = 0, numFloors-1
+    while right-left > 1:
+
+        while personOnFloor[left] == 0: left += 1
+        personOnFloor[left] -= 1
+
+        while personOnFloor[right] == 0: right -= 1
+        personOnFloor[right] -= 1
+
+    return left
+'''
