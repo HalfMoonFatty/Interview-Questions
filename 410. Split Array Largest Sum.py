@@ -95,7 +95,7 @@ dp[i] = min(dp[i], val)
 
 
 
-Time: O(n^3)
+Time: O(n^2 * m)
 Space: O(n)
 
 https://discuss.leetcode.com/topic/61405/dp-java/3
