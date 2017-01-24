@@ -31,7 +31,7 @@ If the scores of both players are equal, then player 1 is still the winner.
 
 
 '''
-Solution 1: Backtracking
+Solution 1: Alpha-Beta搜索 + 记忆化
 
 If we think from the prospective of one player, what he gains each time is a plus, while, what player2 gains is a minus. Eventually if player1's score > 0, he can win.
 
@@ -43,7 +43,6 @@ otherwise, this current player has 2 options:
     --> nums[e]-helper(nums,s,e-1): this player select the tail item, leaving the other player a choice from s to e-1
 Then take the max of these two options as this player's selection, return it.
 '''
-
 
 class Solution(object):
     def PredictTheWinner(self, nums):
@@ -65,7 +64,6 @@ class Solution(object):
 
     
     
-
     
 '''
 Solution 2: DP Refer to Lintcode: coins in a line
