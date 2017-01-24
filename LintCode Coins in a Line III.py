@@ -54,4 +54,4 @@ class Solution(object):
                 c = dp[i][j-2] if j-2 >= 0 else 0
                 dp[i][j] = max(min(a,b)+nums[i], min(b,c)+nums[j])
 
-        return dp[0][-1] >= sum(nums)/2
+        return dp[0][-1] > sum(nums)/2
