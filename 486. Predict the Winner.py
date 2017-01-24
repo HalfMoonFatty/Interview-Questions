@@ -29,13 +29,44 @@ Any scores in the given array are non-negative integers and will not exceed 10,0
 If the scores of both players are equal, then player 1 is still the winner.
 '''
 
+
 '''
 Solution 1: Backtracking
+
+If we think from the prospective of one player, what he gains each time is a plus, while, what player2 gains is a minus. Eventually if player1's score > 0, he can win.
+
+函数 restScore(nums)计算当前玩家从nums中可以获得的最大收益，当收益>=0时，此玩家获胜
+
+if start == end, there is no other choice but have to select nums[start]
+otherwise, this current player has 2 options:
+    --> nums[s]-helper(nums,s+1,e): this player select the front item, leaving the other player a choice from s+1 to e
+    --> nums[e]-helper(nums,s,e-1): this player select the tail item, leaving the other player a choice from s to e-1
+Then take the max of these two options as this player's selection, return it.
 '''
 
 
+class Solution(object):
+    def PredictTheWinner(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        def restScore(nums, start, end, cache):
+            if not cache[start][end]: 
+                if start == end: 
+                    cache[start][end] = nums[start]
+                else: 
+                    cache[start][end] = max(nums[start] - restScore(nums, start+1, end, cache), nums[end] - restScore(nums, start, end-1, cache))
+            return cache[start][end]
+        
+        cache = [[0] * len(nums) for _ in range(len(nums))]
+        return restScore(nums, 0, len(nums)-1, cache) >= 0
 
 
+    
+    
+
+    
 '''
 Solution 2: DP Refer to Lintcode: coins in a line
 
