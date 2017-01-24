@@ -1,7 +1,8 @@
 '''
 Problem:
 
-Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets 
+such that the sum of elements in both subsets is equal.
 
 Note: Both the array size and each of the array element will not exceed 100.
 
@@ -14,7 +15,6 @@ Example 2:
 Input: [1, 2, 3, 5]
 Output: false
 Explanation: The array cannot be partitioned into equal sum subsets.
-
 '''
 
 '''
@@ -26,10 +26,7 @@ Space: O(n)
 
 class Solution(object):
     def canPartition(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+
         def canPart(start, nums, sums):
             if sums < 0: return False
             if sums == 0: return True
@@ -65,15 +62,11 @@ base sum 0 is: True, With number 11, Current sum: 11 False-->True
 
 base sum 5 is: True, With number 5, Current sum: 10 False-->True
 [True, True, False, False, False, True, True, False, False, False, False, True]
-
 '''
 
 class Solution(object):
     def canPartition(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+
         length = len(nums)
         sums =  sum(nums);
         if sums % 2 == 1:
@@ -86,5 +79,4 @@ class Solution(object):
                 dp[s] |= dp[s-n]
                 
         return dp[sums]
-        
         
