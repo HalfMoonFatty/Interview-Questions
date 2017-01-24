@@ -73,7 +73,44 @@ class Solution(object):
 '''
 Solution 2: DP
 
+This solution does not take advantage of the fact that the numbers are non-negative (except to break the inner loop early).
+On the other hand, it can be used for the problem containing arbitrary numbers
+
+dp[j] is the solution for splitting subarray n[j]...n[L-1] into s parts.
+
+dp[i] is splitting subarray n[i]...n[L-1] into s+1 parts.
+dp[i] = min{ max(dp[s,j], n[i]+...+n[j-1]) }, i+1 <= j <= L-s
+
+|<---------------- i ---------------->|
+0                                   maxLen   L-1
+|____________|________________________|_______| 
+
+
 https://discuss.leetcode.com/topic/61405/dp-java/3
 '''
-
+import sys
+class Solution(object):
+    def splitArray(self, nums, m):
+        """
+        :type nums: List[int]
+        :type m: int
+        :rtype: int
+        """
+        dp = [0] * len(nums)
+        dp[-1] = nums[-1]
+        for i in range(len(nums)-2,-1,-1):
+            dp[i] = nums[i] + dp[i+1]
+        
+        for part in range(2, m+1):
+            maxLen = len(nums) + 1 - part
+            for i in range(maxLen):
+                dp[i] = sys.maxint
+                leftSum = 0
+                for p in range(i,maxLen):
+                    leftSum += nums[p]
+                    if leftSum > dp[i]: break   # no better soluiton, stop search
+                    val = max(leftSum,dp[p+1])
+                    dp[i] = min(dp[i], val)
+        return dp[0]
+                
         
