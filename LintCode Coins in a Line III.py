@@ -47,9 +47,9 @@ class Solution(object):
         for i in range(n-1, -1, -1):
             for j in range(i+1, n):
                 # dp[i+2][j]: player2: i+1, player1: i
-                a = dp[i+2][j] if i+2 < n else 0
+                a = dp[i+2][j] if i+2 <= n-1 else 0
                 # dp[i+1][j-1]: player2: j,player1: i / player2: i,player1: j
-                b = dp[i+1][j-1] if i+1 < n and j-1 >= 0 else 0
+                b = dp[i+1][j-1] if i+1 <= n-1 and j-1 >= 0 else 0
                 # dp[i][j-2]: player2: j-1,player1: j
                 c = dp[i][j-2] if j-2 >= 0 else 0
                 dp[i][j] = max(min(a,b)+nums[i], min(b,c)+nums[j])
