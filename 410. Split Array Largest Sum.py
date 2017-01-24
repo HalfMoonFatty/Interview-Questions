@@ -68,6 +68,9 @@ class Solution(object):
                 l = mid+1
         return l
 
+      
+      
+      
 
 
 '''
@@ -80,6 +83,8 @@ On the other hand, it can be used for the problem containing arbitrary numbers
 - dp[i] is splitting subarray n[i]...n[L-1] into s+1 parts. dp[i] = min{ max(dp[s,j], n[i]+...+n[j-1]) }, i+1 <= j <= L-s
 
 
+
+
 |<---------------- i --------------->|
 0   i <---------- j -------------> maxLen   L-1
 |_________________|__________________|_______|     
@@ -88,6 +93,10 @@ On the other hand, it can be used for the problem containing arbitrary numbers
 val = max(leftSum,dp[j+1])
 dp[i] = min(dp[i], val)
 
+
+
+Time: O(n^3)
+Space: O(n)
 
 https://discuss.leetcode.com/topic/61405/dp-java/3
 '''
