@@ -76,18 +76,22 @@ Solution 2: DP
 This solution does not take advantage of the fact that the numbers are non-negative (except to break the inner loop early).
 On the other hand, it can be used for the problem containing arbitrary numbers
 
-dp[j] is the solution for splitting subarray n[j]...n[L-1] into s parts.
+- dp[j] is the solution for splitting subarray n[j]...n[L-1] into s parts.
+- dp[i] is splitting subarray n[i]...n[L-1] into s+1 parts. dp[i] = min{ max(dp[s,j], n[i]+...+n[j-1]) }, i+1 <= j <= L-s
 
-dp[i] is splitting subarray n[i]...n[L-1] into s+1 parts.
-dp[i] = min{ max(dp[s,j], n[i]+...+n[j-1]) }, i+1 <= j <= L-s
 
-|<---------------- i ---------------->|
-0                                   maxLen   L-1
-|____________|________________________|_______| 
+|<---------------- i --------------->|
+0   i <---------- j -------------> maxLen   L-1
+|_________________|__________________|_______|     
+    |<--leftSum-->|<---- dp[j+1] ---->|     
+
+val = max(leftSum,dp[j+1])
+dp[i] = min(dp[i], val)
 
 
 https://discuss.leetcode.com/topic/61405/dp-java/3
 '''
+
 import sys
 class Solution(object):
     def splitArray(self, nums, m):
@@ -106,11 +110,10 @@ class Solution(object):
             for i in range(maxLen):
                 dp[i] = sys.maxint
                 leftSum = 0
-                for p in range(i,maxLen):
-                    leftSum += nums[p]
+                for j in range(i,maxLen):
+                    leftSum += nums[j]
                     if leftSum > dp[i]: break   # no better soluiton, stop search
-                    val = max(leftSum,dp[p+1])
+                    val = max(leftSum,dp[j+1])
                     dp[i] = min(dp[i], val)
         return dp[0]
-                
         
