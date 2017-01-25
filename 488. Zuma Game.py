@@ -52,7 +52,6 @@ Solution: dfs + cache
 
 
 
-
 class Solution(object):
 
     def findMinStep(self, board, hand):
