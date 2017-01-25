@@ -15,12 +15,10 @@ double findMedian() - Return the median of all elements so far.
 # Note: small heap is a max heap; large heap is a min heap
 
 import heapq
-
 class MedianFinder:
     def __init__(self):
         self.small = []
         self.large = []
-
 
     def addNum(self, num):
         if len(self.small) == len(self.large):
