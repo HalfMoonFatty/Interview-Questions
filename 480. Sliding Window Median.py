@@ -35,6 +35,8 @@ Use hashtable to record numbers moving out of the window. The recorded numbers w
 
 Since both heaps will never have a size greater than n, the time complexity is O(n*log(n)) in the worst case.
 
+Time: O(n*log(n))
+Space: O(n)
 '''
 class Solution(object):
 
@@ -110,3 +112,30 @@ class Solution(object):
             medians.append(getMedian())    
         return medians
         
+
+        
+'''
+Solution 2: Keep the window as a sorted list
+
+Time: O(nk)
+Space: O(k)
+'''
+import bisect
+class Solution(object):
+    def medianSlidingWindow(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[float]
+        """
+        medians = []
+        window = sorted(nums[:k])
+        nums += [0]    # senitel node
+        
+        for i in range(k,len(nums)):
+            med = float(window[k/2]) if k % 2 else (window[k/2-1] + window[k/2]) / 2.0
+            medians.append(med)
+            window.remove(nums[i-k])
+            bisect.insort(window, nums[i])
+            
+        return medians
