@@ -1,8 +1,7 @@
 '''
 Problem 1:
 
-Median is the middle value in an ordered integer list. 
-If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.
+Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.
 
 Examples:
 [2,3,4] , the median is 3
@@ -11,12 +10,6 @@ Examples:
 Design a data structure that supports the following two operations:
 void addNum(int num) - Add a integer number from the data stream to the data structure.
 double findMedian() - Return the median of all elements so far.
-For example:
-add(1)
-add(2)
-findMedian() -> 1.5
-add(3)
-findMedian() -> 2
 '''
 
 # Note: small heap is a max heap; large heap is a min heap
@@ -40,7 +33,6 @@ class MedianFinder:
             return float(self.large[0]-self.small[0])/2.0  # note: float
         else:
             return float(self.large[0])
-
 
 
 
@@ -75,7 +67,6 @@ Time: O(n*log(n))
 Space: O(n)
 '''
 class Solution(object):
-
     def medianSlidingWindow(self, nums, k):
             
         def addNum(n):
@@ -86,8 +77,7 @@ class Solution(object):
                 heapq.heappush(large, n)
                 balance[0] -= 1
             return
-        
-        
+                
         def removeNum(n):
             if len(small) > 0 and n <= -small[0]:
                 balance[0] -= 1
@@ -98,8 +88,7 @@ class Solution(object):
                 if n == large[0]: heapq.heappop(large)
                 else: invalidMap[n] += 1
             return
-        
-        
+                
         def rebalance():
             # rebalance first!
             if balance[0] < 0: # large has more numbers
@@ -116,8 +105,7 @@ class Solution(object):
             # reset balance to 0
             balance[0] = 0
             return
-        
-        
+               
         def getMedian():
             return float(large[0]) if k % 2 else (large[0] - small[0])/2.0
         
@@ -143,8 +131,7 @@ class Solution(object):
         return medians
         
 
-
-        
+      
 '''
 Solution 2: Keep the window as a sorted list
 Time: O(nk)
