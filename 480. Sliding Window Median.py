@@ -28,7 +28,14 @@ Note:
 You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for non-empty array.
 '''
 
+'''
+Solution:
 
+Use hashtable to record numbers moving out of the window. The recorded numbers will only be deleted when they come to the top of the heaps.
+
+Since both heaps will never have a size greater than n, the time complexity is O(n*log(n)) in the worst case.
+
+'''
 class Solution(object):
 
     def medianSlidingWindow(self, nums, k):
