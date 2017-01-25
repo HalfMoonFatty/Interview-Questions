@@ -34,6 +34,8 @@ Both input strings will be non-empty and only contain characters 'R','Y','B','G'
 '''
 
 
+
+
 '''
 Solution: dfs + cache
 
@@ -45,6 +47,11 @@ Solution: dfs + cache
 
 2. 对于board中出现的连续相同颜色，只在最右侧进行插入
 '''
+
+
+
+
+
 
 class Solution(object):
 
