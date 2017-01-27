@@ -33,3 +33,23 @@ class Solution:
                 if j - A[i] >= 0:
                     dp[j] = max(dp[j] , dp[j-A[i]] + V[i])
         return dp[m]
+
+    
+    
+'''
+Problem 3: 重复选择+最大价值
+
+Given n kind of items with size Ai and value Vi( each item has an infinite number available) and a backpack with size m. 
+What's the maximum value can you put into the backpack?
+'''
+
+class Solution:
+    # @param m: An integer m denotes the size of a backpack
+    # @param A & V: Given n items with size A[i] and value V[i]
+    def backPackII(self, m, A, V):
+        dp = [0] * (m+1)
+        for i in range(len(A)):
+            for j in range(1,m+1):
+                if j - A[i] >= 0:
+                    dp[j] = max(dp[j] , dp[j-A[i]] + V[i])
+        return dp[m]
