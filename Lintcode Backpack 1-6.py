@@ -95,12 +95,34 @@ class Solution:
             for j in range(target,-1,-1):
                 if j - nums[i] >= 0:
                     dp[j] += dp[j-nums[i]]
-        return dp[m]
+        return dp[-1]
         
 
-
+        
 '''
-Problem 5: 重复选择+不同排列+装满可能性总数
+Problem 5: 重复选择+唯一排列+装满可能性总数
+
+Given n items with size nums[i] which an integer array and all positive numbers, no duplicates. 
+An integer target denotes the size of a backpack. Find the number of possible fill the backpack.
+
+Each item may be chosen unlimited number of times
+'''
+
+class Solution:
+    def backPackV(nums, target):
+        dp = [0] * (target+1)
+        for i in range(len(nums)):
+            for j in range(1,target+1):
+                if nums[i] == j: 
+                    dp[j] += 1
+                elif j - nums[i] > 0:
+                    dp[j] += dp[j-nums[i]]
+        return dp[-1]
+    
+    
+    
+'''
+Problem 6: 重复选择+不同排列+装满可能性总数
 
 Given an integer array nums with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.
 
@@ -119,34 +141,12 @@ return 6
 '''
 
 class Solution:
-    def backPackV(nums, target):
+    def backPackVI(nums, target):
         dp = [0] * (target+1)
+        dp[0] = 1
         for j in range(1,target+1):
             for i in range(len(nums)):
                 if j - nums[i] >= 0:
                     dp[j] += dp[j-nums[i]]
-        return dp[m]
-    
-    
-    
-'''
-Problem 6: 重复选择+唯一排列+装满可能性总数
-
-Given n items with size nums[i] which an integer array and all positive numbers, no duplicates. 
-An integer target denotes the size of a backpack. Find the number of possible fill the backpack.
-
-Each item may be chosen unlimited number of times
-'''
-
-class Solution:
-    def backPackVI(nums, target):
-        dp = [0] * (target+1)
-        for i in range(len(nums)):
-            for j in range(1,target+1):
-                if nums[i] == j: 
-                    dp[j] += 1
-                elif j - nums[i] > 0:
-                    dp[j] += dp[j-nums[i]]
-        return dp[m]
-    
-    
+        return dp[-1]
+            
