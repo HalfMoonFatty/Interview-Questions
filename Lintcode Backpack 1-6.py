@@ -149,4 +149,5 @@ class Solution:
                 if j - nums[i] >= 0:
                     dp[j] += dp[j-nums[i]]
         return dp[-1]
-            
+
+# https://segmentfault.com/a/1190000006325321
