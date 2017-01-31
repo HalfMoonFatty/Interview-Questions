@@ -35,7 +35,7 @@ class Solution(object):
         x = abs(x)
         ret = 0
         while x != 0:
-            if abs(ret) > sys.maxint/10 or (abs(ret) == sys.maxint/10 and x % 10 > sys.maxint%10):    # overflow
+            if abs(ret) > sys.maxint/10 or (abs(ret) == sys.maxint/10 and x%10 > sys.maxint%10):    # overflow
                 return 0
             else:
                 ret = ret * 10 + x % 10
