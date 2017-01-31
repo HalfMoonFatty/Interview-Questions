@@ -62,7 +62,7 @@ class Solution(object):
         C = R = 0
         for i in range(1,len(dp)-1):  # opt: dp[0] = dp[n-1] = 0
         
-            # step 1. calculate i based on mirror_i
+            # step 1. calculate dp[i] based on dp[mirror_i]
             mirror_i = 2*C-i
             if i < R: dp[i] = min(dp[mirror_i],R-i)
             else: dp[i] = 0
