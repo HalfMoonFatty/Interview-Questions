@@ -39,7 +39,7 @@ Manacher's ALGORITHM: Time O(n) Space O(N)
     - prepare string "t"
 
     - allocate dp and calculate dp
-        step 1. calculate i based on mirror_i
+        step 1. calculate dp[i] based on dp[mirror_i]
         step 2. try to expand dp[i]
         step 3. update/expand center
 
