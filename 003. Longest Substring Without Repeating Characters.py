@@ -20,9 +20,9 @@ class Solution:
         if not s or len(s) < 1:
             return 0
 
-        j = 0
         charset = sets.Set()
         maxLen = -1
+        j = 0
 
         for i in range(len(s)):  # 慢
             while j < len(s) and not s[j] in charset:  # 快 note: j < len(s)
@@ -30,6 +30,30 @@ class Solution:
                 j += 1
             maxLen = max(maxLen,j-i)
             charset.remove(s[i])
+        return maxLen
+    
+    
+    
+    
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+
+        if not s: return 0
+        
+        charset = set()
+        maxLen = 1
+        j = 0
+        
+        for i in range(len(s)):
+            if s[i] not in charset:
+                charset.add(s[i])
+            else:
+                while j < i and s[i] in charset:
+                    charset.remove(s[j])
+                    j += 1
+                charset.add(s[i])
+            maxLen = max(maxLen, i-j+1)
+            
         return maxLen
         
 
