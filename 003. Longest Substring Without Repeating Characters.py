@@ -20,7 +20,7 @@ class Solution:
         if not s or len(s) < 1:
             return 0
 
-        charset = sets.Set()
+        charset = set()
         maxLen = -1
         j = 0
 
