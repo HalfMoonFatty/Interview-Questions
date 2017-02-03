@@ -81,15 +81,11 @@ Reference(喜刷刷): http://bangbingsyb.blogspot.com/2014/11/leetcode-4sum.html
 class Solution(object):
     def fourSum(self, nums, target):
        
-        def twoSum(nums, start, end, target, res, result):
+        def twoSum(nums, start, end, target, result):
             i, j = start, end
             while i < j:
                 if nums[i] + nums[j] == target:
-                    res.append(nums[i])
-                    res.append(nums[j])
-                    result.append(res[:])
-                    res.pop()
-                    res.pop()
+                    result.append(nums[i],nums[j])
                     i += 1
                     j -= 1
                     while start < i < end and nums[i] == nums[i-1]:
@@ -102,7 +98,7 @@ class Solution(object):
                     j -= 1
             return
        
-       
+
         def ksum(nums, start, end, target, k, res, result):
             if k <= 0:
                 return
@@ -114,7 +110,7 @@ class Solution(object):
                         res.pop()
                 return
             elif k == 2:
-                twoSum(nums, start, end, target, res, result)
+                twoSum(nums, start, end, target, result)
                 return
             else:
                 for i in range(start, end+1):
