@@ -40,6 +40,9 @@ Solution: Stack
 重复弹出栈顶，直到stack为空，或者top大于n为止
 
 将所有被弹出元素的next greater element置为n
+
+For example [9, 8, 7, 3, 2, 1, 6]
+The stack will first contain [9, 8, 7, 3, 2, 1] and then we see 6 which is greater than 1 so we pop 1 2 3 whose next greater element should be 6
 '''
 
 class Solution(object):
