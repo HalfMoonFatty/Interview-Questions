@@ -19,7 +19,6 @@ Note: The total number of elements of the given matrix will not exceed 10,000.
 '''
 
 
-
 '''
 Solution:
 
