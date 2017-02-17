@@ -32,6 +32,7 @@ Solution:
 
 '''
 
+
 class Solution(object):
     def findDiagonalOrder(self, matrix):
         """
@@ -39,17 +40,20 @@ class Solution(object):
         :rtype: List[int]
         """
         if not matrix: return []
+        
         i, j, k = 0, 0, 1
         h, w = len(matrix), len(matrix[0])
-        ans = []
+        result = []
+        
         for x in range(w * h):
-            ans.append(matrix[i][j])
+            result.append(matrix[i][j])
             if k > 0:
-                di, dj = i - 1, j + 1
+                ni, nj = i - 1, j + 1
             else:
-                di, dj = i + 1, j - 1
-            if 0 <= di < h and 0 <= dj < w:
-                i, j = di, dj
+                ni, nj = i + 1, j - 1
+                
+            if 0 <= ni < h and 0 <= nj < w:
+                i, j = ni, nj
             else:
                 if k > 0:
                     if j + 1 < w:
@@ -62,4 +66,4 @@ class Solution(object):
                     else:
                         j += 1
                 k *= -1
-        return ans
+        return result
