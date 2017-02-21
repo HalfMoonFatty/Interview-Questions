@@ -54,7 +54,6 @@ class Solution(object):
     	# construct projects
     	projects = [[Capital[i], Profits[i]] for i in range(len(Profits))]
     	projects.sort(cmp = cmp_proj)
-    	print projects
 
     	# init heap
     	maxProfits = W
@@ -66,5 +65,4 @@ class Solution(object):
     			j += 1
     		if len(heap) > 0: 
     			maxProfits += -heapq.heappop(heap) 
-    			print maxProfits
     	return maxProfits
