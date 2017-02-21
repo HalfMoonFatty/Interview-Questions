@@ -12,16 +12,14 @@ Input: [1, 5, 2]
 Output: False
 Explanation: Initially, player 1 can choose between 1 and 2. 
 If he chooses 2 (or 1), then player 2 can choose from 1 (or 2) and 5. If player 2 chooses 5, then player 1 will be left with 1 (or 2). 
-So, final score of player 1 is 1 + 2 = 3, and player 2 is 5. 
-Hence, player 1 will never be the winner and you need to return False.
+So, final score of player 1 is 1 + 2 = 3, and player 2 is 5. Hence, player 1 will never be the winner and you need to return False.
 
 
 Example 2:
 Input: [1, 5, 233, 7]
 Output: True
-Explanation: Player 1 first chooses 1. Then player 2 have to choose between 5 and 7. No matter which number player 2 choose, player 1 can choose 233.
+Explanation: Player1 first chooses 1. Then player2 have to choose between 5 and 7. No matter which number player2 choose, player1 can choose 233.
 Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win.
-
 
 Note:
 1 <= length of the array <= 20.
@@ -29,11 +27,10 @@ Any scores in the given array are non-negative integers and will not exceed 10,0
 If the scores of both players are equal, then player 1 is still the winner.
 '''
 
-
 '''
 Solution 1: Alpha-Beta搜索 + 记忆化
 
-If we think from the prospective of one player, what he gains each time is a plus, while, what player2 gains is a minus. Eventually if player1's score > 0, he can win.
+Think from the prospective of one player, what he gains each time is a plus, what player2 gains is a minus. Eventually if player1's score > 0, he can win.
 函数 restScore(nums)计算当前玩家从nums中可以获得的最大收益，当收益>=0时，此玩家获胜
 if start == end, there is no other choice but have to select nums[start]
 otherwise, this current player has 2 options:
@@ -44,7 +41,6 @@ Then take the max of these two options as this player's selection, return it.
 
 class Solution(object):
     def PredictTheWinner(self, nums):
-
         def restScore(nums, start, end, cache):
             if not cache[start][end]: 
                 if start == end: 
