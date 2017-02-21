@@ -81,3 +81,6 @@ class Solution(object):
             else:
                 ans = max(ans, abs(left), abs(right))
         return ans
+
+    
+# Solution 2: https://discuss.leetcode.com/topic/79938/super-short-easy-java-o-n-solution/7
