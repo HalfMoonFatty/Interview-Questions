@@ -18,7 +18,7 @@ So, final score of player 1 is 1 + 2 = 3, and player 2 is 5. Hence, player 1 wil
 Example 2:
 Input: [1, 5, 233, 7]
 Output: True
-Explanation: Player1 first chooses 1. Then player2 have to choose between 5 and 7. No matter which number player2 choose, player1 can choose 233.
+Explanation: Player 1 first chooses 1. Then player 2 have to choose between 5 and 7. No matter which number player 2 choose, player 1 can choose 233.
 Finally, player 1 has more score (234) than player 2 (12), so you need to return True representing player1 can win.
 
 Note:
