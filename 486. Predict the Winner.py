@@ -34,9 +34,7 @@ If the scores of both players are equal, then player 1 is still the winner.
 Solution 1: Alpha-Beta搜索 + 记忆化
 
 If we think from the prospective of one player, what he gains each time is a plus, while, what player2 gains is a minus. Eventually if player1's score > 0, he can win.
-
 函数 restScore(nums)计算当前玩家从nums中可以获得的最大收益，当收益>=0时，此玩家获胜
-
 if start == end, there is no other choice but have to select nums[start]
 otherwise, this current player has 2 options:
     --> nums[s]-helper(nums,s+1,e): this player select the front item, leaving the other player a choice from s+1 to e
@@ -46,10 +44,7 @@ Then take the max of these two options as this player's selection, return it.
 
 class Solution(object):
     def PredictTheWinner(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+
         def restScore(nums, start, end, cache):
             if not cache[start][end]: 
                 if start == end: 
@@ -61,8 +56,6 @@ class Solution(object):
         cache = [[0] * len(nums) for _ in range(len(nums))]
         return restScore(nums, 0, len(nums)-1, cache) >= 0
 
-
-    
     
     
 '''
@@ -73,10 +66,7 @@ Space: O(n^2)
 '''
 class Solution(object):
     def PredictTheWinner(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+
         if not nums or len(nums) == 1: return True
     
         n = len(nums)
