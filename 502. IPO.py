@@ -61,8 +61,8 @@ class Solution(object):
     	j = 0
     	for i in range(min(k, len(projects))):
     		while j < len(projects) and projects[j][0] <= maxProfits:
-    			heapq.heappush(heap, -projects[j][1])
+    			heapq.heappush(heap, -projects[j][1])    # max heap
     			j += 1
     		if len(heap) > 0: 
-    			maxProfits += -heapq.heappop(heap) 
+    			maxProfits += -heapq.heappop(heap)     # max heap
     	return maxProfits
