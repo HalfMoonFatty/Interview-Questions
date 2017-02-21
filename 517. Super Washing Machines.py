@@ -13,26 +13,21 @@ If it is not possible to do it, return -1.
 Example1
 Input: [1,0,5]
 Output: 3
-
 Explanation: 
 1st move:    1     0 <-- 5    =>    1     1     4
 2nd move:    1 <-- 1 <-- 4    =>    2     1     3    
 3rd move:    2     1 <-- 3    =>    2     2     2   
 
-
 Example2
 Input: [0,3,0]
 Output: 2
-
 Explanation: 
 1st move:    0 <-- 3     0    =>    1     2     0    
 2nd move:    1     2 --> 0    =>    1     1     1     
 
-
 Example3
 Input: [0,2,0]
 Output: -1
-
 Explanation: 
 It's impossible to make all the three washing machines have the same number of dresses. 
 
@@ -59,7 +54,6 @@ for 1, L = 0 - 0 * 2 = 0, R = 2 * 2 - 5 = -1, result = 1
 for 0, L = 1 * 2 - 1 = 1, R = 1 * 2 - 5 = -3, result = 3
 for 5, L = 2 * 2 - 1 = 3, R = 0 * 2 - 0 = 0,  result = 3
 so minium moves is 3
-
 '''
 
 
