@@ -39,9 +39,7 @@ class Solution(object):
         dp[0] = 1
         for i in range(len(coins)):
             for j in range(1,amount+1):
-                if coins[i] == j: 
-                    dp[j] += 1
-                elif j - coins[i] > 0:
+                if j - coins[i] >= 0:
                     dp[j] += dp[j-coins[i]]
         return dp[-1]
 
