@@ -110,11 +110,10 @@ Each item may be chosen unlimited number of times
 class Solution:
     def backPackV(nums, target):
         dp = [0] * (target+1)
+        dp[0] = 1
         for i in range(len(nums)):
             for j in range(1,target+1):
-                if nums[i] == j: 
-                    dp[j] += 1
-                elif j - nums[i] > 0:
+                if j - nums[i] >= 0:
                     dp[j] += dp[j-nums[i]]
         return dp[-1]
     
