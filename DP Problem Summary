@@ -1,0 +1,43 @@
+* Knapsack Problem:
+
+	- 单次选择+最大价值
+	- 重复选择+最大价值
+
+	- 单次选择+装满可能性总数   
+	- 重复选择+唯一排列+装满可能性总数
+	- 重复选择+不同排列+装满可能性总数
+
+
+* String Matching:
+
+	- Wildcard Matching
+	- Regular Express Matching
+	- Edit Distance
+	- Interleaving String
+	- Distinct Subsequence
+
+
+* Partition Array / String <Recursion>:
+	
+	- Break string S to words in Dict
+	- Partition string S to be palindrome
+
+	for i in range(1, n+1):
+		for j in range(i-1,-1,-1):
+
+
+* Longest / Largest Sequence:
+	
+	- Longest Valid Parentheses
+	- Longest Palindromic Subsequence
+	- Longest Wiggle Subsequence
+	- Larget Subset Si % Sj == 0 or Sj % Si == 0
+	- LIS 1D/2D (LCS)
+	- Number of Arithmetic Slice
+
+
+* Growing Intervals:
+	
+	- Burst Ballons
+	- Guess Number (min of max)
+	- Shortest Encode String
