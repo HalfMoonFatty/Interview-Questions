@@ -19,7 +19,7 @@
 
 * Partition Array / String <Recursion>:
 	
-	- Break string S to words in Dict
+	- Break string S into words in Dict
 	- Partition string S to be palindrome
 
 	for i in range(1, n+1):
