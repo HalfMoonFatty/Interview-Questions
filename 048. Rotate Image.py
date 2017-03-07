@@ -22,10 +22,10 @@ class Solution(object):
     def rotate(self, matrix):
 
         n = len(matrix)
-        for layer in range(n/2):
+        for layer in range(n/2):    # 从外到内，一圈一圈
             first = layer
             last = n-1-layer
-            for i in range(first, last):
+            for i in range(first, last):    # 每一圈，转4个边
                 offset = i - first
                 tmp = matrix[first][i]
                 # top <- left
