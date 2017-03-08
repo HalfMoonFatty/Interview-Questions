@@ -97,7 +97,6 @@ class Solution(object):
             prev.next = curtail
             curhead.next = nxt
             # Step 5
-            prev = curhead
-            curtail = prev
+            prev = curtail = curhead
 
-            return dummy.next
+        return dummy.next
