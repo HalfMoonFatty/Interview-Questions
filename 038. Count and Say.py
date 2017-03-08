@@ -31,15 +31,15 @@ class Solution(object):
         s = "1"            # init last string
         for i in range(n-1):
             prev = s[0]    # previous character
-            count = 0      # count of repeated chars
+            count = 1      # count of repeated chars
             ss = ''        # new string built
-            for char in s:
-                if char == prev:    # meet an old char
+            for j in range(len(s)):
+                if s[j] == prev:    # meet an old char
                     count += 1
                 else:               # meet a new char
-                    ss += str(count) + prev    
-                    prev = char                   
+                    ns += str(count) + prev    
+                    prev = s[j]                   
                     count = 1                  
-            ss += str(count) + prev       # append the last substring from the loop
-            s = ss
+            ns += str(count) + prev       # append the last substring from the loop
+            s = ns
         return s
