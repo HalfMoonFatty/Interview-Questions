@@ -23,8 +23,8 @@ class Solution(object):
         # link the tail of the list with the head, make it a cycle
         tail.next = head
 
-        # here only count down to 1 so head is prev of new head
-        for i in range(length-k%length,1,-1):
+        # count down 1 less so head is prev of new head
+        for i in range(length-k%length-1):
             head = head.next;
 
         # cut the linked list
