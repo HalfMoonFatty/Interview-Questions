@@ -14,24 +14,24 @@ Although the above answer is in lexicographical order, your answer could be in a
 
 
 class Solution(object):
-
     def letterCombinations(self, digits):
-
-        def helper(index,mp,res,result):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        
+        def dfs(digits, index, res, result):
             if index == len(digits):
-                result.append(''.join(res))
+                result.append(res)
                 return
-
-            chars = mp[digits[index]]
-            for letter in chars:
-                res.append(letter)
-                helper(index+1,mp,res,result)
-                res.pop()
+            
+            for char in mp[digits[index]]:
+                dfs(digits, index+1, res+char, result)
             return
-
-
+        
+                
+        if not digits: return []     
         mp = {"2":"abc","3":"def","4":"ghi","5":"jkl","6":"mno","7":"pqrs","8":"tuv","9":"wxyz"}
         result = []
-        if digits:
-            helper(0,mp,[],result)
+        dfs(digits, 0, '', result)
         return result
