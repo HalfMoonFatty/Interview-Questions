@@ -32,7 +32,7 @@ class Solution(object):
         for i in range(n-1):
             prev = s[0]    # previous character
             count = 1      # count of repeated chars
-            ss = ''        # new string built
+            ns = ''        # new string built
             for j in range(1,len(s)):
                 if s[j] == prev:    # meet an old char
                     count += 1
