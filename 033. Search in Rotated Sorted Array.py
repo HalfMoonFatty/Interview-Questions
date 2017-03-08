@@ -40,11 +40,11 @@ Problem:
 
 # Solution 1: Binary Search - Iteration Solution
 
- class Solution(object):
+class Solution(object):
    
     def search(self, nums, target):
 
-        def helper(nums,s,e,tar):
+        def BinarySearch(nums,s,e,tar):
             while s <= e:
             
                 mid = s + (e - s)/2
@@ -68,9 +68,11 @@ Problem:
                     else:
                         e = mid - 1
        
-                return -1
-
-            return helper(nums,0,len(nums)-1,target)
+            return -1
+                
+        
+        if not nums: return -1
+        return BinarySearch(nums,0,len(nums)-1,target)
 
 
 
