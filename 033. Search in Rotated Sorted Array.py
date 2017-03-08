@@ -59,22 +59,18 @@ Problem:
                         e = mid - 1
                     else:
                         s = mid + 1
-           
-                elif tar < nums[mid]:
-                    e = mid - 1
-               
-                elif tar <= nums[e]:    # <=
-                    s = mid + 1
-               
+                        
                 else:
-                    e = mid - 1
+                    if tar < nums[mid]:
+                        e = mid - 1
+                    elif tar <= nums[e]:    # <=
+                        s = mid + 1
+                    else:
+                        e = mid - 1
        
                 return -1
-               
-               
-            end = len(nums)-1
-            start = 0
-            return helper(nums,start,end,target)
+
+            return helper(nums,0,len(nums)-1,target)
 
 
 
