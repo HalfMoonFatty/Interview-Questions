@@ -21,6 +21,7 @@ Note:
 
 def groupAnagrams(self, strs):
     d = collections.defaultdict(list)
-    for s in sorted(strs):   # lexicographic order for inner elem
+    strs.sort()
+    for s in strs:   # lexicographic order for inner elem
         d[tuple(sorted(s))].append(s)
     return d.values()
