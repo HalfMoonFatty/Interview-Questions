@@ -15,7 +15,13 @@ Note: If a tree has more than one mode, you can return them in any order.
 '''
 
 
-import collections
+'''
+Solution 1:
+
+Time: O(n)
+Space: O(n)
+'''
+
 class Solution(object):
     def findMode(self, root):
         """
@@ -29,6 +35,8 @@ class Solution(object):
             traverse(root.right,count)
             return
         
+        if not root: return []
         count = collections.Counter()
         traverse(root, count)
-        return [k for k, v in count.iteritems() if v == max(count.values())]
+        max_freq = max(count.values())
+        return [k for k, v in count.iteritems() if v == max_freq]
