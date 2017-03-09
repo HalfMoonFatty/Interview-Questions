@@ -93,12 +93,13 @@ class Solution(object):
         :rtype: List[str]
         """
         def isValid(s):
-            a = 0
+            count = 0
             for c in s:
-                a += {'(' : 1, ')' : -1}.get(c, 0)
-                if a < 0:
+                count += {'(' : 1, ')' : -1}.get(c, 0)
+                if count < 0:
                     return False
-            return a == 0
+            return count == 0
+     
 
         result = []
         visited = set([s])
