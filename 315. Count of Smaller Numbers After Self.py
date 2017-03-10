@@ -19,8 +19,13 @@ Return the array [2, 1, 1, 0].
 
 
 # Solution 1: BIT
-# e.g.  nums = [5, 2, 6, 1]
-# num ranking: [3, 2, 4, 1]
+# nums = [5, 2, 6, 1]
+# sorted:[1, 2, 5, 6]
+# index: [1:1, 2:2, 5:3, 6:4]
+
+# nums = [5, 2, 6, 1]
+# iNums= [3, 2, 4, 1]
+
 # The idea is to iterate the array from n-1 to 0. When we are at i'th index, 
 # we check how many numbers ranking less than arr[i] are present in BIT and add it to the result. 
 # After that we add current element to to the BIT[] by udating count of current element from 0 to 1, 
@@ -35,15 +40,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        idxes = {v:i+1 for i, v in enumerate(sorted(set(nums)))}
-        iNums = [idxes[x] for x in nums]    # value ranking
-        ft = FenwickTree(len(iNums))
+        index = {v:i+1 for i, v in enumerate(sorted(set(nums)))}
+        ft = FenwickTree(len(nums))
         ans = [0] * len(nums)
-        for i in range(len(iNums)-1, -1, -1):
-            ans[i] = ft.sum(iNums[i]-1)    # not including itself
-            ft.add(iNums[i], 1)            # add "1" at index iNums[i]
+        for i in range(len(nums)-1, -1, -1):
+            ans[i] = ft.sum(index[nums[i]]-1)    # not including itself
+            ft.add(index[nums[i]], 1)            # add "1" at index iNums[i]
         return ans
-
+    
 
 
 class FenwickTree(object):
