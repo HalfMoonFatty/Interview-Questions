@@ -35,9 +35,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        idxes = {}
-        for k, v in enumerate(sorted(set(nums))):
-            idxes[v] = k+1
+        idxes = {v:i+1 for i, v in enumerate(sorted(set(nums)))}
         iNums = [idxes[x] for x in nums]    # value ranking
         ft = FenwickTree(len(iNums))
         ans = [0] * len(nums)
