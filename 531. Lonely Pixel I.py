@@ -42,13 +42,13 @@ class Solution(object):
 
         for i in range(h):
             for j in range(w):
-        	       if picture[i][j] == 'B':
-	        		         row[i] += 1
-	        		         col[j] += 1
+        	    if picture[i][j] == 'B':
+	        		row[i] += 1
+	        		col[j] += 1
 
         count = 0
         for i in range(h):
             for j in range(w):
                 if picture[i][j] == 'B' and row[i] == 1 and col[j] == 1:
-        			         count += 1
+        			count += 1
         return count 
