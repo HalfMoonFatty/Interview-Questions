@@ -31,24 +31,4 @@ Solution:
 
 '''
 
-class Solution(object):
-    def findLonelyPixel(self, picture):
-        """
-        :type picture: List[List[str]]
-        :rtype: int
-        """
-        w, h = len(picture[0]), len(picture)
-        row, col = [0] * h, [0] * w
 
-        for i in range(h):
-        	for j in range(w):
-        		if picture[i][j] == 'B':
-	        		row[i] += 1
-	        		col[j] += 1
-
-        count = 0
-        for i in range(h):
-        	for j in range(w):
-        		if picture[i][j] == 'B' and row[i] == 1 and col[j] == 1:
-        			count += 1
-        return count 
