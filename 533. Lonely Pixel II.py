@@ -37,6 +37,18 @@ Note: The range of width and height of the input 2D array is [1,200].
 
 '''
 
+
+'''
+Solution:
+
+利用数组rows，cols分别记录某行、某列'B'像素的个数。
+
+然后利用字典sdict统计每一行像素出现的个数。 if sdict[row] != N: countinue
+
+最后遍历一次picture即可。
+'''
+
+
 class Solution(object):
     def findBlackPixel(self, picture, N):
         """
@@ -63,8 +75,6 @@ class Solution(object):
             if sdict[row] != N:
                 continue
             for y in range(w):
-                if picture[x][y] == 'B':
-                    if rows[x] == N:
-                        if cols[y] == N:
-                            ans += 1
+                if picture[x][y] == 'B' and rows[x] == cols[y] == N:
+                    ans += 1
         return ans
