@@ -29,7 +29,7 @@ Solution:
 
 利用dmap[m]记录模为m的前i项和的最小下标，初始令dmap[0] = -1
 
-若dmap[m] + 1 < i，则返回True
+若 i - dmap[m] > 1，则返回True
 
 '''
 
