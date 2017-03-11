@@ -11,8 +11,32 @@ Problem:
 
 '''
 
-# Time complexity is O(log n).
+'''
+        |
+        |／│
+      ／|  │
+    ／  |  │
+  ／    |  │  
+ │      |  │  ／│          nums[M] > nums[R]: L = M+1
+ │      |  │／  │ 
+ -------|--------
+ L      M       R
 
+
+
+          |
+    ／│   |
+  ／  │   |
+ │    │   |    ／│
+ │    │   |  ／  │
+ │    │   |／    │         nums[M] < nums[L]: R = M
+ │    │ ／|      │
+----------|--------
+L         M      R
+
+
+Time complexity is O(log n).
+'''
 
 class Solution(object):
     
