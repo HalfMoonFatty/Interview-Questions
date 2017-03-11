@@ -49,3 +49,4 @@ class Solution(object):
                 if picture[i][j] == 'B' and row[i] == 1 and col[j] == 1:
         			count += 1
         return count 
+	
