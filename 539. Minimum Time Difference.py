@@ -12,6 +12,7 @@ The number of time points in the given list is at least 2 and won't exceed 20000
 The input time is legal and ranges from 00:00 to 23:59.
 '''
 
+
 import sys
 class Solution(object):
     def findMinDifference(self, timePoints):
@@ -29,27 +30,16 @@ class Solution(object):
         
         
         timePoints.sort(cmp = timecmp)
-        timePoints.append(timePoints[0])
+        h, m = timePoints[0].split(":")
+        h, m = int(h)+24, int(m)
+        timePoints.append(str(h)+":"+str(m))
         
         mindiff = sys.maxint
         for i in range(1,len(timePoints)):
             h1, m1 = timePoints[i-1].split(":")
             h2, m2 = timePoints[i].split(":")
             h1, m1, h2, m2 = int(h1), int(m1), int(h2), int(m2)
-            diff = 0
-            if m2 < m1:
-                diff = m2+60-m1
-                h2 -= 1
-            else:
-                diff = m2 - m1
-            
-            if h2 < h1:
-                diff += (h2+24-h1)*60
-            else:
-                diff += (h2 - h1)*60
-            diff = min(diff, 1440 - diff)
+            diff = (h2 - h1)*60 + m2 - m1
             mindiff = min(mindiff, diff)
             
-        
         return mindiff
-            
