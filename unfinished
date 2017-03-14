@@ -5,4 +5,56 @@ Unlocked: [3]
  
 
 Quick Sort / Merge Sort / External Sort
-Heap
+
+
+Heap:
+  Heapify写法  - worst case O(n)
+  重载 __cmp__ 写法
+  极大操作的 time complexity
+  
+  Sliding window Median (Heap) - Median of 2 sorted lists - Recursion
+  LRU Cache
+  LFU Cache
+  
+  
+Stack:
+  Largest Rectangle in histogram
+  Max Tree / Min Tree
+  Basic Calculator (Reverse Polish Expression)
+
+
+Trie: 
+  Trie 与 Hashtable查找的时间复杂度是一样的， 都是O(len(word))
+  Trie 优于 HashTable的地方在于节约空间
+  Trie 删除比较麻烦所以一般不删除
+  应用：一个一个字母查找看这个 string 在不在字典里：Word Search I+II
+
+Deque:
+  Moving Average of Data Stream
+  Max Sliding Window
+  K largest Element - Quick Select
+  Top K frequent element
+  
+
+
+* Median of 2 sorted lists (Recursion)
+* K largest Element of unsorted list - Quick Select
+
+* Moving Average of Data Stream (Deque)
+* Max in Sliding Window (Deque)
+* Sliding window Median (Heap)
+* Top K frequent element (Heap)
+
+
+DP 
+  Local Best -> Global Best
+  记忆化搜索: LIS / Max Subarray Sum(product)
+  博弈类：拆分先手后手，不考虑后手只考虑先手
+  
+  
+  
+    Tree
+   /    \
+Trie   Backtracking
+  |        |
+Graph   DP - Greedy
