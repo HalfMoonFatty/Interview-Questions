@@ -22,12 +22,7 @@ class Solution(object):
             :rtype: bool
             """
 
-        mp = {}
-        mp.setdefault('6','9')
-        mp.setdefault('9','6')
-        mp.setdefault('0','0')
-        mp.setdefault('1','1')
-        mp.setdefault('8','8')
+        mp = {'0':'0', '1':'1', '8':'8', '6':'9', '9':'6'}
 
         i,j = 0,len(num)-1
         while i <= j:
