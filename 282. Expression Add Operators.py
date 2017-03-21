@@ -36,7 +36,7 @@ class Solution(object):
                     # - operation
                     dfs(res, num, target, curstr+"-"+t, i, cur_total-t_val, t_val, "-")
                     # * operation
-                    if pre_op == "+":    # 3+5*2   8-5 + 5*3
+                    if pre_op == "+":    # 3+5*2   8-5 + 5*2
                         #cur_total = cur_total-pre_val+pre_val*t_val
                         dfs(res, num, target, curstr+"*"+t, i, cur_total-pre_val+pre_val*t_val, pre_val*t_val,pre_op)
                     elif pre_op == "-":  # 3-5*2
