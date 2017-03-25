@@ -1,7 +1,8 @@
 '''
 Problems:
 
-Given a string array words, find the maximum value of length(word[i]) * length(word[j]) where the two words do not share common letters. You may assume that each word will contain only lower case letters. If no such two words exist, return 0.
+Given a string array words, find the maximum value of length(word[i]) * length(word[j]) where the two words do not share common letters. 
+You may assume that each word will contain only lower case letters. If no such two words exist, return 0.
 
 Example 1:
 Given ["abcw", "baz", "foo", "bar", "xtfn", "abcdef"]
@@ -25,9 +26,11 @@ Solution:
 
 Idea is straightforward: get each pair of (i, j) and calculate length(word[i]) * length(word[j]) update the maximum answer.
 
-Problem now becomes how to efficient check whether two words share common letter. Use a boolean[26], we can do this in linear time. However bit manipulation can reduce this to O(1) with preprocess.
+Problem now becomes how to efficient check whether two words share common letter. Use a boolean[26], we can do this in linear time. 
+However bit manipulation can reduce this to O(1) with preprocess.
 
-Since the alphabet is only 26 therefore we can use one 32bit integer to represent the character occurrence then check if two word share common letter becomes check if bitwise and of the two integers is zero.
+Since the alphabet is only 26 therefore we can use one 32bit integer to represent the character occurrence then check if two word 
+share common letter becomes check if bitwise and of the two integers is zero.
 
 
 Time: O(n^2)??
