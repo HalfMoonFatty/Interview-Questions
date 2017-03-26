@@ -18,6 +18,27 @@ Note:
     
 '''
 
+
+
+# Solution 1: Iterating over all combinations instead of all permutations
+
+class Solution(object):
+    def coinChange(self, coins, amount):
+       
+        maxCoins = amount+1
+        dp = [maxCoins] * (amount+1)
+        dp[0] = 0
+        for coin in coins:
+            for amt in range(coin, amount+1):
+                dp[amt] = min(dp[amt],dp[amt-coin]+1)
+
+        return dp[-1] if dp[-1] != amount+1 else -1
+
+    
+    
+
+# Solution 2: Iterating over all permutations
+
 class Solution(object):
     def coinChange(self, coins, amount):
 
