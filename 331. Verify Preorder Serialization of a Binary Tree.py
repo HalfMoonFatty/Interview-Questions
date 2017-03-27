@@ -54,4 +54,3 @@ class Solution(object):
                 stack.append("#")
 
         return len(stack)==1 and stack[-1]=="#"
-
