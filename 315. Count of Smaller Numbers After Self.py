@@ -17,7 +17,6 @@ Return the array [2, 1, 1, 0].
 '''
 
 
-
 # Solution 1: BIT
 # nums = [5, 2, 6, 1]
 # sorted:[1, 2, 5, 6]
@@ -28,7 +27,6 @@ Return the array [2, 1, 1, 0].
 # After that we add current element to to the BIT[] by udating count of current element from 0 to 1, 
 # and therefore updates ancestors of current element in BIT
 # http://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/
-
 
 
 class Solution(object):
@@ -45,7 +43,6 @@ class Solution(object):
             ft.add(index[nums[i]], 1)            # add "1" at index iNums[i]
         return ans
     
-
 
 class FenwickTree(object):
     def __init__(self, n):
@@ -107,7 +104,6 @@ class Solution(object):
         return smaller           
             
        
-
     
 # Solution 3: BST
 
@@ -118,7 +114,6 @@ class Solution(object):
         for i in range(len(nums) - 1, -1, -1):
             ans[i] = bst.insert(nums[i])
         return ans
-
 
 class TreeNode(object):
     def __init__(self, val):
