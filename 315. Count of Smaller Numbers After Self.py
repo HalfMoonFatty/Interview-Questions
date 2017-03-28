@@ -113,10 +113,6 @@ class Solution(object):
 
 class Solution(object):
     def countSmaller(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
         ans = [0] * len(nums)
         bst = BinarySearchTree()
         for i in range(len(nums) - 1, -1, -1):
