@@ -45,18 +45,17 @@ class Solution(object):
             vals.add(p)     # as the BIT need to store prefix
             vals.add(p+lower)
             vals.add(p+upper)
-        index = {v: i for i, v in enumerate(sorted(list(vals)))}
+        index = {v: i+1 for i, v in enumerate(sorted(list(vals)))}
         T = BinaryIndexTree(len(index))
         
         count = 0
         for elem in prefix[::-1]:
             lb, ub = elem + lower, elem + upper
-            count += T.sum(index[ub]+1) - T.sum(index[lb])
-            T.add(index[elem]+1, 1) 
+            count += T.sum(index[ub]) - T.sum(index[lb]-1)
+            T.add(index[elem], 1) 
         return count
         
-                
-
+               
 
 class BinaryIndexTree(object):
     def __init__(self, n):
@@ -74,4 +73,3 @@ class BinaryIndexTree(object):
             res += self.sums[index]
             index -= index & -index
         return res
-
