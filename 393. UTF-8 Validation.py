@@ -43,13 +43,13 @@ class Solution(object):
         """
         count = 0
         for n in data:
-            if count == 0:
-                if n >> 5 == 0b110: count = 1     # 2 byte
-                elif n >> 4 == 0b1110: count = 2  # 3 byte
-                elif n >> 3 == 0b11110: count = 3 # 4 byte
-                elif n >> 7: return False         # 1 byte
+            if count == 0:    # first byte to setup count
+                if n >> 5 == 0b110: count = 1     # 2 byte total: 1 left
+                elif n >> 4 == 0b1110: count = 2  # 3 byte total: 2 left
+                elif n >> 3 == 0b11110: count = 3 # 4 byte total: 3 left
+                elif n >> 7: return False         # 1 byte total: but does not start with 0
                 continue
-            else:
+            else:    # following bytes
                 if n >> 6 != 0b10: return False
                 count -= 1
         return count == 0
