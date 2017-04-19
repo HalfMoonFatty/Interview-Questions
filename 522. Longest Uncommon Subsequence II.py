@@ -20,6 +20,7 @@ The length of the given list will be in the range of [2, 50].
 
 '''
 
+
 '''
 Solution:
 
@@ -36,7 +37,6 @@ Solution:
 遍历结束，返回-1
 
 '''
-
 
 
 import collections
