@@ -27,6 +27,46 @@ Only letters from a ~ z will appear in input strings.
 
 '''
 
+'''
+Solution 1: Brute Force
+
+In the brute force approach we will generate all the possible 2^n subsequences of both the strings and store their number of occurences 
+in a hashmap. Longest subsequence whose frequency is equal to will be the required subsequence. And, if it is not found we will return −1.
+'''
+
+
+import collections
+class Solution(object):
+    def findLUSlength(self, a, b):
+        """
+        :type a: str
+        :type b: str
+        :rtype: int
+        """
+        strmap = collections.defaultdict(int)
+        for s in [a,b]:
+            for i in range(pow(2,len(s))):
+                t = ''
+                for j in range(len(s)):
+                    if (i >> j) & 1:
+                        t += s[j]
+                strmap[t] += 1
+        
+        res = -1
+        for s in strmap.keys():
+            if strmap[s] == 1:
+                res = max(res, len(s))
+        return res
+        
+        
+        
+
+'''
+Solution 2:
+
+
+'''
+
 class Solution(object):
     def findLUSlength(self, a, b):
         """
