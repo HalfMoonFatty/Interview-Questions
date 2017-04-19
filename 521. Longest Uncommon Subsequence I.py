@@ -80,9 +80,13 @@ Simple analysis of this problem can lead to an easy solution.
 
 These three cases are possible with string a and b:
 
-a = b If both the strings are identical, it is obvious that no subsequence will be uncommon. Hence, return -1.
-len(a) == len(b) and a!=b: n this case we can consider any string i.e. "abc" or "abd" as a required subsequence, 
-as out of these two strings one string will never be a subsequence of other string. Hence, retur
+- a = b If both the strings are identical, it is obvious that no subsequence will be uncommon. Hence, return -1.
+
+- len(a) == len(b) and a!=b: n this case we can consider any string i.e. "abc" or "abd" as a required subsequence, 
+as out of these two strings one string will never be a subsequence of other string. Hence, return len(a) or len(b).
+
+- len(a) != len(b): In this case we can consider bigger string as a required subsequence because bigger string can't 
+be a subsequence of smaller string. Hence, return max(len(a), len(b)).
 
 '''
 
