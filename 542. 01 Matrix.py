@@ -38,6 +38,8 @@ The cells are adjacent in only four directions: up, down, left and right.
 '''
 Solution 1: Do a BFS on multiple sources - matrix[i][j] == 0
 
+Similar Problem: 286. Walls and Gates
+
 '''
 
 import collections
@@ -68,6 +70,60 @@ class Solution(object):
                     result[nx][ny] = result[x][y] + 1
                     q.append((nx,ny))
 
+        return result
+                    
+                
+
+            
+'''
+Solution 2: Calculate the distance from each '1' to its nearest '0'. This method got TLE.
+
+Similar Problem: 317. Shortest Distance from All Buildings
+'''
+
+import collections
+class Solution(object):
+    def updateMatrix(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        
+        def getDistance(i, j, matrix):
+            visited = [[False] * len(matrix[0]) for _ in range(len(matrix))]
+            visited[i][j] = True
+            
+            q = collections.deque()
+            q.append((i,j))
+            
+            xDir = (0,1,0,-1)
+            yDir = (1,0,-1,0)
+            step = 0
+            while len(q):
+                step += 1
+                qsize = len(q)
+                for _ in range(qsize):
+                    x,y = q.popleft()
+                    for d in range(4):
+                        nx,ny = x+xDir[d], y+yDir[d]
+                        if 0 <= nx < len(matrix) and 0 <= ny < len(matrix[0]) and not visited[nx][ny]:
+                            if matrix[nx][ny] == 0:
+                                result[i][j] = step
+                                return
+                            visited[nx][ny] = True
+                            q.append((nx,ny))
+
+            return
+
+        
+        result = [[0] * len(matrix[0]) for _ in range(len(matrix))]
+        
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                if matrix[i][j] != 0:
+                    getDistance(i,j,matrix)
+                    
+            
         return result
                     
                 
