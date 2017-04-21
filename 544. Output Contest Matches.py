@@ -68,3 +68,5 @@ class Solution(object):
     	groups = [str(i) for i in range(1,n+1)]
     	matchGroups(groups, int(math.log(n,2)))
     	return ''.join(elem for elem in self.result)
+
+    
