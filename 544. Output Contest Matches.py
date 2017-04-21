@@ -68,3 +68,26 @@ class Solution(object):
         groups = [str(i) for i in range(1,n+1)]
         matchGroups(groups, int(math.log(n,2)))
         return ''.join(elem for elem in self.result)
+    
+    
+# Note:
+
+import math
+class Solution(object):
+
+    def findContestMatch(self, n):
+
+        def matchGroups(groups, result, count):
+            if count == 0: 
+                result.append(groups[:])    # cannot use: result = groups[:]
+                return
+            ngroup = []
+            for i in range(len(groups)/2):
+                ngroup.append('('+str(groups[i])+','+str(groups[len(groups)-i-1])+')')
+            matchGroups(ngroup, result, count-1)
+            return
+
+        groups = [str(i) for i in range(1,n+1)]
+        result = []
+        matchGroups(groups, result, int(math.log(n,2)))
+        return ''.join(elem for elem in result[0])
