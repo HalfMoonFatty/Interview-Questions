@@ -51,22 +51,20 @@ import math
 class Solution(object):
 
     def __init__(self):
-    	self.result = []
+        self.result = []
 
     def findContestMatch(self, n):
 
-    	def matchGroups(groups, count):
-    		if count == 0: 
-    			self.result = groups
-    			return
-    		ngroup = []
-    		for i in range(len(groups)/2):
-    			ngroup.append('('+str(groups[i])+','+str(groups[len(groups)-i-1])+')')
-    		matchGroups(ngroup, count-1)
-    		return
+        def matchGroups(groups, count):
+            if count == 0: 
+                self.result = groups[:]
+                return
+            ngroup = []
+            for i in range(len(groups)/2):
+                ngroup.append('('+str(groups[i])+','+str(groups[len(groups)-i-1])+')')
+            matchGroups(ngroup, count-1)
+            return
 
-    	groups = [str(i) for i in range(1,n+1)]
-    	matchGroups(groups, int(math.log(n,2)))
-    	return ''.join(elem for elem in self.result)
-
-  
+        groups = [str(i) for i in range(1,n+1)]
+        matchGroups(groups, int(math.log(n,2)))
+        return ''.join(elem for elem in self.result)
