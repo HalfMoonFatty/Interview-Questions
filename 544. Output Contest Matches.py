@@ -69,4 +69,4 @@ class Solution(object):
     	matchGroups(groups, int(math.log(n,2)))
     	return ''.join(elem for elem in self.result)
 
-    
+  
