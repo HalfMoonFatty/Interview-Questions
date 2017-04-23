@@ -24,6 +24,8 @@ Note: The value of n won't exceed 100,000.
 
 
 
+
+
 # TLE
 class Solution(object):
     def checkRecord(self, n):
@@ -31,18 +33,22 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        def isValid(s):
-            return s.count('A') <=1 and 'LLL' not in s
-        
-        def genRecord(i, n, record, count):
-            if i == n and isValid(record):
+        def genRecord(i, n, absent, record, count):
+            if i == n:
                 count[0] += 1
                 return
             elif i < n:
-                for s in ["A","L","P"]:
-                    genRecord(i+1, n, record+s, count)
+                if not absent:
+                    genRecord(i+1, n, True, record+"A", count)
+                
+                if len(record) < 2 or (len(record) >= 2 and not (record[-1] == "L" and record[-2] == "L")):
+                    genRecord(i+1, n, absent, record+"L", count)
+
+                genRecord(i+1, n, absent, record+"P", count)
+
         
         count = [0]
-        genRecord(0, n, '', count)
+        genRecord(0, n, False, '', count)
         return count[0]
             
+
