@@ -23,6 +23,43 @@ Note: The value of n won't exceed 100,000.
 '''
 
 
+'''
+Soluion: DP
+
+dp[i]the number of all possible attendance (without 'A') records with length i :
+
+end with "P": dp[i-1]
+end with "PL": dp[i-2]
+end with "PLL": dp[i-3]
+end with "LLL": is not allowed
+so dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
+
+the number of all possible attendance (with 'A') records with length n:
+∑dp[i] *dp[n-1-i] i = 0,1,...,n-1
+
+Time Complexity O(n)
+Space Complexity O(n)
+
+(In code nums[i+1] means dp[i])
+'''
+
+class Solution(object):
+    def checkRecord(self, n):
+        if n == 1:
+            return 3
+        if n == 0:
+            return 0
+        nums = [1, 1, 2]
+        i = 2
+        while i < n:
+            nums.append((nums[i] + nums[i-1] + nums[i-2])% 1000000007)
+            i += 1
+        result = (nums[n] + nums[n-1] + nums[n-2]) % 1000000007
+        for i in range(n):
+            result += nums[i+1] * nums[n-i] % 1000000007
+            result %= 1000000007
+        return result
+
 
 
 
