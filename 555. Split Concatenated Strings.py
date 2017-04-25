@@ -41,11 +41,11 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        strs = [max(s, s[::-1]) for s in strs]
+        strs = [max(s, s[::-1]) for s in strs]    # lexicographically biggest
         ans = ''
         for i, st in enumerate(strs):
             left, right = ''.join(strs[:i]), ''.join(strs[i+1:])
             for s in (st, st[::-1]):   # need to check both case for a word
                 for j in range(len(s)):
-                    ans = max(ans, s[j:] + right + left + s[:j])
+                    ans = max(ans, s[j:] + right + left + s[:j])    # lexicographically biggest
         return ans
