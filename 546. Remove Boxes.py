@@ -52,7 +52,7 @@ Basically, if there is one i such that b_i == b_r, we partition the array into t
 
 [b_l, ..., b_i, b_r, A, ..., A], and [b_{i+1}, ..., b_{r-1}]. 
 
-The solution for first one will be memo[l][i][k+1], and the second will be memo[i+1][r-1][0]. 
+The solution for first one will be cache[l][i][k+1], and the second will be cache[i+1][r-1][0]. 
 
 Otherwise, we just remove the last k+1 boxes (including b_r) and search the best solution for lth to r-1th boxes. 
 (One optimization here: make r as left as possible, this improved the running time from 250ms to 35ms)
