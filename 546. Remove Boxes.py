@@ -41,7 +41,8 @@ Note this is true only if AA is at the end of the array.
 With naive memoization approach, the program will search a lot of unnecessary paths, such as C->B->D->AA, D->B->C->AA.
 
 Now design cache[l][r][k]: the largest number we can get using lth to rth (inclusive) boxes with k same colored boxes as rth box appended at the end. 
-Example, memo[l][r][3] represents the solution for this setting: [b_l, ..., b_r, A,A,A] with b_r == A.
+Example, memo[l][r][3] represents the solution for this setting: [b_l, ..., b_r, A,A,A] with b_r == A. 
+cache[l][r][k]表示第l到第r个合并后的盒子，连同其后颜色为color[r]的长度k一并消去所能得到的最大得分。
 
 The transition function is to find the maximum among all b_i==b_r for i=l,...,r-1:
 
@@ -73,7 +74,7 @@ class Solution(object):
             while l > r and boxes[r] == boxes[r-1]:
                 r -= 1
                 k += 1
-            cache[l][r][k] = dfs(boxes,l,r-1,0,cache) + (k+1)*(k+1)
+            cache[l][r][k] = dfs(boxes,l,r-1,0,cache) + (k+1)*(k+1)    # 首先把连续相同颜色的盒子进行合并。
             
             for i in range(l,r):
                 if boxes[i] == boxes[r]:
