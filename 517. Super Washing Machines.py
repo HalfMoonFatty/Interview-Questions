@@ -38,7 +38,45 @@ The range of dresses number in a super washing machine is [0, 1e5].
 
 
 '''
-Solution:
+Solution 1:
+
+Let me use an example to briefly explain this. For example, your machines[] is [0,0,11,5]. So your total is 16 and the target value 
+for each machine is 4. Convert the machines array to a kind of gain/lose array, we get: [-4,-4,7,1]. 
+Now what we want to do is go from the first one and try to make all of them 0.
+
+To make the 1st machines 0, you need to give all its "load" to the 2nd machines.
+So we get: [0,-8,7,1]
+then: [0,0,-1,1]
+lastly: [0,0,0,0], done.
+
+You don't have to worry about the details about how these machines give load to each other. In this process, the least steps we need to 
+eventually finish this process is determined by the peak of abs(cnt) and the max of "gain/lose" array. In this case, the peak of abs(cnt) 
+is 8 and the max of gain/lose array is 7. So the result is 8.
+
+
+https://discuss.leetcode.com/topic/79938/super-short-easy-java-o-n-solution
+'''
+
+class Solution(object):
+    def findMinMoves(self, machines):
+        """
+        :type machines: List[int]
+        :rtype: int
+        """
+        if sum(machines) % len(machines):
+            return -1
+        avg = sum(machines) / len(machines)
+        ans = total = 0
+        for m in machines:
+            total += m - avg
+            ans = max(ans, abs(total), m - avg)
+        return ans
+
+    
+    
+    
+'''
+Solution 2:
 
 Since we can operate several machines at the same time, the minium number of moves is the maximum number of necessary operations on every machine.
 
