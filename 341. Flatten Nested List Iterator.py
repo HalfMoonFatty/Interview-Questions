@@ -29,7 +29,37 @@ By calling next repeatedly until hasNext returns false, the order of elements re
 #    def getList(self):
 
 
+# Solution 1:
 
+class NestedIterator(object):
+
+    def __init__(self, nestedList):
+        self.stack = []
+        for i in range(len(nestedList)-1,-1,-1):
+            self.stack.append(nestedList[i])
+        
+
+    def next(self):
+        if not self.hasNext():
+            return -1
+        return self.stack.pop().getInteger()
+        
+
+    def hasNext(self):
+        while len(self.stack):
+            curElem = self.stack[-1]
+            if curElem.isInteger():
+                return True
+            else:
+                self.stack.pop()
+                curList = curElem.getList()
+                for i in range(len(curList)-1,-1,-1):
+                    self.stack.append(curList[i])
+        return False
+        
+
+
+# Solution 2:
 
 class NestedIterator(object):
 
