@@ -39,7 +39,7 @@ class Solution(object):
             if curRead < 4:
                 EOF = True
             length = min(n-totalRead, curRead)
-             for i in range(length):
+            for i in range(length):
                 buf[totalRead+i] = buffer[i]
             totalRead += length
         return totalRead
