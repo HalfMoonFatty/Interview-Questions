@@ -29,8 +29,8 @@ class Solution:
                 result.append(path)
                 return
 
-            helper(root.left,path+str(root.val)+"->",result)
-            helper(root.right,path+str(root.val)+"->",result)
+            if root.left: helper(root.left,path+str(root.val)+"->",result)
+            if root.right: helper(root.right,path+str(root.val)+"->",result)
 
 
         result = []
