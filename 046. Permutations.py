@@ -15,11 +15,12 @@ class Solution(object):
         def permuteHelper(nums, index, result):
             if index == len(nums):
                 result.append(nums)
+                return 
             for i in range(index, len(nums)):
                 nums[index], nums[i] = nums[i], nums[index]
                 permuteHelper(nums[:], index+1, result)
                 nums[index], nums[i] = nums[i], nums[index]
-            return result
+            return
 
 
         result = []
