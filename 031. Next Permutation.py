@@ -24,6 +24,33 @@ Step 4. After swapping, sort the rest of the array (nums[j+1:])
 '''
 
 
+
+class Solution(object):
+    def nextPermutation(self, nums):
+
+        if not nums:
+            return None
+
+        j = 0
+        # Find the first index(j) break the trend: nums[i-1] >= nums[i]
+        for i in range(len(nums)-1, -1, -1):
+            if nums[i-1] < nums[i]:
+                j = i-1
+                break
+
+        # Find the smallest number which is larger than nums[j], the break point
+        if j >= 0:
+            for i in range(len(nums)-1, j, -1):
+                if nums[i] > nums[j]:
+                    nums[j], nums[i] = nums[i], nums[j]    # swap position
+                    break
+        
+        # Reverse the rest
+        nums[j+1:] = nums[j+1:][::-1]
+        return
+    
+
+
 class Solution(object):
     def nextPermutation(self, nums):
 
