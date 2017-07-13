@@ -41,7 +41,7 @@ class Solution(object):
         """
         if not t: return ''
         res = str(t.val)
-        if t.left or t.right: 
+        if t.left or t.right: # if both are None, no need for recursion
             res += '(' + self.tree2str(t.left) + ')'
         if t.right: 
             res += '(' + self.tree2str(t.right) + ')'
