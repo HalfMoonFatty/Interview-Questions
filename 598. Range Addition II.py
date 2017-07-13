@@ -39,8 +39,9 @@ The range of operations size won't exceed 10,000.
 
 '''
 
+# 求ops[0 .. len][0]和ops[0 .. len][1]的最小值
 
-import sys
+
 class Solution(object):
     def maxCount(self, m, n, ops):
         """
@@ -49,10 +50,5 @@ class Solution(object):
         :type ops: List[List[int]]
         :rtype: int
         """
-        if not ops: return m*n
-        
-        x = y = sys.maxint
-        for p in ops:
-            x = min(x, p[0])
-            y = min(y, p[1])
-        return x*y
+        if not ops: return m * n
+        return min(op[0] for op in ops) * min(op[1] for op in ops)
