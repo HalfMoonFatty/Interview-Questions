@@ -42,6 +42,8 @@ How to make sure the duplicated files you find are not false positive?
 
 '''
 
+# 构造 fileContent -> fileList 的 dictionary
+
 class Solution(object):
     def findDuplicate(self, paths):
         """
