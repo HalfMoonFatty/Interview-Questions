@@ -25,11 +25,13 @@ class Solution(object):
         :rtype: int
         """
         if a == 1: return 1
-        cnt = [0] * 10
+        
+        digit = [0] * 10
         for x in range(9, 1, -1):
             while a % x == 0:
-                cnt[x] += 1
+                digit[x] += 1
                 a /= x
-        if a > 1: return 0
-        ans = int(''.join(str(n) * cnt[n] for n in range(2, 10)))
+        if a > 1: return 0   # 不能被因式分解
+        
+        ans = int(''.join(str(n) * digit[n] for n in range(2, 10)))
         return ans <= sys.maxint and ans or 0
