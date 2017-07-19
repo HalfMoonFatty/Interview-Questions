@@ -26,9 +26,13 @@ Solution: 贪心算法（Greedy Algorithm）
 
 课程根据最迟完成时间从小到大排序
 
-遍历课程，利用优先队列（时长最大堆）维护当前满足最迟完成时间约束的课程时长，弹出不满足约束条件的课程时长
+遍历课程，所以每次都在extend deadline
 
-返回优先队列的长度
+   把当前课程的duration push到 maxheap 中，
+   
+   更新课程总长度，如果总长度超过当前最大deadline，说明在当前deadline前不能完成在maxheap中的所有课程。需要弹出最长的课程。（弹出的时间长就可以争取保留最多的课程在heap内）
+   
+返回优先队列的长度 （maxheap中的就是可以上的课程）
 '''
 
 import operator
