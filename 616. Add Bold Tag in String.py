@@ -71,7 +71,7 @@ class Solution(object):
                 if start == -1: start = i
                 end = max(end, nend + i)
                 continue
-            if i >= end:
+            if i >= end and start != -1:
                 ans += '<b>' + s[start:end] + '</b>'
                 start = end = -1
             if start == -1: ans += c
