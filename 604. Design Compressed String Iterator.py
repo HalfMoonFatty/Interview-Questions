@@ -96,10 +96,18 @@ class StringIterator(object):
         return self.pointer != len(self.compressedString) or self.num != 0
 
 
-# Your StringIterator object will be instantiated and called as such:
-# obj = StringIterator(compressedString)
-# param_1 = obj.next()
-# param_2 = obj.hasNext()
+iterator = StringIterator("L1e2t1C1o1d1e1")
+print iterator.next()
+print iterator.next()
+print iterator.next()
+print iterator.next()
+print iterator.next()
+print iterator.next()
+print iterator.next()
+print iterator.hasNext()
+print iterator.next()
+print iterator.hasNext()
+print iterator.next()
 
 
 
@@ -121,40 +129,47 @@ self.length = [1, 3, 4, 5, 6, 7,8]
 
 '''
 
-
 import string
 
 class StringIterator(object):
-    def __init__(self, compressedString):
-        self.chars = []
-        self.length = []
-        self.size = self.count = 0
-        self.index = 0
 
-        num = ''
+    def __init__(self, compressedString):
+        """
+        :type compressedString: str
+        """
+        self.compressedString = compressedString
+        self.pointer = 0
+        self.nums = []
+        self.chars = []
+        n = 0
         for char in compressedString + '#':
             if char in string.letters or char == '#':
-                if num: 
-                    self.size += int(num)
-                    self.length.append(self.size)
-                    num = ''
+                if n != 0:
+                    self.nums.append(n)
+                    n = 0
                 if char != '#': self.chars.append(char)
             else:
-                num += char
-                
-
+                n = n*10 + ord(char) - ord('0')
+        
 
     def next(self):
-        if not self.hasNext(): return ''
-        self.count += 1
-        if self.length[self.index] < self.count:
-            self.index += 1
-        return self.chars[self.index]
-
-
+        """
+        :rtype: str
+        """
+        if not self.hasNext(): return ' '
+        
+        char = self.chars[self.pointer]
+        self.nums[self.pointer] -= 1
+        if self.nums[self.pointer] == 0:
+            self.pointer += 1
+        return char                       
+        
 
     def hasNext(self):
-        return self.count < self.size
+        """
+        :rtype: bool
+        """
+        return self.pointer != len(self.chars)
 
 
 iterator = StringIterator("L1e2t1C1o1d1e1")
@@ -169,5 +184,6 @@ print iterator.hasNext()
 print iterator.next()
 print iterator.hasNext()
 print iterator.next()
+
 
 
