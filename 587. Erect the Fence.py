@@ -38,52 +38,32 @@ Solution: Graham's Scan
 
 
 
-But, we need to consider another important case. In case, the collinear points lie on the closing(last) edge of the hull, 
-we need to consider the points such that the points which lie farther from the initial point bm are considered first. 
-Thus, after sorting the array, we traverse the sorted array from the end and reverse the order of the points which are collinear 
-and lie towards the end of the sorted array, since these will be the points which will be considered at the end while forming the hull and thus, 
-will be considered at the end. Thus, after these preprocessing steps, we've got the points correctly arranged in the way that they need to be considered while forming the hull.
-
-
-Now, as per the algorithm, we start off by considering the line formed by the first two points(0 and 1 in the animation) in the sorted array. We push the points on this line onto a 
-s
-t
-a
-c
-k
-stack. After this, we start traversing over the sorted 
-p
-o
-i
-n
-t
-s
-points array from the third point onwards. If the current point being considered appears after taking a left turn(or straight path) relative to the previous line(line's direction), we push the point onto the stack, indicating that the point has been temporarily added to the hull boundary.
-
-This checking of left or right turn is done by making use of orientation again. An orientation greater than 0, considering the points on the line and the current point, indicates a counterclockwise direction or a right turn. A negative orientation indicates a left turn similarly.
-
-If the current point happens to be occuring by taking a right turn from the previous line's direction, it means that the last point included in the hull was incorrect, since it needs to lie inside the boundary and not on the boundary(as is indicated by point 4 in the animation). Thus, we pop off the last point from the stack and consider the second last line's direction with the current point.
-
-Thus, the same process continues, and the popping keeps on continuing till we reach a state where the current point can be included in the hull by taking a right turn. Thus, in this way, we ensure that the hull includes only the boundary points and not the points inside the boundary. After all the points have been traversed, the points lying in the stack constitute the boundary of the convex hull.
+Pre-processing:
 
 1. 求点集points中的最左下点lb(lowest y-coordinate, then the lowest x-coordinate) as the initial point(bm) to start the hull with.
 
-2. 以lb为原点，对points按照极坐标排序 
+2. 以lb为原点，对points按照极坐标排序, 当最大极角对应的点超过一个时，这些点按照到lb的距离逆序排列。
    sort the given set of points based on their polar angles formed w.r.t. a vertical line drawn throught the intial point.
    If the orientation of two points happens to be the same, the points are sorted based on their distance from the beginning point(lb).
    so that all the collinear points lying on the hull are included in the boundary.
    
-   *
+   * But, we need to consider another important case. In case, the collinear points lie on the closing(last) edge of the hull, 
+     we need to consider the points such that the points which lie farther from the initial point bm are considered first. 
+     After sorting the array, we traverse the sorted array from the end and reverse the order of the points which are collinear and lie towards the end of the sorted array
+
+Algorithm:
 
 3. 维护栈stack，初始将points[0], points[1]压入栈
 
 4. 从2到len(points) - 1遍历各点i
 
-    重复弹出栈顶，直到points[-2], points[-1], points[i]非顺时针旋转未止
+    重复弹出栈顶，直到points[-2], points[-1], points[i]非 right turn 未止
 
-    将points[i]压入栈
+    将points[i]压入栈 (if left turn, push into stack)
 
-当最大极角对应的点超过一个时，这些点按照到lb的距离逆序排列。
+5. After all the points have been traversed, the points lying in the stack constitute the boundary of the convex hull.
+
+
 
 
 
@@ -118,20 +98,19 @@ class Solution(object):
         if N <= 3: return points
         
         lb = min(points, key = lambda p: (p.y, p.x))
-        ccw = lambda p1, p2, p3: (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x)
+        ccw = lambda p1, p2, p3: (p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y) 
         dsquare = lambda p1, p2: (p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2
         cmp = lambda p, q: ccw(lb, q, p) or dsquare(p, lb) - dsquare(q, lb)
         points.sort(cmp)
         
         
-        '''
         x = N-1
         while x and ccw(lb, points[x], points[x - 1]) == 0: x -= 1
         points = points[:x] + points[x:][::-1]
-        '''
+
         
         stack = [points[0], points[1],points[2]]
-        for x in range(3, N):
+        for x in range(2, N):
             while len(stack) > 1 and ccw(stack[-2], stack[-1], points[x]) < 0: 
                 stack.pop()
             stack.append(points[x])
