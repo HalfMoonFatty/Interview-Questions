@@ -37,9 +37,43 @@ Input points have NO order. No order required for output.
 Solution: Graham's Scan
 
 
-1. 求点集points中的最左下点lb
 
-2. 以lb为原点，对points按照极坐标排序
+But, we need to consider another important case. In case, the collinear points lie on the closing(last) edge of the hull, 
+we need to consider the points such that the points which lie farther from the initial point bm are considered first. 
+Thus, after sorting the array, we traverse the sorted array from the end and reverse the order of the points which are collinear 
+and lie towards the end of the sorted array, since these will be the points which will be considered at the end while forming the hull and thus, 
+will be considered at the end. Thus, after these preprocessing steps, we've got the points correctly arranged in the way that they need to be considered while forming the hull.
+
+
+Now, as per the algorithm, we start off by considering the line formed by the first two points(0 and 1 in the animation) in the sorted array. We push the points on this line onto a 
+s
+t
+a
+c
+k
+stack. After this, we start traversing over the sorted 
+p
+o
+i
+n
+t
+s
+points array from the third point onwards. If the current point being considered appears after taking a left turn(or straight path) relative to the previous line(line's direction), we push the point onto the stack, indicating that the point has been temporarily added to the hull boundary.
+
+This checking of left or right turn is done by making use of orientation again. An orientation greater than 0, considering the points on the line and the current point, indicates a counterclockwise direction or a right turn. A negative orientation indicates a left turn similarly.
+
+If the current point happens to be occuring by taking a right turn from the previous line's direction, it means that the last point included in the hull was incorrect, since it needs to lie inside the boundary and not on the boundary(as is indicated by point 4 in the animation). Thus, we pop off the last point from the stack and consider the second last line's direction with the current point.
+
+Thus, the same process continues, and the popping keeps on continuing till we reach a state where the current point can be included in the hull by taking a right turn. Thus, in this way, we ensure that the hull includes only the boundary points and not the points inside the boundary. After all the points have been traversed, the points lying in the stack constitute the boundary of the convex hull.
+
+1. 求点集points中的最左下点lb(lowest y-coordinate, then the lowest x-coordinate) as the initial point(bm) to start the hull with.
+
+2. 以lb为原点，对points按照极坐标排序 
+   sort the given set of points based on their polar angles formed w.r.t. a vertical line drawn throught the intial point.
+   If the orientation of two points happens to be the same, the points are sorted based on their distance from the beginning point(lb).
+   so that all the collinear points lying on the hull are included in the boundary.
+   
+   *
 
 3. 维护栈stack，初始将points[0], points[1]压入栈
 
