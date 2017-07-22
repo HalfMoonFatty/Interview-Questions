@@ -30,8 +30,164 @@ iterator.next(); // return ' '
 '''
 
 
+
 '''
-Solution:
+Solution 1:
+
+
+next(): We make use of a global pointer "ptr" to keep a track of which compressed letter in the compressedString needs to be processed next. 
+We also make use of a global variable num to keep a track of the number of instances of the current letter which are still pending. 
+Whenever next() operation needs to be performed, firstly, we check if there are more uncompressed letters left in the compressedString. If not, we return a ' '. Otherwise, we check if there are more instances of the current letter still pending. If so, we directly decrement the count of instances indicated by 
+n
+u
+m
+s
+nums and return the current letter. But, if there aren't more instances pending for the current letter, we update the 
+p
+t
+r
+ptr to point to the next letter in the 
+c
+o
+m
+p
+r
+e
+s
+s
+e
+d
+S
+t
+r
+i
+n
+g
+compressedString. We also update the 
+n
+u
+m
+num by obtaining the count for the next letter from the 
+c
+o
+m
+p
+r
+e
+s
+s
+e
+d
+S
+t
+r
+i
+n
+g
+compressedString. This number is obtained by making use of decimal arithmetic.
+
+hasNext(): If the pointer 
+p
+t
+r
+ptr has reached beyond the last index of the 
+c
+o
+m
+p
+r
+e
+s
+s
+e
+d
+S
+t
+r
+i
+n
+g
+compressedString and 
+n
+u
+m
+num becomes, it indicates that no more uncompressed letters exist in the compressed string. Hence, we return a False in this case. Otherwise, a True value is returned indicating that more compressed letters exist in the 
+c
+o
+m
+p
+r
+e
+s
+s
+e
+d
+S
+t
+r
+i
+n
+g
+compressedString.
+
+
+Space: O(1)
+
+The time required to perform next() operation is O(1).
+
+The time required for hasNext() operation is O(1).
+
+Since no precomputations are done, and hasNext() requires only O(1) time, this solution is advantageous if hasNext() operation is performed most of the times.
+
+This approach can be extended to include previous() and hasPrevious() operationsm, but this will require the use of some additional variables.
+'''
+
+
+class StringIterator(object):
+
+    def __init__(self, compressedString):
+        """
+        :type compressedString: str
+        """
+        self.compressedString = compressedString
+        self.pointer = 0
+        self.num = 0
+        self.char = ""
+        
+    def next(self):
+        """
+        :rtype: str
+        """
+        if not self.hasNext(): return ' '
+        if self.num == 0:
+            self.char = self.compressedString[self.pointer]
+            self.pointer += 1
+            while self.pointer < len(self.compressedString) and self.compressedString[self.pointer].isdigit():
+                self.num += self.num*10 + ord(self.compressedString[self.pointer]) - ord('0')
+                self.pointer += 1
+
+        self.num -= 1
+        return self.char
+            
+
+    def hasNext(self):
+        """
+        :rtype: bool
+        """
+        return self.pointer != len(self.compressedString) or self.num != 0
+
+
+# Your StringIterator object will be instantiated and called as such:
+# obj = StringIterator(compressedString)
+# param_1 = obj.next()
+# param_2 = obj.hasNext()
+
+
+
+
+
+'''
+Solution 2:
 
 将压缩字符串compressedString拆分成字母数组 chars 和出现次数数组 length:
 
