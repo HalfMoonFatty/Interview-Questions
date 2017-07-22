@@ -34,101 +34,20 @@ iterator.next(); // return ' '
 '''
 Solution 1:
 
+next(): 
+    We make use of a global pointer "pointer" to keep a track of which compressed letter in the "compressedString needs to be processed next. 
+    We also make use of a global variable "num" to keep a track of the number of instances of the current letter which are still pending. 
 
-next(): We make use of a global pointer "ptr" to keep a track of which compressed letter in the compressedString needs to be processed next. 
-We also make use of a global variable num to keep a track of the number of instances of the current letter which are still pending. 
-Whenever next() operation needs to be performed, firstly, we check if there are more uncompressed letters left in the compressedString. If not, we return a ' '. Otherwise, we check if there are more instances of the current letter still pending. If so, we directly decrement the count of instances indicated by 
-n
-u
-m
-s
-nums and return the current letter. But, if there aren't more instances pending for the current letter, we update the 
-p
-t
-r
-ptr to point to the next letter in the 
-c
-o
-m
-p
-r
-e
-s
-s
-e
-d
-S
-t
-r
-i
-n
-g
-compressedString. We also update the 
-n
-u
-m
-num by obtaining the count for the next letter from the 
-c
-o
-m
-p
-r
-e
-s
-s
-e
-d
-S
-t
-r
-i
-n
-g
-compressedString. This number is obtained by making use of decimal arithmetic.
+    Whenever next() operation needs to be performed, firstly, we check if there are more uncompressed letters left in the compressedString. 
+    If not, we return a ' '. Otherwise, we check if there are more instances of the current letter still pending. 
+    If so, we directly decrement the count of instances indicated by nums and return the current letter. 
+    But, if there aren't more instances pending for the current letter, we update the "pointer" to point to the next letter in the "compressedString". 
+    We also update the num by obtaining the count for the next letter from the "compressedString". 
 
-hasNext(): If the pointer 
-p
-t
-r
-ptr has reached beyond the last index of the 
-c
-o
-m
-p
-r
-e
-s
-s
-e
-d
-S
-t
-r
-i
-n
-g
-compressedString and 
-n
-u
-m
-num becomes, it indicates that no more uncompressed letters exist in the compressed string. Hence, we return a False in this case. Otherwise, a True value is returned indicating that more compressed letters exist in the 
-c
-o
-m
-p
-r
-e
-s
-s
-e
-d
-S
-t
-r
-i
-n
-g
-compressedString.
+hasNext(): 
+    If the pointer "pointer" has reached beyond the last index of the "compressedString" and "num" becomes, 
+    it indicates that no more uncompressed letters exist in the compressed string. Hence, we return a False in this case. 
+    Otherwise, a True value is returned indicating that more compressed letters exist in the compressedString.
 
 
 Space: O(1)
