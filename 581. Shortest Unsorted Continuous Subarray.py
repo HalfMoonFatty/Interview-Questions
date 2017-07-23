@@ -17,8 +17,9 @@ Then length of the input array is in range [1, 10,000].
 The input array may contain duplicates, so ascending order here means <=.
 '''
 
+
 '''
-Solution: 排序（Sort）
+Solution 1: 排序（Sort）
 
 对数组nums排序，记排序后的数组为snums，数组长度为n
 
@@ -29,6 +30,10 @@ Solution: 排序（Sort）
 则当s != e时，所求最短连续子数组为nums[s .. e] 
 
 否则，所求子数组为空
+
+Time complexity : O(nlogn)
+
+Space complexity : O(n)
 '''
 
 class Solution(object):
@@ -44,4 +49,51 @@ class Solution(object):
                 if s == -1: s = i
                 e = i
         return e - s + 1 if e != s else 0
+
+    
+
+'''
+Solution 2:
+
+The correct position of the minimum element in the unsorted subarray helps to determine the required left boundary. 
+
+Similarly, the correct position of the maximum element in the unsorted subarray helps to determine the required right boundary.
+
+Time complexity : O(n)
+
+Space complexity : O(1)
+'''
+
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        minVal, maxVal = sys.maxint, -sys.maxint-1
+        # find break points from left and right sides
+        found = False
+        for i in range(1,len(nums)):
+            if nums[i] < nums[i-1]:
+                found = True
+            if found:
+                minVal = min(minVal, nums[i])
+        found = False
+        for i in range(len(nums)-2,-1,-1):
+            if nums[i] > nums[i+1]:
+                found = True
+            if found:
+                maxVal = max(maxVal, nums[i])
+                
+        left, right = len(nums)-1, 0
+        for left in range(len(nums)):
+            if minVal < nums[left]:
+                break
+        for right in range(len(nums)-1,-1,-1):
+            if maxVal > nums[right]:
+                break
+                
+        return right-left+1 if right > left else 0
+        
+        
 
