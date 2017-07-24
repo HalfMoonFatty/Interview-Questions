@@ -34,8 +34,14 @@ end with "PLL": dp[i-3]
 end with "LLL": is not allowed
 so dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
 
-the number of all possible attendance (with 'A') records with length n:
-∑dp[i] *dp[n-1-i] i = 0,1,...,n-1
+
+
+No A is present: In this case, the number of rewardable strings is the same as f[n].
+
+A single A is present: Now, the single A can be present at any of the n positions. If the A is present at the i th position in the given string, 
+in the form: "<(i) characters>, A, <(n-i-1) characters>", the total number of rewardable strings is given by: f[i−1]∗f[n−i]. 
+
+the number of all possible attendance (with 'A') records with length n: ∑dp[i] *dp[n-1-i] i = 0,1,...,n-1
 
 Time Complexity O(n)
 Space Complexity O(n)
