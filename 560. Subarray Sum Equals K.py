@@ -14,7 +14,7 @@ The range of numbers in the array is [-1000, 1000] and the range of the integer 
 
 
 '''
-利用字典cnt统计前N项和出现的个数
+利用字典cnt统计前N项和(prefix sum)出现的个数
 
 遍历数组nums：
 
