@@ -28,8 +28,8 @@ Soluion: DP
 
 dp[i]the number of all possible attendance (without 'A') records with length i :
 
-end with "P": dp[i-1]
-end with "PL": dp[i-2]
+end with "P": dp[i-1]    ("LP", "PP")
+end with "PL": dp[i-2]   
 end with "PLL": dp[i-3]
 end with "LLL": is not allowed
 so dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
@@ -56,7 +56,7 @@ class Solution(object):
         if n == 1: return 3
 
         # exclude A
-        nums = [1, 1, 2]
+        nums = [1, 1, 2]   # nums[0] = 1 end with "PLL" (LL here); nums[1] = 1 end with "PL"; nums[2] = 2 end with "P": "LP" "PP";
         i = 2
         while i < n:
             nums.append((nums[i] + nums[i-1] + nums[i-2])% 1000000007)
