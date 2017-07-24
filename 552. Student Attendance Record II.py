@@ -51,16 +51,19 @@ Space Complexity O(n)
 
 class Solution(object):
     def checkRecord(self, n):
-        if n == 1:
-            return 3
-        if n == 0:
-            return 0
+        
+        if n == 0: return 0
+        if n == 1: return 3
+
+        # exclude A
         nums = [1, 1, 2]
         i = 2
         while i < n:
             nums.append((nums[i] + nums[i-1] + nums[i-2])% 1000000007)
             i += 1
         result = (nums[n] + nums[n-1] + nums[n-2]) % 1000000007
+        
+        # include A
         for i in range(n):
             result += nums[i+1] * nums[n-i] % 1000000007
             result %= 1000000007
