@@ -23,6 +23,10 @@ The range of numbers in the array is [-1000, 1000] and the range of the integer 
     累加前N项和为sums
 
     将cnt[sums - k]累加至答案
+    
+Time complexity : O(n). The entire nums array is traversed only once.
+
+Space complexity : O(n). Counter map can contain upto n distinct entries in the worst case.
 '''
 
 
