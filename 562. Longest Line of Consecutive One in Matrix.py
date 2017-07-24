@@ -40,7 +40,7 @@ class Solution(object):
         h, w = len(M), len(M) and len(M[0]) or 0
         ans = 0
 
-        #horizontal & diagonal
+        # horizontal & diagonal
         diag = [[0] * w for r in range(h)]
         for x in range(h):
             cnt = 0
@@ -51,7 +51,7 @@ class Solution(object):
                     diag[x][y] += diag[x - 1][y - 1]
                 ans = max(ans, cnt, diag[x][y])
 
-        #vertical & anti-diagonal
+        # vertical & anti-diagonal
         adiag = [[0] * w for r in range(h)]
         for x in range(w):
             cnt = 0
@@ -63,3 +63,36 @@ class Solution(object):
                 ans = max(ans, cnt, adiag[y][x])
 
         return ans
+       
+       
+       
+'''
+Solution 2:
+
+Time complexity : O(m∗n). We traverse the entire matrix once only.
+
+Space complexity : O(m∗n). dp array of size 4∗m∗n is used, where m and n are the number of rows ans coloumns of the matrix.
+
+'''
+
+class Solution(object):
+    def longestLine(self, M):
+        """
+        :type M: List[List[int]]
+        :rtype: int
+        """
+        h, w = len(M), len(M) and len(M[0]) or 0
+        maxCount = 0
+        dp = [[[0] * 4 for c in range(w)] for r in range(h)]
+        for i in range(h):
+            for j in range(w):
+                if M[i][j] == 1:
+                    dp[i][j][0] = dp[i][j-1][0]+1 if j > 0 else 1
+                    dp[i][j][1] = dp[i-1][j][1]+1 if i > 0 else 1
+                    dp[i][j][2] = dp[i-1][j-1][2]+1 if i > 0 and j > 0 else 1
+                    dp[i][j][3] = dp[i-1][j+1][3]+1 if i > 0 and j < w-1 else 1
+                    maxCount = max(maxCount, dp[i][j][0],dp[i][j][1],dp[i][j][2],dp[i][j][3])
+        return maxCount
+        
+
+
