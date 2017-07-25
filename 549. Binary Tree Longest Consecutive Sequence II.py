@@ -32,32 +32,40 @@ Solution 1: 一趟遍历
 
 时间复杂度O(n) n为节点的个数
 
-定义函数solve(root)，递归求解以root为根节点向子节点方向（parent-child）的路径中，最大连续递增路径长度inc，以及最大连续递减路径长度dec
+定义函数 LongestPath(root)，递归求解以root为根节点向子节点方向（parent-child）的路径中，最大连续递增路径长度inc，以及最大连续递减路径长度dec
 
-则以root为根节点的子树中，最大连续路径长度=inc + dec + 1（路径不包含root）
+则以root为根节点的子树中，最大连续路径长度 = inc + dec - 1（root 计算了2次）
+
+Time complexity : O(n). The whole tree is traversed only once.
+Space complexity : O(n). The recursion goes upto a depth of n in the worst case.
 '''
 
 class Solution(object):
-    def solve(self, root):
-        inc = dec = 0
-        for child in (root.left, root.right):
-            if not child: continue
-            cinc, cdec = self.solve(child)
-            if child.val == root.val - 1:
-                dec = max(dec, cdec)
-            elif child.val == root.val + 1:
-                inc = max(inc, cinc)
-        self.ans = max(self.ans, inc + dec + 1)
-        return inc + 1, dec + 1
-    
     def longestConsecutive(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-        self.ans = 0
-        if root: self.solve(root)
-        return self.ans
+
+        def LongestPath(root, maxLen):
+            inc = dec = 1   # root itself
+            for child in (root.left, root.right):
+                if not child: continue
+                cinc, cdec = LongestPath(child, maxLen)
+                if child.val == root.val - 1:
+                    dec = max(dec, cdec+1)
+                elif child.val == root.val + 1:
+                    inc = max(inc, cinc+1)
+            maxLen[0] = max(maxLen[0], inc + dec - 1)
+            return inc, dec
+    
+
+        if not root: return 0
+        maxLen = [0]
+        LongestPath(root, maxLen)
+        return maxLen[0]
+        
+        
         
         
 '''
