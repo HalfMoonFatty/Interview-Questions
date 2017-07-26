@@ -45,7 +45,12 @@ Solution:
 
 然后利用字典sdict统计每一行像素出现的个数。 if sdict[row] != N: countinue
 
+因为对于rule 2, 所有在某一column C有 "B" 的row必须看起来一模一样，
+而条件 1 规定 column C contain exactly N black pixels. 所以一模一样的行数就是 column C 的 "B" 数(N)。
+
 最后遍历一次picture即可。
+
+Time complexity: O(m*n).
 '''
 
 
