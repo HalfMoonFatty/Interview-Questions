@@ -53,6 +53,9 @@ The right boundary are node 1,3,6,10. (10 is the right-most node).
 So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,6,3].
 '''
 
+# Time complexity : O(n) One complete traversal for leaves and two traversals upto depth of binary tree for left and right boundary.
+
+# Space complexity : O(n) res and stack(reverse right boundry) is used.
 
 class Solution(object):
     def boundaryOfBinaryTree(self, root):
