@@ -23,6 +23,19 @@ and for example only one in a billion URLs takes more than 30 attempts.
 
 If we get to an even larger number of entries, then we can just use length 7 as we'd be running out of available codes.
 
+
+Performance Analysis:
+
+The number of URLs that can be encoded is quite large in this case, nearly of the order (10+26∗2)^6.
+
+The length of the encoded URLs is fixed to 6 units, which is a significant reduction for very large URLs.
+
+The performance of this scheme is quite good, due to a very less probability of repeated same codes generated.
+
+We can increase the number of encodings possible as well, by increasing the length of the encoded strings. Thus, there exists a tradeoff between the length of the code and the number of encodings possible.
+
+Predicting the encoding isn't possible in this scheme since random numbers are used.
+
 '''
 
 
