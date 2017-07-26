@@ -21,9 +21,62 @@ The return answers should be in the same order as the original array.
 
 '''
 
+'''
+Solution 1:
+
+Make abbreviation for each word.
+
+Then, check each word.
+
+If there are some strings which have same abbreviation with it, increase the prefix.
+
 
 '''
-Solution:
+
+class Solution(object):
+
+
+    def wordsAbbreviation(self, wordlist):
+        """
+        :type dict: List[str]
+        :rtype: List[str]
+        """
+
+        def getAbbr(word, size):
+            if len(word) <= size + 2: return word
+            return word[:size] + str(len(word) - size - 1) + word[-1]
+
+
+
+        result = []
+        prefix = [1]*len(wordlist)
+        # make abbreviation for each word
+        for i in range(len(wordlist)):
+            result.append(getAbbr(wordlist[i],1))
+        # check duplicate
+        for i in range(len(wordlist)):
+            while True:
+                dupIndex = []
+                # check words with the same abbreviation
+                for j in range(i+1, len(wordlist)):
+                    if result[j] == result[i]:
+                        dupIndex.append(j)
+                if len(dupIndex) == 0: break
+                
+                # increase the prefix
+                dupIndex.append(i)
+                for k in dupIndex:
+                    result[k] = getAbbr(wordlist[k], prefix[k]+1)
+                    prefix[k] += 1
+                    
+
+        return result
+
+
+
+
+'''
+Solution 2: Recursion
 
 利用字典 result 维护原始字符串word到压缩字符串abbr的映射
 
@@ -34,7 +87,6 @@ Solution:
 否则，将该压缩串的结果加入 result
 '''
 
-import collections
 class Solution(object):
 
 
@@ -45,8 +97,8 @@ class Solution(object):
         """
 
         def getAbbr(word, size):
-            if len(word) - size <= 3: return word
-            return word[:size + 1] + str(len(word) - size - 2) + word[-1]
+            if len(word) <= size + 2: return word
+            return word[:size] + str(len(word) - size - 1) + word[-1]
 
 
         def solve(dict, size):
@@ -62,5 +114,5 @@ class Solution(object):
 
 
         self.result = {}
-        solve(dict, 0)
+        solve(dict, 1)
         return self.result.values()
