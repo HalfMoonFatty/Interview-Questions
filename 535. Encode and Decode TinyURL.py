@@ -56,7 +56,7 @@ class Codec:
         :rtype: str
         """
         while longUrl not in self.url2code:    # repeatly try until successfully encode the long URL to code and store it in the 2 dicts
-            code = ''.join(random.choice(Codec.alphabet) for _ in range(6))
+            code = ''.join(random.choice(Codec.alphanum) for _ in range(6))
             if code not in self.code2url:
                 self.code2url[code] = longUrl
                 self.url2code[longUrl] = code
