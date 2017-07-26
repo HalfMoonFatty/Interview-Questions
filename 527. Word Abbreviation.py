@@ -30,7 +30,7 @@ Then, check each word.
 
 If there are some strings which have same abbreviation with it, increase the prefix.
 
-
+Time: O(n*m)
 '''
 
 class Solution(object):
@@ -41,11 +41,9 @@ class Solution(object):
         :type dict: List[str]
         :rtype: List[str]
         """
-
         def getAbbr(word, size):
             if len(word) <= size + 2: return word
             return word[:size] + str(len(word) - size - 1) + word[-1]
-
 
 
         result = []
@@ -53,6 +51,7 @@ class Solution(object):
         # make abbreviation for each word
         for i in range(len(wordlist)):
             result.append(getAbbr(wordlist[i],1))
+            
         # check duplicate
         for i in range(len(wordlist)):
             while True:
@@ -69,7 +68,6 @@ class Solution(object):
                     result[k] = getAbbr(wordlist[k], prefix[k]+1)
                     prefix[k] += 1
                     
-
         return result
 
 
