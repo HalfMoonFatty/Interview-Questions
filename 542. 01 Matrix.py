@@ -40,6 +40,12 @@ Solution 1: Do a BFS on multiple sources - matrix[i][j] == 0
 
 Similar Problem: 286. Walls and Gates
 
+
+Time complexity: O(r⋅c).
+Since, the new cells are added to the queue only if their current distance is greater than the calculated distance, cells are not likely to be added multiple times.
+
+Space complexity: O(r⋅c). Additional O(r⋅c) for queue.
+
 '''
 
 import collections
