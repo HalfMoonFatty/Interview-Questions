@@ -28,5 +28,5 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        return word.isupper() or word.islower() or word[0].isupper() and word[1:].islower()
+        return word[1:].islower() or word.islower() or word.isupper()
         
