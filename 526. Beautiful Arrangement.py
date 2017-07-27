@@ -26,6 +26,79 @@ Note: N is a positive integer and will not exceed 15.
 '''
 
 
+
+'''
+Solution 1: Permutation
+
+Time complexity : O(k). k refers to the number of valid permutations.
+
+Space complexity : O(n). The depth of recursion tree can go upto n. Further, nums array of size n is used, where, n is the given number.
+
+'''
+
+class Solution(object):
+    def countArrangement(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        def permutation(nums,index,count):
+            if index == len(nums):
+                count[0] += 1
+            for i in range(index, len(nums)):
+                nums[i], nums[index] = nums[index], nums[i]
+                if nums[index]%(index+1) == 0 or (index+1)%nums[index] == 0:
+                    permutation(nums,index+1,count)
+                nums[i], nums[index] = nums[index], nums[i]
+                
+            
+        nums = [i+1 for i in range(N)]
+        count = [0]
+        permutation(nums,0,count)
+        return count[0]
+        
+
+        
+'''
+Solution 2: Backtracking
+
+index为当前数字的下标，visited 记录 nums 中剩余待选数字
+
+初始令 index = 1, nums = [1 .. N]
+
+遍历nums，记当前数字为n
+
+若 n 没有被选中过 而且 满足题设的整除条件，则选中 n, 继续recursion call.
+
+Time complexity : O(k). k refers to the number of valid permutations.
+
+Space complexity : O(n). visited array of size n is used. The depth of recursion tree will also go upto n. Here, n refers to the given integer n.
+'''
+
+class Solution(object):
+    def countArrangement(self, N):
+        """
+        :type N: int
+        :rtype: int
+        """
+        def countArrange(nums, index, count, visited):
+            if index > len(nums):
+                count[0] += 1
+            for n in range(1, len(nums)+1):
+                if not visited[n] and (n % index == 0 or index % n == 0):
+                    visited[n] = True
+                    countArrange(nums, index+1, count, visited)
+                    visited[n] = False
+                
+            
+        nums = [i+1 for i in range(N)]
+        visited = [False] * (N+1)
+        count = [0]
+        countArrange(nums, 1, count, visited)
+        return count[0]
+        
+
+
 '''
 Solution: BackTracking without cache
 
