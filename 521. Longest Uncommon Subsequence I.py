@@ -46,49 +46,10 @@ j = 2 => i = 001 => 'c'
 t = 'ac'
 
 
-Time complexity : O(2^x)+2^y). where 
-x
-x and 
-y
-y are the lengths of strings 
-a
-a and 
-b
-b respectively . Number of subsequences will be 
-2
-x
-+
-2
-y
-2
-​x
-​​ +2
-​y
-​​ .
-Space complexity : 
-O
-(
-2
-x
-+
-2
-y
-)
-O(2
-​x
-​​ +2
-​y
-​​ ). 
-2
-x
-+
-2
-y
-2
-​x
-​​ +2
-​y
-​​  subsequences will be generated.
+Time complexity : O(2^x + 2^y). where x and y are the lengths of strings a and b respectively . Number of subsequences will be O(2^x + 2^y).
+
+Space complexity : O(2^x + 2^y). 2^x + 2^y subsequences will be generated.
+
 '''
 
 
