@@ -24,17 +24,13 @@ The length of the given list will be in the range of [2, 50].
 '''
 Solution:
 
-首先将输入字符串列表strs按照长度递减排序，记得到的新列表为slist。
+Firstly we sort the given strings in decreasing order of their lengths. 
 
-利用计数器cnt统计每个字符串出现的次数。
+Then, we start off by comparing the longest string with all the other strings. 
 
-遍历slist，记当前字符串为c，其下标为i：
+If none of the other strings happens to be the subsequence of the longest string, we return the length of the longest string as the result without any need of further comparisons. 
 
-    若c在strs中出现不止一次，跳过该字符串
-
-    否则，利用贪心算法对c和slist[0 .. i - 1]的字符串进行匹配，若均匹配失败，则返回len(c)
-
-遍历结束，返回-1
+If some string happens to be a subsequence of the longest string, we continue the same process by choosing the second largest string as the first string and repeat the process, and so on.
 
 '''
 
@@ -43,28 +39,28 @@ import collections
 class Solution(object):
     def findLUSlength(self, strs):
 
-        def isUncommon(pstr,cstr):
-            pp = pc = 0
-            while pp < len(pstr) and pc < len(cstr):
-                if pstr[pp] == cstr[pc]:
-                    pc += 1
-                pp += 1
-            return pc != len(cstr)
-
-        
-        cnt = collections.Counter(strs)
-        slist = sorted(set(strs), key=len, reverse=True)
-        
-        for i in range(len(slist)):
-            if cnt[slist[i]] > 1: 
-                continue
+        def isSubsequence(s,t):   # check if t is a subsequence of s
+            i = j = 0
+            while i < len(s) and j < len(t):
+                if s[i] == t[j]:
+                    j += 1
+                i += 1
+                
+            return j == len(t)
             
-            common = False
-            for j in range(i):
-                if not isUncommon(slist[j], slist[i]):
-                    common = True
+
+        strs.sort(key=len, reverse=True)
+        
+        for i in range(len(strs)):
+            j = 0
+            while j < len(strs):
+                if i == j:
+                    j += 1
+                    continue
+                if isSubsequence(strs[j], strs[i]):
                     break
-            if not common:
-                return len(slist[i])
+                j += 1
+            if j == len(strs):
+                return len(strs[i])
         return -1
             
