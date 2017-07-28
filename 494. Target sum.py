@@ -37,10 +37,14 @@ dp[i][x] 表示长度为 i 的subarray(nums[0] ~ nums[i-1]), Sum 为 x 的方法
 
 Note: i表示的是长度， 所以作为nums的下标需要-1
 
-Time: O(m*n)
-Space: O(m*n)
+
+Time complexity : O(l∗n). 
+The entire nums array is travesed 2001(constant no.: l) times. n refers to the size of nums array. l refers to the range of sum possible.
+
+Space complexity : O(l∗n). dp array of size l∗n is used.
+
 '''
-   
+
 class Solution(object):
     def findTargetSumWays(self, nums, S):
 
