@@ -59,6 +59,21 @@ The maze contains at least 2 empty spaces, and the length and width of the maze 
 '''
 Solution 1: BFS
 
+In this case, we try to explore the search space on a level by level basis. i.e. We try to move in all the directions at every step. 
+When all the directions have been explored and we still don't reach the destination, then only we proceed to the new set of traversals from the new positions obtained.
+
+In order to implement this, we make use of a queue. We start with the ball at the start position. 
+For every current position, we add all the new positions possible by traversing in all the four directions(till reaching the wall or boundary) 
+into the queue to act as the new start positions and mark these positions as True in the visited array. When all the directions have been covered up, 
+we remove a position value, s, from the front of the queue and again continue the same process with s acting as the new start position.
+
+Further, in order to choose the direction of travel, we make use of a dir array, which contains 4 entries. 
+Each entry represents a one-dimensional direction of travel. To travel in a particular direction, we keep on adding the particular entry of the dirs array 
+till we hit a wall or a boundary. For a particular start position, we do this process of dir addition for all all the four directions possible.
+
+If we hit the destination position at any moment, we return a True directly indicating that the destination position can be reached starting from the start position.
+
+
 Time complexity : O(mn). Complete traversal of maze will be done in the worst case. Here, m and n refers to the number of rows and coloumns of the maze.
 Space complexity : O(mn). visited array of size m∗n is used and queue size can grow upto m∗n in worst case.
 '''
@@ -85,12 +100,13 @@ class Solution(object):
                 return True
             for i in range(4):
                 nx, ny = cur[0]+xDir[i], cur[1]+yDir[i]
+                # rolling till meet wall
                 while 0 <= nx < m and 0 <= ny < n and maze[nx][ny] == 0:
                     nx += xDir[i]
                     ny += yDir[i]
                 if not visited[nx-xDir[i]][ny-yDir[i]]:
                     q.append([nx-xDir[i],ny-yDir[i]])
-                    visited[nx-xDir[i]][ny-yDir[i]] = True
+                    visited[nx-xDir[i]][ny-yDir[i]] = True  # visited
         return False
         
 
@@ -106,6 +122,17 @@ maze array, the start position and the destination position as its arguments alo
 A True value at visited[i][j] represents that the current position has already been reached earlier during the path traversal. 
 We make use of this array so as to keep track of the same paths being repeated over and over. 
 We mark a True at the current position in the visited array once we reach that particular positon in the maze.
+
+
+From every start position, we can move continuously in either left, right, upward or downward direction till we reach the boundary or a wall. 
+Thus, from the start position, we determine all the end points which can be reached by choosing the four directions. For each of the cases, 
+the new endpoint will now act as the new start point for the traversals. The destination, obviously remains unchanged. 
+Thus, now we call the same function four times for the four directions, each time with a new start point obtained previously.
+
+If any of the function call returns a True value, it means we can reach the desination.
+
+Time complexity : O(mn). 
+Space complexity : O(mn). visited array of size m∗n is used.
 
 '''
 
@@ -123,7 +150,7 @@ class Solution(object):
             if cur == destination: 
                 return True
             
-            visited[cur[0]][cur[1]] = True
+            visited[cur[0]][cur[1]] = True    # visited
             for i in range(4):
                 nx, ny = cur[0]+xDir[i], cur[1]+yDir[i]
                 # rolling till meet wall
