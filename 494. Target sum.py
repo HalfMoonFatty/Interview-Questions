@@ -32,8 +32,8 @@ dp[i][x] 表示长度为 i 的subarray(nums[0] ~ nums[i-1]), Sum 为 x 的方法
 初始令dp[0][0] = 1
 
 状态转移方程：
-    dp[i + 1][k + nums[i]] += dp[i][k]
-    dp[i + 1][k - nums[i]] += dp[i][k]
+    dp[i][k + nums[i-1]] += dp[i-1][k]
+    dp[i][k - nums[i-1]] += dp[i-1][k]
 
 Note: i表示的是长度， 所以作为nums的下标需要-1
 
