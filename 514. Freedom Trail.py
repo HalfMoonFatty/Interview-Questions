@@ -68,6 +68,9 @@ class Solution(object):
             
         return min(dp.values()) + len(key)
         
+        
+        
+        
 public class Solution {
     public int findRotateSteps(String ring, String key) {
         int n = ring.length();
