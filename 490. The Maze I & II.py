@@ -171,3 +171,124 @@ class Solution(object):
         
         
                 
+
+'''
+Follow-up:
+
+Given the ball's start position, the destination and the maze, find the shortest distance for the ball to stop at the destination. 
+The distance is defined by the number of empty spaces traveled by the ball from the start position (excluded) to the destination (included). 
+If the ball cannot stop at the destination, return -1.
+'''
+
+
+'''
+BFS:
+
+Time complexity : O(m∗n∗max(m,n)). Complete traversal of maze will be done in the worst case. For every current node chosen, we can travel upto a maximum depth of max(m,n) in any direction.
+
+Space complexity : O(mn). queue size can grow upto m∗n in the worst case.
+'''
+
+import sys
+class Solution(object):
+    def shortestDistance(self, maze, start, destination):
+        """
+        :type maze: List[List[int]]
+        :type start: List[int]
+        :type destination: List[int]
+        :rtype: int
+        """
+        m,n = len(maze), len(maze[0])
+
+        xDir = [0,1,0,-1]
+        yDir = [1,0,-1,0]
+        distance = [[sys.maxint] * n for _ in range(m)]
+        
+        q = collections.deque([start])
+        distance[start[0]][start[1]] = 0
+        while len(q):
+            x,y = q.popleft()
+            for i in range(4):
+                nx, ny = x+xDir[i], y+yDir[i]
+                # rolling till meet wall
+                step = 0
+                while 0 <= nx < m and 0 <= ny < n and maze[nx][ny] == 0:
+                    nx += xDir[i]
+                    ny += yDir[i]
+                    step += 1
+                # update distance[nx][ny] with shorter distance
+                if distance[x][y] + step < distance[nx-xDir[i]][ny-yDir[i]]:
+                    q.append([nx-xDir[i],ny-yDir[i]])
+                    distance[nx-xDir[i]][ny-yDir[i]] = distance[x][y] + step 
+                    
+        return distance[destination[0]][destination[1]] if distance[destination[0]][destination[1]] != sys.maxint else -1
+    
+    
+    
+'''
+Dijkstra
+
+
+The algorithm consists of the following steps:
+
+Assign a tentative distance value to every node: set it to zero for our start node and to infinity for all other nodes.
+
+Set the start node as current node. Mark it as visited.
+
+For the current node, consider all of its neighbors and calculate their tentative distances. 
+Compare the newly calculated tentative distance to the current assigned value and assign the smaller one to all the neighbors. 
+For example, if the current node A is marked with a distance of 6, and the edge connecting it with a neighbor B has length 2, 
+then the distance to B (through A) will be 6 + 2 = 8. If B was previously marked with a distance greater than 8 then change it to 8. 
+Otherwise, keep the current value.
+
+When we are done considering all of the neighbors of the current node, mark the current node as visited. A visited node will never be checked again.
+
+If the destination node has been marked visited or if the smallest tentative distance among all the nodes left is infinity(indicating that the destination can't be reached), then stop. The algorithm has finished.
+
+Otherwise, select the unvisited node that is marked with the smallest tentative distance, set it as the new current node, and go back to step 3.
+
+Time complexity : O(mn∗log(mn)). Complete traversal of maze will be done in the worst case giving a factor of mn. 
+Further, poll method is a combination of heapifying(O(log(n))) and removing the top element(O(1)) from the priority queue, and it takes O(n) time for n elements. 
+In the current case, poll introduces a factor of log(mn).
+
+Space complexity : O(mn). distance array of size m∗n is used and queue size can grow upto m∗n in worst case.
+'''
+
+    
+import sys
+class Solution(object):
+    def shortestDistance(self, maze, start, destination):
+        """
+        :type maze: List[List[int]]
+        :type start: List[int]
+        :type destination: List[int]
+        :rtype: int
+        """
+       
+        dest=tuple(destination)
+        m,n = len(maze), len(maze[0])        
+        xDir = [0,1,0,-1]
+        yDir = [1,0,-1,0]
+        visited={}
+        heap = []
+        heapq.heappush(heap,[0,(start[0],start[1])])
+
+        while len(heap):
+            dist, (x,y) = heapq.heappop(heap)
+            if (x,y) in visited and visited[(x,y)] <= dist:
+                continue 
+            if (x,y) == dest:
+                return dist
+            
+            visited[(x,y)] = dist
+            for i in range(4):
+                nx, ny = x+xDir[i], y+yDir[i]
+                step = 0
+                while 0 <= nx < m and 0 <= ny < n and maze[nx][ny] == 0:
+                    nx += xDir[i]
+                    ny += yDir[i]
+                    step += 1
+                heapq.heappush(heap,[dist + step,(nx-xDir[i],ny-yDir[i])])
+
+        return -1
+         
