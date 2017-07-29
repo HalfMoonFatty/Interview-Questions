@@ -37,6 +37,11 @@ otherwise, this current player has 2 options:
     --> nums[s]-helper(nums,s+1,e): this player select the front item, leaving the other player a choice from s+1 to e
     --> nums[e]-helper(nums,s,e-1): this player select the tail item, leaving the other player a choice from s to e-1
 Then take the max of these two options as this player's selection, return it.
+
+
+Time complexity : O(n^2). The entire memo array of size nxn is filled only once. 
+
+Space complexity : O(n^2). memo array of size n*n is used for memoization.
 '''
 
 class Solution(object):
