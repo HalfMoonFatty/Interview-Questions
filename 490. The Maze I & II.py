@@ -231,21 +231,21 @@ Dijkstra
 
 The algorithm consists of the following steps:
 
-Assign a tentative distance value to every node: set it to zero for our start node and to infinity for all other nodes.
+1. Assign a tentative distance value to every node: set it to zero for our start node and to infinity for all other nodes.
 
-Set the start node as current node. Mark it as visited.
+2. Set the start node as current node. Mark it as visited.
 
-For the current node, consider all of its neighbors and calculate their tentative distances. 
+3. For the current node, consider all of its neighbors and calculate their tentative distances. 
 Compare the newly calculated tentative distance to the current assigned value and assign the smaller one to all the neighbors. 
 For example, if the current node A is marked with a distance of 6, and the edge connecting it with a neighbor B has length 2, 
 then the distance to B (through A) will be 6 + 2 = 8. If B was previously marked with a distance greater than 8 then change it to 8. 
 Otherwise, keep the current value.
 
-When we are done considering all of the neighbors of the current node, mark the current node as visited. A visited node will never be checked again.
+4. When we are done considering all of the neighbors of the current node, mark the current node as visited. A visited node will never be checked again.
 
-If the destination node has been marked visited or if the smallest tentative distance among all the nodes left is infinity(indicating that the destination can't be reached), then stop. The algorithm has finished.
+5. If the destination node has been marked visited or if the smallest tentative distance among all the nodes left is infinity(indicating that the destination can't be reached), then stop. The algorithm has finished.
 
-Otherwise, select the unvisited node that is marked with the smallest tentative distance, set it as the new current node, and go back to step 3.
+6. Otherwise, select the unvisited node that is marked with the smallest tentative distance, set it as the new current node, and go back to step 3.
 
 Time complexity : O(mn∗log(mn)). Complete traversal of maze will be done in the worst case giving a factor of mn. 
 Further, poll method is a combination of heapifying(O(log(n))) and removing the top element(O(1)) from the priority queue, and it takes O(n) time for n elements. 
@@ -254,7 +254,8 @@ In the current case, poll introduces a factor of log(mn).
 Space complexity : O(mn). distance array of size m∗n is used and queue size can grow upto m∗n in worst case.
 '''
 
-    
+
+       
 import sys
 class Solution(object):
     def shortestDistance(self, maze, start, destination):
@@ -265,7 +266,7 @@ class Solution(object):
         :rtype: int
         """
        
-        dest=tuple(destination)
+        dest = tuple(destination)
         m,n = len(maze), len(maze[0])        
         xDir = [0,1,0,-1]
         yDir = [1,0,-1,0]
@@ -275,13 +276,15 @@ class Solution(object):
 
         while len(heap):
             dist, (x,y) = heapq.heappop(heap)
-            if (x,y) in visited and visited[(x,y)] <= dist:
-                continue 
+            
             if (x,y) == dest:
                 return dist
             
-            visited[(x,y)] = dist
-            for i in range(4):
+            if (x,y) in visited and visited[(x,y)] <= dist:    # current node has been visited and with a shorter length, no need to update.
+                continue 
+            
+            visited[(x,y)] = dist    # mark current node as visited and add its distance to visited
+            for i in range(4):       # update it's neighbours
                 nx, ny = x+xDir[i], y+yDir[i]
                 step = 0
                 while 0 <= nx < m and 0 <= ny < n and maze[nx][ny] == 0:
@@ -291,4 +294,5 @@ class Solution(object):
                 heapq.heappush(heap,[dist + step,(nx-xDir[i],ny-yDir[i])])
 
         return -1
+         
          
