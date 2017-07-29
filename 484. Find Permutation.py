@@ -26,18 +26,59 @@ The length of input string is a positive integer and will not exceed 10,000
 
 
 '''
-Solution: 直接构造法 时间复杂度O(n)
+Solution 1:
 
-初始令数组nums = [1,2, ..., n]，令数组ans = []
+In order to reverse the subsections of the min array, we can start by initializing the resultant arrangement res with the min array 
+i.e. by filling with elements (1,n) in ascending order. 
 
-执行如下循环直到s为空：
+Then, while traversing the pattern s, we can keep a track of the starting and ending indices in res corresponding to the D's in the pattern s, 
+and reverse the portions of the sub-arrays in res corresponding to these indices. 
 
-  记s中的当前字符为c
-  
-  若c == 'I'，则直接将nums中的最小元素移除并加入ans；将c从s中移除
-  
-  否则，记连续的字符'D'的个数为cnt，将nums[0 ... cnt+1]移除，逆置后加入ans；将cnt个'D'从s中移除，如果后面有字符'I'，则一并移除。
+Time: O(n)
+Space: O(1)
 '''
+
+class Solution(object):
+    def findPermutation(self, s):
+        """
+        :type s: str
+        :rtype: List[int]
+        """
+        res = [i+1 for i in range((len(s)+1))] 
+
+        i = 1
+        while i < len(res):
+            j = i
+            while i < len(res) and s[i-1] == "D":
+                i += 1
+            res[j-1:i] = res[j-1:i][::-1]
+            i += 1
+        return res
+         
+        
+        
+'''
+Solution 2:
+
+Instead of initializing the res array once with ascending numbers, we can save one iteration over res if we fill it on the fly. 
+
+To do this, we can keep on filling the numbers in ascending order in res for I's found in the pattern s. 
+
+Whenever we find a D in the pattern s, we can store the current position(counting from 1) being filled in the res array in a pointer j. 
+
+Now, whenever we find the first I following this last consecutive set of D's, say at the ith position(counting from 1) in res, 
+
+we know, that the elements from jth position to the ith position in res need to be filled with the numbers from j to i in reverse order. 
+
+Thus, we can fill the numbers in res array starting from the jth position, with i being the number filled at that position and continue 
+
+the filling in descending order till reaching the i th position. 
+
+In this way, we can generate the required arrangement without initializing res.
+
+Time: O(n)
+Space: O(1)
+'''               
 
 
 class Solution(object):
@@ -46,22 +87,22 @@ class Solution(object):
         :type s: str
         :rtype: List[int]
         """
-        size = len(s)
-        nums = list(range(1, size + 2))
-        ans = []
-        idx = 0
-        while idx < size:
-            if s[idx] == 'D':
-                cnt = 0
-                while idx < size and s[idx] != 'I':
-                    idx += 1
-                    cnt += 1
-                ans += nums[:cnt+1][::-1]
-                nums = nums[cnt+1:]
-                if idx < size:
-                    idx += 1
+        res = [None] *(len(s)+1)
+        res[0] = 1
+        
+        i = 1
+        while i < len(res):
+            res[i] = i+1
+            j = i
+            if s[i-1] == 'D':
+                while i < len(s)+1 and s[i-1] == 'D':
+                    i += 1
+                n = i
+                for k in range(j-1,i):
+                    res[k] = n
+                    n -= 1
             else:
-                ans += [nums[0]]
-                nums = nums[1:]
-                idx += 1
-        return ans + nums
+                i += 1
+            print res
+        return res
+            
