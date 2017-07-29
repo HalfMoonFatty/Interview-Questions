@@ -75,8 +75,8 @@ class Solution(object):
         for i in range(n):
             dp[i][i] = nums[i]
         
-        for i in range(n-1, -1, -1):
-            for j in range(i+1, n):
+        for i in range(n-1, -1, -1):   # i depend on i+1 所以先 fill i+1, 从后往前
+            for j in range(i+1, n):    # j depend on j-1 所以先 fill j-1, 从前往后
                 # dp[i+2][j]: player2: i+1, player1: i
                 a = dp[i+2][j] if i+2 <= n-1 else 0
                 # dp[i+1][j-1]: player2: j,player1: i / player2: i,player1: j
