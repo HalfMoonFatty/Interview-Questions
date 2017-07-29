@@ -49,9 +49,9 @@ class Solution(object):
         i = 1
         while i < len(res):
             j = i
-            while i < len(res) and s[i-1] == "D":
+            while i < len(res) and s[i-1] == "D":    # till s[i] is 'i'
                 i += 1
-            res[j-1:i] = res[j-1:i][::-1]
+            res[j-1:i] = res[j-1:i][::-1]   # after revesing, s[i] =='i' has already been satisfied so increase i directly
             i += 1
         return res
          
