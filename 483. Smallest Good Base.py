@@ -65,6 +65,8 @@ The left limit is 1, and the right limit is pow(n,1/d)+1, i.e., the d th square 
 '''
 Solution 2: 枚举法
 
+the smallest base is 2 so we can find our m must be between log2n (base = 2) and 2(base = n-1)
+
 记k的最高次幂为m，从上界 int(log(n)) 向下界 1 递减枚举m
 
 问题转化为计算1 + k + k^2 + ... + k^m = n的正整数解
