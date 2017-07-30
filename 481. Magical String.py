@@ -33,6 +33,7 @@ Solution: 字符串模拟
 否则，向ms追加2个与ms末尾元素不同的字符
 
 '''
+
 class Solution(object):
     def magicalString(self, n):
         """
@@ -42,6 +43,9 @@ class Solution(object):
         ms = '122'
         p = 2
         while len(ms) < n:
-            ms += str(3 - int(ms[-1])) * int(ms[p])
+            if int(ms[-1]) == 1:
+                ms += int(ms[p]) * '2'
+            else:    # int(ms[-1]) == 2
+                ms += int(ms[p]) * '1'
             p += 1
         return ms[:n].count('1')
