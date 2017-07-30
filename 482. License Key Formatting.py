@@ -34,13 +34,12 @@ class Solution(object):
         :type K: int
         :rtype: str
         """
-        s = S.replace('-', '').upper()
-        ret = ''
-        i = len(s)
-        while i - K > 0:
-            ret = '-' + s[i-K:i] + ret
-            i -= K
-        ret = s[:i] + ret
-        return ret
+        S = S.upper().replace('-','')
 
+        i = K if len(S)%K==0 else len(S)%K
+        res = S[:i]
+        while i < len(S):
+            res += '-'+S[i:i+K]
+            i += K
+        return res
         
