@@ -47,30 +47,25 @@ The n is in range [2, 212].
 We ensure that the input n can be converted into the form 2k, where k is a positive integer.
 '''
 
+# iterative
+
 import math
 class Solution(object):
 
-    def __init__(self):
-        self.result = []
-
     def findContestMatch(self, n):
-
-        def matchGroups(groups, count):
-            if count == 0: 
-                self.result = groups[:]
-                return
+        matches = [i+1 for i in range(n)]
+        
+        while len(matches) > 1:
             ngroup = []
-            for i in range(len(groups)/2):
-                ngroup.append('('+str(groups[i])+','+str(groups[len(groups)-i-1])+')')
-            matchGroups(ngroup, count-1)
-            return
+            for i in range(len(matches)/2):
+                ngroup.append("(" + str(matches[i]) + "," + str(matches[len(matches)-i-1]) + ")")
+            matches = ngroup
+        return matches[0]
+        
 
-        groups = [str(i) for i in range(1,n+1)]
-        matchGroups(groups, int(math.log(n,2)))
-        return ''.join(elem for elem in self.result)
-    
-    
-# Note:
+
+
+        
 
 import math
 class Solution(object):
