@@ -43,6 +43,7 @@ Solution:
 如何判断A、B、C构成的关系不是向左转呢？如果b-a与c-a的叉乘小于0就不是。a与b的叉乘就是a.x*b.y-a.y*b.x。  
 '''
 
+
 class Solution(object):
     def isConvex(self, points):
         """
@@ -50,17 +51,19 @@ class Solution(object):
         :rtype: bool
         """
         def crossProduct(p0, p1, p2):
-            x0, y0 = p0
-            x1, y1 = p1
-            x2, y2 = p2
-            return (x2 - x0) * (y1 - y0) - (x1 - x0) * (y2 - y0)
-
+            x0,y0 = p0
+            x1,y1 = p1
+            x2,y2 = p2
+            return (x2-x0)*(y1-y0) - (x1-x0)*(y2-y0)
+        
         size = len(points)
         last = 0
-        for x in range(size):
-            p0, p1, p2 = points[x], points[(x + 1) % size], points[(x + 2) % size]
+        for i in range(size):
+            p0, p1, p2 = points[i], points[(i + 1) % size], points[(i + 2) % size]
             p = crossProduct(p0, p1, p2)
+            if p == 0: continue
             if p * last < 0:
                 return False
             last = p
         return True
+        
