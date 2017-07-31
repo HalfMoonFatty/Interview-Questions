@@ -58,3 +58,22 @@ class Solution(object):
             maxfreq = heapq.heappop(freqheap)
             res += maxfreq[1]*(-maxfreq[0])
         return res
+
+    
+    
+# sort
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        count = collections.Counter(s)
+        # sort count by value
+        scount = sorted(count.items(), key = lambda x: (x[1],x[0]), reverse = True)
+        ans = ''
+        for k,v in scount:
+            ans += k*v
+        return ans
+        
+            
