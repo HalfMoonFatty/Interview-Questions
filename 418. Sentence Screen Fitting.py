@@ -53,6 +53,60 @@ apple
 '''
 Solution:
 
+Say sentence=["abc", "de", "f], rows=4, and cols=6.
+The screen should look like
+
+"abc de"
+"f abc "
+"de f  "
+"abc de"
+Consider the following repeating sentence string, with positions of the start character of each row on the screen.
+
+"abc de f abc de f abc de f ..."
+ ^      ^     ^    ^      ^
+ 0      7     13   18     25
+Our goal is to find the start position of the row next to the last row on the screen, which is 25 here. Since actually it's the length of everything earlier, we can get the answer by dividing this number by the length of (non-repeated) sentence string. Note that the non-repeated sentence string has a space at the end; it is "abc de f " in this example.
+
+Here is how we find that position. In each iteration, we need to adjust start based on spaces either added or removed.
+
+"abc de f abc de f abc de f ..." // start=0
+ 012345                          // start=start+cols+adjustment=0+6+1=7 (1 space removed in screen string)
+        012345                   // start=7+6+0=13
+              012345             // start=13+6-1=18 (1 space added)
+                   012345        // start=18+6+1=25 (1 space added)
+                          012345
+'''
+
+class Solution(object):
+    def wordsTyping(self, sentence, rows, cols):
+        """
+        :type sentence: List[str]
+        :type rows: int
+        :type cols: int
+        :rtype: int
+        """
+        s = ' '.join(sentence) + ' '
+        start = 0
+        length = len(s)
+        for i in range(rows):
+            start += cols
+            # skip the last space
+            if s[start % length] == ' ':
+                start += 1
+            # current word cannot fit in this row
+            else:
+                while start - 1 >= 0 and s[(start-1) % length] != ' ':
+                    start -= 1
+            
+                    
+        return start/length
+                
+            
+
+
+'''
+Solution:
+
 由于rows和cols的规模可以达到20000，因此朴素的解法会超时（Time Limit Exceeded）
 
 观察测试用例3可以发现，当句子在屏幕上重复展现时，会呈现周期性的规律
