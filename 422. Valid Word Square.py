@@ -84,18 +84,11 @@ class Solution(object):
         """
         m = len(words)
         n = len(words[0]) if m else 0
-        if m != n:
-            return False
-        for x in range(m):
-            n = len(words[x])
-            c = 0
-            for y in range(m):
-                if len(words[y]) < x + 1:
-                    break
-                c += 1
-            if c != n:
-                return False
-            for y in range(n):
-                if words[x][y] != words[y][x]:
+        if m != n: return False
+        
+        
+        for i in range(n):
+            for j in range(len(words[i])):
+                if j >= n or i >= len(words[j]) or words[i][j] != words[j][i]: 
                     return False
         return True
