@@ -29,17 +29,17 @@ class Solution(object):
         :type abbr: str
         :rtype: bool
         """
-        size = len(word)
-        cnt = index = 0
-        for char in abbr:
-            if char.isdigit():
-                if char == '0' and cnt == 0:
-                    return False
-                cnt = cnt * 10 + int(char)
-            else:
-                index += cnt
-                cnt = 0
-                if index >= size or word[index] != w:
-                    return False
-                index += 1
-        return index + cnt == size
+        i = j = 0
+        while i < len(word) and j < len(abbr):
+            if word[i] == abbr[j]:
+                i += 1
+                j += 1
+                continue
+            if abbr[j] not in string.digits or abbr[j] == '0': # if abbr[j] not in ['1' ~ '9']
+                return False
+            start = j 
+            while j < len(abbr) and abbr[j] in string.digits: 
+                j += 1
+            offset = int(abbr[start:j])
+            i += offset
+        return i == len(word) and j == len(abbr)
