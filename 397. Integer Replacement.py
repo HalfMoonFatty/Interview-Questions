@@ -31,7 +31,7 @@ or
 '''
 
 
-
+# for odd numbers you should create as many trailing zeroes as you can (except for n == 3). So it is better to do +1 for "11" and -1 for "01".
 # 1. When n is odd: let n = 2k+1, (n+1)/2 = k+1, (n-1)/2 = k where one is even and the other is odd.
 # 2. Since we prefer the even result, we prefer n + or - 1 that is divisible by 4.
 # 3. The corner case is n = 3: subtract by 1.
