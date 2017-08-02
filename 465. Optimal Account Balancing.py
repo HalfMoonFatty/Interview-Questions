@@ -33,6 +33,52 @@ Person #2 gave person #0 $5.
 Therefore, person #1 only need to give person #0 $4, and all debt is settled.
 '''
 
+
+
+from collections import defaultdict
+import sys
+
+
+class Solution(object):
+  def minTransfers(self, trans):
+
+    bal = defaultdict(long)  # Each person's overall balance.
+    for t in trans:
+      bal[t[0]] -= t[2]
+      bal[t[1]] += t[2]
+    debt = bal.values()  # All non-zero balances.
+
+    
+    def DFS(s, cnt):
+      """
+      Args:
+        s: index of debt.
+        cnt: number of steps tranversed in DFS so far.
+      Returns:
+        Min number of transactions to settle starting from debt[s]
+      """
+      # Get the next non-zero debt.
+      while s < len(debt) and debt[s] == 0:
+        s += 1
+      res = sys.maxint
+
+      # Loop through every subsequent person to see if that person can clear person s.
+      prev = set()
+      for i in range(s + 1, len(debt)):
+        # Skip already tested or same sign debt.
+        if debt[i] not in prev and debt[i] * debt[s] < 0: 
+          prev.add(debt[i])
+          debt[i] += debt[s]
+          res = min(res, DFS(s + 1, cnt + 1))
+          debt[i] -= debt[s]
+      return res if res < sys.maxint else cnt
+
+    return DFS(0, 0)
+
+
+
+
+
 '''
 Solution: 记忆化搜索
 
