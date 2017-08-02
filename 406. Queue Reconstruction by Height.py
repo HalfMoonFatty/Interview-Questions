@@ -21,14 +21,11 @@ class Solution(object):
         """
         :type people: List[List[int]]
         :rtype: List[List[int]]
-        """
-        def cmpppl(p1,p2):
-            if p1[0] != p2[0]:
-                return p2[0] - p1[0]
-            else:
-                return p1[1] - p2[1]
-                
-        people.sort(cmp=cmpppl)
+        """     
+        # sort first base on height 从高到底
+        # then sort base on k 从低到高
+        people.sort(key = lambda p: (-p[0], p[1]))  
+        
         
         result = []
         for p in people:
