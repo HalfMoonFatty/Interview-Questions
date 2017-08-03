@@ -54,13 +54,13 @@ The time complexity is O(n) since each element is at most been pushed and popped
 
     def maxArray(nums, k):
         res = [0]*k
-        cur = 0
+        j = 0
         for i in range(len(nums)):
-            while len(nums)-i > k-cur and cur > 0 and res[cur-1] < nums[i]:
-                cur -= 1
-            if cur < k:
-                res[cur] = nums[i]
-                cur += 1
+            while len(nums)-i > k-j and j > 0 and res[j-1] < nums[i]:
+                j -= 1
+            if j < k:
+                res[j] = nums[i]
+                j += 1
         return res
 
 
@@ -149,20 +149,22 @@ class Solution(object):
    
     def maxArray(self, nums, k):
         res = [0]*k
-        cur = 0
+        j = 0
         for i in range(len(nums)):
-            while len(nums)-i > k-cur and cur > 0 and res[cur-1] < nums[i]:
-                cur -= 1
-            if cur < k:
-                res[cur] = nums[i]
-                cur += 1
+            while len(nums)-i > k-j and j > 0 and res[j-1] < nums[i]:
+                j -= 1
+            if j < k:
+                res[j] = nums[i]
+                j += 1
         return res
+   
    
     def greater(self, nums1, i, nums2, j):
         while i < len(nums1) and j < len(nums2) and nums1[i] == nums2[j]:
             i += 1
             j += 1
         return (j == len(nums2)) or (i < len(nums1) and nums1[i] > nums2[j])
+   
    
     def merge(self, nums1, nums2, k):
         res = [0]*k
@@ -176,6 +178,7 @@ class Solution(object):
                 j += 1
         return res
 
+   
     def maxNumber(self, nums1, nums2, k):
         candidate = []
         ans = []
