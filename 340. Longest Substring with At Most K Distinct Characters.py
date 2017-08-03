@@ -35,6 +35,8 @@ class Solution(object):
             maxLen = max(maxLen, i-start+1)
 
         return maxLen
+    
+    
 
 
 
@@ -43,25 +45,18 @@ class Solution(object):
 class Solution(object):
     def lengthOfLongestSubstringKDistinct(self, s, k):
 
-        start = 0
         maxLen = 0
         count = 0
-        mp = {}
-
+        mp = collections.defaultdict(int)
+        j = 0
         for i in range(len(s)):
-            if not mp.has_key(s[i]):
-                mp[s[i]] = 1
-            else:
-                mp[s[i]] += 1
-
+            mp[s[i]] += 1
             if mp[s[i]] == 1:
                 count += 1
-
             while count > k:
-                mp[s[start]] -= 1
-                if mp[s[start]] == 0:
+                mp[s[j]] -= 1
+                if mp[s[j]] == 0:
                     count -= 1
-                start += 1
-            maxLen = max(maxLen, i-start+1)
-
+                j += 1
+            maxLen = max(maxLen, i-j+1)
         return maxLen
