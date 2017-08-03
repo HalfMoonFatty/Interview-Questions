@@ -10,8 +10,9 @@ For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5
 '''
 Solution: Linear Scan In Place Sort
 
-Time: O(n)
+Time: O(n). In the worst case we swap at most n/2 times. An example input is [2,1,3,1,4,1].
 Space: O(1)
+
 '''
 
 
