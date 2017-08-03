@@ -32,21 +32,21 @@ from sets import Set
 class Solution(object):
     def isReflected(self, points):
         """
-            :type points: List[List[int]]
-            :rtype: bool
-            """
-        st = Set()
-        Min = sys.maxint
-        Max = -sys.maxint-1
-
+        :type points: List[List[int]]
+        :rtype: bool
+        """
+        minVal, maxVal = sys.maxint, -sys.maxint-1
+        st = set()
+        
         for p in points:
-            Min = min(Min, p[0])
-            Max = max(Max, p[0])
+            minVal = min(minVal, p[0])
+            maxVal = max(maxVal, p[0])
             st.add(str(p))
-
-        Sum = Min + Max
-
+        
+        Sum = maxVal + minVal
+        
         for p in points:
-            if (str([(Sum - p[0]),p[1]])) not in st:
+            if str([Sum-p[0], p[1]]) not in st:
                 return False
+        
         return True
