@@ -47,12 +47,10 @@ class NestedIterator(object):
 
     def hasNext(self):
         while len(self.stack):
-            curElem = self.stack[-1]
-            if curElem.isInteger():
+            if self.stack[-1].isInteger():
                 return True
             else:
-                self.stack.pop()
-                curList = curElem.getList()
+                curList = self.stack.pop().getList()
                 for i in range(len(curList)-1,-1,-1):
                     self.stack.append(curList[i])
         return False
