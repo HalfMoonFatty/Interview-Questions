@@ -65,25 +65,20 @@ import sys
 import bisect
 class Solution(object):
     def maxEnvelopes(self, envelopes):
-
-        def cmpEnv(e1, e2):
-            if e1[0] != e2[0]:
-                return e1[0] - e2[0]    # Width 从小到大
-            else:
-                return e2[1] - e1[1]    # Width 相等的话，Height 从高到低
-
-
+        """
+        :type envelopes: List[List[int]]
+        :rtype: int
+        """
         if not envelopes: return 0
-
+        
         n = len(envelopes)
-        height = [sys.maxint] * n         # init with sys.maxint
+        height = [sys.maxint] * n  # init with sys.maxint
         maxLen = 1
-
-        envelopes.sort(cmp = cmpEnv)
+        
+        envelopes.sort(key=lambda e: (e[0],-e[1]))   # Width 从小到大,Height 从高到低
         
         for i in range(n):
-            k = bisect.bisect_left(height,envelopes[i][1])    # 找到最大的比 env[i][1]小的height
-            height[k] = envelopes[i][1]
-            maxLen = max(maxLen,k+1)
-
+            index = bisect.bisect_left(height,envelopes[i][1])    # 找到比 env[i][1]小的 最大的 height
+            height[index] = envelopes[i][1]
+            maxLen = max(maxLen, index+1)
         return maxLen
