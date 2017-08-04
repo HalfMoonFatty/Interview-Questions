@@ -61,15 +61,15 @@ class Solution(object):
         # pre-load dictA - a hashtable:
         # key is A's column number (B's row number);
         # value is linked list of tuples (colID,non-zero value)
-        dictA = collections.defaultdict(list)
+        rowCacheA = collections.defaultdict(list)
         for i in range(len(A)):
             for j in range(len(A[0])):
                 if A[i][j] != 0:
-                    dictA[i].append((j,A[i][j]))
+                    rowCacheA[i].append((j,A[i][j]))
 
 
         for i in range(len(A)):
-            rowA = dictA[i]
+            rowA = rowCacheA[i]
             for k in range(len(rowA)):
                 colA = rowA[k][0]
                 valA = rowA[k][1]
