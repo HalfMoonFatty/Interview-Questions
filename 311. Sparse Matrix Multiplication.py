@@ -59,11 +59,10 @@ class Solution(object):
         res = [[0 for j in range(len(B[0]))] for i in range(len(A))]
 
         # pre-load dictA - a hashtable:
-        # key is rowID;
+        # key is A's column number (B's row number);
         # value is linked list of tuples (colID,non-zero value)
-        dictA = {}
+        dictA = collections.defaultdict(list)
         for i in range(len(A)):
-            dictA.setdefault(i,[])
             for j in range(len(A[0])):
                 if A[i][j] != 0:
                     dictA[i].append((j,A[i][j]))
