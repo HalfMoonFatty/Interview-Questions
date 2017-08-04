@@ -57,6 +57,8 @@ Solution: Stack
     若栈非空，将栈顶元素topTime更新为time + 1 (栈顶元素的 startTime 变为当前时间+1)
 '''
 
+
+
 class Solution(object):
     def exclusiveTime(self, n, logs):
         """
@@ -75,8 +77,8 @@ class Solution(object):
                     result[topId] += time - topTime
                 stack.append([logid, time])
             else: # end
-                startId, startTime = stack.pop()
-                result[startId] += time - startTime + 1
+                logId, startTime = stack.pop()
+                result[logId] += time - startTime + 1
                 if stack: stack[-1][1] = time+1
         return result
                 
