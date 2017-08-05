@@ -20,14 +20,16 @@ The above arrows point to positions where the corresponding bits are different.
 
 '''
 
+
 class Solution(object):
     def hammingDistance(self, x, y):
-
         ans = 0
-        mask = 1
         for i in range(32):
-            ans += (x >> i & mask) ^ (y >> i & mask)
+            mask = 1 << i
+            if (x & mask) ^ (y & mask):
+                ans += 1
         return ans
+        
         
 
 
