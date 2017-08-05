@@ -41,13 +41,18 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        
         dmap = {0:-1}
         total = 0
         for i, n in enumerate(nums):
             total += n
-            m = total % k if k else total
-            if m not in dmap: dmap[m] = i
-            elif i - dmap[m] > 1: return True
+            if k:
+                m = total % k  
+            else:
+                m = total
+            if m in dmap: 
+                if i - dmap[m] > 1: 
+                    return True
+            else:
+                dmap[m] = i
         return False
         
