@@ -24,6 +24,20 @@ Solution:
 按位统计各整数的二进制0与1的个数之和，分别记为zero[i], 和one[i]
 ans = ∑(zero[i] * one[i]),  i∈[0, 31]
 
+
+Certainly unique pairs of elements exists where one element has this particular bit ON while the other element has this OFF 
+(i.e. this particular bit differs for the two elements of this pair).
+
+We can argue that "every such pair contributes one unit to the Hamming Distance for this particular bit."
+We know that the count of such unique pairs is numOfZero * numOfOne for this particular bit. Hence Hamming Distance for this particular bit is k⋅(n−k).
+
+For each of the ⌈log2V⌉ bits that we can check, we can calculate a Hamming Distance pertaining to that bit. 
+Taking sum over the Hamming Distances of all these bits, we get the total Hamming Distance.
+
+
+
+
+
 Time: O(n)
 Space: O(1)
 '''
