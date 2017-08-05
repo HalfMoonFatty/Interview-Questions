@@ -32,7 +32,9 @@ The length of the encoded URLs is fixed to 6 units, which is a significant reduc
 
 The performance of this scheme is quite good, due to a very less probability of repeated same codes generated.
 
-We can increase the number of encodings possible as well, by increasing the length of the encoded strings. Thus, there exists a tradeoff between the length of the code and the number of encodings possible.
+We can increase the number of encodings possible as well, by increasing the length of the encoded strings. 
+
+Thus, there exists a tradeoff between the length of the code and the number of encodings possible.
 
 Predicting the encoding isn't possible in this scheme since random numbers are used.
 
