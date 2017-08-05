@@ -31,6 +31,9 @@ Solution:
 
 若 i - dmap[m] > 1，则返回True
 
+Time complexity : O(n). Only one traversal of the array nums is done.
+
+Space complexity : O(min(n,k)). The HashMap can contain upto min(n,k) different pairings.
 '''
 
 
