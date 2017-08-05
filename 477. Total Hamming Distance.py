@@ -31,6 +31,9 @@ Certainly unique pairs of elements exists where one element has this particular 
 We can argue that "every such pair contributes one unit to the Hamming Distance for this particular bit."
 We know that the count of such unique pairs is numOfZero * numOfOne for this particular bit. Hence Hamming Distance for this particular bit is k⋅(n−k).
 
+每一位上的 每一个 01 pair 贡献 1，那么pair数的和就是答案
+
+
 For each of the ⌈log2V⌉ bits that we can check, we can calculate a Hamming Distance pertaining to that bit. 
 Taking sum over the Hamming Distances of all these bits, we get the total Hamming Distance.
 
