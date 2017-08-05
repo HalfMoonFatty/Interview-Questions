@@ -38,7 +38,7 @@ class Solution(object):
         """
         maxLen = 0
         count = 0
-        indexmap = {0:-1}
+        indexmap = {0:-1}   # note: count init as "0", index init as "-1"
         for i in range(len(nums)):
             if nums[i] == 1:
                 count += 1 
