@@ -44,10 +44,12 @@ class Solution(object):
         :type wall: List[List[int]]
         :rtype: int
         """
+
         edges = collections.Counter()
         for bricks in wall:
             length = 0
             for b in bricks:
-                if length: edges[length] += 1
+                if length: 
+                    edges[length] += 1
                 length += b
         return len(wall) - max(edges.values() or [0])
