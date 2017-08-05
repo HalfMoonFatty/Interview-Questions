@@ -69,6 +69,7 @@ Solution: 深度优先搜索（DFS）+ 剪枝（Pruning）
 否则枚举mdict[prefix]，并递归搜索
 '''
 
+
 class Solution(object):
     def wordSquares(self, words):
         """
@@ -76,14 +77,15 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         def search(word, line, matrix, result):
-            matrix.append(word)
             if line == n:
                 result.append(matrix[:])
-            else:
-                prefix = ''.join(matrix[x][line] for x in range(line))
-                for word in mdict[prefix]:
-                    search(word, line + 1, matrix, result)
-            matrix.pop()
+                return 
+            
+            prefix = ''.join(matrix[x][line] for x in range(line))
+            for word in mdict[prefix]:
+                matrix.append(word)
+                search(word, line + 1, matrix, result)
+                matrix.pop()
             
             
         m = len(words)
@@ -92,8 +94,9 @@ class Solution(object):
         for word in words:
             for i in range(n):
                 mdict[word[:i]].add(word)
+                
 
         result = []                        
         for word in words:
-            search(word, 1, [], result)
+            search(word, 1, [word], result)
         return result
