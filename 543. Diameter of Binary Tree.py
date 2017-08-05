@@ -18,19 +18,21 @@ Note: The length of path between two nodes is represented by the number of edges
 '''
 
 class Solution(object):
+    
     def diameterOfBinaryTree(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
+        
         def getDiameter(root, diameter):
             if not root: 
                 return 0
-            left = getDiameter(root.left, diameter)
-            right = getDiameter(root.right, diameter)
-            diameter[0] = max(diameter[0], left + right)   # diameter length doesn't include root itself
+            left = getDiameter(root.left, self.diameter)
+            right = getDiameter(root.right, self.diameter)
+            self.diameter = max(self.diameter, left + right)   # diameter length doesn't include root itself
             return 1 + max(left, right)   # return only one branch
         
-        diameter = [0]
-        getDiameter(root, diameter)
-        return diameter[0]
+        self.diameter = 0
+        getDiameter(root, self.diameter)
+        return self.diameter
