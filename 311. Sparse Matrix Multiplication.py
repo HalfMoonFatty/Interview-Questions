@@ -46,6 +46,45 @@ class Solution(object):
 
 
 
+# Optimization: Preload Hash Table of Matrix A and B
+
+class Solution(object):
+    def multiply(self, A, B):
+        """
+        :type A: List[List[int]]
+        :type B: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        if A is None or B is None: return None
+        m, n = len(A), len(A[0])
+        if len(B) != n:
+            raise Exception("A's column number must be equal to B's row number.")
+        l = len(B[0])
+        
+        cache_A = collections.defaultdict(collections.defaultdict)
+        cache_B = collections.defaultdict(collections.defaultdict)
+        for i, row in enumerate(A):
+            for j, elem in enumerate(row):
+                if elem:
+                    cache_A[i][j] = elem
+                    
+        for i, row in enumerate(B):
+            for j, elem in enumerate(row):
+                if elem:
+                    cache_B[i][j] = elem
+                    
+        C = [[0 for j in range(l)] for i in range(m)]
+        for i in cache_A:
+            for k in cache_A[i]:
+                if k not in cache_B: continue
+                for j in cache_B[k]:
+                    C[i][j] += cache_A[i][k] * cache_B[k][j]
+        return C
+
+
+
+
+
 # Solution 2: Preload Hash Table of Matrix A
 
 class Solution(object):
