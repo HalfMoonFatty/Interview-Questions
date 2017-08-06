@@ -46,7 +46,7 @@ class Codec:
     def deserialize(self, data):
 
         def desHelper(input):
-            if self.index > len(input) or input[self.index] == '#':
+            if input[self.index] == '#':
                 return None
             else:
                 root = TreeNode(input[self.index])
