@@ -14,6 +14,13 @@ return all possibilities to add binary operators (not unary) +, -, or * between 
 
 '''
 Solution:                
+
+1. 0 sequence: we can't have numbers with multiple digits started with zero; we can have single digit '0' or first digit not '0'
+2. a little trick is that we should save the value that is to be multiplied in the next recursion.
+multed 如果是连续乘的话就是累积，否则就被加或者减给洗掉了。
+e.g.
+2*3*4: multed = 2 -> 2*3 -> 2*3*4 (multed is accumulated)
+2*4-5*3: multed = 2 -> 2*4 -> -5 -> -5*3 (-15)
            
 Complexities:
     Time: O(n)
@@ -42,7 +49,6 @@ class Solution(object):
                         dfs(num, i+1, target, cur_total-t_val, -t_val, path+"-"+t, result)
 
                         dfs(num, i+1, target, cur_total-multed+multed*t_val, multed*t_val, path+"*"+t, result)
-
 
         
         if not num: return []
