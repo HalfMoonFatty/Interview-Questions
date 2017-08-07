@@ -58,7 +58,7 @@ class Solution(object):
         i = 0
         while num > 0:
             if num%1000 != 0:
-                engWords = helper(num%1000) + thousands[i] + " " + engWords # left LSB to MSB
+                engWords = helper(num%1000) + thousands[i] + " " + engWords # 从低位到高位，三位三位的做
             i += 1
             num /= 1000
         return engWords.lstrip().rstrip() # get rid of space in the beginning and at the end
