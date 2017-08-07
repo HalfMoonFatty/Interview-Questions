@@ -9,6 +9,7 @@ Note:
 
 
 # iterative solution:
+# Only in a balanced BST O(h) = O(log n). In the worst case h can be as large as n.
 class Solution(object):
     def inorderSuccessor(self, root, p):
         """
