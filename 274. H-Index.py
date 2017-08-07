@@ -18,7 +18,9 @@ Hint:
     A faster approach is to use extra space.
 '''
 
-
+# Solution 1: Counting
+# Time: O(n)
+# Space: O(n)
 
 class Solution(object):
     def hIndex(self, citations):
@@ -27,6 +29,7 @@ class Solution(object):
             :rtype: int
             """
         papercnt = [0]*(len(citations)+1)
+        # counting papers for each citation number
         for cite in citations:
             if cite > len(citations):
                 papercnt[len(citations)] += 1
@@ -39,3 +42,20 @@ class Solution(object):
                 return i
             npaper += papercnt[i]
         return 0
+
+    
+    
+    
+# Solution 2: Sorting
+# Time: O(nlogn)
+# Space: O(1)
+
+class Solution(object):
+    def hIndex(self, citations):
+
+        citations.sort(reverse = True)
+        i = 0
+        while i < len(citations) and citations[i] > i:
+            i += 1
+        return i
+    
