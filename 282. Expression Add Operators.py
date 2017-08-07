@@ -22,39 +22,41 @@ Complexities:
 '''
 
 class Solution(object):
+    
     def addOperators(self, num, target):
-        def dfs(res, num, target, curstr, pos, cur_total, pre_val, pre_op):
+        
+        def dfs(num, pos, target, curstr, cur_total, pre_val, pre_op, result):
             if pos == len(num) and cur_total == target:    # base case
-                res.append(curstr[:])
-            else:
-                for i in range(pos+1,len(num)+1):
-                    t = num[pos:i]
-                    t_val = int(t)
-                    if str(t_val) != t: continue    # note
-                    # + operation
-                    dfs(res, num, target, curstr+"+"+t, i, cur_total+t_val, t_val, "+")
-                    # - operation
-                    dfs(res, num, target, curstr+"-"+t, i, cur_total-t_val, t_val, "-")
-                    # * operation
-                    if pre_op == "+":    # 3+5*2   8-5 + 5*2
-                        #cur_total = cur_total-pre_val+pre_val*t_val
-                        dfs(res, num, target, curstr+"*"+t, i, cur_total-pre_val+pre_val*t_val, pre_val*t_val,pre_op)
-                    elif pre_op == "-":  # 3-5*2
-                        #cur_total = cur_total+pre_val-pre_val*t_val
-                        dfs(res, num, target, curstr+"*"+t, i, cur_total+pre_val-pre_val*t_val, pre_val*t_val,pre_op)
-                    else: # pre_op == "*"
-                        #cur_total = pre_val*t_val
-                        dfs(res, num, target, curstr+"*"+t, i, pre_val*t_val, pre_val*t_val,pre_op)
-            return
+                result.append(curstr[:])
+                return
+
+            for i in range(pos+1,len(num)+1):
+                t = num[pos:i]
+                t_val = int(t)
+                if str(t_val) != t: continue    # note
+                # + operation
+                dfs(num, i, target, curstr+"+"+t, cur_total+t_val, t_val, "+", result)
+                # - operation
+                dfs(num, i, target, curstr+"-"+t, cur_total-t_val, t_val, "-", result)
+                # * operation
+                if pre_op == "+":    # 3+5*2   8-5 + 5*2
+                    #cur_total = cur_total-pre_val+pre_val*t_val
+                    dfs(num, i, target, curstr+"*"+t, cur_total-pre_val+pre_val*t_val, pre_val*t_val,pre_op, result)
+                elif pre_op == "-":  # 3-5*2
+                    #cur_total = cur_total+pre_val-pre_val*t_val
+                    dfs(num, i, target, curstr+"*"+t, cur_total+pre_val-pre_val*t_val, pre_val*t_val,pre_op, result)
+                else: # pre_op == "*"
+                    #cur_total = pre_val*t_val
+                    dfs(num, i, target, curstr+"*"+t, pre_val*t_val, pre_val*t_val,pre_op, result)
 
 
 
-        res = []
+        result = []
         if not num:
-            return res
+            return result
         for i in range(1,len(num)+1):
             s = num[:i]
             s_val = int(s)
             if str(s_val) != s: continue
-            dfs(res, num, target, s, i, s_val, s_val, "#")
-        return res
+            dfs(num, i, target, s, s_val, s_val, "#", result)
+        return result
