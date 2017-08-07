@@ -18,8 +18,43 @@ Solution:
 Complexities:
     Time: O(n)
     Space: O(1)
-
 '''
+
+
+class Solution(object):
+    
+    def addOperators(self, num, target):
+        
+        def dfs(num, pos, target, cur_total, multed, path, result):
+            if pos == len(num) and cur_total == target:    
+                result.append(path[:])
+                return
+
+            for i in range(pos,len(num)):
+                if i == pos or num[pos] != '0':  # if single number (num[pos:pos+1]) or first digit not 0
+                    t = num[pos:i+1]
+                    t_val = int(t)
+                    if pos == 0:
+                        dfs(num, i+1, target, t_val, t_val, t, result)
+                    else:
+                        dfs(num, i+1, target, cur_total+t_val, t_val, path+"+"+t, result)
+
+                        dfs(num, i+1, target, cur_total-t_val, -t_val, path+"-"+t, result)
+
+                        dfs(num, i+1, target, cur_total-multed+multed*t_val, multed*t_val, path+"*"+t, result)
+
+
+        
+        if not num: return []
+        result = []
+        dfs(num, 0, target, 0, 0, '', result)
+        return result
+
+
+   
+   
+   
+   
 
 class Solution(object):
     
