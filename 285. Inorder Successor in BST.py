@@ -16,14 +16,14 @@ class Solution(object):
             :type p: TreeNode
             :rtype: TreeNode
             """
-        tmp = None
+        succ = None
         while root:
             if root.val > p.val:
-                tmp = root
+                succ = root
                 root = root.left
             else:
                 root = root.right
-        return tmp
+        return succ
         
         
 
