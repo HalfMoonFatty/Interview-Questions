@@ -25,6 +25,7 @@ After running your function, the 2D grid should be:
 
 '''
 
+
 from collections import deque
 import sys
 class Solution(object):
@@ -33,37 +34,33 @@ class Solution(object):
             :type rooms: List[List[int]]
             :rtype: void Do not return anything, modify rooms in-place instead.
             """
-        def canExplore(x, y, rooms):
+        
+        def canExplore(x, y):
             return 0<=x<len(rooms) and 0<=y<len(rooms[0]) and rooms[x][y] != -1
        
-
-        def findDist(room, q):
-            xDir = [0,-1, 0, 1]
-            yDir = [-1,0, 1, 0]
-           
-            while len(q):
-                pos = q.popleft()
-                x, y = pos[0], pos[1]
-               
-                for i in range(4):
-                    xNew = x + xDir[i]
-                    yNew = y + yDir[i]
-                    # if cannot explore or already been updated, skip it:
-                    if canExplore(xNew, yNew, rooms) and rooms[xNew][yNew] == sys.maxint:
-                        rooms[xNew][yNew] = rooms[x][y]+1
-                        q.append([xNew,yNew])
-       
-            return
-       
-       
+    
         if not rooms or len(rooms) == 0 or len(rooms[0]) == 0:
             return
 
-        row,col = len(rooms),len(rooms[0])
+        
         q = deque()
-        for i in range(row):
-            for j in range(col):
-                if rooms[i][j] == 0:
+        for i in range(len(rooms)):
+            for j in range(len(rooms[0])):
+                if rooms[i][j] == 0:    # destination: gate
                     q.append([i,j])
-        findDist(rooms,q)
+        
+        
+        xDir = [0,-1, 0, 1]
+        yDir = [-1,0, 1, 0]
+        while len(q):
+            x, y = q.popleft()
+            for i in range(4):
+                nx = x + xDir[i]
+                ny = y + yDir[i]
+                # if cannot explore or already been updated, skip it:
+                if canExplore(nx, ny) and rooms[nx][ny] == 2147483647:    # sys.maxint
+                    rooms[nx][ny] = rooms[x][y]+1
+                    q.append([nx,ny])
+
+                    
         return
