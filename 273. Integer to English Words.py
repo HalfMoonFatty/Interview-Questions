@@ -51,8 +51,7 @@ class Solution(object):
         thousands = ["", "Thousand", "Million", "Billion"]
        
         # Special case
-        if num == 0:
-            return "Zero"
+        if num == 0: return "Zero"
    
         # Iteration
         engWords = ""
