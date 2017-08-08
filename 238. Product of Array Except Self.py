@@ -27,7 +27,7 @@ class Solution(object):
         output = [0]*len(nums)
 
         left_prod[0] = 1
-        right_prod [len(nums)-1] = 1
+        right_prod[len(nums)-1] = 1
 
         for i in range(1,len(nums)):
             left_prod[i] = left_prod[i-1]*nums[i-1]
