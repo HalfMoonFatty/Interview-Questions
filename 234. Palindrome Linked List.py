@@ -18,32 +18,29 @@ Space: O(n)
 '''
 
 class Solution(object):
-
     def isPalindrome(self, head):
-
-        def checkPalin(start,end,mp):
-            length = 1
-            while end.next:
-                mp[end.next] = end
-                end = end.next
-                length += 1
-
-            for i in range(length/2):
-                if start.val == end.val:
-                    start = start.next
-                    end = mp[end]
-                else:
-                    return False
-            return True
-
 
         if not head or not head.next:
             return True
+        
+        mp = {}
+        start = end = head
+        length = 1
+        while end.next:
+            mp[end.next] = end
+            end = end.next
+            length += 1
 
-        return checkPalin(head,head,{})
+        for i in range(length/2):
+            if start.val == end.val:
+                start = start.next
+                end = mp[end]
+            else:
+                return False
+        return True
 
 
-
+    
 
 '''
 Solution 2: Optimal
