@@ -16,7 +16,7 @@ Follow up: Could you solve it in O(nk) runtime?
 
 
 # Solution 1: modifies the value of costs[][] so don't need extra space
-# cost[i][j] 表示 第i个房子 涂第j种颜色的 cost
+# cost[i][j] 表示 (叠加)到第i个房子，涂第j种颜色时，一共的cost
 
 
 class Solution(object):
