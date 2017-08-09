@@ -121,20 +121,20 @@ class Solution(object):
 
         def explore(x, y, grid, visited):
             if canExplore(x, y, grid, visited):
+                xdir = [0,1,0,-1]
+                ydir = [1,0,-1,0]
+                
                 q = deque()
                 q.append([x,y])
-               
                 while len(q):
-                    pos = q.popleft()
-                    x,y = pos[0],pos[1]
+                    x,y = q.popleft()
                     #visited[x][y] = True   # TLE
-                    xdir = [0,1,0,-1]
-                    ydir = [1,0,-1,0]
                     for i in range(4):
-                        if canExplore(x+xdir[i], y+ydir[i], grid, visited):
-                            q.append([x+xdir[i], y+ydir[i]])
-                            visited[x+xdir[i]][y+ydir[i]] = True
-            return
+                        nx,ny = x+xdir[i], y+ydir[i]
+                        if canExplore(nx,ny, grid, visited):
+                            q.append([nx,ny])
+                            visited[nx][ny] = True
+
    
    
         if not grid or len(grid) == 0 or len(grid[0]) == 0:
