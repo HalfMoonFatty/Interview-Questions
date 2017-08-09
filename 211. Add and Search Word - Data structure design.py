@@ -121,12 +121,12 @@ class WordDictionary(object):
                         return True
 
             elif len(node.children)>0 and word[i] == '*':
-                if self.searchHelper(word[i+1:], node): 
+                if self.searchHelper(word[i+1:], node):    # skip 1 to more chars
                     return True
                 tmp = node    # must remember the current iterator node, as other recursion path may modify node
                 for k in node.children.keys():
-                    node = tmp.children[k] # re-assign value to node
-                    if self.searchHelper(word[i:], node):
+                    node = tmp.children[k] 
+                    if self.searchHelper(word[i:], node):  # * represent 0 char
                         return True
 
                         
