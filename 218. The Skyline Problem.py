@@ -40,8 +40,9 @@ class Solution(object):
         :type buildings: List[List[int]]
         :rtype: List[List[int]]
         """
+                
         size = len(buildings)
-        points = sorted([(buildings[x][0], x, 's') for x in range(size)] + [(buildings[x][1], x, 'e') for x in range(size)])
+        points = sorted([(buildings[i][0], i, 's') for i in range(size)] + [(buildings[i][1], i, 'e') for i in range(size)])
         maxHeap = []
         skyline = []
         
@@ -54,9 +55,7 @@ class Solution(object):
                 heapq.heapify(maxHeap)
                 
             # get max height
-            if maxHeap:
-                height = -maxHeap[0] 
-            else: height = 0
+            height = -maxHeap[0] if maxHeap else 0
             
             # add the height to result
             if len(skyline) == 0 or skyline[-1][0] != p[0]:
