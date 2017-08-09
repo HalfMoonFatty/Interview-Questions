@@ -30,16 +30,16 @@ class Solution(object):
             :type n: Maximum number of characters to read (int)
             :rtype: The number of characters read (int)
             """
-        buffer = [None]*4
+        tmp = [None]*4
         EOF = False
-        totalRead = 0
+        total = 0
 
-        while totalRead < n and not EOF:
-            curRead = read4(buffer)     # call read4(buf): to read into internal buffer
-            if curRead < 4:
+        while total < n and not EOF:
+            count = read4(tmp)     # call read4(buf): to read into internal buffer
+            if count < 4:
                 EOF = True
-            length = min(n-totalRead, curRead)
+            length = min(n-total, count)
             for i in range(length):
-                buf[totalRead+i] = buffer[i]
-            totalRead += length
-        return totalRead
+                buf[total+i] = tmp[i]
+            total += length
+        return total
