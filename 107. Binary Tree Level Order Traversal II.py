@@ -19,7 +19,7 @@ Given binary tree {3,9,20,#,#,15,7},
 ]
 '''
 
-
+# recursive
 
 class Solution(object):
     def levelOrderBottom(self, root):
@@ -43,3 +43,30 @@ class Solution(object):
         result = []
         helper(root,0,result)
         return result
+
+      
+      
+      
+# iterative:
+
+class Solution(object):
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root: 
+            return []
+        
+        result = []
+        q = collections.deque([root])
+        while len(q):
+            size = len(q)
+            result.insert(0,[])
+            for i in range(size):
+                cur = q.popleft()
+                result[0].append(cur.val)
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+        return result
+
