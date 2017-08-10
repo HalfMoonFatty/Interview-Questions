@@ -20,6 +20,7 @@ return its zigzag level order traversal as:
 '''
 
 
+# recursive
 
 class Solution(object):
 
@@ -46,3 +47,35 @@ class Solution(object):
         result = []
         zzhelper(root,0,True,result)
         return result
+
+
+
+
+# iterative
+
+class Solution(object):
+    def zigzagLevelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root: 
+            return []
+        
+        leftToRight = True
+        result = []
+        q = collections.deque([root])
+        while len(q):
+            size = len(q)
+            result.append([])
+            for i in range(size):
+                cur = q.popleft()
+                if leftToRight: 
+                    result[-1].append(cur.val)
+                else: 
+                    result[-1].insert(0,cur.val)                    
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+            leftToRight = not leftToRight
+        return result
+        
