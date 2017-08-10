@@ -15,12 +15,11 @@ Note:
 
 # record what previously has been read
 
-
 class Solution(object):
     def __init__(self):
         self.buff = [None]*4
-        self.buffPtr = 0
-        self.count = 0
+        self.buffptr = 0
+        self.buffcnt = 0
         
 
     def read(self, buf, n):
@@ -31,23 +30,19 @@ class Solution(object):
             """
         ptr = 0
         while ptr < n:
-         
-            # no more data in the internal buffer, need to read in new data
-            if self.buffPtr == 0:
-                self.count = read4(self.buff)
 
-            # have nothing to read-in
-            if self.count == 0:
+            if self.buffptr == 0:
+                self.buffcnt = read4(self.buff)
+
+            if self.buffcnt == 0:
                 break
 
-            # 搬砖ing, 一次搬4块
-            while ptr < n and self.buffPtr < self.count:    # note loop condition
-                buf[ptr] = self.buff[self.buffPtr]
-                self.buffPtr += 1
+            while ptr < n and self.buffptr < self.buffcnt:    # note loop condition
+                buf[ptr] = self.buff[self.buffptr]
+                self.buffptr += 1
                 ptr += 1
 
-            # drained up the internal buffer, reset the buffPtr to 0
-            if self.buffPtr >= self.count:
-                self.buffPtr = 0
+            if self.buffptr >= self.buffcnt:
+                self.buffptr = 0
 
         return ptr
