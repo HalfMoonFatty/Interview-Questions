@@ -23,7 +23,7 @@ class Solution(object):
         heights.append(0)   # Note: sentinel node
 
         for i in range(len(heights)):
-            while len(index)>0 and heights[index[-1]] >= heights[i]:   # Note: >=
+            while len(index) > 0 and heights[index[-1]] >= heights[i]:   # Note: >=
                 h = heights[index.pop()]
                 if len(index) > 0: startInd = index[-1]
                 else: startInd = -1
