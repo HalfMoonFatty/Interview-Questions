@@ -49,6 +49,33 @@ class Solution(object):
 
 # Solution 2: Iterative
 
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        if not root: 
+            return []
+        
+        result = []
+        q = collections.deque([root])
+        while len(q):
+            size = len(q)
+            result.append([])
+            for i in range(size):
+                cur = q.popleft()
+                result[-1].append(cur.val)
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+        return result
+            
+
+     
+     
+     
+     
+     
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
