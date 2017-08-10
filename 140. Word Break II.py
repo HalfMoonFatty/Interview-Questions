@@ -66,3 +66,35 @@ class Solution(object):
         
         cache = {}
         return dfs(s,wordDict,cache)
+    
+    
+    
+# TLE
+class Solution(object):
+    def wordBreak(self, s, wordDict):
+        """
+        :type s: str
+        :type wordDict: Set[str]
+        :rtype: List[str]
+        """
+        def dfs(start, s, wordDict):
+            if cache.has_key(s): 
+                return cache[s]
+            
+            result = []
+            for i in range(start+1,len(s)+1):
+                word = s[start:i]
+                if word in wordDict:
+                    res = dfs(i,s,wordDict)
+                    if not res and i == len(s):
+                        result.append(word)
+                    else:
+                        for item in res:
+                            result.append(word + " " + item)
+                            
+            
+            cache[start] = result
+            return result
+        
+        cache = collections.defaultdict(list)
+        return dfs(0,s,wordDict)
