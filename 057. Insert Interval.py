@@ -43,20 +43,17 @@ class Solution(object):
             
             if hasInsert:   # note
                 ret.append(intervals[i])
-                continue
 
             # newInterval before the current interval
             elif newInterval.end < intervals[i].start:
                 ret.append(newInterval)
                 ret.append(intervals[i])
                 hasInsert = True
-                continue
 
             # merge 2 intervals
             elif newInterval.start <= intervals[i].end and newInterval.end >= intervals[i].start:
                 newInterval.start = min(newInterval.start,intervals[i].start)
                 newInterval.end = max(newInterval.end,intervals[i].end)
-                continue
 
             # newInterval after the curent interval
             else:
