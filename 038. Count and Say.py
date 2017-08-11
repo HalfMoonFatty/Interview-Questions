@@ -20,26 +20,24 @@ Time:O(n)
 Space:O(n)
 '''
 
-
 class Solution(object):
     def countAndSay(self, n):
         """
         :type n: int
         :rtype: str
         """
-
         s = "1"            # init last string
         for i in range(n-1):
-            prev = s[0]    # previous character
+            say = s[0]     # previous character
             count = 1      # count of repeated chars
             ns = ''        # new string built
             for j in range(1,len(s)):
-                if s[j] == prev:    # meet an old char
+                if s[j] == say:    # meet an old char
                     count += 1
-                else:               # meet a new char
-                    ns += str(count) + prev    
-                    prev = s[j]                   
+                else:              # meet a new char
+                    ns += str(count) + say    
+                    say = s[j]                   
                     count = 1                  
-            ns += str(count) + prev       # append the last substring from the loop
+            ns += str(count) + say # append the last substring from the loop
             s = ns
         return s
