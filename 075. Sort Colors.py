@@ -17,23 +17,24 @@ Follow up:
     Could you come up with an one-pass algorithm using only constant space?
 
 '''
+
 class Solution(object):
     def sortColors(self, nums):
-
-        ired = 0
-        iblue = len(nums)-1
-        while nums[ired] == 0 and ired<len(nums)-1:
-            ired += 1
-        while nums[iblue] == 2 and iblue > 0:
-            iblue -= 1
-
-        i = ired
-        while i <= iblue:
-            if nums[i] == 0 and i != ired:
-                nums[i],nums[ired] = nums[ired], nums[i]
-                ired += 1
-            elif nums[i] == 2 and i != iblue:
-                nums[i],nums[iblue] = nums[iblue], nums[i]
-                iblue -= 1
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        j, k = 0, len(nums)-1
+        i = 0
+        while i <= k:
+            if nums[i] == 0:
+                nums[i], nums[j] = nums[j], nums[i]
+                j += 1
+                i += 1
+            elif nums[i] == 2:
+                nums[i], nums[k] = nums[k], nums[i]
+                k -= 1
             else:
                 i += 1
+        
+            
