@@ -7,6 +7,7 @@
 - subset/combination/permutation
 - 背包6问
 - LIS 2D / LCS
+- Strstr
 
 - Trie
 - BIT
@@ -19,7 +20,7 @@
 
 
 
-Quick Sort / Merge Sort / External Sort
+Heap Sort/Quick Sort / Merge Sort / External Sort
 
 
 Heap:
