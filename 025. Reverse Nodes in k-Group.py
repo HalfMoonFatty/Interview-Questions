@@ -14,6 +14,41 @@ For example,
 
 '''
 
+
+
+
+class Solution(object):
+    def reverseKGroup(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        if not head or k < 2: return head
+        
+        n = 0
+        dummy = ListNode(-1)
+        dummy.next = head
+        cur, nxt, pre = dummy,dummy,dummy
+        while cur.next:
+            cur = cur.next
+            n += 1
+            
+        while n >= k:
+            cur = pre.next
+            nxt = cur.next
+            for i in range(k-1):
+                cur.next = nxt.next
+                nxt.next = pre.next
+                pre.next = nxt
+                nxt = cur.next
+            pre = cur
+            n -= k
+        return dummy.next
+                
+            
+
+
 '''
 Solution:
     Before review this problem "Swap Nodes in Pairs";
