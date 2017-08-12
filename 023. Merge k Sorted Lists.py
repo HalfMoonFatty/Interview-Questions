@@ -11,7 +11,6 @@ Space: O(logk)
 n is number of nodes
 '''
 
-
 import heapq
 class Solution(object):
     def mergeKLists(self, lists):
@@ -19,7 +18,6 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-        
         dummyHead = ListNode(-1)
         itr = dummyHead
         
@@ -30,8 +28,7 @@ class Solution(object):
                 lists[i] = lists[i].next    # ! update list head
         
         while len(heap):
-            elem = heapq.heappop(heap)
-            val, ind = elem[0],elem[1]
+            val, ind = heapq.heappop(heap)
             itr.next = ListNode(val)
             itr = itr.next # Note
             if lists[ind]: # Note
@@ -39,6 +36,5 @@ class Solution(object):
                 lists[ind] = lists[ind].next    # ! update list head
                 
         return dummyHead.next
-        
         
         
