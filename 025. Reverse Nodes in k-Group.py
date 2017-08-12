@@ -15,8 +15,6 @@ For example,
 '''
 
 
-
-
 class Solution(object):
     def reverseKGroup(self, head, k):
         """
