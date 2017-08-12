@@ -22,5 +22,3 @@ class Solution(object):
                 return [mp[target-nums[i]], i]
             else:
                 mp[nums[i]] = i
-
-    	return None
