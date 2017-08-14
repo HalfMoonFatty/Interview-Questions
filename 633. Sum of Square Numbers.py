@@ -15,6 +15,8 @@ Output: False
 '''
 
 # 在范围[0, int(sqrt(c))]内枚举a，判断c - a^2是否为完全平方数
+# Time complexity : O(√clog(c)). We iterate over √c values for choosing a. For every a chosen, finding square root of c−a^2 takes O(log(c)) time in the worst case.
+# Space complexity : O(1). Constant extra space is used.
 
 class Solution(object):
     def judgeSquareSum(self, c):
