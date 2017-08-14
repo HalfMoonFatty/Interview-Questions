@@ -22,6 +22,46 @@ parent -> 4
 
 '''
 
+
+'''
+Solution:
+
+                  1
+                 / \
+       root ->  2   3
+               / \
+   newRoot->  4   5
+
+                  1
+                 /
+       root ->  2 - 3
+               / 
+   newRoot->  4 - 5
+
+'''
+
+
+class Solution(object):
+    def upsideDownBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        if not root or not root.left:
+            return root
+        newRoot = self.upsideDownBinaryTree(root.left)
+        root.left.left = root.right
+        root.left.right = root
+        root.left = root.right = None
+        return newRoot
+        
+
+
+        
+        
+        
+        
+
 '''
 Solution:
 
