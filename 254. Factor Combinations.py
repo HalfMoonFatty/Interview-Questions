@@ -4,8 +4,7 @@ Problem:
 Write a function that takes an integer n and return all possible combinations of its factors.
 
 Note:
-     1. Each combination's factors must be sorted ascending,
-        for example: The factors of 2 and 6 is [2, 6], not [6, 2].
+     1. Each combination's factors must be sorted ascending, for example: The factors of 2 and 6 is [2, 6], not [6, 2].
      2.You may assume that n is always positive.
      3.Factors should be greater than 1 and less than n.
 
