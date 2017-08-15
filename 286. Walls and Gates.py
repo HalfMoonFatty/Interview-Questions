@@ -62,5 +62,3 @@ class Solution(object):
                     rooms[nx][ny] = rooms[x][y]+1
                     q.append([nx,ny])
 
-                    
-        return
