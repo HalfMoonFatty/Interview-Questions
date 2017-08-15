@@ -46,6 +46,7 @@ Solution:
     >> OrderedDict([(1, 89), (2, 3), (3, 0), (4, 5)])
 '''
 
+
 from collections import deque
 class Solution(object):
     def verticalOrder(self, root):
@@ -53,20 +54,17 @@ class Solution(object):
             :type root: TreeNode
             :rtype: List[List[int]]
             """
-            
+        if not root: return []
+        
         mp = collections.defaultdict(list)
         q = deque()
         q.append((root, 0))
         while len(q) > 0:
             node, column = q.popleft()
-            if node:
-                mp[column].append(node.val)
-                q.append((node.left, column-1))
-                q.append((node.right, column+1))
+            mp[column].append(node.val)
+            if node.left: q.append((node.left, column-1))
+            if node.right: q.append((node.right, column+1))
 
 
-        ret = []
-        # note: need to sort by column
-        for k in sorted(mp):
-            ret.append(mp[k])
+        ret = [mp[k] for k in sorted(mp)]
         return ret
