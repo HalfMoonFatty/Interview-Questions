@@ -85,10 +85,10 @@ class Solution(object):
             for i in range(start+1,len(s)+1):
                 word = s[start:i]
                 if word in wordDict:
-                    res = dfs(i,s,wordDict)
-                    if not res and i == len(s):
+                    if i == len(s):
                         result.append(word)
                     else:
+                        res = dfs(i,s,wordDict)
                         for item in res:
                             result.append(word + " " + item)
                             
