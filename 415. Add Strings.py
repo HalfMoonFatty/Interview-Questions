@@ -17,34 +17,20 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        
-        res = [0] * (max(len(num1),len(num2))+1)
+        index1, index2 = len(num1)-1, len(num2)-1
         carry = 0
-        i,j,k = len(num1)-1, len(num2)-1, len(res)-1
+        res = ''
         
-        while i >= 0 and j >= 0 and k >= 0:
-            tmp = int(num1[i]) + int(num2[j]) + carry
-            res[k] = tmp%10
-            carry = tmp/10
-            i -= 1
-            j -= 1
-            k -= 1
-    
-        while i >= 0 and k >= 0:
-            tmp = int(num1[i]) + carry
-            res[k] = tmp%10
-            carry = tmp/10
-            i -= 1
-            k -= 1
-        
-        while j >= 0 and k >= 0:
-            tmp = int(num2[j]) + carry
-            res[k] = tmp%10
-            carry = tmp/10
-            j -= 1
-            k -= 1   
+        while not (index1 < 0 and index2 < 0):
+            val1 = 0 if index1 < 0 else int(num1[index1])
+            val2 = 0 if index2 < 0 else int(num2[index2])
+            val = val1 + val2 + carry
             
-        res[k] = carry
-        ret = ''.join(str(x) for x in res).lstrip('0')  
+            carry = val/10
+            val %= 10  # note
+            res =str(val)+res
+            
+            index1 -= 1
+            index2 -= 1
         
-        return ret if ret else '0'
+        return '1'+res if carry == 1 else res
