@@ -38,17 +38,19 @@ class Solution(object):
                 return
 
             for i in range(pos,len(num)):
-                if i == pos or num[pos] != '0':  # if single number (num[pos:pos+1]) or first digit not 0
-                    t = num[pos:i+1]
-                    t_val = int(t)
-                    if pos == 0:
-                        dfs(num, i+1, target, t_val, t_val, t, result)
-                    else:
-                        dfs(num, i+1, target, cur_total+t_val, t_val, path+"+"+t, result)
+                if i != pos and num[pos] == '0':
+                    return
+                
+                t = num[pos:i+1]
+                t_val = int(t)
+                if pos == 0:
+                    dfs(num, i+1, target, t_val, t_val, t, result)
+                else:
+                    dfs(num, i+1, target, cur_total+t_val, t_val, path+"+"+t, result)
 
-                        dfs(num, i+1, target, cur_total-t_val, -t_val, path+"-"+t, result)
+                    dfs(num, i+1, target, cur_total-t_val, -t_val, path+"-"+t, result)
 
-                        dfs(num, i+1, target, cur_total-multed+multed*t_val, multed*t_val, path+"*"+t, result)
+                    dfs(num, i+1, target, cur_total-multed+multed*t_val, multed*t_val, path+"*"+t, result)
 
         
         if not num: return []
