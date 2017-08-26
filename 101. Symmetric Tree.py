@@ -34,7 +34,7 @@ class Solution(object):
             if not left and not right:
                 return True
             elif left and right and left.val == right.val:
-                return compareLR (left.left, right.right) and compareLR (left.right, right.left)
+                return compareLR(left.left, right.right) and compareLR(left.right, right.left)
             else:
                 return False
 
