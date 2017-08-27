@@ -25,22 +25,20 @@ Note: Do not use class member/global/static variables to store states. Your seri
 
 # Solution 1: Preorder Traversal
 
+
 class Codec:
+
     def serialize(self, root):
 
-        def serHelper(root, output):
-            if not root:
-                output.append('#')
-            else:
-                output.append(str(root.val))
-                serHelper(root.left, output)
-                serHelper(root.right, output)
-       
-        output = []     
-        serHelper(root, output)
-        return ' '.join(output)
-   
-   
+        if not root: return '#'
+        left = self.serialize(root.left)
+        right = self.serialize(root.right)
+        ans = str(root.val)
+        if left: ans += ' ' + left
+        if right: ans += ' ' + right
+        return ans
+        
+
     def deserialize(self, data):
 
         def desHelper(input):
@@ -57,7 +55,8 @@ class Codec:
         self.index = 0
         input = data.split()
         return desHelper(input)
-    
+
+
     
 
     
