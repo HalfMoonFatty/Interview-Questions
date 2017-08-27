@@ -31,9 +31,9 @@ class Codec:
     def serialize(self, root):
 
         if not root: return '#'
+        ans = str(root.val)
         left = self.serialize(root.left)
         right = self.serialize(root.right)
-        ans = str(root.val)
         if left: ans += ' ' + left
         if right: ans += ' ' + right
         return ans
