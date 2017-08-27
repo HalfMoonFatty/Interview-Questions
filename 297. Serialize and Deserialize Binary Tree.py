@@ -23,9 +23,7 @@ Note: Do not use class member/global/static variables to store states. Your seri
 
 
 
-
 # Solution 1: Preorder Traversal
-
 
 class Codec:
     def serialize(self, root):
