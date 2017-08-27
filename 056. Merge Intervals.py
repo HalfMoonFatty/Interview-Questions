@@ -18,29 +18,22 @@ Time: O(n)
 
 
 
-# Definition for an interval.
-# class Interval(object):
-#     def __init__(self, s=0, e=0):
-#         self.start = s
-#         self.end = e
-
-
-from operator import itemgetter,attrgetter
 class Solution(object):
-
+    def merge(self, intervals):
+        """
+        :type intervals: List[Interval]
+        :rtype: List[Interval]
+        """
         if len(intervals) < 2:
             return intervals
 
-        intervals.sort(key=attrgetter('start'))
+        intervals.sort(key = lambda interval: interval.start)
 
         cur_item = intervals[0]
         for item in intervals[1:]:    # note: cannot use index
             if item.start <= cur_item.end:
-                if item.end <= cur_item.end:
-                    intervals.remove(item)
-                else:
-                    cur_item.end = item.end
-                    intervals.remove(item)
+                cur_item.end = max(cur_item.end,item.end)
+                intervals.remove(item)
             else:
                 cur_item = item
         return intervals
