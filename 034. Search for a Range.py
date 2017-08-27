@@ -19,32 +19,29 @@ Space O(n)
 '''
 
 class Solution(object):
-    def __init__(self):
-        self.rangepair = [-1,-1]
-
     def searchRange(self, nums, target):
 
         def binSearch(nums, start, end, target):
             if start > end:
                 return
-            else:
-                mid = start + (end - start)/2
-                if nums[mid] == target:
-                    if self.rangepair == [-1,-1]:
-                        self.rangepair = [mid, mid]
-                    elif mid < self.rangepair[0]:
-                        self.rangepair[0] = mid
-                    elif mid > self.rangepair[1]:
-                        self.rangepair[1] = mid
-                    # Search left boundary of target
-                    binSearch(nums, start, mid-1, target)
-                    # Search right boundary of target
-                    binSearch(nums, mid+1, end, target)
-                elif nums[mid] < target:
-                    binSearch(nums, mid+1, end, target)
-                else:
-                    binSearch(nums, start, mid-1, target)
-            return
 
+            mid = start + (end - start)/2
+            if nums[mid] == target:
+                if self.rangepair == [-1,-1]:
+                    self.rangepair = [mid, mid]
+                elif mid < self.rangepair[0]:
+                    self.rangepair[0] = mid
+                elif mid > self.rangepair[1]:
+                    self.rangepair[1] = mid
+                # Search left boundary of target
+                binSearch(nums, start, mid-1, target)
+                # Search right boundary of target
+                binSearch(nums, mid+1, end, target)
+            elif nums[mid] < target:
+                binSearch(nums, mid+1, end, target)
+            else:
+                binSearch(nums, start, mid-1, target)
+
+        self.rangepair = [-1,-1]
         binSearch(nums, 0, len(nums)-1, target)
         return self.rangepair
