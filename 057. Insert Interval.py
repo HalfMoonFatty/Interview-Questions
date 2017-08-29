@@ -64,3 +64,61 @@ class Solution(object):
 
         return ret
 
+
+    
+# Follow-up: In-place insert and get total length
+
+class Interval(object):
+  def __init__(self, start, end):
+    self.start = start
+    self.end = end
+
+class Intervals(object):
+  def __init__(self):
+    self._intervals = []
+    self._total_length = 0
+
+  def Insert(self, new_interval):
+    def IsOverlap(i1, i2):
+      if i1.start > i2.start:
+        i1,i2 = i2,i1
+      return i1.end > i2.start
+
+    def Merge(i1, i2):
+      return Interval(min(i1.start, i2.start), max(i1.end, i2.end))
+
+    intervals_to_remove = []
+    for i in range(len(self._intervals)):
+      interval = self._intervals[i]
+      if not IsOverlap(interval, new_interval):
+        continue
+      new_interval = Merge(interval, new_interval)
+      intervals_to_remove.append(i)
+
+    # update self._total_length
+    for i in intervals_to_remove:
+      self._total_length -= self._intervals[i].end - self._intervals[i].start
+    self._total_length += new_interval.end - new_interval.start
+
+    
+    if intervals_to_remove:
+      start, end = intervals_to_remove[0], intervals_to_remove[-1]
+      end_intervals = self._intervals[end + 1:] if end + 1 < len(self._intervals) else []
+      self._intervals = self._intervals[:start] + [new_interval] + end_intervals
+    else:
+        self._intervals.append(new_interval)
+
+  def GetTotalLength(self):
+    return self._total_length
+
+
+# Test cases.
+i1 = Interval(1, 4)
+i2 = Interval(6, 7)
+i3 = Interval(2, 5)
+intervals = Intervals()
+intervals.Insert(i1)
+intervals.Insert(i2)
+print intervals.GetTotalLength()
+intervals.Insert(i3)
+print intervals.GetTotalLength()
