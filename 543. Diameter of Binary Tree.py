@@ -25,11 +25,11 @@ class Solution(object):
         :rtype: int
         """
         
-        def getDiameter(root, diameter):
+        def getDiameter(root):
             if not root: 
                 return 0
-            left = getDiameter(root.left, self.diameter)
-            right = getDiameter(root.right, self.diameter)
+            left = getDiameter(root.left)
+            right = getDiameter(root.right)
             self.diameter = max(self.diameter, left + right)   # diameter length doesn't include root itself
             return 1 + max(left, right)   # return only one branch
         
