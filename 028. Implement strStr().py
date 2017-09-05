@@ -22,11 +22,9 @@ class Solution(object):
         
         for i in range(m-n+1):
             j = 0
-            while j < n:
-                if haystack[i+j] != needle[j]:
-                    break
-                j +=1
-
+            while j < n and haystack[i + j] == needle[j]:   
+                j += 1
+                
             if j == n:
                 return i
         return -1
