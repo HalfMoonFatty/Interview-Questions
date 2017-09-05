@@ -28,3 +28,31 @@ class Solution(object):
             else:
                 return False
         return True
+
+# in-place
+
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        #s =''.join(ch for ch in s if ch.isalnum())
+        if not (s.strip()) or len(s) ==1:
+            return True
+
+        start,end = 0, len(s)-1
+        while start <= end:
+            while start <= end and not s[start].isalnum():
+                start += 1
+            while start <= end and not s[end].isalnum():
+                end -= 1
+
+            if start <= end:
+                if s[start].upper() == s[end].upper():
+                    start += 1
+                    end -= 1
+                else:
+                    return False
+        return True
