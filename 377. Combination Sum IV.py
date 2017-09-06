@@ -59,3 +59,11 @@ Think about nums = [-1, 1] and target = 1. We can have all sequences of arbitrar
 So we should limit the length of the combination sequence, so as to give a bound to the problem.
 '''
     
+class Solution(object):
+    def combinationSum4WithLength(self, nums, target, length, memo=collections.defaultdict(int)):
+        if length <= 0: return 0
+        if length == 1: return 1 * (target in nums)
+        if (target, length) not in memo: 
+            for num in nums:
+                memo[target, length] += self.combinationSum4(nums, target - num, length - 1)
+        return memo[target, length]
