@@ -63,15 +63,15 @@ class Solution(object):
         
         cache_A = collections.defaultdict(collections.defaultdict)
         cache_B = collections.defaultdict(collections.defaultdict)
-        for i, row in enumerate(A):
-            for j, elem in enumerate(row):
-                if elem:
-                    cache_A[i][j] = elem
+        for i in range(len(A)):
+            for j in range(len(A[0])):
+                if A[i][j]:
+                    cache_A[i][j] = A[i][j]
                     
-        for i, row in enumerate(B):
-            for j, elem in enumerate(row):
-                if elem:
-                    cache_B[i][j] = elem
+        for i in range(len(B)):
+            for j in range(len(B[0])):
+                if B[i][j]:
+                    cache_B[i][j] = B[i][j]
                     
         C = [[0 for j in range(l)] for i in range(m)]
         for i in cache_A:
@@ -80,7 +80,6 @@ class Solution(object):
                 for j in cache_B[k]:
                     C[i][j] += cache_A[i][k] * cache_B[k][j]
         return C
-
 
 
 
