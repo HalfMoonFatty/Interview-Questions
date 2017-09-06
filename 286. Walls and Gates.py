@@ -34,7 +34,6 @@ class Solution(object):
             :type rooms: List[List[int]]
             :rtype: void Do not return anything, modify rooms in-place instead.
             """
-        
         def canExplore(x, y):
             return 0<=x<len(rooms) and 0<=y<len(rooms[0]) and rooms[x][y] != -1
        
@@ -42,13 +41,11 @@ class Solution(object):
         if not rooms or len(rooms) == 0 or len(rooms[0]) == 0:
             return
 
-        
         q = deque()
         for i in range(len(rooms)):
             for j in range(len(rooms[0])):
                 if rooms[i][j] == 0:    # destination: gate
                     q.append([i,j])
-        
         
         xDir = [0,-1, 0, 1]
         yDir = [-1,0, 1, 0]
