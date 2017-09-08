@@ -44,13 +44,13 @@ class Codec:
         def desHelper(input):
             if input[self.index] == '#':
                 return None
-            else:
-                root = TreeNode(input[self.index])
-                self.index += 1
-                root.left = desHelper(input)
-                self.index += 1
-                root.right = desHelper(input)
-                return root
+
+            root = TreeNode(input[self.index])
+            self.index += 1
+            root.left = desHelper(input)
+            self.index += 1
+            root.right = desHelper(input)
+            return root
        
         self.index = 0
         input = data.split()
