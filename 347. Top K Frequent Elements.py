@@ -25,8 +25,7 @@ class Solution(object):
         for key in count.keys():
             if len(heap) < k:
                 heapq.heappush(heap,(count[key],key))
-            else:
-                if count[key] > heap[0][0]:
+            elif count[key] > heap[0][0]:
                     heapq.heappop(heap)
                     heapq.heappush(heap,(count[key],key))
                                     
