@@ -112,11 +112,11 @@ class Solution(object):
         tmax = max(cnt.values())
         slots = (tmax - 1) * (n + 1)
         t = 0
-        for n in cnt.values():
-            if n == tmax:
-                t += n-1
+        for v in cnt.values():
+            if v == tmax:
+                t += v-1
             else: 
-                t += n
+                t += v
 
         return len(tasks) + max(0,slots - t)
 
