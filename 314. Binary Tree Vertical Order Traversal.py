@@ -68,3 +68,38 @@ class Solution(object):
 
         ret = [mp[k] for k in sorted(mp)]
         return ret
+
+    
+    
+# Follow-up: vertical print
+def verticalOrder(root):
+
+    # Find min and max distances with respect to root 
+    def findMinMax(node, minimum, maximum, hd):
+        if not node: return
+        if hd < minimum[0]:
+            minimum[0] = hd
+        elif hd > maximum[0]:
+            maximum[0] = hd
+        findMinMax(node.left, minimum, maximum, hd-1)
+        findMinMax(node.right, minimum, maximum, hd+1)
+     
+
+    def printVerticalLine(node, line_no, hd):
+        if not node: return
+        if hd == line_no:
+            print node.data
+        printVerticalLine(node.left, line_no, hd-1)
+        printVerticalLine(node.right, line_no, hd+1)
+
+     
+    
+    # Find min and max distances with respect to root
+    minimum = [0]
+    maximum = [0]
+    findMinMax(root, minimum, maximum, 0)
+ 
+    # Iterate through all possible lines starting 
+    # from the leftmost line and print nodes line by line
+    for line_no in range(minimum[0], maximum[0]+1):
+        printVerticalLine(root, line_no, 0)
