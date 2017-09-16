@@ -20,6 +20,42 @@ Space O(n)
 
 class Solution(object):
     def searchRange(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        if not nums:
+            return [-1, -1]
+        
+        # Search for left bound.
+        i, j = 0, len(nums) - 1
+        result = [-1, -1]
+        while i < j:
+            mid = (i + j) / 2  # Biased to left, so j = mid can still advance.
+            if nums[mid] < target:
+                i = mid + 1
+            else:
+                j = mid
+        if nums[i] != target:
+            return [-1, -1]
+        result[0] = i
+        
+        # Search for right bound.
+        j = len(nums) - 1
+        while i < j:
+            mid = (i + j) / 2 + 1  # Bais to right, so i = mid can still advance.
+            if nums[mid] > target:
+                j = mid - 1
+            else:
+                i = mid
+        result[1] = j
+        
+        return result
+
+'''
+class Solution(object):
+    def searchRange(self, nums, target):
 
         def binSearch(nums, start, end, target):
             if start > end:
@@ -45,3 +81,4 @@ class Solution(object):
         self.rangepair = [-1,-1]
         binSearch(nums, 0, len(nums)-1, target)
         return self.rangepair
+'''
