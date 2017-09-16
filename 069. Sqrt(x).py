@@ -34,11 +34,11 @@ class Solution(object):
 
 class Solution(object):
 
-    def isPerfectSquare(self, num):
-        r = x
-        while r*r > x:
-            r = (r + x/r) / 2
-        return r
+    def isPerfectSquare(self, x):
+        guess = x
+        while guess*guess > x:
+            guess = (guess + x/guess) / 2
+        return guess
     
     
     
