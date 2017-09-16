@@ -54,6 +54,7 @@ Remove:
 
      update index_mp for both “lastVal" and "target val"
 
+http://www.geeksforgeeks.org/design-a-data-structure-that-supports-insert-delete-search-and-getrandom-in-constant-time/
 '''
 
 import random
