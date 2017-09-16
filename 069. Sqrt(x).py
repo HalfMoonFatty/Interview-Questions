@@ -39,3 +39,23 @@ class Solution(object):
         while r*r > x:
             r = (r + x/r) / 2
         return r
+    
+    
+    
+    
+# follow-up:
+
+class Solution(object):
+
+    def isPerfectSquare(self, x, e):
+        guess = x
+        while True:
+            if abs(guess*guess - x) < e:
+                return guess
+            guess = (guess + x/guess)/2
+
+
+s = Solution()
+x = 0.25
+e = 0.00001
+print s.isPerfectSquare(x, e)
