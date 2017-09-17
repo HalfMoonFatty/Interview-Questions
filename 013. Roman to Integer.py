@@ -20,7 +20,8 @@ Solution:
     D               500
     M               1000
 
-    Let’s work through some examples. Assume the input is “VII”, using the [additive notation], we could simply add up each roman literal, ‘V’ + ‘I’ + ‘I’ = 5 + 1 + 1 = 7.
+    Let’s work through some examples. Assume the input is “VII”, using the [additive notation], we could simply add up each roman literal, 
+    ‘V’ + ‘I’ + ‘I’ = 5 + 1 + 1 = 7.
     
     Now let’s look at another example input “IV”. Now we need to use the [subtractive notation]. We first look at ‘I’, and we add 1 to it. 
     Then we look at ‘V’ and since a smaller roman literal ‘I’ appears before it, we need to subtract ‘I’ from ‘V’. 
