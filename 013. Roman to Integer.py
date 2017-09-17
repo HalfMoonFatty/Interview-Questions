@@ -67,6 +67,17 @@ class Solution(object):
         return total
 
 
+
+'''
+error check:
+
+1. char 不在 dict 中 => 无脑错
+2. 计算前后差 => 如果 diff != 4 && diff != 9 && diff != 40 && diff != 90 && diff != 400 && diff != 900 => 错
+3. samecount
+    3a. samecount > 1 => 如果 char in ['V', 'L', 'D'] => 错
+    3b. samecount > 3 => 无脑错
+'''
+
     
 import java.util.HashMap;
 
