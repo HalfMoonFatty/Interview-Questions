@@ -7,6 +7,23 @@ Compute and return the square root of x.
 
 '''
 
+def mySqrt(x, tolerance):
+    
+    if x <= 0:
+        return 0
+    
+    start, end = 0.0, float(x) if x > 1 else 1.0
+    while start < end - tolerance:
+        mid = start + (end - start)/2
+        if mid*mid == x:
+            return mid
+        elif mid * mid < x:
+            start = mid
+        else:
+            end = mid
+            
+    return start
+
 # Solution 1:
 
 class Solution(object):
