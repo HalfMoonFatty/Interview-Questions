@@ -47,9 +47,7 @@ class Solution(object):
                     dfs(num, i+1, target, t_val, t_val, t, result)
                 else:
                     dfs(num, i+1, target, cur_total+t_val, t_val, path+"+"+t, result)
-
                     dfs(num, i+1, target, cur_total-t_val, -t_val, path+"-"+t, result)
-
                     dfs(num, i+1, target, cur_total-multed+multed*t_val, multed*t_val, path+"*"+t, result)
 
         
