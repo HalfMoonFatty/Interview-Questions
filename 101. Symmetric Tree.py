@@ -30,20 +30,15 @@ Note:
 class Solution(object):
     def isSymmetric(self, root):
 
-        def compareLR(left, right):
-            if not left and not right:
+        def isMirror(t1, t2):
+            if not t1 and not t2:
                 return True
-            elif left and right and left.val == right.val:
-                return compareLR(left.left, right.right) and compareLR(left.right, right.left)
-            else:
+            elif not t1 or not t2:
                 return False
-
-
-        if not root:
-            return True
-        else:
-            return compareLR(root.left, root.right)
-
+            else:
+                return t1.val == t2.val and isMirror(t1.right, t2.left) and isMirror(t1.left, t2.right)
+            
+        return isMirror(root, root)
 
 
 
@@ -59,29 +54,22 @@ class Solution(object):
         if not root:
             return True
 
-        # init q1 and q2
-        q1 = deque()
-        q2 = deque()
-        q1.append(root.left)    # q1 - left, right
-        q2.append(root.right)   # q2 - right, left (mirror)
-
-        # pop both queue
-        while len(q1) > 0 and len(q2) > 0:
-            l = q1.popleft()
-            r = q2.popleft()
-            if not l and not r:
+        q = deque()
+        q.append(root)   
+        q.append(root) 
+        while len(q) > 0:
+            t1 = q.popleft()
+            t2 = q.popleft()
+            if not t1 and not t2:
                 continue
-            elif not l or not r:
+            elif not t1 or not t2:
                 return False
-            elif l.val != r.val:
+            elif t1.val != t2.val:
                 return False
-
-            # q1 - left, right
-            q1.append(l.left)
-            q1.append(l.right)
-            # q2 - right, left (mirror)
-            q2.append(r.right)
-            q2.append(r.left)
+            q.append(t1.left)
+            q.append(t2.right)
+            q.append(t1.right)
+            q.append(t2.left)
 
         return True
-
+            
