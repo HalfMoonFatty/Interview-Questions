@@ -19,6 +19,31 @@ Note: The given number is in the range [0, 108]
 '''
 
 
+# Time: O(n)
+# Space: O(1)
+
+class Solution(object):
+    def maximumSwap(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        lnum = list(str(num))
+        last = {int(v): i for i, v in enumerate(lnum)}
+        for i in range(len(lnum)):
+            for digit in range(9, int(lnum[i]), -1):
+                if last.get(digit, -1) > i:
+                    lnum[i], lnum[last[digit]] = lnum[last[digit]], lnum[i]
+                    return int("".join(lnum))
+        return int(num)
+    
+    
+    
+    
+'''
+'''
+
+
 class Solution(object):
     def maximumSwap(self, num):
         """
