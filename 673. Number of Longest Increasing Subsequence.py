@@ -17,6 +17,18 @@ Note: Length of the given array will be not exceed 2000 and the answer is guaran
 
 '''
 
+'''
+Solution:
+
+The idea is to use two arrays len[n] and cnt[n] to record the maximum length of Increasing Subsequence and the coresponding number of these sequence which ends with nums[i], respectively. That is:
+
+len[i]: the length of the Longest Increasing Subsequence which ends with nums[i].
+cnt[i]: the number of the Longest Increasing Subsequence which ends with nums[i].
+
+Then, the result is the sum of each cnt[i] while its corresponding len[i] is the maximum length.
+
+'''
+
 
 class Solution(object):
     def findNumberOfLIS(self, nums):
