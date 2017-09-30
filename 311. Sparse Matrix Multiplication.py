@@ -76,9 +76,9 @@ class Solution(object):
         C = [[0 for j in range(l)] for i in range(m)]
         for i in cache_A:
             for k in cache_A[i]:
-                if k not in cache_B: continue
-                for j in cache_B[k]:
-                    C[i][j] += cache_A[i][k] * cache_B[k][j]
+                if k in cache_B: 
+                    for j in cache_B[k]:
+                         C[i][j] += cache_A[i][k] * cache_B[k][j]
         return C
 
 
