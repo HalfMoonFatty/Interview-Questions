@@ -32,7 +32,7 @@ class Solution:
             sum += nums[j]
             if sum >= s:
                 while i <= j: # try to shrink the current minSize
-                    if sum -nums[i]< s:
+                    if sum - nums[i]< s:
                         break
                     sum -= nums[i]
                     i += 1  
