@@ -21,23 +21,12 @@ class Solution(object):
         if not matrix: return 0
 
         m,n = len(matrix),len(matrix[0])
-        dp = [[0]*n for _ in range(m)]
+        dp = [[0]*(n+1) for _ in range(m+1)]
         maxLen = 0
 
-        # init row 0
-        for j in range(n):
-            dp[0][j] = int(matrix[0][j])
-            maxLen = max(maxLen, dp[0][j]) # important
-
-        # init col 0
-        for i in range(m):
-            dp[i][0] = int(matrix[i][0])
-            maxLen = max(maxLen, dp[i][0]) # important
-
-        # go through the matrix
-        for i in range(1,m):
-            for j in range(1,n):
-                if matrix[i][j] == '1': # string '1' not int
+        for i in range(1,m+1):
+            for j in range(1,n+1):
+                if matrix[i-1][j-1] == '1': # string '1' not int
                     dp[i][j] = min(dp[i-1][j-1], min(dp[i-1][j],dp[i][j-1])) + 1
                     maxLen = max(maxLen,dp[i][j])
         return maxLen * maxLen
