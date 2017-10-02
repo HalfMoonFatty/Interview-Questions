@@ -11,6 +11,8 @@ Assume a BST is defined as follows:
 
 
 # Recursive
+# Time: O(n)
+# Space: O(n)
 
 import sys
 class Solution(object):
@@ -30,6 +32,8 @@ class Solution(object):
 
     
 # Iterative:
+# Time: O(n)
+# Space: O(n)
 
 class Solution(object):
     def isValidBST(self, root):
@@ -38,16 +42,23 @@ class Solution(object):
         :rtype: bool
         """
         if not root: return True
-        stack = []
+        stack = [root]
         prev = None
-        
-        while root or len(stack):
-            while root:
-                stack.append(root)
+
+        while len(stack) > 0:
+            if root:            # go to the left most node
+                stack.append(root.left)
                 root = root.left
-            root = stack.pop()
-            if prev and root.val <= prev.val:
-                return False
-            prev = root
-            root = root.right
+            else:
+                stack.pop()     # pop out None
+                if len(stack) > 0:
+                    root = stack.pop()
+                    if prev and prev.val >= root.val:
+                        return False
+                    prev = root
+                    stack.append(root.right)    # go right
+                    root = root.right
+                else:
+                    break
         return True
+            
