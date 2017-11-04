@@ -45,17 +45,22 @@ The information stored in ans and min1 is O(1),
 but our depth-first search may store up to O(h)=O(N) information in the call stack, where h is the height of the tree.
 '''
 
-def findSecondMinValue(self, root):
-    def dfs(root):
-        if root:
-            if min1 < root.val < self.ans:
-                self.ans = node.val
-            elif node.val == min1:
-                dfs(root.left)
-                dfs(root.right)
+class Solution(object):
+    def findSecondMinimumValue(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        def dfs(root):
+            if root:
+                if min1 < root.val < self.ans:
+                    self.ans = root.val
+                elif root.val == min1:
+                    dfs(root.left)
+                    dfs(root.right)
 
 
-    self.ans = float('inf')
-    min1 = root.findSecondMinValue
-    dfs(root)
-    return self.ans if self.ans < float('inf') else -1
+        self.ans = float('inf')
+        min1 = root.val
+        dfs(root)
+        return self.ans if self.ans < float('inf') else -1
